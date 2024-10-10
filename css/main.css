@@ -35,7 +35,7 @@ body{
     max-width: 1519px;
     width: 100%;
     height: 590px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .slider__list{
@@ -102,11 +102,12 @@ body{
 
 .best__slider{
     position: relative;
-    top: 123px;
-    max-width: 1519px;
+    top: 160px;
     width: 100%;
-    height: 590px;
-    overflow: hidden;
+    height: 550px;
+    background-color: purple;
+    margin-left: 45px;
+    /* overflow: hidden; */
 }
 
 .best__slider__list{
@@ -115,6 +116,7 @@ body{
     left: 0;
     height: 100%;
     display: flex;
+    /* justify-content: space-around; */
     width: max-content;
     transition: 1s;
 }
@@ -124,9 +126,13 @@ body{
     height: 360px;
 }
 
+.best__slider__item{
+    margin-right: 22px;
+}
+
 .best__slider__button{
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 85%;
     width: 90%;
     display: flex;
@@ -143,33 +149,27 @@ body{
     margin-right: 10px;
 }
 
-.best__slider__button button:hover
-{
+.best__slider__button button:hover{
     cursor: pointer;
 }
 
-.best__slider__button button i:nth-child(2)
-{
+.best__slider__button button i:nth-child(2){
     display: none;
 }
 
-.best__slider__button button:nth-child(1):hover #left__angle
-{
+.best__slider__button button:nth-child(1):hover #left__angle{
     display: none;
 }
 
-.best__slider__button button:nth-child(1):hover #left__arrow
-{
+.best__slider__button button:nth-child(1):hover #left__arrow{
     display: inline;
 }
 
-.best__slider__button button:nth-child(2):hover #right__angle
-{
+.best__slider__button button:nth-child(2):hover #right__angle{
     display: none;
 }
 
-.best__slider__button button:nth-child(2):hover #right__arrow
-{
+.best__slider__button button:nth-child(2):hover #right__arrow{
     display: inline;
 }
 
