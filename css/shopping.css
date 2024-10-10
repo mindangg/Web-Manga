@@ -1,0 +1,77 @@
+*,
+*:before,
+*:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --black: #201c1c;
+    --green: #08dc64;
+    --green-l: #08bc5c;
+}
+
+@font-face{
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+    font-family: Poppins-Regular;
+ }
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: "Poppins-Regular", sans-serif;
+    background-color: var(--black);
+}
+
+.shop__page__container{
+    max-width: 300px;
+    width: 100%;
+    height: 420px;
+    position: relative;
+    top: 200px;
+    margin: 0 auto;
+    background-color: var(--black);
+}
+
+.shop__page{
+    max-width: 270px;
+    width: 100%;
+    position: relative;
+    top: 70px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.shop__page i{
+    position: absolute;
+    font-size: 32px;
+}
+
+.shop__page__icon{
+    display: flex;
+    justify-content: center;
+}
+
+.shop__page h2{
+    text-align: center;
+    margin: 47px 0 34px;
+    color: white;
+}
+
+.shop__page__btn{
+    width: 100%;
+    height: 60px;
+    background-color: var(--green);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.shop__page__btn:hover{
+    cursor: pointer;
+    background-color: var(--green-l);
+}

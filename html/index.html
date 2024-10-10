@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga</title>
+    <!--css -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="icon" type="image/png" href="../img/WEBTOON_Logo.png">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/758055a090.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <special-header></special-header>
+
+    <header>
+        <nav class="navbar">
+            <!-- logo -->
+            <div class="navbar__logo">
+                <a href="index.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+            </div>
+            <!-- links -->
+            <ul class="navbar__links">
+                <li class="navbar__link--home"><a href="#" class="navbar__link">Home</a></li>
+                <li class="navbar__link--series">
+                    <a href="#" class="navbar__link">Series</a>
+                    <div class="navbar__series">
+                        <ul>
+                            <li><a href="">Sakamoto Days</a></li>
+                            <li><a href="">My Dress Up Darling</a></li>
+                            <li><a href="">Classroom Of The Elite</a></li>
+                            <li><a href="">One Punch Man</a></li>
+                            <li><a href="">Naruto</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Black Clover</a></li>
+                            <li><a href="">Conan</a></li>
+                            <li><a href="">Doraemon</a></li>
+                            <li><a href="">Chain Saw Man</a></li>
+                            <li><a href="">Fairy Tales</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Demon Slayer</a></li>
+                            <li><a href="">Jujutsu Kaisen</a></li>
+                            <li><a href="">Black Clover</a></li>
+                            <li><a href="">Mob Psycho 100</a></li>
+                            <li><a href="">Seven Deadly Sins</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Spy X Family</a></li>
+                            <li><a href="">Rent A Girlfriend</a></li>
+                            <li><a href="">One Piece</a></li>
+                            <li><a href="">Mashle: Magic And Muscles</a></li>
+                            <li><a href="">My Hero Academia</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="navbar__link--category">
+                    <a href="#" class="navbar__link">Category</a>
+                    <div class="navbar__category">
+                        <ul>
+                            <li><a href="">Shounen</a></li>
+                            <li><a href="">Slice Of Life</a></li>
+                            <li><a href="">Psychology</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Rom-Com</a></li>
+                            <li><a href="">Seinen</a></li>
+                            <li><a href="">Horror</a></li>
+            
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Hentai</a></li>
+                            <li><a href="">Brain Rot</a></li>
+                            <li><a href="">Shoujo</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Jousei</a></li>
+                            <li><a href="">Drama</a></li>
+                            <li><a href="">Action</a></li>
+                        </ul>
+                    </div>
+                </li>
+                
+                <li class="navbar__link--author">
+                    <a href="#" class="navbar__link">Author</a>
+                    <div class="navbar__author">
+                        <ul>
+                            <li><a href="">Oda Eiichiro</a></li>
+                            <li><a href="">Fukuda Shinichi</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Kishimoto Masashi</a></li>
+                            <li><a href="">Aoyama Gōshō</a></li>
+            
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Tabata Yūki</a></li>
+                            <li><a href="">Isayama Hajime</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Horikoshi Kohei</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--price">
+                    <a href="#" class="navbar__link">Price</a>
+                    <div class="navbar__price">
+                        <ul>
+                            <li><a href="">Under 10 Dollars</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">10 To 20 Dollars</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">20 To 50 dollars</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Over 50 dollars</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--about"><a href="#special-footer" class="navbar__link">About Us</a></li>
+            </ul>
+
+            <!-- nav bar icons -->
+            <div class="navbar__home">
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
+                <a href="../html/login.html" id="login_icon"><i class="fa-regular fa-user" style="color:white;"></i></a>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
+            </div>
+        </nav>
+
+        <!-- searchbox -->
+        <div class="search__popup">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="search" placeholder="Search for...">
+                    <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                </div> 
+            </div>
+        </div>
+
+        <!-- shopping cart -->
+        <div class="shopping__popup">
+            <div class="shopping__container">
+                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>     
+                <div class="shopping">
+                    <div class="shopping__icon">
+                        <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
+                    </div>
+                    <br>
+                    <h2>Your cart is empty</h2>
+                    <button class="shopping__btn">Continue shopping</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- slider -->
+         <div class="slider">
+            <div class="slider__list">
+                <div class="slider__item">
+                    <img src="../img/1.png" alt="Sakamoto Days Cover">
+                </div>
+
+                <div class="slider__item">
+                    <img src="../img/2.png" alt="My Dress Up Darling Cover">
+                </div>
+
+                <div class="slider__item">
+                    <img src="../img/3.png" alt="Classroom Of The Elite Cover">
+                </div>
+
+                <div class="slider__item">
+                    <img src="../img/4.jpeg" alt="Spy X Family Cover">
+                </div>
+
+                <div class="slider__item">
+                    <img src="../img/5.jpg" alt="Black Clover Cover">
+                </div>
+            </div>
+
+            <div class="slider__button">
+                <button id="slider__prev"><</button>
+                <button id="slider__next">></button>
+            </div>
+
+            <ul class="slider__dots">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+         </div>
+
+         <!-- best sellers slider -->
+
+         <div class="best__slider">
+            <div class="best__slider__list">
+                <div class="best__slider__item">
+                    <img src="../img/Volume_06.webp" alt="Sakamoto Days Cover">
+                </div>
+
+                <div class="best__slider__item">
+                    <img src="../img/jujutsu-kaisen-vol-4-original-imahy5kghugbjkmt.webp" alt="Black Clover Cover">
+                </div>
+
+                <div class="best__slider__item">
+                    <img src="../img/Volume_30.webp" alt="Classroom Of The Elite Cover">
+                </div>
+
+                <div class="best__slider__item">
+                    <img src="../img/spy_3.jpg" alt="Spy X Family Cover">
+                </div>
+
+                <div class="best__slider__item">
+                    <img src="../img/Volume_10.webp" alt="My Dress Up Darling Cover">
+                </div>
+            </div>
+
+            <div class="best__slider__button">
+                <button id="best__slider__prev">
+                    <i class="fa-solid fa-angle-left" id="left__angle"></i></i>
+                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                </button>
+                <button id="best__slider__next">
+                    <i class="fa-solid fa-angle-right" id="right__angle"></i></i>
+                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                </button>
+            </div>
+
+            <ul class="best__slider__dots">
+                <li class="best__active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+         </div>
+
+
+    </main>
+
+    <special-footer id="special-footer"></special-footer>
+
+    <!-- js -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header_footer.js"></script>
+</body>
+</html>
