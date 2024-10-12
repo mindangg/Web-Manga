@@ -25,6 +25,7 @@ body{
     --black: #201c1c;
     --green: #08dc64;
     --green-l: #08bc5c;
+    --gray: #bbbbbb;
 }
 
 /* slider */
@@ -110,9 +111,21 @@ body{
     /* overflow: hidden; */
 }
 
-.best__slider__list{
+.best__slider__h1{
     position: absolute;
     top: 0;
+    left: 0;
+}
+
+.best__slider h1{
+    color: white;
+    font-size: 2.2em;
+}
+
+.best__slider__list{
+    position: absolute;
+    /* top: 0; */
+    /* top: 50px; */
     left: 0;
     height: 100%;
     display: flex;
@@ -127,7 +140,49 @@ body{
 }
 
 .best__slider__item{
+    position: relative;
     margin-right: 22px;
+}
+
+.best__slider__item img:hover{
+    cursor: pointer;
+}
+
+.best__slider__item img:hover button{
+    opacity: 1;
+    visibility: visible;
+}
+
+.best__slider__item h3{
+    position: absolute;
+    left: 0;
+    color: white;
+    font-size: 1.2em;
+}
+
+.best__slider__item p{
+    position: absolute;
+    top: 72%;
+    color: var(--gray);
+}
+
+.best__slider__item button{
+    position: absolute;
+    top: 52%;
+    left: 55%;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background-color: var(--green);
+    border: none;
+    padding: 18px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.best__slider__item button:hover{
+    cursor: pointer;
+    background-color: rgba(8, 220, 100, 0.9);
 }
 
 .best__slider__button{

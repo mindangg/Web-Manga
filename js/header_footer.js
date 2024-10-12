@@ -16,7 +16,6 @@ class SpecialHeader extends HTMLElement{
                         <ul>
                             <li><a href="">Sakamoto Days</a></li>
                             <li><a href="">My Dress Up Darling</a></li>
-                            <li><a href="">Classroom Of The Elite</a></li>
                             <li><a href="">One Punch Man</a></li>
                             <li><a href="">Naruto</a></li>
                         </ul>
@@ -26,7 +25,6 @@ class SpecialHeader extends HTMLElement{
                             <li><a href="">Conan</a></li>
                             <li><a href="">Doraemon</a></li>
                             <li><a href="">Chain Saw Man</a></li>
-                            <li><a href="">Fairy Tales</a></li>
                         </ul>
             
                         <ul>
@@ -34,12 +32,10 @@ class SpecialHeader extends HTMLElement{
                             <li><a href="">Jujutsu Kaisen</a></li>
                             <li><a href="">Black Clover</a></li>
                             <li><a href="">Mob Psycho 100</a></li>
-                            <li><a href="">Seven Deadly Sins</a></li>
                         </ul>
             
                         <ul>
                             <li><a href="">Spy X Family</a></li>
-                            <li><a href="">Rent A Girlfriend</a></li>
                             <li><a href="">One Piece</a></li>
                             <li><a href="">Mashle: Magic And Muscles</a></li>
                             <li><a href="">My Hero Academia</a></li>

@@ -11,6 +11,7 @@
     --black: #201c1c;
     --green: #08dc64;
     --green-l: #08bc5c;
+    --gray: #bbbbbb;
 }
 
 @font-face{
@@ -79,14 +80,14 @@ body{
 }
 
 .login a{
-    color: #bbbbbb;
+    color: var(--gray);
     text-decoration: none;
     position: relative;
 }
 
  .login a::after{
     content: '';
-    background-color: #bbbbbb;
+    background-color: var(--gray);
     height: 1px;
     width: 100%;
     position: absolute;
