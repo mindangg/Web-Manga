@@ -60,7 +60,7 @@ class SpecialHeader extends HTMLElement{
                         </ul>
             
                         <ul>
-                            <li><a href="">Hentai</a></li>
+                            <li><a href="">Family</a></li>
                             <li><a href="">Brain Rot</a></li>
                             <li><a href="">Shoujo</a></li>
                         </ul>
@@ -102,19 +102,19 @@ class SpecialHeader extends HTMLElement{
                     <a href="#" class="navbar__link">Price</a>
                     <div class="navbar__price">
                         <ul>
-                            <li><a href="">Under 10 Dollars</a></li>
+                            <li><a href="">Under $10 Dollars</a></li>
                         </ul>
             
                         <ul>
-                            <li><a href="">10 To 20 Dollars</a></li>
+                            <li><a href="">$10 To $20 Dollars</a></li>
                         </ul>
             
                         <ul>
-                            <li><a href="">20 To 50 dollars</a></li>
+                            <li><a href="">$20 To $50 dollars</a></li>
                         </ul>
             
                         <ul>
-                            <li><a href="">Over 50 dollars</a></li>
+                            <li><a href="">Over $50 dollars</a></li>
                         </ul>
                     </div>
                 </li>
@@ -199,10 +199,10 @@ class SpecialFooter extends HTMLElement{
                 </form>
 
                 <div class="footer__social--icons">
-                    <a><i class="fa-brands fa-facebook" style="color:white;"></i></a>
                     <a><i class="fa-brands fa-instagram" style="color:white;"></i></a>
-                    <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                     <a href="https://www.tiktok.com/@_.mindang?_t=8qOahI38W4V&_r=1" target="_blank"><i class="fa-brands fa-tiktok" style="color:white;"></i></a>
+                    <a><i class="fa-brands fa-facebook" style="color:white;"></i></a>
+                    <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
         </div><br><br><br>
