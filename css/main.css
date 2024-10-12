@@ -33,9 +33,10 @@ body{
 .slider{
     position: relative;
     top: 123px;
-    max-width: 1519px;
+    width: 1400px;
+    max-width: 100vw;
     width: 100%;
-    height: 580px;
+    height: 550px;
     overflow: hidden;
 }
 
@@ -50,7 +51,7 @@ body{
 }
 
 .slider__list img{
-    width: 1519px;
+    width: 1400px;
     height: 100%;
 }
 
@@ -75,9 +76,9 @@ body{
 
 .slider__dots{
     position: absolute;
-    bottom: 20px;
+    left: 86%;
+    bottom: 7%;
     color: #fff;
-    left: 1300px;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -86,8 +87,8 @@ body{
 
 .slider__dots li{
     list-style: none;
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     background-color: rgba(255, 255, 255, 0.5);
     margin: 20px 10px;
     border-radius: 20px;
@@ -96,30 +97,27 @@ body{
 
 .slider__dots li.active{
     background-color: #fff;
-    width: 30px;
+    width: 29px;
 }
 
 /* shopping slider */
 
 .best__slider{
     position: relative;
-    top: 160px;
-    max-width: 3000px;
-    height: 550px;
+    top: 190px;
+    max-width: 1400px;
+    max-width: 100vw;
+    height: 590px;
     /* background-color: purple; */
-    margin-left: 45px;
+    margin: 0 40px 200px;
+    /* margin-bottom: 200px; */
     overflow: hidden;
-}
-
-.best__slider__h1{
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .best__slider h1{
     color: white;
     font-size: 2.2em;
+    margin-bottom: 35px;
 }
 
 .best__slider__list{
@@ -134,14 +132,14 @@ body{
 }
 
 .best__slider__list img{
-    width: 350px;
-    height: 66%;
+    width: 306px;
+    height: 360px;
     transition: 0.22s ease-in;
 }
 
 .best__slider__item{
     position: relative;
-    margin-right: 22px;
+    margin-right: 20px;
 }
 
 .best__slider__item img:nth-child(1){
@@ -156,30 +154,31 @@ body{
     opacity: 0;
 }
 
-.best__slider__item h3{
+.best__slider__item h4{
     position: absolute;
     left: 0;
     color: white;
-    font-size: 1.2em;
+    /* font-size: 1em; */
     margin-top: 3px;
 }
 
 .best__slider__item p{
     position: absolute;
-    top: 73%;
+    top: 67%;
     color: var(--gray);
+    font-size: 15px;
 }
 
 .best__slider__item button{
     position: absolute;
-    top: 55%;
-    left: 60%;
+    top: 51%;
+    left: 55%;
     font-size: 15px;
     font-weight: bold;
     color: black;
     background-color: var(--green);
     border: none;
-    padding: 15px;  
+    padding: 14px;  
     /* opacity: 0; */
     /* display: none; */
 }

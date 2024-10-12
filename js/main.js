@@ -57,26 +57,32 @@ let best_next = document.getElementById("best__slider__next");
 let best_prev = document.getElementById("best__slider__prev");
 
 let best_active = 0;
-let best_lengthItems = best_items.length - 1;
+let best_lengthItems = best_items.length - 4;
 
 best_next.onclick = function()
 {
-    if(best_active + 1 > best_lengthItems)
-        best_active = 0;
-    else
+    if(best_active + 1 <= best_lengthItems){
         best_active++;
-    best_ReloadSlider();
+        best_ReloadSlider();
+    }
+
+    //     best_active = 0;
+    // else
+    //     best_active++;
+
 }
 
 best_prev.onclick = function()
 {
-    if(best_active - 1 < 0)
-        best_active = best_lengthItems;
-    else
+    if(best_active - 1 >= 0){
         best_active--;
-    best_ReloadSlider();
+        best_ReloadSlider();
+    }
+    //     best_active = best_lengthItems;
+    // else
+    //     best_active--;
+    // best_ReloadSlider();
 }
-
 
 function best_ReloadSlider()
 {
