@@ -205,7 +205,7 @@ class SpecialFooter extends HTMLElement{
                     <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
-        </div><br><br><br>
+        </div><br><br>
         <hr>
         <p class="copyright">© 2024, Web Development, Powered by J97</p>
     </footer>

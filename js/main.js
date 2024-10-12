@@ -52,7 +52,7 @@ dots.forEach((li, key) =>{
 
 let best_list = document.querySelector(".best__slider .best__slider__list");
 let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
-// let best_dots = document.querySelectorAll(".best__slider .best__slider__dots li");
+let best_dots = document.querySelectorAll(".best__slider .best__slider__dots li");
 let best_next = document.getElementById("best__slider__next");
 let best_prev = document.getElementById("best__slider__prev");
 
@@ -61,38 +61,38 @@ let best_lengthItems = best_items.length - 4;
 
 best_next.onclick = function()
 {
-    if(best_active + 1 <= best_lengthItems){
+    if(best_active + 1 <= best_lengthItems)
+    {
         best_active++;
         best_ReloadSlider();
+        best_AddSlider();
     }
-
-    //     best_active = 0;
-    // else
-    //     best_active++;
-
 }
 
 best_prev.onclick = function()
 {
-    if(best_active - 1 >= 0){
+    if(best_active - 1 >= 0)
+    {
         best_active--;
         best_ReloadSlider();
+        best_RemoveSlider();
     }
-    //     best_active = best_lengthItems;
-    // else
-    //     best_active--;
-    // best_ReloadSlider();
 }
 
 function best_ReloadSlider()
 {
     let best_checkLeft = best_items[best_active].offsetLeft;
     best_list.style.left = -best_checkLeft + "px";
-    // best_list.style.left = -330 + "px";
+}
 
-    // let lastActiveDot = document.querySelector(".slider .slider__dots li.active");
-    // lastActiveDot.classList.remove("active");
-    // dots[active].classList.add("active");
+function best_AddSlider()
+{
+    best_dots[best_active].classList.add("best__active");
+}
+
+function best_RemoveSlider()
+{
+    best_dots[best_active + 1].classList.remove("best__active");
 }
 
 
