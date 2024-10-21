@@ -313,7 +313,7 @@ body{
 
     margin: 40px auto;
     /* background-color: var(--black); */
-    background-color: rgba(32, 28, 28, 0.93);
+    background-color: rgba(32, 28, 28, 0.92);
     /* background-color: purple; */
     display: flex;
 }
