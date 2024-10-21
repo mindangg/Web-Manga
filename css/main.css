@@ -13,6 +13,7 @@
 
 html{
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body{
@@ -27,6 +28,32 @@ body{
     --green-l: #08bc5c;
     --gray: #bbbbbb;
 }
+
+
+
+
+
+/* navigation between pages */
+
+#main__page{
+    /* display: none; */
+}
+
+/* #product__page{
+    display: none;
+} */
+
+#login__page{
+    display: none;
+}
+
+#signup__page{
+    display: none;
+}
+
+
+
+
 
 /* slider */
 
@@ -99,6 +126,10 @@ body{
     background-color: #fff;
     width: 29px;
 }
+
+
+
+
 
 /* shopping slider */
 
@@ -256,3 +287,305 @@ body{
 .best__slider__dots li.best__active{
     background-color: var(--green);
 } 
+
+
+
+.product__page{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    display: inline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+#product__close{
+    position: absolute;
+}
+
+.product{
+    /* display: flex; */
+    /* display: none; */
+    width: 1000px;
+    height: 600px;
+
+    margin: 40px auto;
+    background-color: var(--black);
+    /* background-color: purple; */
+    display: flex;
+}
+
+.product *{
+    color: white;
+}
+
+.product
+
+.product__info{
+    margin-left: 30px;
+    width: 60%;
+    margin: auto 30;
+}
+
+.product__img{
+    width: 40%;
+}
+
+.product__img img{
+    width: 100%;
+    height: 75%;
+    margin: 0;
+    margin-top: 12.2px;
+}
+
+.product__info button:hover{
+
+    cursor: pointer;
+}
+
+.product__info--rating i{
+    color: gold;
+}
+
+.product__info--rating :nth-child(5)
+{
+    color: white;
+}
+
+.product__info p:nth-child(5){
+    color: var(--gray);
+}
+
+.product__info p:nth-child(6){
+    margin-bottom: 10px;
+}
+
+#product__quantitydown{
+    background-color: var(--black);
+    color: white;
+    border: solid 1px #303828;
+    border-right: none;
+    width: 50px;
+    height: 45px;
+    margin-bottom: 25px;
+}
+
+#product__quantityup{
+    background-color: var(--black);
+    border: solid 1px #303828;
+    border-left: none;
+    width: 50px;
+    height: 45px;
+}
+
+#product__quantity{
+    background-color: var(--black);
+    border: solid 1px #303828;
+    border-left: none;
+    border-right: none;
+    width: 70px;
+    height: 45px;
+    text-align: center;
+}
+
+#product__add{
+    background-color: var(--green);
+    border: none;
+    color: black;
+    height: 55px;
+    width: 320px;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+#product__add:hover{
+    background-color: var(--green-l);
+}
+
+
+
+
+
+
+
+/* login page */
+
+.login{
+    width: 400px;
+    position: relative;
+    top: 150px;
+    margin: auto;
+}
+
+.login h1{
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+
+.login__input{
+    width: 100%;
+    height: 55px;
+    margin: 15px 0;
+}
+
+.login input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #363636;
+    padding: 20px 45px 20px 20px;
+    font-size: 16px;
+    color: white;
+}
+
+.login input::placeholder{
+    color: #8d8d8d;
+    font-size: 16px;
+}
+
+.login__btn{
+    width: 100%;
+    height: 65px;
+    background-color: var(--green);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.login__btn:hover {
+    cursor: pointer;
+    background-color: var(--green-l);
+}
+
+.login a{
+    color: var(--gray);
+    text-decoration: none;
+    position: relative;
+}
+
+.login a:hover{
+    cursor: pointer;
+}
+
+ .login a::after{
+    content: '';
+    background-color: var(--gray);
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+ .login a:hover::after{
+    width: 0;
+}
+ 
+.login__forget{
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.login__signup{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 25px 0px;
+}
+
+
+
+
+
+/* signup page */
+
+.signup{
+    width: 500px;
+    position: relative;
+    top: 140px;
+    margin: auto;
+}
+
+.signup h1{
+    font-size: 45px;
+    color: white;
+    text-align: center;
+}
+
+.signup__input{
+    width: 100%;
+    height: 55px;
+    margin: 15px 0;
+}
+
+.signup input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border: 2px solid #363636;
+    padding: 20px 45px 20px 20px;
+    font-size: 16px;
+    color: white;
+}
+
+.signup input::placeholder{
+    color: #8d8d8d;
+    font-size: 16px;
+}
+
+.signup__btn{
+    width: 100%;
+    height: 65px;
+    background-color: var(--green);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.signup__btn:hover{
+    background-color: var(--green-l);
+    cursor: pointer;
+}
+
+.signup a{
+    color: var(--gray);
+    text-decoration: none;
+    position: relative;
+}
+
+.signup a:hover{
+    cursor: pointer;
+}
+
+ .signup a::after{
+    content: '';
+    background-color: var(--gray);
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+ .signup a:hover::after{
+    width: 0;
+}
+
+ .signup__login{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 25px 0px;
+ }

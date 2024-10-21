@@ -9,7 +9,7 @@ class SpecialHeader extends HTMLElement{
             </div>
             <!-- links -->
             <ul class="navbar__links">
-                <li class="navbar__link--home"><a href="#" class="navbar__link">Home</a></li>
+                <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
                 <li class="navbar__link--series">
                     <a href="#" class="navbar__link">Series</a>
                     <div class="navbar__series">
@@ -124,7 +124,7 @@ class SpecialHeader extends HTMLElement{
             <!-- nav bar icons -->
             <div class="navbar__home">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
-                <a href="../html/login.html" id="login_icon"><i class="fa-regular fa-user" style="color:white;"></i></a>
+                <a href="#" id="login__icon"><i class="fa-regular fa-user" style="color:white;"></i></a>
                 <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
             </div>
         </nav>
@@ -215,6 +215,32 @@ class SpecialFooter extends HTMLElement{
 
 customElements.define(`special-footer`, SpecialFooter);
 
+
+
+
+
+//navigation between pages
+
+document.getElementById("login__icon").addEventListener("click", function(){
+    document.getElementById("main__page").style.display = "none";
+    document.getElementById("login__page").style.display = "inline";
+    console.log("Hello");
+})
+
+document.getElementById("login__signup--nav").addEventListener("click", function(){
+    document.getElementById("login__page").style.display = "none";
+    document.getElementById("signup__page").style.display = "inline";
+})
+
+document.getElementById("signup__login--nav").addEventListener("click", function(){
+    document.getElementById("signup__page").style.display = "none";
+    document.getElementById("login__page").style.display = "inline";
+})
+
+
+
+
+
 // search and shopping cart popup
 
 document.getElementById("search__icon").addEventListener("click", function(){
@@ -232,4 +258,7 @@ document.getElementById("search__close").addEventListener("click", function(){
 document.getElementById("shopping__close").addEventListener("click", function(){
     document.querySelector(".shopping__popup").style.display = "none";
 })
+
+
+
 
