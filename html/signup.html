@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,31 +21,40 @@
             <h1>Sign Up</h1>
 
             <div class="signup__input">
-            <input type="text" class="input" placeholder="Username" minlength="6" required>
+                <input type="text" id="signup__input-username" class="signup__input-username input"
+                    placeholder="Username" minlength="6" required>
             </div>
 
             <div class="signup__input">
-            <input type="email" class="input" placeholder="Email" minlength="6" required>
+                <input type="email" id="signup__input-email" class="signup__input-email input" placeholder="Email"
+                    minlength="6" required>
             </div>
 
             <div class="signup__input">
-            <input type="tel" class="input" placeholder="076-302-0810" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input type="tel" id="signup__input-tel" class="signup__input-tel input" placeholder="076-302-0810"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
             </div>
 
             <div class="signup__input">
-            <input type="password" class="input" placeholder="Password" minlength="6" required>
+                <input type="password" id="signup__input-password" class="signup__input-password input"
+                    placeholder="Password" minlength="6" required>
             </div>
 
             <button type="submit" class="signup__btn">Create account</button>
 
             <div class="signup__login">
-            <a href="../html/login.html">Login</a>
+                <a href="../html/login.html">Login</a>
             </div>
         </div>
     </main>
 
+    <script>
+    </script>
+
     <special-footer id="special-footer"></special-footer>
 
+    <script type="module" src="../js/signup.js"></script>
     <script src="../js/header_footer.js"></script>
 </body>
+
 </html>

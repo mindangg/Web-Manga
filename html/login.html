@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,27 +21,31 @@
             <h1>Login</h1>
 
             <div class="login__input">
-            <input type="text" placeholder="Username" minlength="6" required>
+                <input id="login__input-username" type="text" placeholder="Username" minlength="6" required>
             </div>
 
             <div class="login__input">
-            <input type="password" placeholder="Password" minlength="6" required>
+                <input id="login__input-password" type="password" placeholder="Password" minlength="6" required>
             </div>
 
             <div class="login__forget">
-            <a href="">Forget your password?</a>
+                <a href="">Forget your password?</a>
             </div>
 
             <button type="submit" class="login__btn">Login</button>
 
             <div class="login__signup">
-            <a href="../html/signup.html">Sign Up</a>
+                <a href="../html/signup.html">Sign Up</a>
             </div>
         </div>
     </main>
 
+    <script type="module"></script>
+
     <special-footer id="special-footer"></special-footer>
 
+    <script type="module" src="../js/login.js"></script>
     <script src="../js/header_footer.js"></script>
 </body>
+
 </html>
