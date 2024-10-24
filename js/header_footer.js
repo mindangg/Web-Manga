@@ -231,25 +231,32 @@ document.getElementById("signup__login--nav").addEventListener("click", function
 
 document.getElementById("search__icon").addEventListener("click", function(){
     document.querySelector(".search__popup").style.display = "flex";
+    document.querySelector(".search").style.animationName = "rightToLeft"
+})
+
+document.getElementById("search__close").addEventListener("click", function(){
+    document.querySelector(".search").style.animationName = "leftToRight"
+    setTimeout(function() {
+        document.querySelector(".search__popup").style.display = "none";
+      }, 390);
 })
 
 document.getElementById("shopping__icon").addEventListener("click", function(){
     document.querySelector(".shopping__popup").style.display = "flex";
-})
-
-document.getElementById("search__close").addEventListener("click", function(){
-    document.querySelector(".search__popup").style.display = "none";
+    document.querySelector(".shopping__container").style.animationName = "rightToLeft"
 })
 
 document.getElementById("shopping__close").addEventListener("click", function(){
-
-    document.querySelector(".shopping__container").animate = "rightToLeft 0.5s ease reverse";   
+    document.querySelector(".shopping__container").style.animationName = "leftToRight"
+    setTimeout(function() {
+        document.querySelector(".shopping__popup").style.display = "none";
+      }, 390);
 })
 
-document.getElementById("shopping__close").addEventListener("click", function(){
+// document.getElementById("shopping__close").addEventListener("click", function(){
 
-    document.querySelector(".shopping__popup").style.display = "none";
-})
+//     document.querySelector(".shopping__popup").style.display = "none";
+// })
 
 
 

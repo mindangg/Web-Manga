@@ -146,16 +146,32 @@ function book_RemoveSlider()
 
 document.getElementById("best__item1").addEventListener("click", function(){
     document.querySelector(".product__page").style.display = "inline";
+    document.querySelector(".product").style.animationName = "topDown";
+})
+
+document.getElementById("product__view2").addEventListener("click", function(){
+    document.getElementById("product__img1").style.opacity = 0;
+})
+
+document.getElementById("product__view1").addEventListener("click", function(){
+    document.getElementById("product__img1").style.opacity = 1;
 })
 
 document.getElementById("product__close").addEventListener("click", function(){
-    document.querySelector(".product__page").animate.ca
+    document.getElementById("product__img1").style.opacity = 1;
 })
 
 
 document.getElementById("product__close").addEventListener("click", function(){
-    document.querySelector(".product__page").style.display = "none";
+    document.querySelector(".product").style.animationName = "bottomUp";
+    setTimeout(function() {
+        document.querySelector(".product__page").style.display = "none";
+      }, 365);
 })
+
+// document.getElementById("product__close").addEventListener("click", function(){
+//     document.querySelector(".product__page").style.display = "none";
+// })
 
 
 

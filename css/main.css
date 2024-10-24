@@ -97,9 +97,9 @@ body{
     font-weight: bold;
 }
 
-.slider__button button:hover{
+/* .slider__button button:hover{
     cursor: pointer;
-}
+} */
 
 .slider__dots{
     position: absolute;
@@ -288,15 +288,6 @@ body{
 .best__slider__dots li.best__active{
     background-color: var(--green);
 } 
-
-/* @keyframes bestSlider {
-    from{
-        transform: translateX(0px);
-    }
-    to{
-        transform: translateX(230px);
-    }
-} */
 
 
 
@@ -514,6 +505,15 @@ body{
     }
 }
 
+@keyframes bottomUp{
+    from{
+        transform: translateY(0px);
+    }
+    to{
+        transform: translateY(-700px);
+    }
+}
+
 #product__close{
     position: absolute;
     top: 10px;
@@ -539,14 +539,18 @@ body{
 
 .product__img{
     width: 45%;
-    margin-top: 25px;
+    margin-top: 12px;
 }
 
 .product__info{
-    margin-top: 25px;
+    margin-top: 12px;
     margin-left: 30px;
     width: 55%;
     margin: auto 30;
+}
+
+.product__img{
+    position: relative;
 }
 
 .product__img img{
@@ -554,10 +558,34 @@ body{
     height: 77%;
     margin: 0;
     margin-top: 12.2px;
+    transition: 0.32s ease-in-out;
+}
+
+.product__img img:nth-child(1){
+    position: absolute;
+}
+
+.product__img a:nth-child(3) img{
+    width: 27%;
+    height: 17%;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+}
+
+.product__img a:nth-child(4) img{
+    width: 27%;
+    height: 17%;
+    position: absolute;
+    bottom: 12px;
+    left: 135px;
+}
+
+.product__img a:hover{
+    cursor: pointer;
 }
 
 .product__info button:hover{
-
     cursor: pointer;
 }
 
@@ -570,9 +598,12 @@ body{
     color: white;
 }
 
-.product__info p:nth-child(5){
+.product__info p:nth-child(3){
     color: var(--gray);
+}
 
+.product__info p:nth-child(5){
+    font-size: 1.05em;
 }
 
 .product__info p:nth-child(6){
@@ -580,11 +611,11 @@ body{
 }
 
 .product__info p:nth-child(15){
-    font-size: 0.87em;
+    font-size: 0.95em;
 }
 
 .product__info p:nth-child(17){
-    font-size: 0.87em;
+    font-size: 0.95em;
 }
 
 #product__quantitydown{
@@ -623,7 +654,7 @@ body{
     width: 320px;
     font-weight: bold;
     font-size: 1.1em;
-    margin-bottom: 25px;
+    margin-bottom: 27px;
 }
 
 #product__add:hover{

@@ -441,6 +441,16 @@
     background-color: var(--green-l);
 }
 
+@keyframes leftToRight{
+    from{
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(700px);
+    }
+}
+
 @keyframes rightToLeft{
     from{
         transform: translateX(700px);
