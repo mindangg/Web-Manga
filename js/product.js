@@ -28,7 +28,6 @@ let currentEditIndex;
 let productCurrentPage = 1;
 let productPerPage = 5;
 let productIndex = productCurrentPage;
-let renderProductTable
 
 // Product property
 const productBtnAdd = document.getElementById("product-menu__button--add");
@@ -38,7 +37,7 @@ const productBtnCancel = document.getElementById(
 );
 const productMenuBody = document.getElementById("product-menu__body");
 const productTableFooter = document.getElementById("product-table__footer");
-const productRenderTable = document.querySelector(".product-table");
+const productRenderTable = document.getElementById("product-table");
 
 // Product input
 const productInputCover = document.getElementById("product-menu__input--cover");
@@ -160,10 +159,10 @@ var productTable = [
         price: 10.99,
     },
 ];
-localStorage.setItem("renderProductTable", JSON.stringify(productTable));
 // ========================================================================
 // PRODUCT TABLE
 // ========================================================================
+// class san pham
 class Product {
     constructor(productId, cover, series, category, author, stock, price) {
         this.productId = productId;
@@ -174,9 +173,10 @@ class Product {
         this.stock = stock;
         this.price = price;
     }
-    //
-    // INSERT PRODUCT
-    //
+    // ========================================================================
+    // INSERT
+    // ========================================================================
+    // dung de insert san pham
     static insert(productId, cover, series, category, author, stock, price) {
         console.log("Inserting product...");
         const newProduct = new Product(
@@ -190,9 +190,10 @@ class Product {
         );
         productTable.push(newProduct);
     }
-    //
-    // ADD PRODUCT EVENT
-    //
+    // ========================================================================
+    // GENERATE ID
+    // ======================================================================== 
+    // tao id cho san pham theo do dai cua mang
     static generateId = (data) => {
         if (data.length === 0) {
             return 0;
@@ -201,9 +202,10 @@ class Product {
             return parseInt(index) + 1;
         }
     };
-    //
-    // ADD PRODUCT EVENT
-    //
+    // ========================================================================
+    // ADD EVENT
+    // ======================================================================== 
+    // khi an vao nut add thi se insert san pham
     static addEvent() {
         productBtnAdd.addEventListener("click", () => {
             console.log("Adding product...");
@@ -217,22 +219,23 @@ class Product {
                 parseFloat(productInputPrice.value)
             );
 
-            localStorage.setItem("renderProductTable", JSON.stringify(productTable));
+            localStorage.setItem("productTable", JSON.stringify(productTable));
             console.log("* Insert product to table: ", productTable);
             console.log(
                 "* Insert product from table to local storage: ",
-                JSON.parse(localStorage.getItem("renderProductTable"))
+                JSON.parse(localStorage.getItem("product table"))
             );
 
             let renderProduct = JSON.parse(
-                localStorage.getItem("renderProductTable")
+                localStorage.getItem("productTable")
             );
             Product.render(renderProduct);
         });
     }
-    //
-    // RENDER PRODUCT
-    //
+    // ========================================================================
+    // RENDER 
+    // ======================================================================== 
+    // dung de render san pham vao bang 
     static render(renderProduct) {
         console.log("-> Render product...");
 
@@ -244,9 +247,10 @@ class Product {
         let end
         let productList
 
+        // render theo so luong ma mot page co the chua duoc
         // neu san pham co hon 5 gia tri thi render theo trang hien tai
         // tranh loi khi xoa san pham khoi bang
-        if(renderProduct.length > 5){
+        if (renderProduct.length > 5) {
             start = (productCurrentPage - 1) * productPerPage;
         } else {
             start = (1 - 1) * productPerPage;
@@ -254,6 +258,7 @@ class Product {
         end = start + productPerPage;
         productList = renderProduct.slice(start, end);
 
+        // renderProduct truyen vao co so luong thi render
         if (productList.length > 0) {
             productList.map((p, index) => {
                 const row = document.createElement("tr");
@@ -296,13 +301,15 @@ class Product {
     // ========================================================================
     // RENDER PAGI FOR PRODUCT
     // ========================================================================
+    // render phan trang san pham
     static renderPagination(renderProduct) {
         console.log("-> Render product pagination...");
         productTableFooter.innerHTML = "";
 
+        // tinh tong so trang san pham
         const productTotalPages = Math.ceil(renderProduct.length / productPerPage);
-        console.log(productTotalPages);
 
+        // neu tong so trang san pham > 1 thi render
         if (productTotalPages > 1) {
             productTableFooter.innerHTML = `
             <button class="button button__product__prev-pagi" 
@@ -348,13 +355,14 @@ class Product {
     // ========================================================================
     // EDIT PRODUCT
     // ========================================================================
+    // edit san pham
     static edit(e) {
         console.log("-> Edit product...");
 
-        renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
+        productTable = JSON.parse(localStorage.getItem("productTable"));
         const editProductRow = e.parentElement.parentElement;
 
-        currentEditIndex = renderProductTable.findIndex((p) => p.productId === editProductRow.id)
+        currentEditIndex = productTable.findIndex((p) => p.productId === editProductRow.id)
 
         const queryProductInput = document
             .getElementById("product-menu__body")
@@ -364,7 +372,7 @@ class Product {
             console.log(product.type);
             if (product.type !== "file") {
                 document.getElementById(product.id).value =
-                renderProductTable[currentEditIndex][metadata];
+                    productTable[currentEditIndex][metadata];
             }
         });
 
@@ -377,6 +385,7 @@ class Product {
     // ========================================================================
     // UPDATE PRODUCT
     // ========================================================================
+    // update san pham
     static update() {
         console.log("-> Time to update product...");
 
@@ -384,19 +393,19 @@ class Product {
         queryProductInput.forEach((productInput) => {
             const metadata = productInput.id.split("--")[1];
             if (productInput.type === "file") {
-                renderProductTable[currentEditIndex][metadata] = `../img/banner/${productInput.value.split("\\")[2]
+                productTable[currentEditIndex][metadata] = `../img/banner/${productInput.value.split("\\")[2]
                     }`;
             } else {
-                renderProductTable[currentEditIndex][metadata] = productInput.value;
+                productTable[currentEditIndex][metadata] = productInput.value;
             }
         });
 
-        localStorage.setItem("renderProductTable", JSON.stringify(renderProductTable));
-        renderProductTable = JSON.parse(
-            localStorage.getItem("renderProductTable")
+        localStorage.setItem("productTable", JSON.stringify(productTable));
+        productTable = JSON.parse(
+            localStorage.getItem("productTable")
         );
 
-        Product.render(renderProductTable);
+        Product.render(productTable);
         Product.applyFilters()
         Helper.clearForm(productMenuBody);
 
@@ -410,17 +419,21 @@ class Product {
     // ========================================================================
     // DELETE PRODUCT
     // ========================================================================
+    // delete san pham
     static delete(e) {
         console.log("-> Delete product...");
 
-        renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
+        productTable = JSON.parse(localStorage.getItem("productTable"));
+        console.log(productTable)
         const deleteProductRow = e.parentElement.parentElement;
-        
-        renderProductTable = renderProductTable.filter((p) => p.productId !== deleteProductRow.id)
 
-        localStorage.setItem("renderProductTable", JSON.stringify(renderProductTable));
-        renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
-        Product.render(renderProductTable);
+        productTable = productTable.filter((p) => p.productId !== deleteProductRow.id)
+        console.log(productTable)
+
+        localStorage.setItem("productTable", JSON.stringify(productTable));
+        productTable = JSON.parse(localStorage.getItem("productTable"));
+        console.log(productTable)
+        Product.render(productTable);
 
         console.log("Delete product from table succesfully ✓");
     }
@@ -472,7 +485,7 @@ class Product {
     // ==================================================================================
     static applyFilters() {
         let filteredProduct = JSON.parse(
-            localStorage.getItem("renderProductTable")
+            localStorage.getItem("productTable")
         );
 
         if (productSearchName.value !== "") {
@@ -503,43 +516,44 @@ class Product {
             Product.render(filteredProduct);
         }
     }
-    static applySort(){
-        renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
-        let sortProductTable = Product.sort(descending, renderProductTable)
-        localStorage.setItem("renderProductTable", JSON.stringify(sortProductTable));
-    }
-    static sort(descending, data) {
-        data.sort((a, b) => {
-            if (descending) {
-                return a.productId > b.productId ? 1 : (a.productId < b.productId ? -1 : 0); // Ascending
-            } else {
-                return a.productId > b.productId ? -1 : (a.productId < b.productId ? 1 : 0); // Descending
-            }
-        });
-        return data;
-    }
+    // Chua tim ra phuong phap de sort ma khong anh huong den product table
+    // static applySort() {
+    //     renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
+    //     let sortProductTable = Product.sort(descending, renderProductTable)
+    //     localStorage.setItem("renderProductTable", JSON.stringify(sortProductTable));
+    // }
+    // static sort(descending, data) {
+    //     data.sort((a, b) => {
+    //         if (descending) {
+    //             return a.productId > b.productId ? 1 : (a.productId < b.productId ? -1 : 0); // Ascending
+    //         } else {
+    //             return a.productId > b.productId ? -1 : (a.productId < b.productId ? 1 : 0); // Descending
+    //         }
+    //     });
+    //     return data;
+    // }
+
     // ==================================================================================
     // ONLOAD PRODUCT
     // ==================================================================================
     // load san pham khi trang reload
     static onload() {
-        // if (JSON.parse(localStorage.getItem("renderProductTable")) !== null) {
-        //     (() => {
-        //         console.log("-> Reload product...")
-        //         productTable = JSON.parse(localStorage.getItem("renderProductTable"));
-        //         console.log(`Reload product successfully ✓`, productTable)
-
-        //         Product.render(productTable)
-        //     })();
-        // }
-
-
-        let renderProduct = JSON.parse(localStorage.getItem("renderProductTable"));
-        Product.render(renderProduct);
+        (() => {
+            if(localStorage.getItem("productTable") !== null) {
+                console.log("-> get product table...");
+                let productTable = JSON.parse(localStorage.getItem("productTable"));
+                console.log(productTable);
+                Product.render(productTable);
+            } else {
+                console.log("-> set product table...");
+                localStorage.setItem("productTable", JSON.stringify(productTable));
+                Product.render(productTable);
+            }
+        })();
     }
 }
 
-Product.onload();
 Product.addEvent();
 let descending = false
 Product.search();
+Product.onload();
