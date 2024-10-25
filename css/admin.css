@@ -112,21 +112,23 @@ body {
     position: fixed;
 }
 
-.sidenav a {
+.sidenav div {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: black;
     display: block;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-.sidenav a:hover {
+.sidenav div:hover {
     background-color: #008d3f;
 }
 
-.product-page{
+.page{
     width: 100%;
     transition: 0.5s;
     margin-left: 200px;
+    display: none;
 }
