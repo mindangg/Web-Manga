@@ -152,8 +152,9 @@ class SpecialFooter extends HTMLElement{
                 <footer class="footer">
         <div class="footer__container">
             <div class="footer__content">
-                <a><img src="../img/WEBTOON_Logo.png" class="footer__logo"></a>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt culpa porro earum dolores dolorem enim. Reprehenderit voluptates hic illo ipsa molestias odio, minima saepe recusandae illum quo dolor, impedit expedita?</p>
+                <a><img src="../img/WEBTOON_Logo.png"></a>
+                <p>Address: 340 Đ. Hoang Van Thu, Ward 4, Tan Binh, Ho Chi Minh</p>
+                <p>Web programming and its application</p>
             </div>
 
             <div class="footer__content">
@@ -166,7 +167,6 @@ class SpecialFooter extends HTMLElement{
                     <i class="fa-solid fa-phone" style="margin-right: 10px;"></i>
                     <h4>076-302-0810</h4>
                 </div>
-
             </div>
 
             <div class="footer__content">
@@ -191,7 +191,7 @@ class SpecialFooter extends HTMLElement{
                     <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
-        </div><br><br>
+        </div><br>
         <hr>
         <p class="copyright">© 2024, Web Development, Powered by J97</p>
     </footer>
