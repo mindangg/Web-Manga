@@ -161,31 +161,7 @@ document.getElementById("product__close").addEventListener("click", function(){
     document.getElementById("product__img1").style.opacity = 1;
 })
 
-//SIGN UP
-let userList = [];
 
-let signup = document.getElementById('signup');
-let username = document.getElementById('username__input');
-let password = document.getElementById('password__input');
-let confirmPassword = document.getElementById('confirm_password__input');
-let email = document.getElementById('email__input');
-let phoneNumber = document.getElementById('phone__input');
-
-let username_error = document.getElementById('signup__input--username-error');
-let password_error = document.getElementById('signup__input--password-error');
-let confirmPassword_error = document.getElementById('signup__input--confpasword-error');
-let email_error = document.getElementById('signup__input--email-error');
-let phoneNumber_error = document.getElementById('signup__input--phone-error');
-
-signup.addEventListener('submit', (event) => {
-    event.preventDefault();
-    username_error.style.display = 'block';
-    // if (Validation.isBlank(username.value)){
-    //     username_error.innerHTML = "Khong duoc de trong";
-    // } else {
-    //     username_error.innerHTML = "";
-    // }
-})
 
 document.getElementById("product__close").addEventListener("click", function(){
     document.querySelector(".product").style.animationName = "bottomUp";

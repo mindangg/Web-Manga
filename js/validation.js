@@ -49,16 +49,15 @@ class Validation {
         try {
             return password === confirmPassword;
         } catch (e) {
-            console.error("Confirm Password doesn't match");
+            console.error("Confirm Password does not match");
         }
     }
 
-    static checkBlankInField() {
-        const signup = document.getElementById('signup');
-        const inputs = signup.getElementsByTagName('input').valueOf();
+    static checkBlankField(field) {
+        const inputs = field.getElementsByTagName('input');
         for (let input of inputs) {
-            if (Validation.isBlank(input)) {
-                input.style.border = "2px solid red";
+            if (Validation.isBlank(input.value)) {
+                input.style.border = "1px solid red";
             } else {
                 input.style.border = "";
             }
