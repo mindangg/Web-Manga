@@ -117,13 +117,13 @@ let confirmPassword_error = document.getElementById('signup__input--confpasword-
 let email_error = document.getElementById('signup__input--email-error');
 let phoneNumber_error = document.getElementById('signup__input--phone-error');
 
-signup.addEventListener("submit", (event) => {
+signup.addEventListener('submit', (event) => {
     event.preventDefault();
-    username.style.display = 'none';
+    username_error.style.display = 'block';
     // if (Validation.isBlank(username.value)){
-    //     username_error.innerText = "Khong duoc de trong";
+    //     username_error.innerHTML = "Khong duoc de trong";
     // } else {
-    //     username_error.innerText = "";
+    //     username_error.innerHTML = "";
     // }
 })
 

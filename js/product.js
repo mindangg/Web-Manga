@@ -12,7 +12,6 @@ class Product {
         this._number_of_rating = number_of_rating;
     }
 
-
     get product_id() {
         return this._product_id;
     }
