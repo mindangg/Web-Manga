@@ -7,10 +7,11 @@ class Validation {
         } catch (err) {
             console.error("Value Is Blank");
         }
+        return false;
     }
 
     static usernameIsValid (username) {
-        const usernameRegex = /^[a-zA-Z0-9]{6,}$/;
+        const usernameRegex = /^[a-zA-Z0-9]{1,}$/;
         try {
             return usernameRegex.test(username.value);
         } catch (err) {
@@ -21,16 +22,16 @@ class Validation {
     static passwordIsValid (password) {
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
         try {
-            return passwordRegex.test(password);
+            return passwordRegex.test(password.value);
         } catch (err) {
             console.error("Password Invalid");
         }
     }
 
     static emailIsValid (email) {
-        const emailRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         try {
-            return emailRegex.test(email);
+            return emailRegex.test(email.value);
         } catch (err) {
             console.error("Email Invalid");
         }
@@ -39,7 +40,7 @@ class Validation {
     static phoneIsValid (phoneNumber) {
         const phoneRegex = /^0\d{9}$/;
         try {
-            return phoneRegex.test(phoneNumber)
+            return phoneRegex.test(phoneNumber.value)
         } catch (err) {
             console.error("Phone Number Invalid");
         }
@@ -47,7 +48,7 @@ class Validation {
 
     static isMatch(password, confirmPassword){
         try {
-            return password === confirmPassword;
+            return password.value === confirmPassword.value;
         } catch (e) {
             console.error("Confirm Password does not match");
         }
@@ -58,7 +59,7 @@ class Validation {
         for (let input of inputs){
             if (this.isBlank(input.value)){
                 input.style.border = '1px solid rgba(255, 51, 0, 0.76)';
-                input.labels[0].innerText = 'This can not be blank';
+                input.labels[0].innerText = 'This cannot be empty';
                 input.labels[0].style.display = 'block';
             } else {
                 input.style.border = '2px solid #363636';
