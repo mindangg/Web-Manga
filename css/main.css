@@ -35,11 +35,7 @@ body{
 
 /* navigation between pages */
 
-#main__page{
-    /* display: none; */
-}
-
-/* .product__page{
+/* #main__page{
     display: none;
 } */
 
@@ -61,10 +57,9 @@ body{
     position: relative;
     top: 123px;
     width: 1519px;
-    max-width: 100vw;
-    width: 100%;
     height: 560px;
     overflow: hidden;
+    margin: 0;
 }
 
 .slider__list{
@@ -101,6 +96,10 @@ body{
     font-weight: bold;
 }
 
+/* .slider__button button:hover{
+    cursor: pointer;
+} */
+
 .slider__dots{
     position: absolute;
     left: 87%;
@@ -135,7 +134,7 @@ body{
 
 .best__slider{
     position: relative;
-    top: 190px;
+    top: 185px;
     max-width: 1519px;
     max-width: 100vw;
     height: 590px;
@@ -230,7 +229,7 @@ body{
 .best__slider__button button{
     width: 45px;
     height: 45px;
-    border: solid 1px var(--green);
+    border: solid 1px #303828;
     border-radius: 50%;
     background-color: var(--black);
     color: var(--green);
@@ -274,7 +273,171 @@ body{
 
 .best__slider__dots li{
     list-style: none;
-    width: 160px;
+    width: 230px;
+    height: 1.5px;
+    /* width: 20px;
+    height: 20px; */
+    background-color: #142c24;
+    /* background-color: purple; */
+    /* margin-right: 10px; */
+    transition: 0.7s ease;
+    /* animation: bestSlider 0.5s ease; */
+}
+
+.best__slider__dots li.best__active{
+    background-color: var(--green);
+} 
+
+
+
+
+
+
+
+/* book slider */
+
+.book__slider{
+    position: relative;
+    top: 50px;
+    max-width: 1519px;
+    max-width: 100vw;
+    height: 590px;
+    /* background-color: purple; */
+    margin: 0 40px;
+    /* margin-bottom: 200px; */
+    overflow: hidden;
+}
+
+.book__slider h1{
+    color: white;
+    font-size: 2.2em;
+    margin-bottom: 35px;
+}
+
+.book__slider__list{
+    position: absolute;
+    /* top: 0; */
+    /* top: 50px; */
+    left: 0;
+    height: 100%;
+    display: flex;
+    width: max-content;
+    transition: 0.7s;
+}
+
+.book__slider__list img{
+    width: 342px;
+    height: 360px;
+    transition: 0.22s ease-in;
+}
+
+.book__slider__item{
+    position: relative;
+    margin-right: 20px;
+}
+
+.book__slider__item img:nth-child(1){
+    position: absolute;
+}
+
+.book__slider__item img:hover{
+    cursor: pointer;
+}
+
+.book__slider__item img:nth-child(1):hover{
+    opacity: 0;
+}
+
+.book__slider__item h4{
+    position: absolute;
+    left: 0;
+    color: white;
+    /* font-size: 1em; */
+    margin-top: 3px;
+}
+
+.book__slider__item p{
+    position: absolute;
+    top: 67%;
+    color: var(--gray);
+    font-size: 15px;
+}
+
+.book__slider__item button{
+    position: absolute;
+    top: 51%;
+    left: 60.5%;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    background-color: var(--green);
+    border: none;
+    padding: 14px;  
+    /* opacity: 0; */
+    /* display: none; */
+}
+
+.book__slider__item button:hover{
+    cursor: pointer;
+    background-color: rgba(8, 220, 100, 0.8);
+}
+
+.book__slider__button{
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    width: 90%;
+    display: flex;
+}
+
+.book__slider__button button{
+    width: 45px;
+    height: 45px;
+    border: solid 1px #303828;
+    border-radius: 50%;
+    background-color: var(--black);
+    color: var(--green);
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.book__slider__button button:hover{
+    cursor: pointer;
+}
+
+.book__slider__button button i:nth-child(2){
+    display: none;
+}
+
+.book__slider__button button:nth-child(1):hover #left__angle{
+    display: none;
+}
+
+.book__slider__button button:nth-child(1):hover #left__arrow{
+    display: inline;
+}
+
+.book__slider__button button:nth-child(2):hover #right__angle{
+    display: none;
+}
+
+.book__slider__button button:nth-child(2):hover #right__arrow{
+    display: inline;
+}
+
+.book__slider__dots{
+    position: absolute;
+    bottom: 6.2%;
+    left: 5%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.book__slider__dots li{
+    list-style: none;
+    width: 88.5px;
     height: 1.5px;
     /* width: 20px;
     height: 20px; */
@@ -284,9 +447,25 @@ body{
     transition: 0.5s ease;
 }
 
-.best__slider__dots li.best__active{
+.book__slider__dots li.book__active{
     background-color: var(--green);
 } 
+
+
+.banner{
+    margin: 250px 0 0;
+}
+
+.banner img{
+    width: 1519px;
+    height: 560px;
+}
+
+
+
+
+
+
 
 
 
@@ -294,15 +473,12 @@ body{
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
     height: 100%;
-    display: inline;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 2;
-    /* display: none; */
+    display: none;
 }
-
-
 
 .product{
     /* display: flex; */
@@ -316,6 +492,25 @@ body{
     background-color: rgba(32, 28, 28, 0.93);
     /* background-color: purple; */
     display: flex;
+    animation: topDown 0.55s ease;
+}
+
+@keyframes topDown{
+    from{
+        transform: translateY(-700px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes bottomUp{
+    from{
+        transform: translateY(0px);
+    }
+    to{
+        transform: translateY(-700px);
+    }
 }
 
 #product__close{
@@ -336,32 +531,60 @@ body{
 }
 
 
-
+.product h1{
+    font-size: 1.7em;
+}
 
 
 .product__img{
     width: 45%;
-    margin-top: 25px;
+    margin-top: 12px;
 }
 
 .product__info{
-    margin-top: 25px;
+    margin-top: 12px;
     margin-left: 30px;
     width: 55%;
     margin: auto 30;
 }
 
-
+.product__img{
+    position: relative;
+}
 
 .product__img img{
     width: 100%;
-    height: 80%;
+    height: 77%;
     margin: 0;
     margin-top: 12.2px;
+    transition: 0.32s ease-in-out;
+}
+
+.product__img img:nth-child(1){
+    position: absolute;
+}
+
+.product__img a:nth-child(3) img{
+    width: 27%;
+    height: 17%;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+}
+
+.product__img a:nth-child(4) img{
+    width: 27%;
+    height: 17%;
+    position: absolute;
+    bottom: 12px;
+    left: 135px;
+}
+
+.product__img a:hover{
+    cursor: pointer;
 }
 
 .product__info button:hover{
-
     cursor: pointer;
 }
 
@@ -374,17 +597,24 @@ body{
     color: white;
 }
 
-.product__info p:nth-child(5){
+.product__info p:nth-child(3){
     color: var(--gray);
+}
+
+.product__info p:nth-child(5){
+    font-size: 1.05em;
 }
 
 .product__info p:nth-child(6){
     margin-bottom: 10px;
 }
 
-.product__info p:nth-child(10){
-    font-size: 0.9em;
-    color: red;
+.product__info p:nth-child(15){
+    font-size: 0.95em;
+}
+
+.product__info p:nth-child(17){
+    font-size: 0.95em;
 }
 
 #product__quantitydown{
@@ -423,7 +653,7 @@ body{
     width: 320px;
     font-weight: bold;
     font-size: 1.1em;
-    margin-bottom: 25px;
+    margin-bottom: 27px;
 }
 
 #product__add:hover{
@@ -442,7 +672,7 @@ body{
     width: 400px;
     position: relative;
     top: 150px;
-    margin: auto;
+    margin: auto auto 150px;
 }
 
 .login h1{
@@ -533,10 +763,10 @@ body{
 /* signup page */
 
 .signup{
-    width: 500px;
+    width: 460px;
     position: relative;
     top: 140px;
-    margin: auto;
+    margin: auto auto 140px;
 }
 
 .signup h1{
@@ -613,4 +843,87 @@ body{
     display: flex;
     justify-content: center;
     margin: 25px 0px;
+ }
+
+
+
+
+
+
+
+
+
+
+ @media screen  and (min-width: 902px) and (max-width: 1200px){
+    .slider{
+        position: relative;
+        top: 123px;
+        width: px;
+        height: 500px;
+        overflow: hidden;
+    }
+    
+    .slider__list{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        display: flex;
+        width: max-content;
+        transition: 1s;
+    }
+    
+    .slider__list img{
+        width: 1519px;
+        height: 100%;
+    }
+    
+    .slider__button{
+        position: absolute;
+        top: 42%;
+        left: 5%;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .slider__button button{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #fff5;
+        color: #fff;
+        border: none;
+        font-weight: bold;
+    }
+    
+    /* .slider__button button:hover{
+        cursor: pointer;
+    } */
+    
+    .slider__dots{
+        position: absolute;
+        left: 87%;
+        bottom: 5%;
+        color: #fff;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    
+    .slider__dots li{
+        list-style: none;
+        width: 10px;
+        height: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 20px 10px;
+        border-radius: 20px;
+        transition: 1s;
+    }
+    
+    .slider__dots li.active{
+        background-color: #fff;
+        width: 29px;
+    }
  }
