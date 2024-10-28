@@ -1,11 +1,269 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
 </head>
+
 <body>
-    
+    <div class="admin">
+        <div class="admin__header">
+            <div class="topnav">
+                <div class="topnav__title">WEBTOON</div>
+
+                <div class="topnav__toggle">
+                    <span id="navToggle" style="font-size: 30px; cursor: pointer" onclick="toggleNav(this.)">&#9776;</span>
+                </div>
+
+                <div class="setting">
+                    <div class="setting__btn">
+                        <button onclick="myFunction()">
+                            <i class="icon fa fa-user"></i>
+                        </button>
+                        <div id="dropdown" class="dropdown__content">
+                            <a href="/">Ghi chép (Logs)</a>
+                            <a href="index.html">Đăng xuất (Logout)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin__body" style="display: flex; flex-direction: row">
+            <div id="sidenav" class="sidenav" style="display: flex; flex-direction: column">
+                <div id="static">Thống kê</div>
+                <div id="product" onclick="togglePage(this)">Sản phẩm (Product)</div>
+                <div id="user" onclick="togglePage(this)">Khách hàng (Clients)</div>
+                <div id="order">Hóa đơn (Order)</div>
+            </div>
+
+
+            <!-- PRODUCT PAGE -->
+            <div id="product-page" class="product-page page" style="display: initial;">
+                <!-- TABLE PRODUCT -->
+                <div id="product-table" class="product table">
+                    <!-- Menu Header -->
+                    <header class="product table__header">
+                        <p class="product table__title">Danh sách sản phẩm</p>
+                    </header>
+
+                    <!-- Menu Body -->
+                    <div class="product table__search">
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">Search by name:</div>
+                            <input type="text" class="product-table__search-input"
+                                id="product-table__search-input--name" />
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">
+                                Search by category:
+                            </div>
+                            <select class="product table__search-input" id="product-table__search-input--category"
+                                aria-label="Product Tags">
+                                <option value="">--Choose a tag--</option>
+                                <option value="Rom Com">Rom Com</option>
+                                <option value="Brain Rot">Brain Rot</option>
+                                <option value="Shonen">Shonen</option>
+                                <option value="Seinen">Seinen</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">Search by price:</div>
+                            <div class="range" style="display: flex">
+                                <div style="margin: 10px 0 0 2px;">
+                                    <div class="range-slider">
+                                        <span class="range-selected" style="left: 0%; right: 0%;"></span>
+                                    </div>
+                                    <div class="range-input">
+                                        <input type="range" class="min" min="0" max="1000" value="0" step="10">
+                                        <input type="range" class="max" min="0" max="1000" value="1000" step="10">
+                                    </div>
+                                </div>
+                                <div class="range-price">
+                                    <label for="min">Min</label>
+                                    <input type="text" id="product-table__search-price--min" value="0">
+                                    <label for="max">Max</label>
+                                    <input type="text" name="product-table__search-price--max" value="1000
+                                    ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product table__body">
+                        <table class="product table__container" style="width: 100%">
+                            <thead class="product table__head">
+                                <tr class="product table__row">
+                                    <th class="product table__cell product-table__cell--id">
+                                        Id
+                                    </th>
+                                    <th class="product table__cell product-table__cell cover">
+                                        Cover
+                                    </th>
+                                    <th class="product table__cell product-table__cell title">
+                                        Series
+                                    </th>
+                                    <th class="product table__cell product-table__cell tags">
+                                        Category
+                                    </th>
+                                    <th class="product table__cell product-table__cell stock">
+                                        Stock
+                                    </th>
+                                    <th class="product table__cell product-table__cell price">
+                                        Price
+                                    </th>
+                                    <th class="product table__cell product-table__cell edit">
+                                        Edit
+                                    </th>
+                                    <th class="product table__cell product-table__cel delete">
+                                        Delete
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="product-table__body-content" class="product table__body-content">
+                                <!-- Product rows will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Menu Footer -->
+                    <div class="product-table__footer" id="product-table__footer">
+                        <!-- Pagination or additional controls can go here -->
+                    </div>
+                </div>
+
+                <div class="product-menu">
+                    <div class="product-menu__header">
+                        <div class="product-menu__title">Sản phẩm (Product)</div>
+                    </div>
+
+                    <div id="product-menu__body" class="product-menu__body">
+                        <label class="product-menu__label" for="product-menu__input--cover">Cover:</label>
+                        <input class="product-menu__input" id="product-menu__input--cover" type="file"
+                            aria-label="Product Image" /><br />
+
+                        <label class="product-menu__label" for="product-menu__input--series">Series:</label>
+                        <input class="product-menu__input" id="product-menu__input--series" type="text"
+                            placeholder="Title" aria-label="Product Title" /><br />
+
+                        <label class="product-menu__label" for="product-menu__input--category">Category:</label>
+                        <select class="product-menu__select" id="product-menu__input--category"
+                            aria-label="Product Tags">
+                            <option value="">--Choose a tag--</option>
+                            <option value="Rom Com">Rom Com</option>
+                            <option value="Brain Rot">Brain Rot</option>
+                            <option value="Shonen">Shonen</option>
+                        </select><br />
+
+                        <label class="product-menu__label" for="product-menu__input--author">Author:</label>
+                        <input class="product-menu__input" id="product-menu__input--author" type="text"
+                            placeholder="Author" aria-label="Product Author" /><br />
+
+                        <label class="product-menu__label" for="product-menu__input--stock">Stock:</label>
+                        <input class="product-menu__input" id="product-menu__input--stock" type="text"
+                            placeholder="Stock" aria-label="Product Stock" /><br />
+
+                        <label class="product-menu__label" for="product-menu__input--price">Price:</label>
+                        <input class="product-menu__input" id="product-menu__input--price" type="text"
+                            placeholder="Price" aria-label="Product Price" /><br />
+                    </div>
+
+                    <div class="product-menu__footer">
+                        <!-- <button class="product-menu__button product-menu__button--close" id="product-menu__button--close"
+                            type="button" onclick="closeTask()">
+                            Close
+                        </button> -->
+                        <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
+                            type="button">
+                            Save (Add Mode)
+                        </button>
+                        <button class="product-menu__button product-menu__button--save" id="product-menu__button--save"
+                            style="display: none" type="button" onclick="Product.update()">
+                            Save (Save Mode)
+                        </button>
+                        <button class="product-menu__button product-menu__button--cancel" style="display: none"
+                            id="product-menu__button--cancel" type="button" onclick="Product.cancel()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user-page" class="user-page page">
+                <!-- TABLE PRODUCT -->
+                <div class="user table">
+                    <!-- Menu Header -->
+                    <header class="user table__header">
+                        <p class="user table__title">Danh sách sản phẩm</p>
+                    </header>
+
+                    <!-- Menu Body -->
+                    <div class="user table__search">
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">Search by name:</div>
+                            <input type="text" class="product-table__search-input"
+                                id="product-table__search-input--name" />
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">
+                                Search by category:
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product table__body">
+                        <table class="product table__container" style="width: 100%">
+                            <thead class="product table__head">
+                                <tr class="product table__row">
+                                    <th class="product table__cell product-table__cell--id">
+                                        Id
+                                    </th>
+                                    <th class="product table__cell product-table__cell cover">
+                                        Cover
+                                    </th>
+                                    <th class="product table__cell product-table__cell title">
+                                        Series
+                                    </th>
+                                    <th class="product table__cell product-table__cell tags">
+                                        Category
+                                    </th>
+                                    <th class="product table__cell product-table__cell stock">
+                                        Stock
+                                    </th>
+                                    <th class="product table__cell product-table__cell price">
+                                        Price
+                                    </th>
+                                    <th class="product table__cell product-table__cell edit">
+                                        Edit
+                                    </th>
+                                    <th class="product table__cell product-table__cel delete">
+                                        Delete
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="product-table__body-content" class="product table__body-content">
+                                <!-- Product rows will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Menu Footer -->
+                    <div class="product-table__footer" id="product-table__footer">
+                        <!-- Pagination or additional controls can go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+<script src="../js/priceSlider.js"></script>
+<script src="../js/toggleSideNav.js"></script>
+<script src="../js/adminController.js"></script>
+<script src="../js/product.js"></script>
+
 </html>
