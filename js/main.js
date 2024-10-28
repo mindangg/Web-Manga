@@ -48,7 +48,7 @@ dots.forEach((li, key) =>{
     })
 })
 
-//slider
+//best slider
 
 let best_list = document.querySelector(".best__slider .best__slider__list");
 let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
@@ -95,10 +95,70 @@ function best_RemoveSlider()
     best_dots[best_active + 1].classList.remove("best__active");
 }
 
+//book slider
+
+let book_list = document.querySelector(".book__slider .book__slider__list");
+let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
+let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
+let book_next = document.getElementById("book__slider__next");
+let book_prev = document.getElementById("book__slider__prev");
+
+let book_active = 0;
+let book_lengthItems = book_items.length - 4;
+
+book_next.onclick = function()
+{
+    if(book_active + 1 <= book_lengthItems)
+    {
+        book_active++;
+        book_ReloadSlider();
+        book_AddSlider();
+    }
+}
+
+book_prev.onclick = function()
+{
+    if(book_active - 1 >= 0)
+    {
+        book_active--;
+        book_ReloadSlider();
+        book_RemoveSlider();
+    }
+}
+
+function book_ReloadSlider()
+{
+    let book_checkLeft = book_items[book_active].offsetLeft;
+    book_list.style.left = -book_checkLeft + "px";
+}
+
+function book_AddSlider()
+{
+    book_dots[book_active].classList.add("book__active");
+}
+
+function book_RemoveSlider()
+{
+    book_dots[book_active + 1].classList.remove("book__active");
+}
+
 //best slider popup
 
-document.getElementById("best__slider__popup__close").addEventListener("click", function(){
-    document.querySelector(".best__slider__popup").style.display = "none";
+document.getElementById("best__item1").addEventListener("click", function(){
+    document.querySelector(".product__page").style.display = "inline";
+    document.querySelector(".product").style.animationName = "topDown";
+})
+
+document.getElementById("product__view2").addEventListener("click", function(){
+    document.getElementById("product__img1").style.opacity = 0;
+})
+
+document.getElementById("product__view1").addEventListener("click", function(){
+    document.getElementById("product__img1").style.opacity = 1;
+})
+
+document.getElementById("product__close").addEventListener("click", function(){
+    document.getElementById("product__img1").style.opacity = 1;
 })
 
 //SIGN UP
@@ -127,7 +187,29 @@ signup.addEventListener('submit', (event) => {
     // }
 })
 
+document.getElementById("product__close").addEventListener("click", function(){
+    document.querySelector(".product").style.animationName = "bottomUp";
+    setTimeout(function() {
+        document.querySelector(".product__page").style.display = "none";
+      }, 365);
+})
 
+// document.getElementById("product__close").addEventListener("click", function(){
+//     document.querySelector(".product__page").style.display = "none";
+// })
+
+
+var productArray = [
+
+    {productId:10005, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg', name:'My Dress Up Darling - Volume 07', price: 9.99},
+    {productId:10004, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg', name:'My Dress Up Darling - Volume 06', price: 9.99},
+    {productId:10003, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg', name:'My Dress Up Darling - Volume 01', price: 9.99},	
+    
+    
+    {productId:10002, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-10-back.jpg', name:'Sakamoto Days - Volume 10', price: 9.99},
+    {productId:10001, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-6-back.jpg', name:'Sakamoto Days - Volume 06', price: 9.99},
+    {productId:10000, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-5-back.jpg', name:'Sakamoto Days - Volume 05', price: 9.99},	
+];
 
 
 
