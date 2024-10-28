@@ -108,9 +108,11 @@ body{
  }
 
  .signup__input label {
-     color: red;
+     color: rgba(255, 51, 0, 0.76);
      font-size: 13px;
      display: none;
+     margin: 3px;
+     font-family: "Arial";
  }
 
 

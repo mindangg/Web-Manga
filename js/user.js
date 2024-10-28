@@ -1,23 +1,21 @@
 let userList = [];
 
-let submit = document.getElementById('signup__btn')
 let signup = document.getElementById('signup');
-let username = document.getElementById('username__input');
-let password = document.getElementById('password__input');
-let confirmPassword = document.getElementById('confirm_password__input');
-let email = document.getElementById('email__input');
-let phoneNumber = document.getElementById('phone__input');
+let submit = document.getElementById('signup__btn');
+let username = document.getElementById('signup__input--username');
+let password = document.getElementById('signup__input--password');
+let confirmPassword = document.getElementById('signup__input--confpasword');
+let email = document.getElementById('signup__input--email');
+let phoneNumber = document.getElementById('signup__input--phone');
 
 let username_error = document.getElementById('signup__input--username-error');
 let password_error = document.getElementById('signup__input--password-error');
 let confirmPassword_error = document.getElementById('signup__input--confpasword-error');
 let email_error = document.getElementById('signup__input--email-error');
 let phoneNumber_error = document.getElementById('signup__input--phone-error');
-
 submit.addEventListener("click", (event) => {
     event.preventDefault();
     Validation.checkBlankField(signup);
-
 })
 
 class User {

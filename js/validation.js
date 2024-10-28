@@ -12,7 +12,7 @@ class Validation {
     static usernameIsValid (username) {
         const usernameRegex = /^[a-zA-Z0-9]{6,}$/;
         try {
-            return usernameRegex.test(username);
+            return usernameRegex.test(username.value);
         } catch (err) {
             console.error("Username Invalid");
         }
@@ -53,13 +53,17 @@ class Validation {
         }
     }
 
-    static checkBlankField(field) {
-        const inputs = field.getElementsByTagName('input');
-        for (let input of inputs) {
-            if (Validation.isBlank(input.value)) {
-                input.style.border = "1px solid red";
+    static checkBlankField (field){
+        const inputs = document.getElementsByTagName('input');
+        for (let input of inputs){
+            if (this.isBlank(input.value)){
+                input.style.border = '1px solid rgba(255, 51, 0, 0.76)';
+                input.labels[0].innerText = 'This can not be blank';
+                input.labels[0].style.display = 'block';
             } else {
-                input.style.border = "";
+                input.style.border = '2px solid #363636';
+                input.labels[0].innerText = '';
+                input.labels[0].style.display = 'none';
             }
         }
     }

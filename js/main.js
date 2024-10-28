@@ -173,9 +173,7 @@ document.getElementById("product__close").addEventListener("click", function(){
 // document.getElementById("product__close").addEventListener("click", function(){
 //     document.querySelector(".product__page").style.display = "none";
 // })
-
-
-var productArray = [
+let productArray = [
 
     {productId:10005, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg', name:'My Dress Up Darling - Volume 07', price: 9.99},
     {productId:10004, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg', name:'My Dress Up Darling - Volume 06', price: 9.99},
