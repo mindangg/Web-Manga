@@ -101,6 +101,31 @@ document.getElementById("best__slider__popup__close").addEventListener("click", 
     document.querySelector(".best__slider__popup").style.display = "none";
 })
 
+//SIGN UP
+let userList = [];
+
+let signup = document.getElementById('signup');
+let username = document.getElementById('username__input');
+let password = document.getElementById('password__input');
+let confirmPassword = document.getElementById('confirm_password__input');
+let email = document.getElementById('email__input');
+let phoneNumber = document.getElementById('phone__input');
+
+let username_error = document.getElementById('signup__input--username-error');
+let password_error = document.getElementById('signup__input--password-error');
+let confirmPassword_error = document.getElementById('signup__input--confpasword-error');
+let email_error = document.getElementById('signup__input--email-error');
+let phoneNumber_error = document.getElementById('signup__input--phone-error');
+
+signup.addEventListener("submit", (event) => {
+    event.preventDefault();
+    username.style.display = 'none';
+    // if (Validation.isBlank(username.value)){
+    //     username_error.innerText = "Khong duoc de trong";
+    // } else {
+    //     username_error.innerText = "";
+    // }
+})
 
 
 
