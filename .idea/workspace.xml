@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdc8e642-cd1d-4ac6-958e-842b46ecf2e6" name="Changes" comment="push" />
+    <list default="true" id="cdc8e642-cd1d-4ac6-958e-842b46ecf2e6" name="Changes" comment="push">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +65,7 @@
     "git-widget-placeholder": "bao",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/CODE/JS/Đồ án/Web-Manga/css/cart.css",
+    "last_opened_file_path": "E:/CODE/JS/Đồ án/Clone/Web-Manga",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -206,6 +208,9 @@
       <workItem from="1730217870964" duration="19000" />
       <workItem from="1730217892588" duration="130000" />
       <workItem from="1730218026666" duration="84000" />
+      <workItem from="1730225832919" duration="340000" />
+      <workItem from="1730226196266" duration="2000" />
+      <workItem from="1730226399407" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <option name="closed" value="true" />
@@ -215,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730225815747</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="push">
+      <option name="closed" value="true" />
+      <created>1730226702178</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730226702178</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
