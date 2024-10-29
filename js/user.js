@@ -39,7 +39,7 @@ submit.addEventListener("click", (event) => {
         Validation.emailIsValid(email) &&
         Validation.phoneIsValid(phoneNumber)
     ) {
-
+        User.insert(username.value, password.value, phoneNumber.value, email.value);
     }
 })
 
