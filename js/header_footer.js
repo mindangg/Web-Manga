@@ -149,7 +149,7 @@ customElements.define(`special-header`, SpecialHeader);
 class SpecialFooter extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `
-        <footer class="footer">
+                <footer class="footer">
         <div class="footer__container">
             <div class="footer__content">
                 <a><img src="../img/WEBTOON_Logo.png"></a>
@@ -191,9 +191,9 @@ class SpecialFooter extends HTMLElement{
                     <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
-            <hr>   
-            <p class="copyright">© 2024, Web Development, Powered by J97</p>
-        </div>
+        </div><br>
+        <hr>
+        <p class="copyright">© 2024, Web Development, Powered by J97</p>
     </footer>
         `
     }

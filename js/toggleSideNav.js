@@ -3,13 +3,16 @@ function toggleNav() {
     var main = document.getElementById("main");
     var productPage = document.getElementById("product-page");
 
-    console.log(productPage);
+    toggle(productPage)
+}
+
+function toggle(e) {
     if (sidenav.style.width === "200px") {
         sidenav.style.width = "0";
-        productPage.style.marginLeft = "0";
+        e.style.marginLeft = "0";
     } else {
         sidenav.style.width = "200px";
-        productPage.style.marginLeft = "200px";
+        e.style.marginLeft = "200px";
     }
 }
 

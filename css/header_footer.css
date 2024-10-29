@@ -406,7 +406,7 @@ hr{
 }
 
 .copyright{
-    margin: auto;
+    text-align: center;
 }
 
 .footer__underline{
@@ -613,25 +613,111 @@ hr{
             transform: translateX(0);
         }
     }
-
-}
-
-
-@media screen  and (min-width: 701px) and (max-width: 901px){
-
-}
-
-@media screen and (max-width: 700px){
+    
+    /* footer */
+    
     footer{
-        bottom: unset;
+        bottom: 0;
+        margin: 50px 0 45px;
+        padding: 90px 0 25px;
+        font-size: 14px;
+        line-height: 20px;
     }
-
+    
+    .footer__container{
+        height: 200px;
+        padding: 15px 15px;
+        /* background-color: blue;  */
+    }
+    
     .footer__content{
-        flex-basis: 100%;
-
+        flex-basis: 25%;
+        padding: 8px;
     }
-
+    
     .footer__content:nth-child(2), .footer__content:nth-child(3){
-        flex-basis: 100%;
+        flex-basis: 18%;
     }
+    
+    .footer__container img{
+        width: 60px;
+        height: 60px;
+        margin-left: 12px; 
+        margin-bottom: 20px;
+    }
+    
+    .footer__content h3{
+        width: fit-content;
+        margin-bottom: 32px;
+        position: relative;
+        font-size: 15px;
+    }
+    
+    .footer__email--id{
+        width: fit-content;
+        border-bottom: solid 1px #ccc;
+        margin: 17px 0;
+    }
+    
+    .footer__form{
+        padding-bottom: 14px;
+        margin-bottom: 35px;
+    }
+    
+    .footer__form button{
+        width: 23px;
+        height: 20px;
+        border-radius: 50%;
+    }
+    
+    .footer__form i{
+        font-size: 15px;
+        margin-right: 8px;
+    }
+    
+    .footer__social--icons i{
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        line-height: 36px;
+        font-size: 24px;
+        margin-right: 12px;
+        transition: 0.3s;
+    }
+    
+    hr{
+        width: 90%;
+        margin: 30px auto;
+    }
+    
+    .footer__underline{
+        width: 100%;
+        height: 3px;
+        background:  #767676;
+        border-radius: 3px;
+        position: absolute;
+        top: 22px;
+        left: 0;
+        overflow: hidden;
+    }
+    
+    .footer__underline span{
+        width: 12.5px;
+        height: 100%;
+        background: white;
+        border-radius: 3px;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        animation: moving 2s linear infinite;
+    }
+}
+
+
+@media screen  and (min-width: 601px) and (max-width: 901px){
+    
+}
+
+@media screen and (max-width: 600px){
+
 }
