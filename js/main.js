@@ -170,9 +170,6 @@ let productArray = [
     {productId:10000, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-5-back.jpg', name:'Sakamoto Days - Volume 05', price: 9.99},	
 ];
 
-=======
->>>>>>> 8fe9c44c23aaa652a041909df0b37ea8c126b628
-
 
 
 
