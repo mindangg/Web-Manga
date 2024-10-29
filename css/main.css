@@ -32,13 +32,11 @@ body{
 
 
 
-
 /* navigation between pages */
-
 
 /* #main__page{
     display: none;
-}
+} */
 
 #login__page{
     display: none;
@@ -76,6 +74,7 @@ body{
 .slider__list img{
     width: 1519px;
     height: 100%;
+    object-fit: fill;
 }
 
 .slider__button{
@@ -96,10 +95,6 @@ body{
     border: none;
     font-weight: bold;
 }
-
-/* .slider__button button:hover{
-    cursor: pointer;
-} */
 
 .slider__dots{
     position: absolute;
@@ -137,7 +132,6 @@ body{
     position: relative;
     top: 185px;
     max-width: 1519px;
-    max-width: 100vw;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px 200px;
@@ -301,7 +295,6 @@ body{
     position: relative;
     top: 50px;
     max-width: 1519px;
-    max-width: 100vw;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px;
@@ -438,7 +431,7 @@ body{
 
 .book__slider__dots li{
     list-style: none;
-    width: 88.5px;
+    width: 230px;
     height: 1.5px;
     /* width: 20px;
     height: 20px; */
@@ -451,6 +444,8 @@ body{
 .book__slider__dots li.book__active{
     background-color: var(--green);
 } 
+
+
 
 
 .banner{
@@ -757,10 +752,6 @@ body{
     margin: 25px 0px;
 }
 
-
-
-
-
 /* signup page */
 
 .signup{
@@ -846,22 +837,14 @@ body{
     margin: 25px 0px;
  }
 
-
-
-
-
-
-
-
-
-
- @media screen  and (min-width: 902px) and (max-width: 1200px){
+ @media screen  and (min-width: 1200px) and (max-width: 1400px){
     .slider{
         position: relative;
         top: 123px;
-        width: px;
-        height: 500px;
+        width: 1519px;
+        height: 560px;
         overflow: hidden;
+        margin: 0;
     }
     
     .slider__list{
@@ -877,6 +860,7 @@ body{
     .slider__list img{
         width: 1519px;
         height: 100%;
+        object-fit: fill;
     }
     
     .slider__button{
@@ -897,10 +881,6 @@ body{
         border: none;
         font-weight: bold;
     }
-    
-    /* .slider__button button:hover{
-        cursor: pointer;
-    } */
     
     .slider__dots{
         position: absolute;
@@ -928,3 +908,14 @@ body{
         width: 29px;
     }
  }
+
+
+
+
+
+
+
+
+
+
+ 

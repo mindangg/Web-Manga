@@ -1,8 +1,23 @@
-class Product{
-    name = 
+//slider
+
+let list = document.querySelector(".slider .slider__list");
+let items = document.querySelectorAll(".slider .slider__list .slider__item");
+let dots = document.querySelectorAll(".slider .slider__dots li");
+let next = document.getElementById("slider__next");
+let prev = document.getElementById("slider__prev");
+
+let active = 0;
+let lengthItems = items.length - 1;
+
+next.onclick = function()
+{
+    if(active + 1 > lengthItems)
+        active = 0;
+    else
+        active++;
+    ReloadSlider();
 }
 
-<<<<<<< HEAD
 prev.onclick = function()
 {
     if(active - 1 < 0)
@@ -147,7 +162,6 @@ document.getElementById("product__close").addEventListener("click", function(){
 })
 
 
-
 document.getElementById("product__close").addEventListener("click", function(){
     document.querySelector(".product").style.animationName = "bottomUp";
     setTimeout(function() {
@@ -158,36 +172,3 @@ document.getElementById("product__close").addEventListener("click", function(){
 // document.getElementById("product__close").addEventListener("click", function(){
 //     document.querySelector(".product__page").style.display = "none";
 // })
-let productArray = [
-
-    {productId:10005, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg', name:'My Dress Up Darling - Volume 07', price: 9.99},
-    {productId:10004, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg', name:'My Dress Up Darling - Volume 06', price: 9.99},
-    {productId:10003, series:'My Dress Up Darling', author:'Fukuda Shinichi', category:'Rom-Com', img1:'../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg', img2:'../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg', name:'My Dress Up Darling - Volume 01', price: 9.99},	
-    
-    
-    {productId:10002, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-10-back.jpg', name:'Sakamoto Days - Volume 10', price: 9.99},
-    {productId:10001, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-6-back.jpg', name:'Sakamoto Days - Volume 06', price: 9.99},
-    {productId:10000, series:'Sakamoto Days', author:'Suzuki Yuto', category:'Action', img1:'../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg', img2:'img/books/sakamoto days/sakamoto-days-volume-5-back.jpg', name:'Sakamoto Days - Volume 05', price: 9.99},	
-];
-
-=======
->>>>>>> 8fe9c44c23aaa652a041909df0b37ea8c126b628
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
