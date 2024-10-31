@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdc8e642-cd1d-4ac6-958e-842b46ecf2e6" name="Changes" comment="push" />
+    <list default="true" id="cdc8e642-cd1d-4ac6-958e-842b46ecf2e6" name="Changes" comment="push">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +65,7 @@
     &quot;git-widget-placeholder&quot;: &quot;bao&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/CODE/JS/Đồ án/Clone/Web-Manga&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/CODE/JS/Learning/newIndex.html&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -175,14 +177,6 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19072.14" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19072.14" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -211,6 +205,13 @@
       <workItem from="1730226196266" duration="2000" />
       <workItem from="1730226399407" duration="2000" />
       <workItem from="1730227085577" duration="6000" />
+      <workItem from="1730227109554" duration="56000" />
+      <workItem from="1730227168135" duration="124000" />
+      <workItem from="1730246686526" duration="40000" />
+      <workItem from="1730246727932" duration="49000" />
+      <workItem from="1730247194815" duration="1320000" />
+      <workItem from="1730256225136" duration="5000" />
+      <workItem from="1730375540328" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <option name="closed" value="true" />
@@ -228,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730226702178</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="push">
+      <option name="closed" value="true" />
+      <created>1730227145873</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730227145873</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +269,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/bao" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
