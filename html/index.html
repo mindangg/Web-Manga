@@ -14,7 +14,146 @@
     <script src="https://kit.fontawesome.com/758055a090.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <special-header></special-header>
+    <!-- <special-header></special-header> -->
+    <header>
+        <nav class="navbar">
+            <!-- logo -->
+            <div class="navbar__logo">
+                <a href="index.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+            </div>
+            <!-- links -->
+            <ul class="navbar__links">
+                <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
+                <li class="navbar__link--series">
+                    <a href="#" class="navbar__link">Series</a>
+                    <div class="navbar__series">
+                        <ul>
+                            <li><a href="">Sakamoto Days</a></li>
+                            <li><a href="">My Dress Up Darling</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Black Clover</a></li>
+                            <li><a href="">My Hero Academia</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Jujutsu Kaisen</a></li>
+                            <li><a href="">Mashle: Magic And Muscles</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">One Punch Man</a></li>
+                            <li><a href="">Spy X Family</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="navbar__link--category">
+                    <a href="#" class="navbar__link">Category</a>
+                    <div class="navbar__category">
+                        <ul>
+                            <li><a href="">Shounen</a></li>
+                            <li><a href="">Slice Of Life</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Rom-Com</a></li>
+                            <li><a href="">Action</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Family</a></li>
+                            <li><a href="">Comedy</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Fantasy</a></li>
+                            <li><a href="">Drama</a></li>
+                        </ul>
+                    </div>
+                </li>
+                
+                <li class="navbar__link--author">
+                    <a href="#" class="navbar__link">Author</a>
+                    <div class="navbar__author">
+                        <ul>
+                            <li><a href="">Murata Yusuke</a></li>
+                            <li><a href="">Fukuda Shinichi</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Komoto Hajime</a></li>
+                            <li><a href="">Tabata Yūki</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Horikoshi Kohei</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+                                    
+                        <ul>
+                            <li><a href="">Suzuki Yuto</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--price">
+                    <a href="#" class="navbar__link">Price</a>
+                    <div class="navbar__price">
+                        <ul>
+                            <li><a href="">Under $5 Dollars</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">$5 To $7 Dollars</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">$7 To $15 dollars</a></li>
+                        </ul>
+            
+                        <ul>
+                            <li><a href="">Over $15 dollars</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--about"><a href="#special-footer" class="navbar__link">About Us</a></li>
+            </ul>
+
+            <!-- nav bar icons -->
+            <div class="navbar__home">
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
+                <a href="#" id="login__icon"><i class="fa-regular fa-user" style="color:white;"></i></a>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
+            </div>
+        </nav>
+
+        <!-- searchbox -->
+        <div class="search__popup">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="search" placeholder="Search for...">
+                    <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                </div> 
+            </div>
+        </div>
+
+        <!-- shopping cart -->
+        <div class="shopping__popup">
+            <div class="shopping__container">
+                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>     
+                <div class="shopping">
+                    <div class="shopping__icon">
+                        <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
+                    </div>
+                    <br>
+                    <h2>Your cart is empty</h2>
+                    <button class="shopping__btn">Continue shopping</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main>
     <section id="main__page">

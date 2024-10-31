@@ -616,9 +616,26 @@ hr{
 
 }
 
+@media screen  and (min-width: 601px) and (max-width: 901px){
+    
+}
 
-@media screen  and (min-width: 701px) and (max-width: 901px){
 
+@media screen  and (min-width: 827px) and (max-width: 1070px){
+    .footer__form i{
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    .footer__social--icons i{
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 36px;
+        font-size: 30px;
+        margin-right: 0px;
+        transition: 0.3s;
+    }
 }
 
 @media screen and (max-width: 700px){
