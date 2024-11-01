@@ -96,11 +96,11 @@ class SpecialHeader extends HTMLElement{
                         </ul>
             
                         <ul>
-                            <li><a href="">$7 To $15 dollars</a></li>
+                            <li><a href="">$7 To $15 Dollars</a></li>
                         </ul>
             
                         <ul>
-                            <li><a href="">Over $15 dollars</a></li>
+                            <li><a href="">Over $15 Dollars</a></li>
                         </ul>
                     </div>
                 </li>
