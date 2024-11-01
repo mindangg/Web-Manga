@@ -491,33 +491,38 @@
     </section>
 
     <section id="signup__page">
-        <div class="signup">
+        <div id="signup">
             <h1>Sign Up</h1>
-
+            <!--   Username   -->
             <div class="signup__input">
-            <input type="text" class="input" placeholder="Username" minlength="6" required>
+                <input type="text" id="signup__input--username" class="input" placeholder="Username" required value="">
+                <label for="signup__input--username"></label>
+            </div>
+            <!--   Password   -->
+            <div class="signup__input">
+                <input type="password" id="signup__input--password" class="input" placeholder="Password" required value="">
+                <label for="signup__input--password"></label>
+            </div>
+            <!--   Confirm Password   -->
+            <div class="signup__input">
+                <input type="password" id="signup__input--confpasword" class="input" placeholder="Confirm Password" required>
+                <label for="signup__input--confpasword"></label>
+            </div>
+            <!--   Email   -->
+            <div class="signup__input">
+                <input type="email" id="signup__input--email" class="input" placeholder="Email" required>
+                <label for="signup__input--email"></label>
+            </div>
+            <!--   Phone number   -->
+            <div class="signup__input">
+                <input type="tel" id="signup__input--phone" class="input" placeholder="076 302 0810" required>
+                <label for="signup__input--phone"></label>
             </div>
 
-            <div class="signup__input">
-            <input type="email" class="input" placeholder="Email" minlength="6" required>
-            </div>
+            <button type="submit" id="signup__btn">Create account</button>
 
-            <div class="signup__input">
-            <input type="tel" class="input" placeholder="076-302-0810" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-            </div>
-
-            <div class="signup__input">
-                <input type="text" class="input" placeholder="340 Đ. Hoang Van Thu, Ward 4, Tan Binh, Ho Chi Minh"required>
-            </div>
-
-            <div class="signup__input">
-            <input type="password" class="input" placeholder="Password" minlength="6" required>
-            </div>
-
-            <button type="submit" class="signup__btn">Create account</button>
-
-            <div class="signup__login">
-            <a href="#" id="signup__login--nav">Login</a>
+            <div id="signup__login">
+                <a href="#" id="signup__login--nav">Already has account?</a>
             </div>
         </div>
     </section>
@@ -528,7 +533,6 @@
 
     <!-- js -->
     <script src="../js/main.js"></script>
-    <script src="../js/index.js"></script>
     <script src="../js/header_footer.js"></script>
 </body>
 </html>
