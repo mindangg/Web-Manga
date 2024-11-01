@@ -1,5 +1,5 @@
-class SpecialHeader extends HTMLElement{
-    connectedCallback(){
+class SpecialHeader extends HTMLElement {
+    connectedCallback() {
         this.innerHTML = `
     <header>
         <nav class="navbar">
@@ -146,10 +146,10 @@ class SpecialHeader extends HTMLElement{
 
 customElements.define(`special-header`, SpecialHeader);
 
-class SpecialFooter extends HTMLElement{
-    connectedCallback(){
+class SpecialFooter extends HTMLElement {
+    connectedCallback() {
         this.innerHTML = `
-                <footer class="footer">
+        <footer class="footer">
         <div class="footer__container">
             <div class="footer__content">
                 <a><img src="../img/WEBTOON_Logo.png"></a>
@@ -191,9 +191,9 @@ class SpecialFooter extends HTMLElement{
                     <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
-        </div><br>
-        <hr>
-        <p class="copyright">© 2024, Web Development, Powered by J97</p>
+            <hr>   
+            <p class="copyright">© 2024, Web Development, Powered by J97</p>
+        </div>
     </footer>
         `
     }
@@ -207,18 +207,18 @@ customElements.define(`special-footer`, SpecialFooter);
 
 //navigation between pages
 
-document.getElementById("login__icon").addEventListener("click", function(){
+document.getElementById("login__icon").addEventListener("click", function () {
     document.getElementById("main__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
     console.log("Hello");
 })
 
-document.getElementById("login__signup--nav").addEventListener("click", function(){
+document.getElementById("login__signup--nav").addEventListener("click", function () {
     document.getElementById("login__page").style.display = "none";
     document.getElementById("signup__page").style.display = "inline";
 })
 
-document.getElementById("signup__login--nav").addEventListener("click", function(){
+document.getElementById("signup__login--nav").addEventListener("click", function () {
     document.getElementById("signup__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
 })
@@ -229,28 +229,28 @@ document.getElementById("signup__login--nav").addEventListener("click", function
 
 // search and shopping cart popup
 
-document.getElementById("search__icon").addEventListener("click", function(){
+document.getElementById("search__icon").addEventListener("click", function () {
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
 })
 
-document.getElementById("search__close").addEventListener("click", function(){
+document.getElementById("search__close").addEventListener("click", function () {
     document.querySelector(".search").style.animationName = "leftToRight"
-    setTimeout(function() {
+    setTimeout(function () {
         document.querySelector(".search__popup").style.display = "none";
-      }, 390);
+    }, 390);
 })
 
-document.getElementById("shopping__icon").addEventListener("click", function(){
+document.getElementById("shopping__icon").addEventListener("click", function () {
     document.querySelector(".shopping__popup").style.display = "flex";
     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
 })
 
-document.getElementById("shopping__close").addEventListener("click", function(){
+document.getElementById("shopping__close").addEventListener("click", function () {
     document.querySelector(".shopping__container").style.animationName = "leftToRight"
-    setTimeout(function() {
+    setTimeout(function () {
         document.querySelector(".shopping__popup").style.display = "none";
-      }, 390);
+    }, 390);
 })
 
 // document.getElementById("shopping__close").addEventListener("click", function(){

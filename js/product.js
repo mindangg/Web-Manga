@@ -23,11 +23,11 @@ class Helper {
 //  INITIALIZE PPRODUCT
 // ========================================================================
 // Product variable
-var productIdIndex = 0;
-var currentEditIndex;
-var productCurrentPage = 1;
-var productPerPage = 5;
-var productIndex = productCurrentPage;
+let productIdIndex = 0;
+let currentEditIndex;
+let productCurrentPage = 1;
+let productPerPage = 5;
+let productIndex = productCurrentPage;
 
 // Product property
 const productBtnAdd = document.getElementById("product-menu__button--add");
@@ -359,6 +359,7 @@ class Product {
     static edit(e) {
         console.log("-> Edit product...");
 
+        productTable = JSON.parse(localStorage.getItem("productTable"));
         const editProductRow = e.parentElement.parentElement;
 
         currentEditIndex = productTable.findIndex((p) => p.productId === editProductRow.id)
@@ -375,7 +376,7 @@ class Product {
             }
         });
 
-        // xu ly su kien show nut save che do edit
+        // // xu ly su kien show nut save che do edit
         productRenderTable.style.display = "none";
         productBtnAdd.style.display = "none";
         productBtnSave.style.display = "";
@@ -422,6 +423,8 @@ class Product {
     static delete(e) {
         console.log("-> Delete product...");
 
+        productTable = JSON.parse(localStorage.getItem("productTable"));
+        console.log(productTable)
         const deleteProductRow = e.parentElement.parentElement;
 
         productTable = productTable.filter((p) => p.productId !== deleteProductRow.id)
@@ -536,7 +539,7 @@ class Product {
     // load san pham khi trang reload
     static onload() {
         (() => {
-            if (localStorage.getItem("productTable") !== null) {
+            if(localStorage.getItem("productTable") !== null) {
                 console.log("-> get product table...");
                 let productTable = JSON.parse(localStorage.getItem("productTable"));
                 console.log(productTable);
