@@ -210,7 +210,11 @@ customElements.define(`special-footer`, SpecialFooter);
 document.getElementById("login__icon").addEventListener("click", function(){
     document.getElementById("main__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
-    console.log("Hello");
+})
+
+document.getElementById("login__icon__responsive").addEventListener("click", function(){
+    document.getElementById("main__page").style.display = "none";
+    document.getElementById("login__page").style.display = "inline";
 })
 
 document.getElementById("login__signup--nav").addEventListener("click", function(){
@@ -222,6 +226,17 @@ document.getElementById("signup__login--nav").addEventListener("click", function
     document.getElementById("signup__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
 })
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -259,7 +274,16 @@ document.getElementById("shopping__close").addEventListener("click", function(){
 // })
 
 
+//responsive
+document.getElementById("navbar__bar__icon").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__popup").style.display = "inline";
+    console.log("hello");
+})
 
+document.getElementById("navbar__responsive__close__button").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__popup").style.display = "none";
+
+})
 
 
 

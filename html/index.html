@@ -123,14 +123,60 @@
 
             <!-- nav bar icons -->
             <div class="navbar__home">
-                <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
-                <a href="#" id="login__icon"><i class="fa-regular fa-user" style="color:white;"></i></a>
-                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass""></i></a>
+                <a href="#" id="login__icon"><i class="fa-regular fa-user"></i></a>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
 
             <div class="navbar__bar">
-                <i class="fa-solid fa-bars" style="color:white;"></i>
+                <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
+                <a href="#" id="login__icon__responsive"><i class="fa-regular fa-user"></i></a>
             </div>
+
+            <div class="navbar__responsive__popup">
+                <div class="navbar__responsive__close">
+                    <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+                <div class="navbar__responsive">
+                    <ul class="navbar__responsive__links">
+                        <li class="navbar__responsive--home">
+                            <a href="index.html" class="navbar__responsive__link">Home</a>
+                        </li>
+                        <li class="navbar__responsive--series">
+                            <a class="navbar__responsive__link">Series</a>
+                            <button id="navbar__responsive--series__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--category">
+                            <a class="navbar__responsive__link">Category</a>
+                            <button id="navbar__responsive--category__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--author">
+                            <a class="navbar__responsive__link">Author</a>
+                            <button id="navbar__responsive--author__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--price">
+                            <a class="navbar__responsive__link">Price</a>
+                            <button id="navbar__responsive--price__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--about">
+                            <a href="#special-footer" class="navbar__responsive__link">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
         </nav>
 
         <!-- searchbox -->
