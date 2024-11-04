@@ -32,7 +32,6 @@ body{
 
 
 
-
 /* navigation between pages */
 
 /* #main__page{
@@ -75,6 +74,7 @@ body{
 .slider__list img{
     width: 1519px;
     height: 100%;
+    object-fit: fill;
 }
 
 .slider__button{
@@ -95,10 +95,6 @@ body{
     border: none;
     font-weight: bold;
 }
-
-/* .slider__button button:hover{
-    cursor: pointer;
-} */
 
 .slider__dots{
     position: absolute;
@@ -136,7 +132,6 @@ body{
     position: relative;
     top: 185px;
     max-width: 1519px;
-    max-width: 100vw;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px 200px;
@@ -300,7 +295,6 @@ body{
     position: relative;
     top: 50px;
     max-width: 1519px;
-    max-width: 100vw;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px;
@@ -437,7 +431,7 @@ body{
 
 .book__slider__dots li{
     list-style: none;
-    width: 88.5px;
+    width: 230px;
     height: 1.5px;
     /* width: 20px;
     height: 20px; */
@@ -450,6 +444,8 @@ body{
 .book__slider__dots li.book__active{
     background-color: var(--green);
 } 
+
+
 
 
 .banner{
@@ -486,7 +482,6 @@ body{
     position: relative;
     width: 1000px;
     height: 600px;
-
     margin: 40px auto;
     /* background-color: var(--black); */
     background-color: rgba(32, 28, 28, 0.93);
@@ -756,20 +751,17 @@ body{
     margin: 25px 0px;
 }
 
-
-
-
-
 /* signup page */
 
-.signup{
-    width: 460px;
+#signup{
+    width: 450px;
     position: relative;
+    height: 720px;
     top: 140px;
-    margin: auto auto 140px;
+    margin: auto;
 }
 
-.signup h1{
+#signup h1{
     font-size: 45px;
     color: white;
     text-align: center;
@@ -778,14 +770,13 @@ body{
 .signup__input{
     width: 100%;
     height: 55px;
-    margin: 15px 0;
+    margin: 25px 0;
 }
 
-.signup input{
+#signup input{
     width: 100%;
     height: 100%;
     background: none;
-    border: none;
     outline: none;
     border: 2px solid #363636;
     padding: 20px 45px 20px 20px;
@@ -793,12 +784,12 @@ body{
     color: white;
 }
 
-.signup input::placeholder{
+#signup input::placeholder{
     color: #8d8d8d;
     font-size: 16px;
 }
 
-.signup__btn{
+#signup__btn{
     width: 100%;
     height: 65px;
     background-color: var(--green);
@@ -808,22 +799,18 @@ body{
     outline: none;
 }
 
-.signup__btn:hover{
+#signup__btn:hover{
     background-color: var(--green-l);
     cursor: pointer;
 }
 
-.signup a{
+#signup a{
     color: var(--gray);
     text-decoration: none;
     position: relative;
 }
 
-.signup a:hover{
-    cursor: pointer;
-}
-
- .signup a::after{
+#signup a::after{
     content: '';
     background-color: var(--gray);
     height: 1px;
@@ -834,33 +821,33 @@ body{
     transition: 0.3s;
 }
 
- .signup a:hover::after{
+#signup a:hover::after{
     width: 0;
 }
 
- .signup__login{
+#signup__login{
     font-size: 20px;
     display: flex;
     justify-content: center;
-    margin: 25px 0px;
- }
+    margin: 25px;
+}
 
+.signup__input label {
+    color: rgba(255, 51, 0, 0.76);
+    font-size: 13px;
+    display: none;
+    margin: 3px;
+    font-family: "Arial";
+}
 
-
-
-
-
-
-
-
-
- @media screen  and (min-width: 902px) and (max-width: 1200px){
+ @media screen  and (min-width: 1200px) and (max-width: 1400px){
     .slider{
         position: relative;
         top: 123px;
-        width: px;
-        height: 500px;
+        width: 1519px;
+        height: 560px;
         overflow: hidden;
+        margin: 0;
     }
     
     .slider__list{
@@ -876,6 +863,7 @@ body{
     .slider__list img{
         width: 1519px;
         height: 100%;
+        object-fit: fill;
     }
     
     .slider__button{
@@ -896,10 +884,6 @@ body{
         border: none;
         font-weight: bold;
     }
-    
-    /* .slider__button button:hover{
-        cursor: pointer;
-    } */
     
     .slider__dots{
         position: absolute;
@@ -927,3 +911,14 @@ body{
         width: 29px;
     }
  }
+
+
+
+
+
+
+
+
+
+
+ 
