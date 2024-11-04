@@ -1,5 +1,5 @@
-class SpecialHeader extends HTMLElement {
-    connectedCallback() {
+class SpecialHeader extends HTMLElement{
+    connectedCallback(){
         this.innerHTML = `
     <header>
         <nav class="navbar">
@@ -96,11 +96,11 @@ class SpecialHeader extends HTMLElement {
                         </ul>
             
                         <ul>
-                            <li><a href="">$7 To $15 dollars</a></li>
+                            <li><a href="">$7 To $15 Dollars</a></li>
                         </ul>
             
                         <ul>
-                            <li><a href="">Over $15 dollars</a></li>
+                            <li><a href="">Over $15 Dollars</a></li>
                         </ul>
                     </div>
                 </li>
@@ -146,10 +146,10 @@ class SpecialHeader extends HTMLElement {
 
 customElements.define(`special-header`, SpecialHeader);
 
-class SpecialFooter extends HTMLElement {
-    connectedCallback() {
+class SpecialFooter extends HTMLElement{
+    connectedCallback(){
         this.innerHTML = `
-        <footer class="footer">
+                <footer class="footer">
         <div class="footer__container">
             <div class="footer__content">
                 <a><img src="../img/WEBTOON_Logo.png"></a>
@@ -191,9 +191,9 @@ class SpecialFooter extends HTMLElement {
                     <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
-            <hr>   
-            <p class="copyright">© 2024, Web Development, Powered by J97</p>
-        </div>
+        </div><br>
+        <hr>
+        <p class="copyright">© 2024, Web Development, Powered by J97</p>
     </footer>
         `
     }
@@ -207,21 +207,36 @@ customElements.define(`special-footer`, SpecialFooter);
 
 //navigation between pages
 
-document.getElementById("login__icon").addEventListener("click", function () {
+document.getElementById("login__icon").addEventListener("click", function(){
     document.getElementById("main__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
-    console.log("Hello");
 })
 
-document.getElementById("login__signup--nav").addEventListener("click", function () {
+document.getElementById("login__icon__responsive").addEventListener("click", function(){
+    document.getElementById("main__page").style.display = "none";
+    document.getElementById("login__page").style.display = "inline";
+})
+
+document.getElementById("login__signup--nav").addEventListener("click", function(){
     document.getElementById("login__page").style.display = "none";
     document.getElementById("signup__page").style.display = "inline";
 })
 
-document.getElementById("signup__login--nav").addEventListener("click", function () {
+document.getElementById("signup__login--nav").addEventListener("click", function(){
     document.getElementById("signup__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
 })
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -259,7 +274,16 @@ document.getElementById("shopping__close").addEventListener("click", function ()
 // })
 
 
+//responsive
+document.getElementById("navbar__bar__icon").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__popup").style.display = "inline";
+    console.log("hello");
+})
 
+document.getElementById("navbar__responsive__close__button").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__popup").style.display = "none";
+
+})
 
 
 

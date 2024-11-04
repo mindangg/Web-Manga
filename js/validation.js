@@ -68,4 +68,14 @@ class Validation {
             }
         }
     }
+
+    static usernameIsExisted = (username) => {
+        let check = false;
+        userList.forEach(user => {
+            if(user._username === username) {
+                check = true;
+            }
+        })
+        return check;
+    }
 }

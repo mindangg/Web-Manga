@@ -482,7 +482,6 @@ body{
     position: relative;
     width: 1000px;
     height: 600px;
-
     margin: 40px auto;
     /* background-color: var(--black); */
     background-color: rgba(32, 28, 28, 0.93);
@@ -755,7 +754,7 @@ body{
 /* signup page */
 
 #signup{
-    width: 500px;
+    width: 450px;
     position: relative;
     height: 720px;
     top: 140px;

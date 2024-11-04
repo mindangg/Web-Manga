@@ -1,4 +1,4 @@
-let userList = [];
+let userList = JSON.parse(localStorage.getItem("users")) || [];
 
 const signup = document.getElementById('signup');
 const submit = document.getElementById('signup__btn');
@@ -8,7 +8,6 @@ const confirmPassword = document.getElementById('signup__input--confpasword');
 const email = document.getElementById('signup__input--email');
 const phoneNumber = document.getElementById('signup__input--phone');
 const signupInput = document.getElementsByClassName('signup__input');
-
 submit.addEventListener("click", (event) => {
     event.preventDefault();
     Validation.checkBlankField(signup);
@@ -27,7 +26,9 @@ submit.addEventListener("click", (event) => {
     if (!Validation.isBlank(phoneNumber.value)){
         validatePhoneNumber(phoneNumber);
     }
+
     if (
+        !Validation.usernameIsExisted(username.value) &&
         !Validation.isBlank(username.value) &&
         !Validation.isBlank(password.value) &&
         !Validation.isBlank(confirmPassword.value) &&
@@ -39,7 +40,7 @@ submit.addEventListener("click", (event) => {
         Validation.emailIsValid(email) &&
         Validation.phoneIsValid(phoneNumber)
     ) {
-
+        User.insert(username.value, password.value, phoneNumber.value, email.value);
     }
 })
 
@@ -93,6 +94,22 @@ const validatePhoneNumber = (phoneNumber) => {
     }
 }
 
+userList.forEach(user => {
+    console.log(user._username);
+})
+username.addEventListener('blur', (event) => {
+    console.log(Validation.usernameIsExisted(username.value));
+    if (Validation.usernameIsExisted(username.value)){
+        username.style.border = '1px solid rgba(255, 51, 0, 0.76)';
+        username.labels[0].innerText = 'Username has already existed';
+        username.labels[0].style.display = 'block';
+    } else {
+        username.style.border = '';
+        username.labels[0].innerText = '';
+        username.labels[0].style.display = 'none';
+    }
+})
+
 password.addEventListener('focus', (event) => {
     password.labels[0].innerText = 'Password must be at least 6 characters long, and include at least one uppercase letter, one number.';
     password.labels[0].style.display = 'block';
@@ -106,12 +123,13 @@ password.addEventListener('blur', (event) => {
     password.labels[0].style.color = 'rgba(255, 51, 0, 0.76)';
     signupInput[1].style.marginBottom = '25px';
 })
-
+// let day = new Date();
+// let curDay = day.getDay() - day.getMonth()
 class User {
-    constructor(username, password, phone_number, email) {
+    constructor(username, password, phoneNumber, email) {
         this._username = username;
         this._password = password;
-        this._phone_number = phone_number;
+        this._phoneNumber = phoneNumber;
         this._email = email;
     }
 
@@ -131,12 +149,12 @@ class User {
         this._password = value;
     }
 
-    get phone_number() {
-        return this._phone_number;
+    get phoneNumber() {
+        return this._phoneNumber;
     }
 
     set phone_number(value) {
-        this._phone_number = value;
+        this._phoneNumber = value;
     }
 
     get email() {
@@ -147,9 +165,21 @@ class User {
         this._email = value;
     }
 
+    toString(){
+        return "[username: " + this.username + ", password: " + this.password + ", email: " + this.email
+            + ", phoneNumber: " + this.phoneNumber + "]";
+    }
+
     static insert(username, password, phone_number, email){
         const newUser = new User(username, password, phone_number, email);
-        userList.push(newUser);
+        console.log("Add new user:")
+        console.log(newUser);
+        try {
+            userList.push(newUser);
+            localStorage.setItem('users', JSON.stringify(userList));
+        } catch (e){
+            console.log("Add new user failed");
+        }
     }
 }
 
