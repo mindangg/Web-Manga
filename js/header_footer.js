@@ -210,6 +210,7 @@ customElements.define(`special-footer`, SpecialFooter);
 document.getElementById("login__icon").addEventListener("click", function(){
     document.getElementById("main__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
+    document.getElementById("signup__page").style.display = "none";
 })
 
 document.getElementById("login__icon__responsive").addEventListener("click", function(){
