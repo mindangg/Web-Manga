@@ -841,8 +841,6 @@ hr{
     }
 
 
-<<<<<<< Updated upstream
-=======
 @media screen  and (min-width: 620px) and (max-width: 900px){
     .navbar{
         position: fixed;
@@ -928,7 +926,6 @@ hr{
     
 
     
->>>>>>> Stashed changes
     .search,
     .shopping__container
     {
