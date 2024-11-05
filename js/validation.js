@@ -1,5 +1,5 @@
 class Validation {
-    constructor() {}
+    constructor() { }
 
     static isBlank(value) {
         try {
@@ -10,7 +10,7 @@ class Validation {
         return false;
     }
 
-    static usernameIsValid (username) {
+    static usernameIsValid(username) {
         const usernameRegex = /^[a-zA-Z0-9]{1,}$/;
         try {
             return usernameRegex.test(username.value);
@@ -19,7 +19,7 @@ class Validation {
         }
     }
 
-    static passwordIsValid (password) {
+    static passwordIsValid(password) {
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
         try {
             return passwordRegex.test(password.value);
@@ -28,7 +28,7 @@ class Validation {
         }
     }
 
-    static emailIsValid (email) {
+    static emailIsValid(email) {
         const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         try {
             return emailRegex.test(email.value);
@@ -37,7 +37,7 @@ class Validation {
         }
     }
 
-    static phoneIsValid (phoneNumber) {
+    static phoneIsValid(phoneNumber) {
         const phoneRegex = /^0\d{9}$/;
         try {
             return phoneRegex.test(phoneNumber.value)
@@ -46,7 +46,7 @@ class Validation {
         }
     }
 
-    static isMatch(password, confirmPassword){
+    static isMatch(password, confirmPassword) {
         try {
             return password.value === confirmPassword.value;
         } catch (e) {
@@ -54,11 +54,11 @@ class Validation {
         }
     }
 
-    static checkBlankField (field){
+    static checkBlankField(field) {
         const inputs = field.getElementsByTagName('input');
         let check = false;
-        for (let input of inputs){
-            if (this.isBlank(input.value)){
+        for (let input of inputs) {
+            if (this.isBlank(input.value)) {
                 input.style.border = '1px solid rgba(255, 51, 0, 0.76)';
                 input.labels[0].innerText = 'This cannot be empty';
                 input.labels[0].style.display = 'block';
@@ -72,7 +72,7 @@ class Validation {
         return check;
     }
 
-    static usernameExisted (username) {
+    static usernameExisted(username) {
         return userList.some(user => user.username === username.value);
     }
 }
