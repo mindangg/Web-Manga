@@ -73,6 +73,7 @@ class Validation {
     }
 
     static usernameExisted(username) {
-        return userList.some(user => user.username === username.value);
+        let users = JSON.parse(localStorage.getItem("users"));
+        return users.some(user => user.username === username.value);
     }
 }

@@ -1,8 +1,97 @@
-let userList = JSON.parse(localStorage.getItem("users")) || [];
+
+//Get current date
+let day = new Date();
+let dd = String(day.getDate()).padStart(2, '0');
+let mm = String(day.getMonth() + 1).padStart(2, '0');
+let yyyy = day.getFullYear();
+let curDay = dd + "/" + mm + "/" + yyyy;
+
+let userList = [
+    {
+        username: "baohoo100205",
+        password: "Baohoo100205",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381431",
+        createDate: '10/02/2005',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
+        username: "baohoo1002",
+        password: "Baohoo100205",
+        email: "baohoo1002@gmail.com",
+        phoneNumber: "0938381432",
+        createDate: '30/10/2024',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
+        username: "quocbao",
+        password: "Baohoo100205",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381433",
+        createDate: '05/11/2024',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
+        username: "quocbaohoo",
+        password: "Baohoo1002",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381434",
+        createDate: '24/12/2023',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
+        username: "bael10205",
+        password: "Baohoo100205",
+        email: "baohoo1002@gmail.com",
+        phoneNumber: "0938381435",
+        createDate: '01/01/2020',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
+        username: "bael10205",
+        password: "Baohoo100205",
+        email: "baohoo1002@gmail.com",
+        phoneNumber: "0938381435",
+        createDate: '11/09/2001',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
+        username: "admin",
+        password: "admin",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381435",
+        createDate: curDay,
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+];
+
+let account = null;
+
 
 //FOR SIGN UP
 const signup = document.getElementById('signup');
-const submit = document.getElementById('signup__btn');
+const submitSignUp = document.getElementById('signup__btn');
 const username = document.getElementById('signup__input--username');
 const password = document.getElementById('signup__input--password');
 const confirmPassword = document.getElementById('signup__input--confpasword');
@@ -12,11 +101,25 @@ const notification = document.getElementById('notification');
 const signupInput = document.getElementsByClassName('signup__input');
 
 //FOR SIGN IN
+const login = document.getElementById('login')
+const loginIcon = document.getElementById('login__icon');
 const usernameLogin = document.getElementById('login__input--username');
 const passwordLogin = document.getElementById('login__input--password');
-const forget = document.getElementById('logi')
+const forget = document.getElementById('login__forget');
+const submitLogin = document.getElementById('login__btn');
+
+loginIcon.addEventListener('click', (event) => {
+    if(JSON.parse(localStorage.getItem('users')) === null){
+        localStorage.setItem('users', JSON.stringify(userList));
+        console.log('Set users');
+    } else {
+        userList = JSON.parse(localStorage.getItem('users'));
+        console.log('Get users');
+    }
+})
+
 //SIGN UP EVENT
-submit.addEventListener("click", (event) => {
+submitSignUp.addEventListener("click", (event) => {
     event.preventDefault();
     if (Validation.checkBlankField(signup))
         return false;
@@ -95,7 +198,7 @@ password.addEventListener('focus', (event) => {
     password.labels[0].innerText = 'Password must be at least 6 characters long, and include at least one uppercase letter, one number.';
     password.labels[0].style.display = 'block';
     password.labels[0].style.color = 'gray';
-    signupInput[1].style.marginBottom = '37px';
+    signupInput[1].style.marginBottom = '46px';
 })
 
 password.addEventListener('blur', (event) => {
@@ -109,21 +212,17 @@ password.addEventListener('blur', (event) => {
 
 
 //USER
-
-//Get current date
-let day = new Date();
-let dd = String(day.getDate()).padStart(2, '0');
-let mm = String(day.getMonth() + 1).padStart(2, '0');
-let yyyy = day.getFullYear();
-let curDay = dd + "/" + mm + "/" + yyyy;
-
 class User {
-    constructor(username, password, phoneNumber, email) {
+    constructor(username, password, email, phoneNumber) {
         this.username = username;
         this.password = password;
-        this.phoneNumber = phoneNumber;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.createDate = curDay;
+        this.address1 = '';
+        this.address2 = '';
+        this.address3 = ''
+        this.status = true; //check if account is block or not
     }
 
     static validateUsername = (username) => {
@@ -181,8 +280,9 @@ class User {
         console.log("Add new user:")
         console.log(newUser);
         try {
-            userList.push(newUser);
-            localStorage.setItem('users', JSON.stringify(userList));
+            let users = JSON.parse(localStorage.getItem("users"));
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
             showNotification();
             return true;
         } catch (e) {
@@ -192,17 +292,10 @@ class User {
     }
 }
 
-class Address {
-    constructor(username, address) {
-        this.username = username;
-        this.address = address;
-    }
-}
-
 function showNotification() {
     notification.className = "show";
     setTimeout(function () {
-        notification.className = notification.classList.remove("show");
+        notification.classList.remove("show");
     }, 3000);
 }
 
