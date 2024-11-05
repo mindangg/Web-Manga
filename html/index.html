@@ -605,21 +605,22 @@
             <h1>Login</h1>
 
             <div class="login__input">
-            <input type="text" placeholder="Username" minlength="6" required>
+                <input type="text" id="login__input--username" placeholder="Username" required value="">
             </div>
 
             <div class="login__input">
-            <input type="password" placeholder="Password" minlength="6" required>
+                <input type="text" id="login__input--password" placeholder="Password" required value="">
+                <label for="login__input--password"></label>
             </div>
 
-            <div class="login__forget">
-            <a>Forget your password?</a>
+            <div id="login__forget">
+                <a>Forget your password?</a>
             </div>
 
-            <button type="submit" class="login__btn">Login</button>
+            <button type="submit" id="login__btn">Login</button>
 
-            <div class="login__signup">
-            <a href="#" id="login__signup--nav">Sign Up</a>
+            <div id="login__signup">
+                <a href="#" id="login__signup--nav">Sign Up</a>
             </div>
         </div>
     </section>
@@ -629,36 +630,37 @@
             <h1>Sign Up</h1>
             <!--   Username   -->
             <div class="signup__input">
-                <input type="text" id="signup__input--username" class="input" placeholder="Username" required value="">
+                <input type="text" id="signup__input--username" placeholder="Username" required value="">
                 <label for="signup__input--username"></label>
             </div>
             <!--   Password   -->
             <div class="signup__input">
-                <input type="password" id="signup__input--password" class="input" placeholder="Password" required value="">
+                <input type="password" id="signup__input--password" placeholder="Password" required>
                 <label for="signup__input--password"></label>
             </div>
             <!--   Confirm Password   -->
             <div class="signup__input">
-                <input type="password" id="signup__input--confpasword" class="input" placeholder="Confirm Password" required>
+                <input type="password" id="signup__input--confpasword" placeholder="Confirm Password" required>
                 <label for="signup__input--confpasword"></label>
             </div>
             <!--   Email   -->
             <div class="signup__input">
-                <input type="email" id="signup__input--email" class="input" placeholder="Email" required>
+                <input type="email" id="signup__input--email" placeholder="Email" required>
                 <label for="signup__input--email"></label>
             </div>
             <!--   Phone number   -->
             <div class="signup__input">
-                <input type="tel" id="signup__input--phone" class="input" placeholder="076 302 0810" required>
+                <input type="tel" id="signup__input--phone" placeholder="076 302 0810" required>
                 <label for="signup__input--phone"></label>
             </div>
 
             <button type="submit" id="signup__btn">Create account</button>
 
             <div id="signup__login">
-                <a href="../html/login.html">Already has account?</a>
+                <a href="#" id="signup__login--nav">Already has account?</a>
             </div>
         </div>
+        <div id="notification">Sign up successfully</div>
     </section>
     </main>
 
@@ -666,6 +668,8 @@
     <special-footer id="special-footer"></special-footer>
 
     <!-- js -->
+    <script src="../js/validation.js"></script>
+    <script src="../js/user.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/header_footer.js"></script>
 </body>

@@ -55,27 +55,24 @@ class Validation {
     }
 
     static checkBlankField (field){
-        const inputs = document.getElementsByTagName('input');
+        const inputs = field.getElementsByTagName('input');
+        let check = false;
         for (let input of inputs){
             if (this.isBlank(input.value)){
                 input.style.border = '1px solid rgba(255, 51, 0, 0.76)';
                 input.labels[0].innerText = 'This cannot be empty';
                 input.labels[0].style.display = 'block';
+                check = true;
             } else {
                 input.style.border = '2px solid #363636';
                 input.labels[0].innerText = '';
                 input.labels[0].style.display = 'none';
             }
         }
+        return check;
     }
 
-    static usernameIsExisted = (username) => {
-        let check = false;
-        userList.forEach(user => {
-            if(user._username === username) {
-                check = true;
-            }
-        })
-        return check;
+    static usernameExisted (username) {
+        return userList.some(user => user.username === username.value);
     }
 }
