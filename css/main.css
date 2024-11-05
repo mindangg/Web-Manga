@@ -825,7 +825,7 @@ body{
     width: 0;
 }
 
-#signup__login{
+#signup__login--nav{
     font-size: 20px;
     display: flex;
     justify-content: center;
