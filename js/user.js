@@ -18,7 +18,7 @@ const forget = document.getElementById('logi')
 //SIGN UP EVENT
 submit.addEventListener("click", (event) => {
     event.preventDefault();
-    if(Validation.checkBlankField(signup))
+    if (Validation.checkBlankField(signup))
         return false;
     if (!Validation.isBlank(username.value))
         User.validateUsername(username);
@@ -35,7 +35,7 @@ submit.addEventListener("click", (event) => {
     if (!Validation.isBlank(phoneNumber.value))
         User.validatePhoneNumber(phoneNumber);
 
-    if(check) {
+    if (check) {
         username.style.border = '1px solid rgba(255, 51, 0, 0.76)';
         username.labels[0].innerText = 'Username has already existed';
         username.labels[0].style.display = 'block';
@@ -59,13 +59,13 @@ submit.addEventListener("click", (event) => {
         Validation.emailIsValid(email) &&
         Validation.phoneIsValid(phoneNumber)
     ) {
-        if (User.insert(username.value, password.value, phoneNumber.value, email.value)){
+        if (User.insert(username.value, password.value, phoneNumber.value, email.value)) {
             username.value = '';
             password.value = '';
             confirmPassword.value = '';
             email.value = '';
             phoneNumber.value = '';
-            setTimeout(function (){
+            setTimeout(function () {
                 document.getElementById("signup__page").style.display = "none";
                 document.getElementById("login__page").style.display = "inline";
             }, 3000);
@@ -79,7 +79,7 @@ submit.addEventListener("click", (event) => {
 let check = false;
 username.addEventListener('blur', (event) => {
     check = Validation.usernameExisted(username);
-    if(check) {
+    if (check) {
         username.style.border = '1px solid rgba(255, 51, 0, 0.76)';
         username.labels[0].innerText = 'Username has already existed';
         username.labels[0].style.display = 'block';
@@ -137,7 +137,7 @@ class User {
     }
 
     static validatePassword = (password) => {
-        if (!Validation.passwordIsValid(password)){
+        if (!Validation.passwordIsValid(password)) {
             password.labels[0].innerText = 'Password do not meet requirement';
             password.labels[0].style.display = 'block';
         } else {
@@ -147,7 +147,7 @@ class User {
     }
 
     static validateConfirmPassword = (password, confirmPassword) => {
-        if (!Validation.isMatch(password, confirmPassword)){
+        if (!Validation.isMatch(password, confirmPassword)) {
             confirmPassword.labels[0].innerText = 'Does not match password';
             confirmPassword.labels[0].style.display = 'block';
         } else {
@@ -157,7 +157,7 @@ class User {
     }
 
     static validateEmail = (email) => {
-        if (!Validation.emailIsValid(email)){
+        if (!Validation.emailIsValid(email)) {
             email.labels[0].innerText = 'Email is invalid';
             email.labels[0].style.display = 'block';
         } else {
@@ -167,7 +167,7 @@ class User {
     }
 
     static validatePhoneNumber = (phoneNumber) => {
-        if (!Validation.phoneIsValid(phoneNumber)){
+        if (!Validation.phoneIsValid(phoneNumber)) {
             phoneNumber.labels[0].innerText = 'Phone number is invalid';
             phoneNumber.labels[0].style.display = 'block';
         } else {
@@ -176,7 +176,7 @@ class User {
         }
     }
 
-    static insert(username, password, phone_number, email){
+    static insert(username, password, phone_number, email) {
         const newUser = new User(username, password, phone_number, email);
         console.log("Add new user:")
         console.log(newUser);
@@ -185,7 +185,7 @@ class User {
             localStorage.setItem('users', JSON.stringify(userList));
             showNotification();
             return true;
-        } catch (e){
+        } catch (e) {
             console.log("Add new user failed");
             return false;
         }
@@ -199,9 +199,9 @@ class Address {
     }
 }
 
-function showNotification(){
+function showNotification() {
     notification.className = "show";
-    setTimeout(function (){
+    setTimeout(function () {
         notification.className = notification.classList.remove("show");
     }, 3000);
 }

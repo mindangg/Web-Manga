@@ -538,7 +538,7 @@ class Product {
         (() => {
             if (localStorage.getItem("productTable") !== null) {
                 console.log("-> get product table...");
-                let productTable = JSON.parse(localStorage.getItem("productTable"));
+                productTable = JSON.parse(localStorage.getItem("productTable"));
                 console.log(productTable);
                 Product.render(productTable);
             } else {
