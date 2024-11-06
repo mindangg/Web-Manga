@@ -102,21 +102,10 @@ const signupInput = document.getElementsByClassName('signup__input');
 
 //FOR SIGN IN
 const login = document.getElementById('login')
-const loginIcon = document.getElementById('login__icon');
 const usernameLogin = document.getElementById('login__input--username');
 const passwordLogin = document.getElementById('login__input--password');
 const forget = document.getElementById('login__forget');
 const submitLogin = document.getElementById('login__btn');
-
-loginIcon.addEventListener('click', (event) => {
-    if(JSON.parse(localStorage.getItem('users')) === null){
-        localStorage.setItem('users', JSON.stringify(userList));
-        console.log('Set users');
-    } else {
-        userList = JSON.parse(localStorage.getItem('users'));
-        console.log('Get users');
-    }
-})
 
 //SIGN UP EVENT
 submitSignUp.addEventListener("click", (event) => {
@@ -163,18 +152,12 @@ submitSignUp.addEventListener("click", (event) => {
         Validation.phoneIsValid(phoneNumber)
     ) {
         if (User.insert(username.value, password.value, phoneNumber.value, email.value)) {
-            username.value = '';
-            password.value = '';
-            confirmPassword.value = '';
-            email.value = '';
-            phoneNumber.value = '';
-            setTimeout(function () {
-                document.getElementById("signup__page").style.display = "none";
-                document.getElementById("login__page").style.display = "inline";
-            }, 3000);
+            clearField(signup);
+            document.getElementById("signup__page").style.display = "none";
+            document.getElementById("login__page").style.display = "inline";
         } else {
-            notification.innerText = "There were some problem, sign up failed";
-            showNotification();
+            console.log('Login failed');
+            showNotification("There were some problem, sign up failed");
         }
     }
 })
@@ -209,7 +192,25 @@ password.addEventListener('blur', (event) => {
 })
 
 //SIGN IN EVENT
+submitLogin.addEventListener('click', (event) => {
+    account = findAccount(usernameLogin.value, passwordLogin.value);
+    console.log(account);
+    if (account === undefined) {
+        passwordLogin.labels[0].innerText = 'Username or password is not correct';
+        passwordLogin.labels[0].style.display = 'block';
+    } else {
+        passwordLogin.labels[0].innerText = '';
+        passwordLogin.labels[0].style.display = 'none';
+        clearField(login);
+        showNotification('Welcome, ' + usernameLogin.value);
+    }
 
+})
+
+const findAccount = (username, password) => {
+    userList = JSON.parse(localStorage.getItem('users'));
+    return userList.find(user=> user.username === username && user.password === password)
+}
 
 //USER
 class User {
@@ -283,19 +284,38 @@ class User {
             let users = JSON.parse(localStorage.getItem("users"));
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
-            showNotification();
+            showNotification('Sign up successfully');
             return true;
         } catch (e) {
             console.log("Add new user failed");
             return false;
         }
     }
+
+    static onload() {
+        if(JSON.parse(localStorage.getItem('users')) === null){
+            localStorage.setItem('users', JSON.stringify(userList));
+            console.log('Set users');
+        } else {
+            userList = JSON.parse(localStorage.getItem('users'));
+            console.log('Get users');
+        }
+    }
 }
 
-function showNotification() {
+function showNotification(message) {
+    notification.innerHTML = message;
     notification.className = "show";
     setTimeout(function () {
         notification.classList.remove("show");
     }, 3000);
 }
 
+function clearField(field) {
+    const inputs = field.querySelectorAll("input");
+    inputs.forEach(input => {
+        input.value = '';
+    });
+}
+
+User.onload();
