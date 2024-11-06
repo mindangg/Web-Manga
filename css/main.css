@@ -169,6 +169,7 @@ body{
 
 .best__slider__item img:nth-child(1){
     position: absolute;
+    /* display: none; */
 }
 
 .best__slider__item img:hover{
