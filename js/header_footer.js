@@ -120,10 +120,10 @@ class SpecialHeader extends HTMLElement{
             </div>
 
             <div class="navbar__responsive__popup">
-                <div class="navbar__responsive__close">
-                    <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
-                </div>
                 <div class="navbar__responsive">
+                    <div class="navbar__responsive__close">
+                        <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
                     <ul class="navbar__responsive__links">
                         <li class="navbar__responsive--home">
                             <a href="index.html" class="navbar__responsive__link">Home</a>
@@ -156,50 +156,54 @@ class SpecialHeader extends HTMLElement{
                                 <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
                             </button>
                         </li>
-
                         <li class="navbar__responsive--about">
                             <a href="#special-footer" class="navbar__responsive__link">About Us</a>
                         </li>
+                    </ul>
 
-                        <div class="navbar__responsived__drops>
-                            <ul class="navbar__responsive--series__drop">
-                                <li>Sakamoto Days</li>
-                                <li>My Dress Up Darling</li>
-                                <li>Black Clover</li>
-                                <li>My Hero Academia</li>
-                                <li>Jujutsu Kaisen</li>
-                                <li>Mashle: Magic And Muscles</li>
-                                <li>One Punch Man</li>
-                                <li>Spy X Family</li>
-                            </ul>
-                            <ul class="navbar__responsive--category__drop">
-                                <li>Shounen</li>
-                                <li>Slice Of Life</li>
-                                <li>Rom-Com</li>
-                                <li>Action</li>
-                                <li>Seinen</li>
-                                <li>Comedy</li>
-                                <li>Fantasy</li>
-                                <li>Drama</li>
-                            </ul>
-                            <ul class="navbar__responsive--author__drop">
-                                <li>Murata Yusuke</li>
-                                <li>Fukuda Shinichi</li>
-                                <li>Komoto Hajime</li>
-                                <li>Tabata Yuki</li>
-                                <li>Horikoshi Kohei</li>
-                                <li>Gege Akutami</li>
-                                <li>Suzuki Yuto</li>
-                                <li>Drama</li>
-                            </ul>
-                            <ul class="navbar__responsive--price__drop">
-                                <li>Under $5 Dollars</li>
-                                <li>$5 To $7 Dollars</li>
-                                <li>$7 To $15 Dollars</li>
-                                <li>Over $15 Dollars</li>
-                            </ul>
-                        </div>
+                    <ul class="navbar__responsive--series__drops">
+                        <li id="navbar__responsive--series__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
 
+                        <li><a href="">Sakamoto Days</a></li>
+                        <li><a href="">My Dress Up Darling</a></li>
+                        <li><a href="">Black Clover</a></li>
+                        <li><a href="">My Hero Academia</a></li>
+                        <li><a href="">Jujutsu Kaisen</a></li>
+                        <li><a href="">Mashle: Magic And Muscles</a></li>
+                        <li><a href="">One Punch Man</a></li>
+                        <li><a href="">Spy X Family</a></li>
+                    </ul>
+        
+                    <ul class="navbar__responsive--category__drops">
+                        <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Shounen</a></li>
+                        <li><a href="">Slice Of Life</a></li>
+                        <li><a href="">Rom-Com</a></li>
+                        <li><a href="">Action</a></li>
+                        <li><a href="">Family</a></li>
+                        <li><a href="">Comedy</a></li>
+                        <li><a href="">Fantasy</a></li>
+                        <li><a href="">Drama</a></li>
+                    </ul>
+    
+                    <ul class="navbar__responsive--author__drops">
+                        <li id="navbar__responsive--author__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Murata Yusuke</a></li>
+                        <li><a href="">Fukuda Shinichi</a></li>
+                        <li><a href="">Komoto Hajime</a></li>
+                        <li><a href="">Tabata Yūki</a></li>   
+                        <li><a href="">Horikoshi Kohei</a></li>
+                        <li><a href="">Gege Akutami</a></li>                       
+                        <li><a href="">Suzuki Yuto</a></li>
+                        <li><a href="">Gege Akutami</a></li>
+                    </ul>
+        
+                    <ul class="navbar__responsive--price__drops">
+                        <li id="navbar__responsive--price__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Under $5 Dollars</a></li>
+                        <li><a href="">$5 To $7 Dollars</a></li>
+                        <li><a href="">$7 To $15 Dollars</a></li>
+                        <li><a href="">Over $15 Dollars</a></li>
                     </ul>
                 </div>
             </div>    
@@ -350,14 +354,28 @@ document.getElementById("shopping__close").addEventListener("click", function(){
 
 //responsive
 document.getElementById("navbar__bar__icon").addEventListener("click", function(){
-    document.querySelector(".navbar__responsive__popup").style.display = "inline";
-    console.log("hello");
+    document.querySelector(".navbar__responsive__popup").style.display = "inline"
+    document.querySelector(".navbar__responsive").style.animationName = "bottomUp"
 })
 
 document.getElementById("navbar__responsive__close__button").addEventListener("click", function(){
-    document.querySelector(".navbar__responsive__popup").style.display = "none";
-
+    document.querySelector(".navbar__responsive").style.animationName = "topDown";
+    setTimeout(function(){
+        document.querySelector(".navbar__responsive__popup").style.display = "none";
+    }, 300)
+    console.log("hello")
 })
+
+// var x = matchMedia("(max-width: 619px)")
+// if(!x.matches)
+//     document.querySelector(".navbar__responsive").style.display = "none";
+
+window,onresize = function(){
+    if(window.innerWidth > 619){
+        document.querySelector(".navbar__responsive__popup").style.display = "none";
+    }
+}
+
 
 document.querySelector(".navbar__responsive--series").addEventListener("click", function(){
     document.querySelector(".navbar__responsive__links").style.display = "none"
@@ -398,6 +416,8 @@ document.getElementById("navbar__responsive--price__back").addEventListener("cli
     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
     document.querySelector(".navbar__responsive__links").style.display = "inline"
 })
+
+
 
 
 
