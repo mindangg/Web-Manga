@@ -13,3 +13,7 @@ let togglePage = (e) => {
         }
     })
 }
+
+let logOutAdmin = () => {
+    localStorage.removeItem('admin')
+}

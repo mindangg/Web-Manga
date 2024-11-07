@@ -27,7 +27,7 @@
                         </button>
                         <div id="dropdown" class="dropdown__content">
                             <a href="/">Ghi chép (Logs)</a>
-                            <a href="index.html">Đăng xuất (Logout)</a>
+                            <a href="index.html" onclick="logOutAdmin()">Đăng xuất (Logout)</a>
                         </div>
                     </div>
                 </div>
@@ -143,8 +143,12 @@
                     </div>
 
                     <div id="product-menu__body" class="product-menu__body">
-                        <label class="product-menu__label" for="product-menu__input--cover">Cover:</label>
-                        <input class="product-menu__input" id="product-menu__input--cover" type="file"
+                        <label class="product-menu__label" for="product-menu__input--cover1">Cover primary:</label>
+                        <input class="product-menu__input" id="product-menu__input--cover1" type="file"
+                            aria-label="Product Image" /><br />
+
+                        <label class="product-menu__label" for="product-menu__input--cover2">Cover back:</label>
+                        <input class="product-menu__input" id="product-menu__input--cover2" type="file"
                             aria-label="Product Image" /><br />
 
                         <label class="product-menu__label" for="product-menu__input--series">Series:</label>
@@ -171,6 +175,10 @@
                         <label class="product-menu__label" for="product-menu__input--price">Price:</label>
                         <input class="product-menu__input" id="product-menu__input--price" type="text"
                             placeholder="Price" aria-label="Product Price" /><br />
+
+                        <label class="product-menu__label" for="product-menu__input--description">Description:</label>
+                        <input class="product-menu__input" id="product-menu__input--description" type="text"
+                            placeholder="Description" aria-label="Product Description" /><br />
                     </div>
 
                     <div class="product-menu__footer">
@@ -179,7 +187,7 @@
                             Close
                         </button> -->
                         <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
-                            type="button">
+                            type="button" onclick="Product.add()">
                             Save (Add Mode)
                         </button>
                         <button class="product-menu__button product-menu__button--save" id="product-menu__button--save"
@@ -250,9 +258,12 @@
     </div>
 </body>
 
-<script src="../js/priceSlider.js"></script>
 <script src="../js/toggleSideNav.js"></script>
 <script src="../js/adminController.js"></script>
+<script src="../js/priceSlider.js"></script>
 <script src="../js/product.js"></script>
+<script>
+    Product.onloadViewAdmin();
+</script>
 
 </html>
