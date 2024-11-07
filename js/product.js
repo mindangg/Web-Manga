@@ -47,15 +47,10 @@ const productInputStock = document.getElementById("product-menu__input--stock");
 const productInputPrice = document.getElementById("product-menu__input--price");
 const productInputDescription = document.getElementById("product-menu__input--description")
 
-const productSearchName = document.getElementById(
-    "product-table__search-input--name"
-);
-const productSearchCategory = document.getElementById(
-    "product-table__search-input--category"
-);
-const productSearchPriceMin = document.getElementById(
-    "product-table__search-price--min"
-);
+// Search input
+const productSearchName = document.getElementById("product-table__search-input--name");
+const productSearchCategory = document.getElementById("product-table__search-input--category");
+const productSearchPriceMin = document.getElementById("product-table__search-price--min");
 const productSliderPriceMin = document.querySelector(".min");
 const sortIdProduct = document.querySelector(".product-table__cell--id");
 
