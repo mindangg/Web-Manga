@@ -74,7 +74,13 @@
 
 .navbar__home i:hover{
     cursor: pointer;
-    transform: translateY(-5px);
+    transform: translateY(1px);
+}
+
+.navbar__home div div {
+    color: #28a745;
+    font-size: 14px;
+    transform: translateY(1px);
 }
 
 /*navigation bar drop down */
@@ -444,7 +450,11 @@ hr{
     display: none;
 }
 
-
+.navbar__bar div div {
+    color: #28a745;
+    font-size: 14px;
+    transform: translateY(1px);
+}
 
 /* header responsive */
 
@@ -622,10 +632,14 @@ hr{
         display: none;
     }
 
+    .navbar__home div {
+        display: none;
+    }
+
     .navbar__bar {
         transition: 0.6s;
         margin: 0px 30px;
-        display: inline;
+        display: flex;
     }
 
     .navbar__bar i {

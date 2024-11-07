@@ -8,6 +8,17 @@ let curDay = dd + "/" + mm + "/" + yyyy;
 
 let userList = [
     {
+        username: "1",
+        password: "1",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381431",
+        createDate: '10/02/2005',
+        address1: '',
+        address2: '',
+        address3: '',
+        status: true,
+    },
+    {
         username: "baohoo100205",
         password: "Baohoo100205",
         email: "baohoo10205@gmail.com",
@@ -201,10 +212,34 @@ submitLogin.addEventListener('click', (event) => {
     } else {
         passwordLogin.labels[0].innerText = '';
         passwordLogin.labels[0].style.display = 'none';
-        clearField(login);
-        showNotification('Welcome, ' + usernameLogin.value);
-    }
+        if (account.status === false){
+            passwordLogin.labels[0].innerText = 'Account has been disabled';
+            passwordLogin.labels[0].style.display = 'block';
+            return false;
+        } else {
+            passwordLogin.labels[0].innerText = '';
+            passwordLogin.labels[0].style.display = 'none';
+        }
 
+        if (account.username === 'admin' && account.password === 'admin'){
+            window.location.href = '../html/admin.html';
+            return true;
+        } else {
+            passwordLogin.labels[0].innerText = '';
+            passwordLogin.labels[0].style.display = 'none';
+            clearField(login);
+            document.getElementsByClassName('navbar__home')[0]
+                .querySelectorAll('div')[1]
+                .innerText = `${account.username}`;
+            document.getElementsByClassName('navbar__bar')[0]
+                .querySelectorAll('div')[1]
+                .innerText = `${account.username}`;
+            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            document.getElementById("login__page").style.display = "none";
+            document.getElementById("main__page").style.display = "inline";
+        }
+    }
 })
 
 const findAccount = (username, password) => {
