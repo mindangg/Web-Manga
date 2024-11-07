@@ -449,7 +449,7 @@ class Product {
     // load san pham khi trang reload
     static onloadViewAdmin() {
         (() => {
-            if (!localStorage.getItem("productTable")) {
+            if (localStorage.getItem("productTable")) {
                 console.log("-> get product table...");
                 productTable = JSON.parse(localStorage.getItem("productTable"));
                 console.log(productTable);
