@@ -32,131 +32,40 @@ var productIndex = productCurrentPage;
 // Product property
 const productBtnAdd = document.getElementById("product-menu__button--add");
 const productBtnSave = document.getElementById("product-menu__button--save");
-const productBtnCancel = document.getElementById(
-    "product-menu__button--cancel"
-);
+const productBtnCancel = document.getElementById("product-menu__button--cancel");
 const productMenuBody = document.getElementById("product-menu__body");
 const productTableFooter = document.getElementById("product-table__footer");
 const productRenderTable = document.getElementById("product-table");
 
 // Product input
-const productInputCover = document.getElementById("product-menu__input--cover");
-const productInputSeries = document.getElementById(
-    "product-menu__input--series"
-);
-const productInputCategory = document.getElementById(
-    "product-menu__input--category"
-);
-const productInputAuthor = document.getElementById(
-    "product-menu__input--author"
-);
+const productInputCover1 = document.getElementById("product-menu__input--cover1");
+const productInputCover2 = document.getElementById("product-menu__input--cover2");
+const productInputSeries = document.getElementById("product-menu__input--series");
+const productInputCategory = document.getElementById("product-menu__input--category");
+const productInputAuthor = document.getElementById("product-menu__input--author");
 const productInputStock = document.getElementById("product-menu__input--stock");
 const productInputPrice = document.getElementById("product-menu__input--price");
+const productInputDescription = document.getElementById("product-menu__input--description")
 
-const productSearchName = document.getElementById(
-    "product-table__search-input--name"
-);
-const productSearchCategory = document.getElementById(
-    "product-table__search-input--category"
-);
-const productSearchPriceMin = document.getElementById(
-    "product-table__search-price--min"
-);
+// Search input
+const productSearchName = document.getElementById("product-table__search-input--name");
+const productSearchCategory = document.getElementById("product-table__search-input--category");
+const productSearchPriceMin = document.getElementById("product-table__search-price--min");
 const productSliderPriceMin = document.querySelector(".min");
-
 const sortIdProduct = document.querySelector(".product-table__cell--id");
 
 // Product table
-var productTable = [
+let productTable = [
     {
+        author: "Suzuki Yuto",
         productId: "manga_0",
-        cover: "../img/banner/1.png",
-        series: "My Hero Academia",
-        category: "Shonen",
-        author: "Kohei Horikoshi",
+        cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
+        cover2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
+        series: "Sakamoto Days",
+        category: "Action",
         stock: 150,
         price: 9.99,
-    },
-    {
-        productId: "manga_1",
-        cover: "../img/banner/2.png",
-        series: "Attack on Titan",
-        category: "Seinen",
-        author: "Hajime Isayama",
-        stock: 120,
-        price: 12.99,
-    },
-    {
-        productId: "manga_2",
-        cover: "../img/banner/3.png",
-        series: "One Piece",
-        category: "Shonen",
-        author: "Eiichiro Oda",
-        stock: 200,
-        price: 9.49,
-    },
-    {
-        productId: "manga_3",
-        cover: "https://example.com/covers/manga_004.jpg",
-        series: "Naruto",
-        category: "Shonen",
-        author: "Masashi Kishimoto",
-        stock: 180,
-        price: 11.99,
-    },
-    {
-        productId: "manga_4",
-        cover: "https://example.com/covers/manga_005.jpg",
-        series: "Demon Slayer",
-        category: "Shonen",
-        author: "Koyoharu Gotouge",
-        stock: 160,
-        price: 10.99,
-    },
-    {
-        productId: "manga_5",
-        cover: "https://example.com/covers/manga_006.jpg",
-        series: "Death Note",
-        category: "Seinen",
-        author: "Tsugumi Ohba",
-        stock: 140,
-        price: 14.99,
-    },
-    {
-        productId: "manga_6",
-        cover: "https://example.com/covers/manga_007.jpg",
-        series: "Fullmetal Alchemist",
-        category: "Shonen",
-        author: "Hiromu Arakawa",
-        stock: 130,
-        price: 13.99,
-    },
-    {
-        productId: "manga_7",
-        cover: "https://example.com/covers/manga_008.jpg",
-        series: "Sword Art Online",
-        category: "Fantasy",
-        author: "Reki Kawahara",
-        stock: 110,
-        price: 9.99,
-    },
-    {
-        productId: "manga_8",
-        cover: "https://example.com/covers/manga_009.jpg",
-        series: "Tokyo Ghoul",
-        category: "Seinen",
-        author: "Sui Ishida",
-        stock: 90,
-        price: 11.49,
-    },
-    {
-        productId: "manga_9",
-        cover: "https://example.com/covers/manga_010.jpg",
-        series: "One Punch Man",
-        category: "Shonen",
-        author: "Yusuke Murata",
-        stock: 170,
-        price: 10.99,
+        description: "Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.",
     },
 ];
 // ========================================================================
@@ -164,29 +73,33 @@ var productTable = [
 // ========================================================================
 // class san pham
 class Product {
-    constructor(productId, cover, series, category, author, stock, price) {
+    constructor(productId, cover1, cover2, series, category, author, stock, price, description) {
         this.productId = productId;
-        this.cover = cover;
+        this.cover1 = cover1;
+        this.cover2 = cover2;
         this.series = series;
         this.category = category;
         this.author = author;
         this.stock = stock;
         this.price = price;
+        this.description = description
     }
     // ========================================================================
     // INSERT
     // ========================================================================
     // dung de insert san pham
-    static insert(productId, cover, series, category, author, stock, price) {
+    static insert(productId, cover1, cover2, series, category, author, stock, price, description) {
         console.log("Inserting product...");
         const newProduct = new Product(
             productId,
-            cover,
+            cover1,
+            cover2,
             series,
             category,
             author,
             stock,
-            price
+            price,
+            description
         );
         productTable.push(newProduct);
     }
@@ -206,31 +119,31 @@ class Product {
     // ADD EVENT
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
-    static addEvent() {
-        productBtnAdd.addEventListener("click", () => {
-            console.log("Adding product...");
-            Product.insert(
-                `manga_${Product.generateId(productTable)}`,
-                `../img/banner/${productInputCover.value.split("\\")[2]}`,
-                productInputSeries.value,
-                productInputCategory.value,
-                productInputAuthor.value,
-                productInputStock.value,
-                parseFloat(productInputPrice.value)
-            );
+    static add() {
+        console.log("Adding product...");
+        Product.insert(
+            `manga_${Product.generateId(productTable)}`,
+            `../img/banner/${productInputCover1.value.split("\\")[2]}`,
+            `../img/banner/${productInputCover2.value.split("\\")[2]}`,
+            productInputSeries.value,
+            productInputCategory.value,
+            productInputAuthor.value,
+            productInputStock.value,
+            parseFloat(productInputPrice.value),
+            productInputDescription.value
+        );
 
-            localStorage.setItem("productTable", JSON.stringify(productTable));
-            console.log("* Insert product to table: ", productTable);
-            console.log(
-                "* Insert product from table to local storage: ",
-                JSON.parse(localStorage.getItem("product table"))
-            );
+        localStorage.setItem("productTable", JSON.stringify(productTable));
+        console.log("* Insert product to table: ", productTable);
+        console.log(
+            "* Insert product from table to local storage: ",
+            JSON.parse(localStorage.getItem("product table"))
+        );
 
-            let renderProduct = JSON.parse(
-                localStorage.getItem("productTable")
-            );
-            Product.render(renderProduct);
-        });
+        let renderProduct = JSON.parse(
+            localStorage.getItem("productTable")
+        );
+        Product.render(renderProduct);
     }
     // ========================================================================
     // RENDER 
@@ -268,7 +181,7 @@ class Product {
                         ${p.productId}
                     </td>
                     <td style="width: 50px; height: 50px; text-align: center;">
-                        <img src="${p.cover}" alt="product-cover" style="width: 100px; height: 100px;">
+                        <img src="${p.cover1}" alt="product-cover" style="width: 100px; height: 100px;">
                     </td>
                     <td style="text-align: center;">
                         ${p.series}
@@ -534,9 +447,9 @@ class Product {
     // ONLOAD PRODUCT
     // ==================================================================================
     // load san pham khi trang reload
-    static onload() {
+    static onloadViewAdmin() {
         (() => {
-            if (localStorage.getItem("productTable") !== null) {
+            if (!localStorage.getItem("productTable")) {
                 console.log("-> get product table...");
                 productTable = JSON.parse(localStorage.getItem("productTable"));
                 console.log(productTable);
@@ -548,9 +461,16 @@ class Product {
             }
         })();
     }
+    static onloadViewIndex() {
+        (() => {
+            if (localStorage.getItem("productTable")) {
+                console.log("-> get product table...");
+                productTable = JSON.parse(localStorage.getItem("productTable"));
+                console.log(productTable);
+            } else {
+                console.log("-> set product table...");
+                localStorage.setItem("productTable", JSON.stringify(productTable));
+            }
+        })();
+    }
 }
-
-Product.addEvent();
-let descending = false
-Product.search();
-Product.onload();
