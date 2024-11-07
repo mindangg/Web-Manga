@@ -114,11 +114,10 @@ var bestSellingProduct = [
 
 ]
 
-let i = 1
 bestSellingProduct.forEach(p => {
     document.querySelector(".best__slider__list").innerHTML += `
                 <div class="best__slider__item">
-                    <a id="best__item${i}">
+                    <a id="${p.productId}" onclick="showBestInfo(this)">
                         <img src="${p.img1}" alt="">
                         <img src="${p.img2}" alt="">
                     </a>
@@ -127,27 +126,9 @@ bestSellingProduct.forEach(p => {
                     <button>+ Add to cart</button>
                 </div>
     `
-    i++
 })
-
-
-
-
-
-
-
-
-
-
 
 //best slider popup
-
-document.getElementById("best__item1").addEventListener("click", function(){
-    document.querySelector(".product__page").style.display = "inline";
-    document.querySelector(".product").style.animationName = "topDown";
-    showBestInfo();
-})
-
 document.getElementById("product__view2").addEventListener("click", function(){
     document.getElementById("product__img1").style.opacity = 0;
 })
@@ -160,7 +141,6 @@ document.getElementById("product__close").addEventListener("click", function(){
     document.getElementById("product__img1").style.opacity = 1;
 })
 
-
 document.getElementById("product__close").addEventListener("click", function(){
     document.querySelector(".product").style.animationName = "bottomUp";
     setTimeout(function(){
@@ -168,48 +148,72 @@ document.getElementById("product__close").addEventListener("click", function(){
       }, 365);
 })
 
-function showBestInfo(){
-    const productInfo = document.querySelector(".product__page")
-    
-    productInfo.innerHTML = `
-            <div class="product">
-                <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                <div class="product__img">
-                    <img id="product__img1" src="${p.img1}">
-                    <img id="product__img2" src="${p.img2}">
+document.querySelector(".best__slider__item a").addEventListener("click", function(){
+    document.querySelector(".product__page").style.display = "inline";
+    document.querySelector(".product").style.animationName = "topDown";
+    showBestInfo();
+})
 
-                    <a id="product__view1"><img src="${p.img1}"></a>
-
-                    <a id="product__view2"><img src="${p.img2}"></a>
-
-                </div>
-    
-                <div class="product__info">
-                    <h1></h1>
-                    <div class="product__info--rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>Author: ${p.author}</p>
-                    <h2></h2>
-                    <p></p>
-                    <p>Quantity: </p>
-    
-                    <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
-                    <button id="product__add">Add to cart</button>
-    
-                    <p>Availability: ${p.stock}</p><br>
-                    <h4>Description</h4>
-                    <p>${p.descr1}</p><br>
-                    <p>${p.descr2}</p>
-                </div>
-                </div>
-            </div>
-`
+function test(){
+    console.log("abc")
 }
+
+function showBestInfo(e) {
+    const productInfo = document.querySelector(".product__page");
+    const p = bestSellingProduct.find(product => product.productId === e.id);
+
+    if (!p) {
+        console.error("Product not found");
+        return;
+    }
+
+    productInfo.innerHTML = `
+                <div class="product">
+                    <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="${p.img1}">
+                        <img id="product__img2" src="${p.img2}">
+
+                        <a id="product__view1"><img src="${p.img1}"></a>
+
+                        <a id="product__view2"><img src="${p.img2}"></a>
+
+                    </div>
+
+                    <div class="product__info">
+                        <h1>${p.name}</h1>
+                        <div class="product__info--rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Author:</p>
+                        <h2>${p.author}</h2>
+                        <p>${p.category}</p>
+                        <p>Quantity: </p>
+
+                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+                        <button id="product__add">Add to cart</button>
+
+                        <p>Availability: ${p.stock}</p><br>
+                        <h4>Description</h4>
+                        <p>${p.descr1}</p><br>
+                        <p>${p.descr2}</p>
+                    </div>
+                    </div>
+                </div>
+    `
+}
+
+// function showBestInfo(e){
+//     const productInfo = document.querySelector(".product__page")
+//     bestSellingProduct.find(p => p.productId === e.productId)
+
+// }
+
+
 
 
 
