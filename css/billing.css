@@ -1,0 +1,107 @@
+/* Billing Information Form Styles */
+.billing-info {
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.billing-info h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.billing-info label {
+    font-size: 1.1em;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.billing-info input,
+.billing-info textarea,
+.billing-info select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.billing-info textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.billing-info select {
+    cursor: pointer;
+}
+
+.billing-info input:focus,
+.billing-info textarea:focus,
+.billing-info select:focus {
+    border-color: #00d146;
+    outline: none;
+    background-color: #e9f9e7;
+}
+
+.billing-info input[required],
+.billing-info textarea[required],
+.billing-info select[required] {
+    border-color: #ccc;
+}
+
+.billing-info .error {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+    margin-top: -10px;
+}
+
+.billing-info .submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #00d146;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.billing-info .submit-button:hover {
+    background-color: #00b63a;
+}
+
+.billing-info .submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Pay Now Button */
+.pay-now-button {
+    text-align: center;
+    width: 20%;
+    padding: 15px;
+    background-color: #00d146;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.pay-now-button:hover {
+    background-color: #00b63a;
+}
+
+.pay-now-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
