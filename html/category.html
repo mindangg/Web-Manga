@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/category.css">
     <link rel="stylesheet" href="../css/cart_1.css">
     <link rel="stylesheet" href="../css/billing.css">
+    <link rel="stylesheet" href="../css/order.css">
     <!-- <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/signup.css"> -->
     <link rel="icon" type="image/png" href="../img/WEBTOON_Logo.png">
@@ -312,7 +313,7 @@
             </div>
         </section>
 
-        <div class="cart-container">
+        <div class="cart__container">
             <h1>Cart</h1>
             <div class="cart-content">
                 <!-- Cart Items List -->
@@ -329,7 +330,7 @@
                 </table>
                 <!-- Cart Summary -->
                 <div class="cart-summary">
-                    <h3>Total of order: $313.42</h3>
+                    <h3>Total of order: $0.00</h3>
                     <button class="checkout-button">Checkout</button>
                 </div>
             </div>
@@ -342,7 +343,7 @@
                 <input type="text" id="fullName" required>
 
                 <label for="address" z>Shipping Address</label>
-                <textarea id="address" required></textarea>
+                <input id="address" required></input>
 
                 <!-- <label for="paymentMethod">Payment Method</label>
                 <div style="overflow: hidden;">
@@ -353,8 +354,37 @@
                     </select>
                 </div> -->
                 <div style="text-align: center;">
-                    <button class="pay-now-button" type="button">Pay Now</button>
+                    <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
                 </div>
+            </div>
+        </div>
+
+        <div class="order__history">
+            <h2>Your Order History</h2>
+
+            <!-- Example Order -->
+            <div class="order" style="max-height: 310px; overflow: auto;">
+                <!-- <div style="display: flex;">
+                    <div>
+                        <div class="order__id">Order ID: #12345</div>
+                        <div class="order__date">Date: 2023-11-01</div>
+                        <div class="order__status status--cancel">Status: Pending</div>
+                        <span class="show__details" onclick="toggleDetails(this)">View Details</span>
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <div class="order__items__details">
+                            <strong>Items:</strong>
+                            <ul>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
 
@@ -431,6 +461,17 @@
     <script src="../js/header_footer.js"></script>
     <script src="../js/product.js"></script>
     <script>
+        function toggleDetails(e) {
+            const details = e.parentElement.nextElementSibling.children[0];
+            if (details.style.display === "none") {
+                details.style.display = "block";
+                e.textContent = "Hide Details";
+            } else {
+                details.style.display = "none";
+                e.textContent = "View Details";
+            }
+        }
+
         Product.onloadViewIndex();
         const URLOfIndex = window.location.href
         const URLtoAdmin = URLOfIndex.split("index.html")
@@ -439,9 +480,11 @@
         }
 
         let cartTable = JSON.parse(localStorage.getItem('cart')) || []
+        let orderTable = JSON.parse(localStorage.getItem('order')) || []
 
         const productContainer = document.querySelector(".product__container")
         const cartItemContainer = document.querySelector(".cart-items")
+        const orderContainer = document.querySelector(".order");
         const cartSummary = document.querySelector(".cart-summary")
 
         function renderViewIndex(renderProduct) {
@@ -454,7 +497,7 @@
                         </a>
                         <h4>${p.series}</h4>
                         <p>$${p.price}</p>
-                        <button id=${p.productId} onclick="addToCart(this)">+ Add to cart</button>
+                        <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
                         <p>Stock: ${p.stock}</p>
                     </div>
                 `
@@ -462,27 +505,34 @@
         }
         renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
 
-        function addToCart(e) {
-            console.log(e.id)
-            const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
-            const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
-            const quantity = quantityInput ? (quantityInput.value) : 1;
+        class Cart {
+            static addToCart(e) {
+                console.log(e.id)
+                const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
+                const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
+                const quantity = quantityInput ? (quantityInput.value) : 1;
 
-            if (!cartItem) {
-                alert("Sản phẩm này không tồn tại");
-                return;
+                if (cartItem.stock === 0) {
+                    alert("Hết hàng");
+                    return;
+                }
+
+                if (!cartItem) {
+                    alert("Sản phẩm này không tồn tại");
+                    return;
+                }
+
+                const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
+                if (alreadyInCart) {
+                    alert("Sản phẩm đã có trong giỏ hàng");
+                    return;
+                } else {
+                    cartTable.push({ ...cartItem, quantity })
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cartTable))
+                renderCartPreview(cartTable)
             }
-
-            const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
-            if (alreadyInCart) {
-                alert("Sản phẩm đã có trong giỏ hàng");
-                return;
-            } else {
-                cartTable.push({ ...cartItem, quantity })
-            }
-
-            localStorage.setItem('cart', JSON.stringify(cartTable))
-            renderCartPreview(cartTable)
         }
 
         function renderCartPreview(cartItem) {
@@ -514,13 +564,13 @@
                         </td>
                     </tr>
                 `
-            });
 
-            cartSummary.innerHTML = ""
-            cartSummary.innerHTML = `
-                <h3>Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
-                <button class="checkout-button">Checkout</button>
-            `
+                cartSummary.innerHTML = ""
+                cartSummary.innerHTML = `
+                    <h3>Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
+                    <button class="checkout-button">Checkout</button>
+                `
+            });
 
             const quantityInputs = document.querySelectorAll(".cart__quantity");
             quantityInputs.forEach(input => {
@@ -544,10 +594,164 @@
             cartTable = deleteItemInCart
             localStorage.setItem('cart', JSON.stringify(cartTable))
             renderCartPreview(cartTable)
+            renderCartSummary()
+        }
+
+        function renderCartSummary() {
+            cartSummary.innerHTML = ""
+            cartSummary.innerHTML = `
+                    <h3> Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
+                    <button class="checkout-button">Checkout</button>
+            `
+        }
+
+        class Order {
+            constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullname, orderAddrress) {
+                this.orderId = orderId
+                this.userId = userId
+                this.orderDate = orderDate
+                this.orderStatus = orderStatus
+                this.orderItems = orderItems
+                this.orderPrice = orderPrice
+                this.userFullname = userFullname
+                this.orderAddrress = orderAddrress
+            }
+
+            static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullname, orderAddrress) {
+                const newOrder = new Order(
+                    orderId, // `order_${ Order.generateId(orderTable) } `
+                    userId,
+                    orderDate, // new Date()
+                    orderStatus,
+                    orderItems,
+                    orderPrice,
+                    userFullname,
+                    orderAddrress
+                )
+                Order.updateStockForOrder(newOrder, 'decrease');
+                orderTable.push(newOrder);
+            }
+
+            static generateId = (data) => {
+                if (data.length === 0) {
+                    return 0;
+                } else {
+                    const index = data[data.length - 1].orderId.split("_")[1];
+                    return parseInt(index) + 1;
+                }
+            };
+            //
+            static handlePayNow() {
+                console.log("Handling pay now...")
+
+                Order.addToOrder('Pending');
+
+                renderCartSummary();
+            }
+            //
+            static addToOrder(status = "Pending") {
+                console.log("Adding to order...")
+                console.log(orderTable)
+                Order.insert(
+                    `order_${Order.generateId(orderTable)} `,
+                    `user_1`,
+                    new Date().toISOString().split('T')[0],
+                    status,
+                    cartTable.map(item => ({
+                        productId: item.productId,
+                        series: item.series,
+                        category: item.category,
+                        author: item.author,
+                        quantity: item.quantity,
+                        totalPrice: item.price * item.quantity
+                    })),
+                    cartTable.reduce((total, item) => total + item.price * item.quantity, 0),
+                    "Tu Anh Phu",
+                    "Quan 8"
+                );
+                localStorage.setItem("order", JSON.stringify(orderTable))
+
+                alert("Your order has been successfully placed!");
+
+                cartTable = [];
+                localStorage.setItem("cart", JSON.stringify(cartTable));
+
+                renderCartPreview(cartTable);
+                Order.renderOrderView(orderTable);
+            }
+
+            static updateStockForOrder(order, action) {
+                console.log("Updating stock for order...")
+                console.log("Order:", order);
+                order.orderItems.forEach(item => {
+                    const product = productTable.find(p => p.productId === item.productId);
+                    if (product) {
+                        if (action === "decrease") {
+                            product.stock -= item.quantity;
+                        } else if (action === "increase") {
+                            product.stock += item.quantity;
+                        }
+                    }
+                });
+
+                // Save the updated product data back to localStorage
+                localStorage.setItem("productTable", JSON.stringify(productTable));
+
+                renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
+            }
+
+            static renderOrderView(renderOrder) {
+                orderContainer.innerHTML = ""
+
+                renderOrder.forEach(o => {
+                    orderContainer.innerHTML += `
+                        <div style = "display: flex;">
+                            <div>
+                                <div class="order__id">Order ID: ${o.orderId}</div>
+                                <div class="order__date">Date: ${o.orderDate}</div>
+                                <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${o.orderStatus}</div>
+                                <span class="show__details" onclick="toggleDetails(this)">View Details</span>
+                            </div>
+                            <div style="margin-left: 100px;">
+                                <div class="order__items__details">
+                                    <strong>Items:</strong>
+                                    <ul>
+                                        ${o.orderItems.map(item => `
+                                            <li>Series: ${item.series}</li>
+                                            <li>Quantity: ${item.quantity}</li>
+                                            <li>Price: $${item.totalPrice}</li>
+                                            <hr>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    `
+                })
+            }
+
+            static getStatus(status) {
+                if (status === "Pending") {
+                    return "status--pending"
+                }
+                if (status === "Completed") {
+                    return "status--complte"
+                }
+                if (status === "Canceled") {
+                    return "status--cancel"
+                }
+            }
+
+            static onloadCartHistory(){
+                
+            }
         }
 
         (() => {
+            Product.onloadViewIndex();
             renderCartPreview(cartTable)
+            Order.renderOrderView(orderTable)
         })()
     </script>
 </body>
