@@ -39,7 +39,7 @@
                 <div id="static">Thống kê</div>
                 <div id="product" onclick="togglePage(this)">Sản phẩm (Product)</div>
                 <div id="user" onclick="togglePage(this)">Khách hàng (Clients)</div>
-                <div id="order">Hóa đơn (Order)</div>
+                <div id="order" onclick="togglePage(this)">Hóa đơn (Order)</div>
             </div>
 
 
@@ -245,16 +245,16 @@
                         <table class="user table__container" style="width: 100%">
                             <thead class="user table__head">
                                 <tr class="user table__row">
-                                    <th class="user table__cell product-table__cell--id">
+                                    <th class="user table__cell user-table__cell id">
                                         UserID
                                     </th>
-                                    <th class="user table__cell product-table__cell cover">
+                                    <th class="user table__cell user-table__cell cover">
                                         Username
                                     </th>
-                                    <th class="user table__cell product-table__cell cover">
+                                    <th class="user table__cell user-table__cell cover">
                                         Date Create
                                     </th>
-                                    <th class="user table__cell product-table__cell title">
+                                    <th class="user table__cell user-table__cell title">
                                         Status
                                     </th>
                                 </tr>
@@ -271,6 +271,62 @@
                     </div>
                 </div>
             </div>
+            <!-- ORDER PAGE -->
+            <div id="order-page" class="order-page page">
+                <!-- TABLE PRODUCT -->
+                <div class="order table">
+                    <!-- Menu Header -->
+                    <header class="order table__header">
+                        <p class="order table__title">Danh sách sản phẩm</p>
+                    </header>
+
+                    <!-- Menu Body -->
+                    <div class="order table__search">
+                        <div style="display: flex; flex-direction: row">
+                            <div class="order table__search-label">Search by name:</div>
+                            <input type="text" class="order-table__search-input" id="order-table__search-input--name" />
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">
+                                Search by category:
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user table__body">
+                        <table class="user table__container" style="width: 100%">
+                            <thead class="user table__head">
+                                <tr class="user table__row">
+                                    <th class="user table__cell user-table__cell orderid">
+                                        OrderID
+                                    </th>
+                                    <th class="user table__cell user-table__cell cover">
+                                        UserID
+                                    </th>
+                                    <th class="user table__cell user-table__cell cover">
+                                        Item list
+                                    </th>
+                                    <th class="user table__cell user-table__cell cover">
+                                        Date Create
+                                    </th>
+                                    <th class="user table__cell user-table__cell title">
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-table__body-content" class="product table__body-content">
+                                <!-- Product rows will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Menu Footer -->
+                    <div class="user-table__footer" id="user-table__footer">
+                        <!-- Pagination or additional controls can go here -->
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
@@ -279,6 +335,7 @@
 <script src="../js/adminController.js"></script>
 <script src="../js/priceSlider.js"></script>
 <script src="../js/product.js"></script>
+<script src="../js/purchase.js"></script>
 <script>
     Product.onloadViewAdmin();
 </script>
