@@ -55,16 +55,60 @@ const productSliderPriceMin = document.querySelector(".min");
 const sortIdProduct = document.querySelector(".product-table__cell--id");
 
 // Product table
-let productTable = [
+let productTable = JSON.parse(localStorage.getItem("productTable")) || [
     {
         author: "Suzuki Yuto",
         productId: "manga_0",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
         cover2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
         series: "Sakamoto Days",
-        category: "Action",
-        stock: 150,
+        category: "Shonen",
+        stock: 1,
         price: 9.99,
+        description: "Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.",
+    },
+    {
+        author: "Suzuki Yuto",
+        productId: "manga_1",
+        cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
+        cover2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
+        series: "Naruto",
+        category: "Shonen",
+        stock: 3,
+        price: 9.99,
+        description: "Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.",
+    },
+    {
+        author: "Suzuki Yuto",
+        productId: "manga_2",
+        cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
+        cover2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
+        series: "Hero Academy",
+        category: "Action",
+        stock: 5,
+        price: 19.99,
+        description: "Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.",
+    },
+    {
+        author: "Suzuki Yuto",
+        productId: "manga_3",
+        cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
+        cover2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
+        series: "HxH",
+        category: "Shonen",
+        stock: 7,
+        price: 29.99,
+        description: "Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.",
+    },
+    {
+        author: "Suzuki Yuto",
+        productId: "manga_4",
+        cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
+        cover2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
+        series: "PunPun",
+        category: "Action",
+        stock: 10,
+        price: 59.99,
         description: "Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.",
     },
 ];
@@ -205,10 +249,10 @@ class Product {
                     </th>
                     `;
                 productTableBody.append(row);
-                console.log("Render product table succesfully ✓");
-                Product.renderPagination(renderProduct);
-                Helper.clearForm(productMenuBody);
             });
+            console.log("Render product table succesfully ✓");
+            Product.renderPagination(renderProduct);
+            Helper.clearForm(productMenuBody);
         }
     }
     // ========================================================================
@@ -225,14 +269,14 @@ class Product {
         // neu tong so trang san pham > 1 thi render
         if (productTotalPages > 1) {
             productTableFooter.innerHTML = `
-            <button class="button button__product__prev-pagi" 
-            id="button__product__prev-pagi"> << </button>
+                <button class="button button__product__prev-pagi" 
+                id="button__product__prev-pagi"> << </button>
 
-            <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 2%;"> / ${productTotalPages}
-            
-            <button class="button button__product__next-pagi" 
-            id="button__next-pagi"> >> </button>
-        `;
+                <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 2%;"> / ${productTotalPages}
+                
+                <button class="button button__product__next-pagi" 
+                id="button__next-pagi"> >> </button>
+            `;
             const inputPagi = document.getElementById("input-product__pagi");
             inputPagi.value = productIndex;
 
@@ -261,8 +305,6 @@ class Product {
                         console.error("Error");
                     }
                 });
-        } else {
-            console.log("Error")
         }
     }
     // ========================================================================
@@ -327,6 +369,8 @@ class Product {
         productBtnCancel.style.display = "none";
 
         console.log("Update product from table succesfully ✓");
+
+        Product.applyFilters();
     }
     // ========================================================================
     // DELETE PRODUCT
@@ -346,6 +390,8 @@ class Product {
         Product.render(productTable);
 
         console.log("Delete product from table succesfully ✓");
+
+        Product.applyFilters();
     }
     // ==================================================================================
     // CANCEL BUTTON
@@ -373,6 +419,7 @@ class Product {
         });
 
         productSearchCategory.addEventListener("change", () => {
+            console.log(productSearchCategory.value)
             console.log("-> search by category...");
             Product.applyFilters();
         });
@@ -411,20 +458,13 @@ class Product {
             );
         }
 
-        if (
-            productSearchPriceMin.value > 0
-        ) {
+        if (productSearchPriceMin.value > 0) {
             filteredProduct = filteredProduct.filter(
                 (item) => parseFloat(productSearchPriceMin.value) <= item.price
             );
         }
 
-        if (filteredProduct.length === 0) {
-            let empty = [];
-            Product.render(empty);
-        } else {
-            Product.render(filteredProduct);
-        }
+        Product.render(filteredProduct);
     }
     // Chua tim ra phuong phap de sort ma khong anh huong den product table
     // static applySort() {
@@ -448,25 +488,19 @@ class Product {
     // ==================================================================================
     // load san pham khi trang reload
     static onloadViewAdmin() {
-        (() => {
-            if (localStorage.getItem("productTable")) {
-                console.log("-> get product table...");
-                productTable = JSON.parse(localStorage.getItem("productTable"));
-                console.log(productTable);
-                Product.render(productTable);
-            } else {
-                console.log("-> set product table...");
-                localStorage.setItem("productTable", JSON.stringify(productTable));
-                Product.render(productTable);
-            }
-        })();
+        localStorage.setItem("productTable", JSON.stringify(productTable));
+        Product.render(productTable);
+        Product.search();
+        document.addEventListener("DOMContentLoaded", () => {
+            Product.applyFilters()
+        });
     }
     static onloadViewIndex() {
         (() => {
             if (localStorage.getItem("productTable")) {
                 console.log("-> get product table...");
-                productTable = JSON.parse(localStorage.getItem("productTable"));
-                console.log(productTable);
+                let viewIndex = JSON.parse(localStorage.getItem("productTable"));
+                console.log(viewIndex);
             } else {
                 console.log("-> set product table...");
                 localStorage.setItem("productTable", JSON.stringify(productTable));
