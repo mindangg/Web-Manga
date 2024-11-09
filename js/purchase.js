@@ -5,6 +5,7 @@ const productContainer = document.querySelector(".product__container")
 const cartItemContainer = document.querySelector(".cart-items")
 const orderContainer = document.querySelector(".order");
 const cartSummary = document.querySelector(".cart-summary")
+const orderTableContainer = document.getElementById("order-table__body-content")
 
 function renderViewIndex(renderProduct) {
     productContainer.innerHTML = ""
@@ -217,7 +218,7 @@ class Order {
 
         renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
     }
-
+    // 
     static renderOrderView(renderOrder) {
         orderContainer.innerHTML = ""
 
@@ -248,7 +249,40 @@ class Order {
             `
         })
     }
-
+    // 
+    static renderOrderAdmin(renderOrder) {
+        orderTableContainer.innerHTML = ""
+        renderOrder.forEach(o => {
+            orderTableContainer.innerHTML += `
+                <tr style="max-width: 1px; overflow-x: auto;">
+                    <td style="text-align: center;">
+                        ${o.orderId}
+                    </td>
+                    <td style="text-align: center;">
+                        ${o.userId}
+                    </td>
+                    <td style="text-align: center;">
+                        ${o.orderItems.map(item => `
+                            <p>Series: ${item.series}</p>
+                            Quantity: ${item.quantity}
+                            Price: $${item.totalPrice}
+                        `).join('')}
+                        <hr>
+                    </td>
+                    <td style="text-align: center;">
+                        ${o.orderPrice}
+                    </td>
+                    <td style="text-align: center;">
+                        ${o.orderDate}
+                    </td>
+                    <td style="text-align: center;">
+                        ${o.orderStatus}
+                    </td>
+                </tr>
+            `
+        })
+    }
+    //  
     static getStatus(status) {
         if (status === "Pending") {
             return "status--pending"

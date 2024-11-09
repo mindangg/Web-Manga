@@ -55,7 +55,7 @@
                     <!-- Menu Body -->
                     <div class="product table__search">
                         <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">Search by name:</div>
+                            <div class="product table__search-label">Search by series:</div>
                             <input type="text" class="product-table__search-input"
                                 id="product-table__search-input--name" />
                         </div>
@@ -293,28 +293,31 @@
                         </div>
                     </div>
 
-                    <div class="user table__body">
-                        <table class="user table__container" style="width: 100%">
-                            <thead class="user table__head">
-                                <tr class="user table__row">
-                                    <th class="user table__cell user-table__cell orderid">
+                    <div class="order table__body">
+                        <table class="order table__container" style="width: 100%">
+                            <thead class="order table__head">
+                                <tr class="order table__row">
+                                    <th class="order table__cell order-table__cell orderid">
                                         OrderID
                                     </th>
-                                    <th class="user table__cell user-table__cell cover">
+                                    <th class="order table__cell user-table__cell userid">
                                         UserID
                                     </th>
-                                    <th class="user table__cell user-table__cell cover">
+                                    <th class="user table__cell user-table__cell itemlist">
                                         Item list
                                     </th>
-                                    <th class="user table__cell user-table__cell cover">
+                                    <th class="user table__cell user-table__cell price">
+                                        Price
+                                    </th>
+                                    <th class="user table__cell user-table__cell datecreate">
                                         Date Create
                                     </th>
-                                    <th class="user table__cell user-table__cell title">
+                                    <th class="user table__cell user-table__cell status">
                                         Status
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody id="user-table__body-content" class="product table__body-content">
+                            <tbody id="order-table__body-content" class="product table__body-content">
                                 <!-- Product rows will be displayed here -->
                             </tbody>
                         </table>
@@ -338,6 +341,7 @@
 <script src="../js/purchase.js"></script>
 <script>
     Product.onloadViewAdmin();
+    Order.renderOrderAdmin(orderTable);
 </script>
 
 </html>
