@@ -496,15 +496,6 @@ class Product {
         });
     }
     static onloadViewIndex() {
-        (() => {
-            if (localStorage.getItem("productTable")) {
-                console.log("-> get product table...");
-                let viewIndex = JSON.parse(localStorage.getItem("productTable"));
-                console.log(viewIndex);
-            } else {
-                console.log("-> set product table...");
-                localStorage.setItem("productTable", JSON.stringify(productTable));
-            }
-        })();
+        localStorage.setItem("productTable", JSON.stringify(productTable));
     }
 }

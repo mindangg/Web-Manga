@@ -693,12 +693,10 @@
     <script src="../js/header_footer.js"></script>
     <script src="../js/product.js"></script>
     <script>
-        Product.onloadViewIndex();
         const URLOfIndex = window.location.href
-        const URLtoAdmin = URLOfIndex.split("index.html")
-        // dung local storage de dang nhap admin
+        const URLToAdmin = URLOfIndex.split("html")
         if (localStorage.getItem('admin') === 'admin') {
-            window.location.href = `${URLtoAdmin[0]}admin.html`
+            window.location.href = `${URLToAdmin[0]}/html/admin.html`
         }
     </script>
 </body>
