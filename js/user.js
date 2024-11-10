@@ -8,6 +8,7 @@ let curDay = dd + "/" + mm + "/" + yyyy;
 
 let userList = [
     {
+        userId: "user_0",
         username: "1",
         password: "1",
         email: "baohoo10205@gmail.com",
@@ -19,6 +20,7 @@ let userList = [
         status: true,
     },
     {
+        userId: "user_1",
         username: "baohoo100205",
         password: "Baohoo100205",
         email: "baohoo10205@gmail.com",
@@ -30,6 +32,7 @@ let userList = [
         status: true,
     },
     {
+        userId: "user_2",
         username: "baohoo1002",
         password: "Baohoo100205",
         email: "baohoo1002@gmail.com",
@@ -41,6 +44,7 @@ let userList = [
         status: true,
     },
     {
+        id: "user_3",
         username: "quocbao",
         password: "Baohoo100205",
         email: "baohoo10205@gmail.com",
@@ -52,6 +56,7 @@ let userList = [
         status: true,
     },
     {
+        userId: "user_4",
         username: "quocbaohoo",
         password: "Baohoo1002",
         email: "baohoo10205@gmail.com",
@@ -63,6 +68,7 @@ let userList = [
         status: true,
     },
     {
+        userId: "user_5",
         username: "bael10205",
         password: "Baohoo100205",
         email: "baohoo1002@gmail.com",
@@ -74,6 +80,7 @@ let userList = [
         status: true,
     },
     {
+        userId: "user_6",
         username: "bael10205",
         password: "Baohoo100205",
         email: "baohoo1002@gmail.com",
@@ -85,6 +92,7 @@ let userList = [
         status: true,
     },
     {
+        userId: "user_7",
         username: "admin",
         password: "admin",
         email: "baohoo10205@gmail.com",
@@ -162,7 +170,7 @@ submitSignUp.addEventListener("click", (event) => {
         Validation.emailIsValid(email) &&
         Validation.phoneIsValid(phoneNumber)
     ) {
-        if (User.insert(username.value, password.value, phoneNumber.value, email.value)) {
+        if (User.insert(`user_${User.generateId(userList)}`, username.value, password.value, phoneNumber.value, email.value)) {
             clearField(signup);
             document.getElementById("signup__page").style.display = "none";
             document.getElementById("login__page").style.display = "inline";
@@ -212,7 +220,7 @@ submitLogin.addEventListener('click', (event) => {
     } else {
         passwordLogin.labels[0].innerText = '';
         passwordLogin.labels[0].style.display = 'none';
-        if (account.status === false){
+        if (account.status === false) {
             passwordLogin.labels[0].innerText = 'Account has been disabled';
             passwordLogin.labels[0].style.display = 'block';
             return false;
@@ -221,10 +229,13 @@ submitLogin.addEventListener('click', (event) => {
             passwordLogin.labels[0].style.display = 'none';
         }
 
-        if (account.username === 'admin' && account.password === 'admin'){
+        if (account.username === 'admin' && account.password === 'admin') {
             window.location.href = '../html/admin.html';
             return true;
         } else {
+            // phusomnia
+            localStorage.setItem('accountLogin', JSON.stringify(account.userId));
+            //
             passwordLogin.labels[0].innerText = '';
             passwordLogin.labels[0].style.display = 'none';
             clearField(login);
@@ -244,12 +255,14 @@ submitLogin.addEventListener('click', (event) => {
 
 const findAccount = (username, password) => {
     userList = JSON.parse(localStorage.getItem('users'));
-    return userList.find(user=> user.username === username && user.password === password)
+    return userList.find(user => user.username === username && user.password === password)
 }
 
 //USER
 class User {
-    constructor(username, password, email, phoneNumber) {
+    // phusomnia
+    constructor(userId, username, password, email, phoneNumber) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -311,8 +324,18 @@ class User {
         }
     }
 
-    static insert(username, password, phone_number, email) {
-        const newUser = new User(username, password, phone_number, email);
+    // phusonmnia
+    static generateId = (data) => {
+        if (data.length === 0) {
+            return 0;
+        } else {
+            const index = data[data.length - 1].userId.split("_")[1];
+            return parseInt(index) + 1;
+        }
+    };
+
+    static insert(userId, username, password, phone_number, email) {
+        const newUser = new User(userId, username, password, phone_number, email);
         console.log("Add new user:")
         console.log(newUser);
         try {
@@ -328,12 +351,25 @@ class User {
     }
 
     static onload() {
-        if(JSON.parse(localStorage.getItem('users')) === null){
+        if (JSON.parse(localStorage.getItem('users')) === null) {
             localStorage.setItem('users', JSON.stringify(userList));
             console.log('Set users');
         } else {
             userList = JSON.parse(localStorage.getItem('users'));
             console.log('Get users');
+        }
+    }
+    // 
+    static renderAccountLogin() {
+        console.log(localStorage.getItem('accountLogin'))
+        if (localStorage.getItem('accountLogin')) {
+            let accountLogin = userList.find(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')));
+            document.getElementsByClassName('navbar__home')[0]
+                .querySelectorAll('div')[1]
+                .innerText = `${accountLogin.username}`;
+            document.getElementsByClassName('navbar__bar')[0]
+                .querySelectorAll('div')[1]
+                .innerText = `${accountLogin.username}`;
         }
     }
 }
@@ -354,3 +390,4 @@ function clearField(field) {
 }
 
 User.onload();
+User.renderAccountLogin();

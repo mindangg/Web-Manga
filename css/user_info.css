@@ -23,6 +23,10 @@
     margin-bottom: 1rem;
 }
 
+.user__order, .user__info {
+    cursor: pointer;
+}
+
 /* Modal styling */
 .modal {
     background-color: #1a1a1a;
