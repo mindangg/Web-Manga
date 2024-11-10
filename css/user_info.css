@@ -1,0 +1,104 @@
+.user-info__navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #333333;
+}
+
+.user-info__navbar>div {
+    color: #ffffff;
+    margin: 0 1rem;
+    font-weight: 500;
+}
+
+/* Container for the main content */
+.user-info__container {
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.user-info__container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Modal styling */
+.modal {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 2rem;
+    max-width: 550px;
+    width: 100%;
+}
+
+.modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.form-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group label {
+    width: 100%;
+    background-color: #262626;
+    border: 1px solid #333333;
+    padding: 0.8rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+input::placeholder,
+label {
+    color: #aaaaaa;
+}
+
+/* Checkbox styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #00ff00;
+}
+
+/* Save button styling */
+.user-info__save-btn {
+    background-color: #00ff00;
+    color: #1a1a1a;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.save-btn:hover {
+    background-color: #00e600;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+}

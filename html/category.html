@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/cart_1.css">
     <link rel="stylesheet" href="../css/billing.css">
     <link rel="stylesheet" href="../css/order.css">
+    <link rel="stylesheet" href="../css/user_info.css">
     <!-- <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/signup.css"> -->
     <link rel="icon" type="image/png" href="../img/WEBTOON_Logo.png">
@@ -26,7 +27,7 @@
         <nav class="navbar">
             <!-- logo -->
             <div class="navbar__logo">
-                <a href="index.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+                <a class="backToHome" href="category.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
             </div>
             <!-- links -->
             <ul class="navbar__links">
@@ -222,8 +223,8 @@
         </div>
     </header>
 
-    <main style="margin-bottom: 120px;">
-        <section id="main__page">
+    <main class="main">
+        <section id="main__page" style="display: inherit;">
             <!-- slider -->
             <div class="slider">
                 <div class="slider__list">
@@ -313,7 +314,7 @@
             </div>
         </section>
 
-        <div class="cart__container">
+        <section class="cart__container">
             <h1>Cart</h1>
             <div class="cart-content">
                 <!-- Cart Items List -->
@@ -330,63 +331,122 @@
                 </table>
                 <!-- Cart Summary -->
                 <div class="cart-summary">
-                    <h3>Total of order: $0.00</h3>
+                    <div>
+                        <span>Total of order: </span>
+                        <span>$0.00</span>
+                    </div>
                     <button class="checkout-button">Checkout</button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="billing-info">
-            <h2>Billing Information</h2>
-            <div id="billingForm">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" required>
+        <section class="billing-info__layer">
+            <section class="billing-info" style="display: flex;">
+                <div id="billingForm">
+                    <h2>Billing Information</h2>
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
 
-                <label for="address" z>Shipping Address</label>
-                <input id="address" required></input>
+                    <label for="address" z>Shipping Address</label>
+                    <input id="address" required></input>
 
-                <!-- <label for="paymentMethod">Payment Method</label>
-                <div style="overflow: hidden;">
-                    <select id="paymentMethod" required>
-                        <option value="creditCard">Credit Card</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="bankTransfer">Bank Transfer</option>
-                    </select>
-                </div> -->
-                <div style="text-align: center;">
-                    <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
+                    <!-- <label for="paymentMethod">Payment Method</label>
+                        <div style="overflow: hidden;">
+                            <select id="paymentMethod" required>
+                                <option value="creditCard">Credit Card</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bankTransfer">Bank Transfer</option>
+                            </select>
+                        </div> -->
+                    <div style="text-align: center;">
+                        <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <div class="payment-info__container">
+                        <!-- <div class="payment-info__item">
+                                <img src="https://via.placeholder.com/50" alt="Item Image">
+                                <div class="quantity-circle">1</div>
+                                <div class="payment-info__item-details">
+                                    <p>LORE OLYMPUS - GODDESS OF SPRING SATIN SHORTS</p>
+                                </div>
+                                <div class="payment-info__item-price">$40.00</div>
+                            </div> -->
+                    </div>
+                    <div class="payment-info__summary">
+                        <!-- <div class="subtotal">
+                            <span>Subtotal • 4 items</span>
+                            <span>$149.99</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span class="order-price">$149.99 USD</span>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="user-info">
+            <div class="user-info__navbar">
+                <div></div>
+                <div style="display: flex; gap: 60px">
+                    <div class="user__order"">Orders</div>
+                    <div class=" user__info">User Info</div>
+                </div>
+                <div>Logout</div>
+            </div>
+
+            <div class="user-info__container">
+                <div class="modal">
+                    <a href="#" class="close-btn">&times;</a>
+                    <h2>Edit user info</h2>
+                    <p>Please fill in the information below:</p>
+
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="First name" value="Từ">
+                            <input type="text" placeholder="Last name" value="Phú">
+                        </div>
+
+                        <div class="form-group" style="display: block;">
+                            <input type="text" placeholder="Phone number" class="form-group">
+                            <input type="text" placeholder="Address 1" class="form-group">
+                            <input type="text" placeholder="Address 2" class="form-group">
+                        </div>
+
+                        <button type="submit" class="user-info__save-btn">Save address</button>
+                    </form>
                 </div>
             </div>
-        </div>
 
-        <div class="order__history">
-            <h2>Your Order History</h2>
-
-            <!-- Example Order -->
-            <div class="order" style="max-height: 310px; overflow: auto;">
-                <!-- <div style="display: flex;">
-                    <div>
-                        <div class="order__id">Order ID: #12345</div>
-                        <div class="order__date">Date: 2023-11-01</div>
-                        <div class="order__status status--cancel">Status: Pending</div>
-                        <span class="show__details" onclick="toggleDetails(this)">View Details</span>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <div class="order__items__details">
-                            <strong>Items:</strong>
-                            <ul>
-                                <li>Comic: "Adventure Tales" - $10.00</li>
-                                <li>Comic: "Mystery World" - $8.00</li>
-                                <li>Comic: "Adventure Tales" - $10.00</li>
-                                <li>Comic: "Mystery World" - $8.00</li>
-                                <li>Comic: "Adventure Tales" - $10.00</li>
-                                <li>Comic: "Mystery World" - $8.00</li>
-                            </ul>
+            <div class="order__history">
+                <h2>Your Order History</h2>
+                <div class="order" style="max-height: 310px; overflow: auto;">
+                    <!-- <div style="display: flex;">
+                        <div>
+                            <div class="order__id">Order ID: #12345</div>
+                            <div class="order__date">Date: 2023-11-01</div>
+                            <div class="order__status status--cancel">Status: Pending</div>
+                            <span class="show__details" onclick="toggleDetails(this)">View Details</span>
                         </div>
-                    </div>
-                </div> -->
+                        <div style="margin-left: 100px;">
+                            <div class="order__items__details">
+                                <strong>Items:</strong>
+                                <ul>
+                                    <li>Comic: "Adventure Tales" - $10.00</li>
+                                    <li>Comic: "Mystery World" - $8.00</li>
+                                    <li>Comic: "Adventure Tales" - $10.00</li>
+                                    <li>Comic: "Mystery World" - $8.00</li>
+                                    <li>Comic: "Adventure Tales" - $10.00</li>
+                                    <li>Comic: "Mystery World" - $8.00</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
             </div>
-        </div>
+        </section>
 
         <section id="login__page">
             <div id="login">
@@ -458,10 +518,24 @@
     <!-- js -->
     <script src="../js/validation.js"></script>
     <script src="../js/user.js"></script>
-    <script src="../js/header_footer.js"></script>
+    <script src="../js/header_footer_1.js"></script>
     <script src="../js/product.js"></script>
     <script src="../js/purchase.js"></script>
     <script>
+        function viewHome() {
+            document.getElementById('main__page').style.display = 'inherit'
+        }
+        function viewCart() {
+            document.getElementById('main__page').style.display = 'none'
+            document.querySelector('.cart__container').style.display = 'inherit'
+            document.querySelector('.billing-info').style.display = 'none'
+        }
+        function viewBill() {
+            document.getElementById('main__page').style.display = 'none'
+            document.querySelector('.cart__container').style.display = 'none'
+            document.querySelector('.billing-info').style.display = 'inherit'
+        }
+
         (() => {
             const URLOfIndex = window.location.href
             const URLToAdmin = URLOfIndex.split("html")
@@ -472,7 +546,32 @@
             renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
             Cart.renderCartPreview(cartTable)
             Order.renderOrderView(orderTable)
+
+            // if (!localStorage.getItem('View')) {
+            //     viewHome();
+            // }
+            // if (JSON.parse(localStorage.getItem('View')) === 'cart') {
+            //     viewCart();
+            // }
+            // if (JSON.parse(localStorage.getItem('View')) === 'bill') {
+            //     viewBill();
+            // }
         })()
+
+        // document.querySelector('.backToHome').addEventListener('click', () => {
+        //     localStorage.removeItem('View')
+        //     viewHome();
+        // })
+
+        // document.getElementById('shopping__icon').addEventListener('click', () => {
+        //     localStorage.setItem('View', JSON.stringify('cart'))
+        //     viewCart()
+        // })
+
+        // document.querySelector('.checkout-button').addEventListener('click', () => {
+        //     localStorage.setItem('View', JSON.stringify('bill'))
+        //     viewBill()
+        // })
     </script>
 </body>
 

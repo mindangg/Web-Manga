@@ -6,6 +6,8 @@ const cartItemContainer = document.querySelector(".cart-items")
 const orderContainer = document.querySelector(".order");
 const cartSummary = document.querySelector(".cart-summary")
 const orderTableContainer = document.getElementById("order-table__body-content")
+const paymentInfoContainer =  document.querySelector(".payment-info__container")
+const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
 function renderViewIndex(renderProduct) {
     productContainer.innerHTML = ""
@@ -82,13 +84,36 @@ class Cart {
                 </td>
             </tr>
         `
-
-            cartSummary.innerHTML = ""
-            cartSummary.innerHTML = `
-            <h3>Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
-            <button class="checkout-button">Checkout</button>
-        `
         });
+
+        Cart.renderCartSummary()
+
+        paymentInfoContainer.innerHTML = ""
+        cartItem.forEach(p => {
+            paymentInfoContainer.innerHTML += `
+                <div class="payment-info__item">
+                    <img src="${p.cover1}" alt="Item Image">
+                    <div class="quantity-circle">${p.quantity}</div>
+                    <div class="payment-info__item-details">
+                        <p>${p.series}</p>
+                    </div>
+                    <div class="payment-info__item-price">$${p.price * p.quantity}</div>
+                </div>
+            `
+        })
+
+        paymentInfoSummary.innerHTML = ""
+        paymentInfoSummary.innerHTML = `
+            <div class="subtotal">
+                <span>Subtotal • ${cartTable.length} items</span>
+                <span>$${cartTable.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+            </div>
+            <div class="total">
+                <span>Total</span>
+                <span class="order-price">$${cartTable.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+            </div>
+        `
+
 
         const quantityInputs = document.querySelectorAll(".cart__quantity");
         quantityInputs.forEach(input => {
@@ -224,6 +249,7 @@ class Order {
 
         renderOrder.forEach(o => {
             orderContainer.innerHTML += `
+                <hr>
                 <div style="display: flex;">
                     <div>
                         <div class="order__id">Order ID: ${o.orderId}</div>
@@ -233,19 +259,13 @@ class Order {
                     </div>
                     <div style="margin-left: 100px;">
                         <div class="order__items__details">
-                            <strong>Items:</strong>
-                            <ul>
-                                ${o.orderItems.map(item => `
-                                    <li>Series: ${item.series}</li>
-                                    <li>Quantity: ${item.quantity}</li>
-                                    <li>Price: $${item.totalPrice}</li>
-                                    <hr>
-                                `).join('')}
-                            </ul>
+                            ${o.orderItems.map(item => `
+                                <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
+                            `).join('')}
+                            <div class="order__price">Order Price: $${o.orderPrice}</div>
                         </div>
                     </div>
                 </div>
-                <hr>
             `
         })
     }

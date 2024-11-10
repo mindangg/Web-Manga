@@ -1,14 +1,16 @@
 .order__history {
   max-width: 650px;
   margin: auto;
-  background-color: #fff;
-  border-radius: 8px;
+  border: 1px solid #ddd;
   padding: 20px;
+}
+
+.order__history > h2{
+  color: #ddd;
 }
 
 .order {
   border-bottom: 1px solid #ddd;
-  padding: 15px 0;
 }
 
 .order:last-child {
@@ -19,10 +21,11 @@
 .order__date,
 .order__status {
   font-weight: bold;
-  color: #333;
+  color: #ddd;
+  ;
 }
 
-.order__items__details{
+.order__items__details {
   display: none;
 }
 
@@ -38,18 +41,25 @@
 .status--complete {
   color: green;
 }
+
 .status--pending {
   color: orange;
 }
-.status--cancel{
-  color: red;;
+
+.status--cancel {
+  color: red;
+  ;
 }
 
 .status-pending {
   color: orange;
 }
 
-.show__details{
+.show__details {
   cursor: pointer;
-  color: #cecece;
+  color: #ddd;
+}
+
+.order__items__details {
+  color: #ddd;
 }
