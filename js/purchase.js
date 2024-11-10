@@ -6,7 +6,7 @@ const cartItemContainer = document.querySelector(".cart-items")
 const orderContainer = document.querySelector(".order");
 const cartSummary = document.querySelector(".cart-summary")
 const orderTableContainer = document.getElementById("order-table__body-content")
-const paymentInfoContainer =  document.querySelector(".payment-info__container")
+const paymentInfoContainer = document.querySelector(".payment-info__container")
 const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
 function renderViewIndex(renderProduct) {
@@ -197,7 +197,7 @@ class Order {
         console.log("Adding to order...")
         console.log(orderTable)
         Order.insert(
-            `order_${Order.generateId(orderTable)} `,
+            `order_${Order.generateId(orderTable)}`,
             `user_1`,
             new Date().toISOString().split('T')[0],
             status,
@@ -241,7 +241,9 @@ class Order {
         // Save the updated product data back to localStorage
         localStorage.setItem("productTable", JSON.stringify(productTable));
 
-        renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
+        if (productContainer) {
+            renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
+        }
     }
     // 
     static renderOrderView(renderOrder) {
@@ -254,7 +256,7 @@ class Order {
                     <div>
                         <div class="order__id">Order ID: ${o.orderId}</div>
                         <div class="order__date">Date: ${o.orderDate}</div>
-                        <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${o.orderStatus}</div>
+                        <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
                         <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
                     </div>
                     <div style="margin-left: 100px;">
@@ -296,11 +298,52 @@ class Order {
                         ${o.orderDate}
                     </td>
                     <td style="text-align: center;">
-                        ${o.orderStatus}
+                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${o.orderStatus !== "Pending" ? "disabled" : ""}>
+                            <option value="Pending" ${o.orderStatus === "Pending" ? "selected" : ""}>Pending</option>
+                            <option value="Completed" ${o.orderStatus === "Completed" ? "selected" : ""}>Completed</option>
+                            <option value="Cancelled" ${o.orderStatus === "Cancelled" ? "selected" : ""}>Cancelled</option>
+                        </select>
                     </td>
                 </tr>
             `
         })
+    }
+    static handleStatusChange(selectElement) {
+        const orderId = selectElement.getAttribute("data-order-id");
+        const newStatus = selectElement.value;
+
+        const order = orderTable.find(o => o.orderId === orderId);
+        if (!order) {
+            alert("Order not found.");
+            return;
+        }
+
+        selectElement.disabled = true;
+
+        if (newStatus === "Cancelled" && order.status !== "Cancelled") {
+            const confirmCancel = confirm("Bạn muốn hủy đơn hàng này không ?");
+            if (!confirmCancel) {
+                selectElement.disabled = false;
+                selectElement.value = "Pending";
+                return;
+            }
+
+            Order.updateStockForOrder(order, "increase");
+
+            order.orderStatus = "Cancelled";
+            console.log(order.orderStatus);
+            localStorage.setItem("order", JSON.stringify(orderTable));
+
+            Order.renderOrderAdmin(orderTable);
+            alert("Đơn hàng đã được hủy thành công");
+        }
+        if (newStatus === "Completed" && order.orderStatus !== "Completed") {
+            order.orderStatus = "Completed";
+            localStorage.setItem("order", JSON.stringify(orderTable));
+
+            Order.renderOrderAdmin(orderTable);
+            alert("Đơn hàng đã được giao");
+        }
     }
     //  
     static getStatus(status) {
@@ -308,10 +351,21 @@ class Order {
             return "status--pending"
         }
         if (status === "Completed") {
-            return "status--complte"
+            return "status--completed"
         }
-        if (status === "Canceled") {
-            return "status--cancel"
+        if (status === "Cancelled") {
+            return "status--cancelled"
+        }
+    }
+    static setStatus(status) {
+        if (status === "Pending") {
+            return "Đang xử lý đơn hàng"
+        }
+        if (status === "Completed") {
+            return "Đã giao hàng"
+        }
+        if (status === "Cancelled") {
+            return "Hủy đơn hàng"
         }
     }
 

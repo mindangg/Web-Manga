@@ -257,6 +257,9 @@
                                     <th class="user table__cell user-table__cell title">
                                         Status
                                     </th>
+                                    <th>
+
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody id="user-table__body-content" class="product table__body-content">
@@ -340,8 +343,10 @@
 <script src="../js/product.js"></script>
 <script src="../js/purchase.js"></script>
 <script>
-    Product.onloadViewAdmin();
-    Order.renderOrderAdmin(orderTable);
+    (() => {
+        Product.onloadViewAdmin();
+        Order.renderOrderAdmin(orderTable);
+    })()
 </script>
 
 </html>
