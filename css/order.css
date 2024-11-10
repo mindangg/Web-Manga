@@ -1,6 +1,6 @@
 .order__history {
   max-width: 650px;
-  margin: auto;
+  margin: 2rem auto;
   border: 1px solid #ddd;
   padding: 20px;
 }
@@ -38,7 +38,7 @@
   padding: 5px 0;
 }
 
-.status--complete {
+.status--completed {
   color: green;
 }
 
@@ -46,9 +46,8 @@
   color: orange;
 }
 
-.status--cancel {
+.status--cancelled {
   color: red;
-  ;
 }
 
 .status-pending {

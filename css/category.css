@@ -13,8 +13,7 @@
 
 .product__container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 110px;
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
 }
 

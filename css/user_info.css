@@ -23,6 +23,10 @@
     margin-bottom: 1rem;
 }
 
+.user__order, .user__info {
+    cursor: pointer;
+}
+
 /* Modal styling */
 .modal {
     background-color: #1a1a1a;
@@ -44,7 +48,6 @@
 
 /* Form styling */
 .form-group {
-    display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }

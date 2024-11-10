@@ -340,14 +340,14 @@
             </div>
         </section>
 
-        <section class="billing-info__layer">
+        <div class="billing-info__layer">
             <section class="billing-info" style="display: flex;">
                 <div id="billingForm">
                     <h2>Billing Information</h2>
                     <label for="fullName">Full Name</label>
                     <input type="text" id="fullName" required>
 
-                    <label for="address" z>Shipping Address</label>
+                    <label for="address">Shipping Address</label>
                     <input id="address" required></input>
 
                     <!-- <label for="paymentMethod">Payment Method</label>
@@ -385,45 +385,42 @@
                     </div>
                 </div>
             </section>
-        </section>
+        </div>
 
-        <section class="user-info">
-            <div class="user-info__navbar">
-                <div></div>
-                <div style="display: flex; gap: 60px">
-                    <div class="user__order"">Orders</div>
-                    <div class=" user__info">User Info</div>
+        <div class="user-info__layer">
+            <section class="user-info">
+                <div class="user-info__navbar">
+                    <div></div>
+                    <div style="display: flex; gap: 60px">
+                        <div class="user__order" id="order__history" onclick="toggleUserInfo(this)">Orders</div>
+                        <div class="user__info" id="user-info__container" onclick="toggleUserInfo(this)">User Info</div>
+                    </div>
+                    <div>Logout</div>
                 </div>
-                <div>Logout</div>
-            </div>
 
-            <div class="user-info__container">
-                <div class="modal">
-                    <a href="#" class="close-btn">&times;</a>
-                    <h2>Edit user info</h2>
-                    <p>Please fill in the information below:</p>
+                <div class="user-info__container" style="display: none;">
+                    <div class="modal">
+                        <a href="#" class="close-btn">&times;</a>
+                        <h2>Edit user info</h2>
+                        <p>Please fill in the information below:</p>
 
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="First name" value="Từ">
-                            <input type="text" placeholder="Last name" value="Phú">
-                        </div>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="Full name" value="" class="form-group">
+                                <input type="text" placeholder="Phone number" class="form-group">
+                                <input type="text" placeholder="Address 1" class="form-group">
+                                <input type="text" placeholder="Address 2" class="form-group">
+                            </div>
 
-                        <div class="form-group" style="display: block;">
-                            <input type="text" placeholder="Phone number" class="form-group">
-                            <input type="text" placeholder="Address 1" class="form-group">
-                            <input type="text" placeholder="Address 2" class="form-group">
-                        </div>
-
-                        <button type="submit" class="user-info__save-btn">Save address</button>
-                    </form>
+                            <button type="submit" class="user-info__save-btn">Save address</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-            <div class="order__history">
-                <h2>Your Order History</h2>
-                <div class="order" style="max-height: 310px; overflow: auto;">
-                    <!-- <div style="display: flex;">
+                <div class="order__history">
+                    <h2>Your Order History</h2>
+                    <div class="order" style="max-height: 310px; overflow: auto;">
+                        <!-- <div style="display: flex;">
                         <div>
                             <div class="order__id">Order ID: #12345</div>
                             <div class="order__date">Date: 2023-11-01</div>
@@ -444,9 +441,10 @@
                             </div>
                         </div>
                     </div> -->
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <section id="login__page">
             <div id="login">
@@ -572,6 +570,19 @@
         //     localStorage.setItem('View', JSON.stringify('bill'))
         //     viewBill()
         // })
+
+        function toggleUserInfo(e) {
+            const userInfo = document.querySelector('.user-info__container')
+            const orderHistory = document.querySelector('.order__history')
+            if(e.id === userInfo.className){
+                userInfo.style.display = 'inherit'
+                orderHistory.style.display = 'none'
+            }
+            else{
+                userInfo.style.display = 'none'
+                orderHistory.style.display = 'inherit'
+            }
+        }
     </script>
 </body>
 
