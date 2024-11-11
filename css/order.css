@@ -22,11 +22,6 @@
 .order__status {
   font-weight: bold;
   color: #ddd;
-  ;
-}
-
-.order__items__details {
-  display: none;
 }
 
 .order__items__details ul {

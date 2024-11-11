@@ -105,3 +105,7 @@ label {
     color: #ffffff;
     text-decoration: none;
 }
+
+.logout__user{
+    cursor: pointer;
+}
