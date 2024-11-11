@@ -61,18 +61,18 @@
                     <a href="#" class="navbar__link">Category</a>
                     <div class="navbar__category">
                         <ul>
-                            <li><a href="">Shounen</a></li>
-                            <li><a href="">Slice Of Life</a></li>
+                            <li><a href="?category=Shonen">Shounen</a></li>
+                            <li><a href="?category=slice_of_life">Slice Of Life</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Rom-Com</a></li>
-                            <li><a href="">Action</a></li>
+                            <li><a href="?category=Romcom">Rom-Com</a></li>
+                            <li><a href="?category=Action">Action</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Family</a></li>
-                            <li><a href="">Comedy</a></li>
+                            <li><a href="?category=Family">Family</a></li>
+                            <li><a href="?category=Comedy">Comedy</a></li>
                         </ul>
 
                         <ul>
@@ -408,7 +408,7 @@
                         <div class="user__order" id="order__history" onclick="toggleUserInfo(this)">Orders</div>
                         <div class="user__info" id="user-info__container" onclick="toggleUserInfo(this)">User Info</div>
                     </div>
-                    <div>Logout</div>
+                    <div class="logout__user" onclick="logoutUser()">Logout</div>
                 </div>
 
                 <div class="user-info__container" style="display: none;">
@@ -535,6 +535,23 @@
     <script src="../js/product.js"></script>
     <script src="../js/purchase.js"></script>
     <script>
+        function renderViewIndex(renderProduct) {
+            productContainer.innerHTML = ""
+            renderProduct.forEach(p => {
+                productContainer.innerHTML += `
+            <div id="${p.productId}" class="product__item">
+                <a>
+                    <img src="${p.cover1}" alt="">
+                </a>
+                <h4>${p.series}</h4>
+                <p>$${p.price}</p>
+                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
+                <p>Stock: ${p.stock}</p>
+            </div>
+        `
+            });
+        }
+
         function viewHome() {
             document.getElementById('main__page').style.display = 'inherit'
         }
@@ -550,13 +567,14 @@
         }
 
         (() => {
+            const URLOfWebpage = new URL(window.location)
             const URLOfIndex = window.location.href
             const URLToAdmin = URLOfIndex.split("html")
             if (localStorage.getItem('admin') === 'admin') {
                 window.location.href = `${URLToAdmin[0]}html/admin.html`
             }
             Product.onloadViewIndex();
-            renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
+            fetchPropertyProduct(URLOfWebpage)
             Cart.renderCartPreview(cartTable)
             Order.renderOrderView(orderTable)
 
@@ -586,6 +604,7 @@
         //     viewBill()
         // })
 
+        // toggle user info
         function toggleUserInfo(e) {
             const userInfo = document.querySelector('.user-info__container')
             const orderHistory = document.querySelector('.order__history')
@@ -599,6 +618,7 @@
             }
         }
 
+        // toggle order form input address
         function toggleAddressOrder(e) {
             const userAddress = document.getElementById('newAddress')
             console.log(e.value)
@@ -609,6 +629,23 @@
             if (e.value === 'newAddress') {
                 userAddress.style.display = 'inherit'
                 return;
+            }
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('accountLogin')
+            location.reload()
+        }
+
+        function fetchPropertyProduct(url) {
+            if (url.search) {
+                const categorySearch = url.searchParams.get('category')
+                const filterProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
+                if (filterProduct.length > 0 && categorySearch.length > 0) {
+                    renderViewIndex(filterProduct)
+                }
+            } else {
+                renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
             }
         }
     </script>
