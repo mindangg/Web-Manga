@@ -216,7 +216,7 @@ class Product {
         productList = renderProduct.slice(start, end);
 
         // renderProduct truyen vao co so luong thi render
-        if (productList.length > 0) {
+        if  (productList.length > 0) {
             productList.map((p, index) => {
                 const row = document.createElement("tr");
                 row.id = `${p.productId}`;

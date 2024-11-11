@@ -317,3 +317,56 @@
     width: 30px; /* Adjust input width for smaller screens */
   }
 }
+
+/* bao */
+
+.user.table__body{
+  height: 500px;
+}
+
+#user-page{
+  height: 700px;
+  width: 100%;
+}
+
+#user-table__footer {
+  text-align: center;
+
+}
+
+.user.table__row {
+  height: 70px;
+}
+
+.user.table__cell.user-table__cell.userId{
+  width: 5%;
+}
+
+.user.table__cell.user-table__cell.username{
+  width: 10%;
+}
+
+.user.table__cell.user-table__cell.password{
+  width: 10%;
+}
+
+.user.table__cell.user-table__cell.email{
+  width: 20%;
+}
+
+.user.table__cell.user-table__cell.phoneNumber{
+  width: 10%;
+}
+
+.user.table__cell.user-table__cell.createDate{
+  width: 5%;
+}
+
+.user.table__cell.user-table__cell.address{
+  width: 35%;
+}
+
+.user.table__cell.user-table__cell.status{
+  width: 5%;
+  text-align: center;
+}
