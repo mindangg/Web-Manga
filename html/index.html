@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,40 +12,253 @@
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/758055a090.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
+    <!-- <special-header></special-header> -->
+    <header>
+        <nav class="navbar">
+            <!-- logo -->
+            <div class="navbar__logo">
+                <a href="index.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+            </div>
+            <!-- links -->
+            <ul class="navbar__links">
+                <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
+                <li class="navbar__link--series">
+                    <a href="#" class="navbar__link">Series</a>
+                    <div class="navbar__series">
+                        <ul>
+                            <li><a href="">Sakamoto Days</a></li>
+                            <li><a href="">My Dress Up Darling</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Black Clover</a></li>
+                            <li><a href="">My Hero Academia</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Jujutsu Kaisen</a></li>
+                            <li><a href="">Mashle: Magic And Muscles</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">One Punch Man</a></li>
+                            <li><a href="">Spy X Family</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="navbar__link--category">
+                    <a href="#" class="navbar__link">Category</a>
+                    <div class="navbar__category">
+                        <ul>
+                            <li><a href="">Shounen</a></li>
+                            <li><a href="">Slice Of Life</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Rom-Com</a></li>
+                            <li><a href="">Action</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Family</a></li>
+                            <li><a href="">Comedy</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Fantasy</a></li>
+                            <li><a href="">Drama</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="navbar__link--author">
+                    <a href="#" class="navbar__link">Author</a>
+                    <div class="navbar__author">
+                        <ul>
+                            <li><a href="">Murata Yusuke</a></li>
+                            <li><a href="">Fukuda Shinichi</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Komoto Hajime</a></li>
+                            <li><a href="">Tabata Yūki</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Horikoshi Kohei</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Suzuki Yuto</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--price">
+                    <a href="#" class="navbar__link">Price</a>
+                    <div class="navbar__price">
+                        <ul>
+                            <li><a href="">Under $5 Dollars</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">$5 To $7 Dollars</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">$7 To $15 Dollars</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Over $15 Dollars</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--about"><a href="#special-footer" class="navbar__link">About Us</a></li>
+            </ul>
+
+            <!-- nav bar icons -->
+            <div class="navbar__home" style="display: flex">
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+
+            <div class="navbar__bar">
+                <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon__responsive">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
+            </div>
+
+            <div class="navbar__responsive__popup">
+                <div class="navbar__responsive__close">
+                    <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+                <div class="navbar__responsive">
+                    <ul class="navbar__responsive__links">
+                        <li class="navbar__responsive--home">
+                            <a href="index.html" class="navbar__responsive__link">Home</a>
+                        </li>
+                        <li class="navbar__responsive--series">
+                            <a class="navbar__responsive__link">Series</a>
+                            <button id="navbar__responsive--series__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--category">
+                            <a class="navbar__responsive__link">Category</a>
+                            <button id="navbar__responsive--category__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--author">
+                            <a class="navbar__responsive__link">Author</a>
+                            <button id="navbar__responsive--author__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--price">
+                            <a class="navbar__responsive__link">Price</a>
+                            <button id="navbar__responsive--price__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--about">
+                            <a href="#special-footer" class="navbar__responsive__link">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- searchbox -->
+        <div class="search__popup">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="search" placeholder="Search for...">
+                    <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- shopping cart -->
+        <div class="shopping__popup">
+            <div class="shopping__container">
+                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                <div class="shopping">
+                    <div class="shopping__icon">
+                        <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
+                    </div>
+                    <br>
+                    <h2>Your cart is empty</h2>
+                    <button class="shopping__btn">Continue shopping</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <special-header></special-header>
   
     <main>
-    <section id="main__page">
-        <!-- slider -->
-         <div class="slider">
-            <div class="slider__list">
-                <div class="slider__item">
-                    <img src="../img/banner/1.png" alt="Sakamoto Days Cover">
+        <section id="main__page">
+            <!-- slider -->
+            <div class="slider">
+                <div class="slider__list">
+                    <div class="slider__item">
+                        <img src="../img/banner/1.png" alt="Sakamoto Days Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/2.png" alt="My Dress Up Darling Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/3.jpeg" alt="Classroom Of The Elite Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/4.jpeg" alt="Spy X Family Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/5.jpg" alt="Black Clover Cover">
+                    </div>
                 </div>
 
-                <div class="slider__item">
-                    <img src="../img/banner/2.png" alt="My Dress Up Darling Cover">
+                <div class="slider__button">
+                    <button id="slider__prev">
+                        << /button>
+                            <button id="slider__next">></button>
                 </div>
 
-                <div class="slider__item">
-                    <img src="../img/banner/3.jpeg" alt="Classroom Of The Elite Cover">
-                </div>
-
-                <div class="slider__item">
-                    <img src="../img/banner/4.jpeg" alt="Spy X Family Cover">
-                </div>
-
-                <div class="slider__item">
-                    <img src="../img/banner/5.jpg" alt="Black Clover Cover">
-                </div>
+                <ul class="slider__dots">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
 
-            <div class="slider__button">
-                <button id="slider__prev"><</button>
-                <button id="slider__next">></button>
-            </div>
-
+            <!-- best sellers slider -->
             <ul class="slider__dots">
                 <li class="active"></li>
                 <li></li>
@@ -56,6 +270,19 @@
         
          <!-- best sellers slider -->
 
+            <div class="best__slider">
+                <h1>Best Sellers</h1>
+
+                <div class="best__slider__list">
+                    <div class="best__slider__item">
+                        <a id="best__item1">
+                            <img src="../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg" alt="">
+                            <img src="../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg" alt="">
+                        </a>
+                        <h4>Sakamoto Days - Volume 06</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
          <div class="best__slider">
             <h1>Best Sellers</h1>
             <div class="best__slider__list">
@@ -74,66 +301,77 @@
                     <button>+ Add to cart</button>
                 </div>
 
-                <div class="best__slider__item">
-                    <a>
-                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-4-primary.jpg" alt="">
-                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-4-back.jpg" alt="">
-                    </a>
-                    <h4>Jujutsu Kaisen - Volume 04</h4>
-                    <p>$9.59</p>
-                    <button>+ Add to cart</button>
-                </div>
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-4-primary.jpg" alt="">
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-4-back.jpg" alt="">
+                        </a>
+                        <h4>Jujutsu Kaisen - Volume 04</h4>
+                        <p>$9.59</p>
+                        <button>+ Add to cart</button>
+                    </div>
 
-                <div class="best__slider__item">
-                    <a>
-                        <img src="../img/books/spy x family/spy-x-family-volume-3-primary.jpg" alt="">
-                        <img src="../img/books/spy x family/spy-x-family-volume-3-back.jpg" alt="">
-                    </a>
-                    <h4>Spy X Family - Volume 03</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/spy x family/spy-x-family-volume-3-primary.jpg" alt="">
+                            <img src="../img/books/spy x family/spy-x-family-volume-3-back.jpg" alt="">
+                        </a>
+                        <h4>Spy X Family - Volume 03</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
 
-                <div class="best__slider__item">
-                    <a>
-                        <img src="../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg" alt="">
-                        <img src="../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg" alt="">
-                    </a>
-                    <h4>My Dress Up Darling - Volume 07</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg" alt="">
+                            <img src="../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg" alt="">
+                        </a>
+                        <h4>My Dress Up Darling - Volume 07</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
 
-                <div class="best__slider__item">
-                    <a>
-                        <img src="../img/books/black clover/black-clover-volume-23-primary.jpg" alt="">
-                        <img src="../img/books/black clover/black-clover-volume-23-back.jpg" alt="">
-                    </a>
-                    <h4>Black Clover - Volume 23</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/black clover/black-clover-volume-23-primary.jpg" alt="">
+                            <img src="../img/books/black clover/black-clover-volume-23-back.jpg" alt="">
+                        </a>
+                        <h4>Black Clover - Volume 23</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
 
-                <div class="best__slider__item">
-                    <a>
-                        <img src="../img/books/my hero academia/my-hero-academia-manga-volume-11-primary.jpg" alt="">
-                        <img src="../img/books/my hero academia/my-hero-academia-manga-volume-11-back.jpg" alt="">
-                    </a>
-                    <h4>My Hero Academia - Volume 11</h4>
-                    <p>$9.59</p>
-                    <button>+ Add to cart</button>
-                </div>
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/my hero academia/my-hero-academia-manga-volume-11-primary.jpg"
+                                alt="">
+                            <img src="../img/books/my hero academia/my-hero-academia-manga-volume-11-back.jpg" alt="">
+                        </a>
+                        <h4>My Hero Academia - Volume 11</h4>
+                        <p>$9.59</p>
+                        <button>+ Add to cart</button>
+                    </div>
 
-                <div class="best__slider__item">
-                    <a>
-                        <img src="../img/books/one punch man/one-punch-man-volume-26-primary.jpg" alt="">
-                        <img src="../img/books/one punch man/one-punch-man-volume-26-back.jpg" alt="">
-                    </a>
-                    <h4>One Punch Man - Volume 26</h4>
-                    <p>$9.59</p>
-                    <button>+ Add to cart</button>
-                </div>
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/one punch man/one-punch-man-volume-26-primary.jpg" alt="">
+                            <img src="../img/books/one punch man/one-punch-man-volume-26-back.jpg" alt="">
+                        </a>
+                        <h4>One Punch Man - Volume 26</h4>
+                        <p>$9.59</p>
+                        <button>+ Add to cart</button>
+                    </div>
 
+                    <div class="best__slider__item">
+                        <a>
+                            <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-primary.jpeg" alt="">
+                            <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-back.jpeg" alt="">
+                        </a>
+                        <h4>Mashle: Magic And Muscles - Volume 17</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+                </div>
                 <div class="best__slider__item">
                     <a>
                         <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-primary.jpeg" alt="">
@@ -145,232 +383,238 @@
                 </div> -->
             </div>
 
-            <div class="best__slider__button">
-                <button id="best__slider__prev">
-                    <i class="fa-solid fa-angle-left" id="left__angle"></i>
-                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
-                </button>
-                <button id="best__slider__next">
-                    <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                </button>
+                <div class="best__slider__button">
+                    <button id="best__slider__prev">
+                        <i class="fa-solid fa-angle-left" id="left__angle"></i>
+                        <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                    </button>
+                    <button id="best__slider__next">
+                        <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                        <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                    </button>
+                </div>
+
+                <ul class="best__slider__dots">
+                    <li class="best__active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
 
-            <ul class="best__slider__dots">
-                <li class="best__active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
 
 
-
-        <div class="banner">
-            <img src="../img/banner/jjk.jpg">
-        </div>
-
-        
-
-
-
-        <div class="book__slider">
-            <h1>Books</h1>
-
-            <div class="book__slider__list">
-                <div class="book__slider__item">
-                    <a id="">
-                        <img src="../img/books/one punch man/one-punch-man-volume-18-primary.jpg" alt="">
-                        <img src="../img/books/one punch man/one-punch-man-volume-18-back.jpg" alt="">
-                    </a>
-                    <h4>One Punch Man - Volume 18</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/one punch man//one-punch-man-manga-volume-28-primary.jpg" alt="">
-                        <img src="../img/books/one punch man/one-punch-man-manga-volume-28-back.jpg" alt="">
-                    </a>
-                    <h4>One Punch Man - Volume 28</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/my hero academia/my-hero-academia-volume-32-primary.jpg" alt="">
-                        <img src="../img/books/my hero academia/my-hero-academia-volume-32-back.jpg" alt="">
-                    </a>
-                    <h4>My Hero Academia - Volume 32</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/my hero academia/my-hero-academia-volume-37-primary.jpg" alt="">
-                        <img src="../img/books/my hero academia/my-hero-academia-volume-37-back.jpg" alt="">
-                    </a>
-                    <h4>My Hero Academia - Volume 37</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/spy x family/spy-x-family-volume-1-primary.jpg" alt="">
-                        <img src="../img/books/spy x family/spy-x-family-volume-1-back.jpg" alt="">
-                    </a>
-                    <h4>Spy X Family - Volume 01</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/spy x family/spy-x-family-volume-2-primary.jpg" alt="">
-                        <img src="../img/books/spy x family/spy-x-family-volume-2-back.jpg" alt="">
-                    </a>
-                    <h4>Spy X Family - Volume 02</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg" alt="">
-                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-back.jpg" alt="">
-                    </a>
-                    <h4>Jujutsu Kaisen - Volume 14</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-23-primary.jpeg" alt="">
-                        <img src="../img/books/jujutsu kaisen//jujutsu-kaisen-manga-volume-23-back.jpeg" alt="">
-                    </a>
-                    <h4>Jujutsu Kaisen - Volume 23</h4>
-                    <p>$9.59</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg" alt="">
-                        <img src="../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg" alt="">
-                    </a>
-                    <h4>My Dress Up Darling - Volume 01</h4>
-                    <p>$9.59</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg" alt="">
-                        <img src="../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg" alt="">
-                    </a>
-                    <h4>My Dress Up Darling - Volume 06</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg" alt="">
-                        <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg" alt="">
-                    </a>
-                    <h4>Mashle: Magic And Muscles - Volume 16</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-primary.jpg" alt="">
-                        <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-back.jpg" alt="">
-                    </a>
-                    <h4>Mashle: Magic And Muscles - Volume 18</h4>
-                    <p>$11.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg" alt="">
-                        <img src="../img/books/sakamoto days/sakamoto-days-volume-5-back.jpg" alt="">
-                    </a>
-                    <h4>Sakamoto Days - Volume 05</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-    
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg" alt="">
-                        <img src="../img/books/sakamoto days/sakamoto-days-volume-10-back.jpg" alt="">
-                    </a>
-                    <h4>Sakamoto Days - Volume 10</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-    
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/black clover/black-clover-volume-24-primary.jpg" alt="">
-                        <img src="../img/books/black clover/black-clover-volume-24-back.jpg" alt="">
-                    </a>
-                    <h4>Black Clover - Volume 24</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
-    
-                <div class="book__slider__item">
-                    <a>
-                        <img src="../img/books/black clover/black-clover-volume-25-primary.jpg" alt="">
-                        <img src="../img/books/black clover/black-clover-volume-25-back.jpg" alt="">
-                    </a>
-                    <h4>Black Clover - Volume 25</h4>
-                    <p>$9.99</p>
-                    <button>+ Add to cart</button>
-                </div>
+            <div class="banner">
+                <img src="../img/banner/jjk.jpg">
             </div>
 
-            <div class="book__slider__button">
-                <button id="book__slider__prev">
-                    <i class="fa-solid fa-angle-left" id="left__angle"></i>
-                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
-                </button>
-                <button id="book__slider__next">
-                    <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                </button>
+
+
+
+
+            <div class="book__slider">
+                <h1>Books</h1>
+
+                <div class="book__slider__list">
+                    <div class="book__slider__item">
+                        <a id="">
+                            <img src="../img/books/one punch man/one-punch-man-volume-18-primary.jpg" alt="">
+                            <img src="../img/books/one punch man/one-punch-man-volume-18-back.jpg" alt="">
+                        </a>
+                        <h4>One Punch Man - Volume 18</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/one punch man//one-punch-man-manga-volume-28-primary.jpg" alt="">
+                            <img src="../img/books/one punch man/one-punch-man-manga-volume-28-back.jpg" alt="">
+                        </a>
+                        <h4>One Punch Man - Volume 28</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/my hero academia/my-hero-academia-volume-32-primary.jpg" alt="">
+                            <img src="../img/books/my hero academia/my-hero-academia-volume-32-back.jpg" alt="">
+                        </a>
+                        <h4>My Hero Academia - Volume 32</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/my hero academia/my-hero-academia-volume-37-primary.jpg" alt="">
+                            <img src="../img/books/my hero academia/my-hero-academia-volume-37-back.jpg" alt="">
+                        </a>
+                        <h4>My Hero Academia - Volume 37</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/spy x family/spy-x-family-volume-1-primary.jpg" alt="">
+                            <img src="../img/books/spy x family/spy-x-family-volume-1-back.jpg" alt="">
+                        </a>
+                        <h4>Spy X Family - Volume 01</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/spy x family/spy-x-family-volume-2-primary.jpg" alt="">
+                            <img src="../img/books/spy x family/spy-x-family-volume-2-back.jpg" alt="">
+                        </a>
+                        <h4>Spy X Family - Volume 02</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg" alt="">
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-back.jpg" alt="">
+                        </a>
+                        <h4>Jujutsu Kaisen - Volume 14</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-23-primary.jpeg" alt="">
+                            <img src="../img/books/jujutsu kaisen//jujutsu-kaisen-manga-volume-23-back.jpeg" alt="">
+                        </a>
+                        <h4>Jujutsu Kaisen - Volume 23</h4>
+                        <p>$9.59</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg" alt="">
+                            <img src="../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg" alt="">
+                        </a>
+                        <h4>My Dress Up Darling - Volume 01</h4>
+                        <p>$9.59</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg" alt="">
+                            <img src="../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg" alt="">
+                        </a>
+                        <h4>My Dress Up Darling - Volume 06</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg" alt="">
+                            <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg" alt="">
+                        </a>
+                        <h4>Mashle: Magic And Muscles - Volume 16</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-primary.jpg" alt="">
+                            <img src="../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-back.jpg" alt="">
+                        </a>
+                        <h4>Mashle: Magic And Muscles - Volume 18</h4>
+                        <p>$11.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg" alt="">
+                            <img src="../img/books/sakamoto days/sakamoto-days-volume-5-back.jpg" alt="">
+                        </a>
+                        <h4>Sakamoto Days - Volume 05</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg" alt="">
+                            <img src="../img/books/sakamoto days/sakamoto-days-volume-10-back.jpg" alt="">
+                        </a>
+                        <h4>Sakamoto Days - Volume 10</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/black clover/black-clover-volume-24-primary.jpg" alt="">
+                            <img src="../img/books/black clover/black-clover-volume-24-back.jpg" alt="">
+                        </a>
+                        <h4>Black Clover - Volume 24</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+
+                    <div class="book__slider__item">
+                        <a>
+                            <img src="../img/books/black clover/black-clover-volume-25-primary.jpg" alt="">
+                            <img src="../img/books/black clover/black-clover-volume-25-back.jpg" alt="">
+                        </a>
+                        <h4>Black Clover - Volume 25</h4>
+                        <p>$9.99</p>
+                        <button>+ Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="book__slider__button">
+                    <button id="book__slider__prev">
+                        <i class="fa-solid fa-angle-left" id="left__angle"></i>
+                        <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                    </button>
+                    <button id="book__slider__next">
+                        <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                        <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                    </button>
+                </div>
+
+                <ul class="book__slider__dots">
+                    <li class="book__active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
 
-            <ul class="book__slider__dots">
-                <li class="book__active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-
+            <div class="product__page">
+                <div class="product">
+                    <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg">
+                        <img id="product__img2" src="../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg">
         <div class="product__page">
             <div class="product">
                 <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
@@ -378,10 +622,41 @@
                     <img id="product__img1" src="">
                     <img id="product__img2" src="">
 
+                        <a id="product__view1"><img
+                                src="../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg"></a>
                     <a id="product__view1"><img src=""></a>
 
+                        <a id="product__view2"><img
+                                src="../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg"></a>
                     <a id="product__view2"><img src=""></a>
 
+                    </div>
+
+                    <div class="product__info">
+                        <h1>Sakamoto Days - Volume 06</h1>
+                        <div class="product__info--rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Author: </p>
+                        <h2>Yuto Suzuki</h2>
+                        <p>$9.99</p>
+                        <p>Quantity:</p>
+
+                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity"
+                            value="1"><button id="product__quantityup">+</button><br>
+                        <button id="product__add">Add to cart</button>
+
+                        <p>Availability: In stock</p><br>
+                        <h4>Description</h4>
+                        <p>Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.</p><br>
+                        <p>Dangerous serial killers clash with the Order and Sakamoto’s crew! As the battles rage on,
+                            Sakamoto undergoes an unexpected transformation. Meanwhile, the evil mastermind X reveals
+                            his true intent, which sends shock waves through the assassin world!</p>
+                    </div>
                 </div>
     
                 <div class="product__info">
@@ -408,66 +683,73 @@
                 </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
-
-    <section id="login__page">
-        <div class="login">
-            <h1>Login</h1>
-
-            <div class="login__input">
-            <input type="text" placeholder="Username" minlength="6" required>
             </div>
+        </section>
 
-            <div class="login__input">
-            <input type="password" placeholder="Password" minlength="6" required>
-            </div>
 
-            <div class="login__forget">
-            <a>Forget your password?</a>
-            </div>
 
-            <button type="submit" class="login__btn">Login</button>
+        <section id="login__page">
+            <div id="login">
+                <h1>Login</h1>
 
-            <div class="login__signup">
-            <a href="#" id="login__signup--nav">Sign Up</a>
-            </div>
-        </div>
-    </section>
+                <div class="login__input">
+                    <input type="text" id="login__input--username" placeholder="Username" required value="">
+                </div>
 
-    <section id="signup__page">
-        <div id="signup">
-            <h1>Sign Up</h1>
-            <!--   Username   -->
-            <div class="signup__input">
-                <input type="text" id="signup__input--username" class="input" placeholder="Username" required value="">
-                <label for="signup__input--username"></label>
-            </div>
-            <!--   Password   -->
-            <div class="signup__input">
-                <input type="password" id="signup__input--password" class="input" placeholder="Password" required value="">
-                <label for="signup__input--password"></label>
-            </div>
-            <!--   Confirm Password   -->
-            <div class="signup__input">
-                <input type="password" id="signup__input--confpasword" class="input" placeholder="Confirm Password" required>
-                <label for="signup__input--confpasword"></label>
-            </div>
-            <!--   Email   -->
-            <div class="signup__input">
-                <input type="email" id="signup__input--email" class="input" placeholder="Email" required>
-                <label for="signup__input--email"></label>
-            </div>
-            <!--   Phone number   -->
-            <div class="signup__input">
-                <input type="tel" id="signup__input--phone" class="input" placeholder="076 302 0810" required>
-                <label for="signup__input--phone"></label>
-            </div>
+                <div class="login__input">
+                    <input type="password" id="login__input--password" placeholder="Password" required value="">
+                    <label for="login__input--password"></label>
+                </div>
 
-            <button type="submit" id="signup__btn">Create account</button>
+                <div id="login__forget">
+                    <a>Forget your password?</a>
+                </div>
 
+                <button type="submit" id="login__btn">Login</button>
+
+                <div id="login__signup">
+                    <a href="#" id="login__signup--nav">Sign Up</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup__page">
+            <div id="signup">
+                <h1>Sign Up</h1>
+                <!--   Username   -->
+                <div class="signup__input">
+                    <input type="text" id="signup__input--username" placeholder="Username" required value="">
+                    <label for="signup__input--username"></label>
+                </div>
+                <!--   Password   -->
+                <div class="signup__input">
+                    <input type="password" id="signup__input--password" placeholder="Password" required>
+                    <label for="signup__input--password"></label>
+                </div>
+                <!--   Confirm Password   -->
+                <div class="signup__input">
+                    <input type="password" id="signup__input--confpasword" placeholder="Confirm Password" required>
+                    <label for="signup__input--confpasword"></label>
+                </div>
+                <!--   Email   -->
+                <div class="signup__input">
+                    <input type="email" id="signup__input--email" placeholder="Email" required>
+                    <label for="signup__input--email"></label>
+                </div>
+                <!--   Phone number   -->
+                <div class="signup__input">
+                    <input type="tel" id="signup__input--phone" placeholder="076 302 0810" required>
+                    <label for="signup__input--phone"></label>
+                </div>
+
+                <button type="submit" id="signup__btn">Create account</button>
+
+                <div id="signup__login">
+                    <a href="#" id="signup__login--nav">Already has account?</a>
+                </div>
+            </div>
+        </section>
+        <div id="notification"></div>
             <div id="signup__login--nav">
                 <a href="#">Already has account?</a>
             </div>
@@ -479,9 +761,20 @@
     <special-footer id="special-footer"></special-footer>
 
     <!-- js -->
+    <script src="../js/validation.js"></script>
+    <script src="../js/user.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/header_footer.js"></script>
+    <script src="../js/product.js"></script>
+    <script>
+        const URLOfIndex = window.location.href
+        const URLToAdmin = URLOfIndex.split("html")
+        if (localStorage.getItem('admin') === 'admin') {
+            window.location.href = `${URLToAdmin[0]}/html/admin.html`
+        }
+    </script>
     <!-- <script src="../js/product.js"></script> -->
     <script src="../js/renderView.js"></script>
 </body>
+
 </html>

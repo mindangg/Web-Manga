@@ -207,6 +207,15 @@ class SpecialHeader extends HTMLElement{
                     </ul>
                 </div>
             </div>    
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon">
+                        <i class="fa-regular fa-user" style="color:white;"></i>
+                    </a>
+                    <div></div>
+                </div>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
+            </div>
         </nav>
 
         <!-- searchbox -->
@@ -298,52 +307,68 @@ customElements.define(`special-footer`, SpecialFooter);
 
 //navigation between pages
 
-document.getElementById("login__icon").addEventListener("click", function(){
+const toLoginPage = () => {
     document.getElementById("main__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
     console.log("ok")
 })
+    document.getElementById("signup__page").style.display = "none";
+}
 
-document.getElementById("login__icon__responsive").addEventListener("click", function(){
-    document.getElementById("main__page").style.display = "none";
-    document.getElementById("login__page").style.display = "inline";
-})
+document.getElementById("login__icon").addEventListener("click", toLoginPage);
+
+document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
 
 document.getElementById("login__signup--nav").addEventListener("click", function(){
     document.getElementById("login__page").style.display = "none";
     document.getElementById("signup__page").style.display = "inline";
-})
+});
 
 document.getElementById("signup__login--nav").addEventListener("click", function(){
     document.getElementById("signup__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
 })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // search and shopping cart popup
 
-document.getElementById("search__icon").addEventListener("click", function(){
+document.getElementById("search__icon").addEventListener("click", function () {
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
     console.log("DM Trong Duy")
 })
 
-document.getElementById("search__close").addEventListener("click", function(){
+document.getElementById("search__close").addEventListener("click", function () {
     document.querySelector(".search").style.animationName = "leftToRight"
-    setTimeout(function() {
+    setTimeout(function () {
         document.querySelector(".search__popup").style.display = "none";
-      }, 390);
+    }, 390);
 })
 
-document.getElementById("shopping__icon").addEventListener("click", function(){
+document.getElementById("shopping__icon").addEventListener("click", function () {
     document.querySelector(".shopping__popup").style.display = "flex";
     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
 })
 
-document.getElementById("shopping__close").addEventListener("click", function(){
+document.getElementById("shopping__close").addEventListener("click", function () {
     document.querySelector(".shopping__container").style.animationName = "leftToRight"
-    setTimeout(function() {
+    setTimeout(function () {
         document.querySelector(".shopping__popup").style.display = "none";
-      }, 390);
+    }, 390);
 })
 
 // document.getElementById("shopping__close").addEventListener("click", function(){

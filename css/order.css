@@ -1,0 +1,64 @@
+.order__history {
+  max-width: 650px;
+  margin: 2rem auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.order__history > h2{
+  color: #ddd;
+}
+
+.order {
+  border-bottom: 1px solid #ddd;
+}
+
+.order:last-child {
+  border-bottom: none;
+}
+
+.order__id,
+.order__date,
+.order__status {
+  font-weight: bold;
+  color: #ddd;
+  ;
+}
+
+.order__items__details {
+  display: none;
+}
+
+.order__items__details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order__items__details li {
+  padding: 5px 0;
+}
+
+.status--completed {
+  color: green;
+}
+
+.status--pending {
+  color: orange;
+}
+
+.status--cancelled {
+  color: red;
+}
+
+.status-pending {
+  color: orange;
+}
+
+.show__details {
+  cursor: pointer;
+  color: #ddd;
+}
+
+.order__items__details {
+  color: #ddd;
+}

@@ -2,7 +2,6 @@
 .product-menu {
   background-color: grey;
   padding: 20px;
-  margin: 20px auto;
 }
 
 .product-menu__header {
@@ -18,6 +17,14 @@
   padding-inline: 30px;
   font-size: 24px;
   font-weight: bold;
+}
+
+.product-menu__body{
+  display: flex;
+}
+
+.product-menu__content{
+  width: 100%;
 }
 
 .product-menu__close {
@@ -232,10 +239,6 @@
 .table__cell {
   padding: 12px 15px;
   border: 1px solid #ddd;
-}
-
-.product-table_cell {
-  text-align: center;
 }
 
 .product-table__cell--edit button,

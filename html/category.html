@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga</title>
+    <!--css -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/category.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/category.css">
+    <link rel="stylesheet" href="../css/cart_1.css">
+    <link rel="stylesheet" href="../css/billing.css">
+    <link rel="stylesheet" href="../css/order.css">
+    <link rel="stylesheet" href="../css/user_info.css">
+    <!-- <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/signup.css"> -->
+    <link rel="icon" type="image/png" href="../img/WEBTOON_Logo.png">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/758055a090.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- <special-header></special-header> -->
+    <header>
+        <nav class="navbar">
+            <!-- logo -->
+            <div class="navbar__logo">
+                <a class="backToHome" href="category.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+            </div>
+            <!-- links -->
+            <ul class="navbar__links">
+                <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
+                <li class="navbar__link--series">
+                    <a href="#" class="navbar__link">Series</a>
+                    <div class="navbar__series">
+                        <ul>
+                            <li><a href="">Sakamoto Days</a></li>
+                            <li><a href="">My Dress Up Darling</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Black Clover</a></li>
+                            <li><a href="">My Hero Academia</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Jujutsu Kaisen</a></li>
+                            <li><a href="">Mashle: Magic And Muscles</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">One Punch Man</a></li>
+                            <li><a href="">Spy X Family</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="navbar__link--category">
+                    <a href="#" class="navbar__link">Category</a>
+                    <div class="navbar__category">
+                        <ul>
+                            <li><a href="">Shounen</a></li>
+                            <li><a href="">Slice Of Life</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Rom-Com</a></li>
+                            <li><a href="">Action</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Family</a></li>
+                            <li><a href="">Comedy</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Fantasy</a></li>
+                            <li><a href="">Drama</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="navbar__link--author">
+                    <a href="#" class="navbar__link">Author</a>
+                    <div class="navbar__author">
+                        <ul>
+                            <li><a href="">Murata Yusuke</a></li>
+                            <li><a href="">Fukuda Shinichi</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Komoto Hajime</a></li>
+                            <li><a href="">Tabata Yūki</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Horikoshi Kohei</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Suzuki Yuto</a></li>
+                            <li><a href="">Gege Akutami</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--price">
+                    <a href="#" class="navbar__link">Price</a>
+                    <div class="navbar__price">
+                        <ul>
+                            <li><a href="">Under $5 Dollars</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">$5 To $7 Dollars</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">$7 To $15 Dollars</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="">Over $15 Dollars</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar__link--about"><a href="#special-footer" class="navbar__link">About Us</a></li>
+            </ul>
+
+            <!-- nav bar icons -->
+            <div class="navbar__home" style="display: flex">
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+
+            <div class="navbar__bar">
+                <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon__responsive">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
+            </div>
+
+            <div class="navbar__responsive__popup">
+                <div class="navbar__responsive__close">
+                    <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+                <div class="navbar__responsive">
+                    <ul class="navbar__responsive__links">
+                        <li class="navbar__responsive--home">
+                            <a href="index.html" class="navbar__responsive__link">Home</a>
+                        </li>
+                        <li class="navbar__responsive--series">
+                            <a class="navbar__responsive__link">Series</a>
+                            <button id="navbar__responsive--series__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--category">
+                            <a class="navbar__responsive__link">Category</a>
+                            <button id="navbar__responsive--category__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--author">
+                            <a class="navbar__responsive__link">Author</a>
+                            <button id="navbar__responsive--author__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--price">
+                            <a class="navbar__responsive__link">Price</a>
+                            <button id="navbar__responsive--price__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--about">
+                            <a href="#special-footer" class="navbar__responsive__link">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- searchbox -->
+        <div class="search__popup">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="search" placeholder="Search for...">
+                    <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- shopping cart -->
+        <div class="shopping__popup">
+            <div class="shopping__container">
+                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                <div class="shopping">
+                    <div class="shopping__icon">
+                        <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
+                    </div>
+                    <br>
+                    <h2>Your cart is empty</h2>
+                    <button class="shopping__btn">Continue shopping</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="main__page" style="display: inherit;">
+            <!-- slider -->
+            <div class="slider">
+                <div class="slider__list">
+                    <div class="slider__item">
+                        <img src="../img/banner/1.png" alt="Sakamoto Days Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/2.png" alt="My Dress Up Darling Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/3.jpeg" alt="Classroom Of The Elite Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/4.jpeg" alt="Spy X Family Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/5.jpg" alt="Black Clover Cover">
+                    </div>
+                </div>
+
+                <div class="slider__button">
+                    <button id="slider__prev">
+                        << /button>
+                            <button id="slider__next">></button>
+                </div>
+
+                <ul class="slider__dots">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+
+            <div class="product__list">
+                <h1>Products</h1>
+                <div class="product__container">
+                </div>
+            </div>
+
+            <div class="product__page">
+                <div class="product">
+                    <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg">
+                        <img id="product__img2" src="../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg">
+
+                        <a id="product__view1"><img
+                                src="../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg"></a>
+
+                        <a id="product__view2"><img
+                                src="../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg"></a>
+
+                    </div>
+
+                    <div class="product__info">
+                        <h1>Sakamoto Days - Volume 06</h1>
+                        <div class="product__info--rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Author: </p>
+                        <h2>Yuto Suzuki</h2>
+                        <p>$9.99</p>
+                        <p>Quantity:</p>
+
+                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity"
+                            value="1"><button id="product__quantityup">+</button><br>
+                        <button id="product__add">Add to cart</button>
+
+                        <p>Availability: In stock</p><br>
+                        <h4>Description</h4>
+                        <p>Sakamoto Days manga volume 6 features story and art by Yuto Suzuki.</p><br>
+                        <p>Dangerous serial killers clash with the Order and Sakamoto’s crew! As the battles rage on,
+                            Sakamoto undergoes an unexpected transformation. Meanwhile, the evil mastermind X reveals
+                            his true intent, which sends shock waves through the assassin world!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cart__container">
+            <h1>Cart</h1>
+            <div class="cart-content">
+                <!-- Cart Items List -->
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cart-items">
+                    </tbody>
+                </table>
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div>
+                        <span>Total of order: </span>
+                        <span>$0.00</span>
+                    </div>
+                    <button class="checkout-button">Checkout</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="billing-info__layer">
+            <section class="billing-info" style="display: flex;">
+                <div id="billingForm">
+                    <h2>Billing Information</h2>
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+
+                    <label for="address">Shipping Address</label>
+                    <input id="address" required></input>
+
+                    <!-- <label for="paymentMethod">Payment Method</label>
+                        <div style="overflow: hidden;">
+                            <select id="paymentMethod" required>
+                                <option value="creditCard">Credit Card</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bankTransfer">Bank Transfer</option>
+                            </select>
+                        </div> -->
+                    <div style="text-align: center;">
+                        <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <div class="payment-info__container">
+                        <!-- <div class="payment-info__item">
+                                <img src="https://via.placeholder.com/50" alt="Item Image">
+                                <div class="quantity-circle">1</div>
+                                <div class="payment-info__item-details">
+                                    <p>LORE OLYMPUS - GODDESS OF SPRING SATIN SHORTS</p>
+                                </div>
+                                <div class="payment-info__item-price">$40.00</div>
+                            </div> -->
+                    </div>
+                    <div class="payment-info__summary">
+                        <!-- <div class="subtotal">
+                            <span>Subtotal • 4 items</span>
+                            <span>$149.99</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span class="order-price">$149.99 USD</span>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="user-info__layer">
+            <section class="user-info">
+                <div class="user-info__navbar">
+                    <div></div>
+                    <div style="display: flex; gap: 60px">
+                        <div class="user__order" id="order__history" onclick="toggleUserInfo(this)">Orders</div>
+                        <div class="user__info" id="user-info__container" onclick="toggleUserInfo(this)">User Info</div>
+                    </div>
+                    <div>Logout</div>
+                </div>
+
+                <div class="user-info__container" style="display: none;">
+                    <div class="modal">
+                        <a href="#" class="close-btn">&times;</a>
+                        <h2>Edit user info</h2>
+                        <p>Please fill in the information below:</p>
+
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="Full name" value="" class="form-group">
+                                <input type="text" placeholder="Phone number" class="form-group">
+                                <input type="text" placeholder="Address 1" class="form-group">
+                                <input type="text" placeholder="Address 2" class="form-group">
+                            </div>
+
+                            <button type="submit" class="user-info__save-btn">Save address</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="order__history">
+                    <h2>Your Order History</h2>
+                    <div class="order" style="max-height: 310px; overflow: auto;">
+                        <!-- <div style="display: flex;">
+                        <div>
+                            <div class="order__id">Order ID: #12345</div>
+                            <div class="order__date">Date: 2023-11-01</div>
+                            <div class="order__status status--cancel">Status: Pending</div>
+                            <span class="show__details" onclick="toggleDetails(this)">View Details</span>
+                        </div>
+                        <div style="margin-left: 100px;">
+                            <div class="order__items__details">
+                                <strong>Items:</strong>
+                                <ul>
+                                    <li>Comic: "Adventure Tales" - $10.00</li>
+                                    <li>Comic: "Mystery World" - $8.00</li>
+                                    <li>Comic: "Adventure Tales" - $10.00</li>
+                                    <li>Comic: "Mystery World" - $8.00</li>
+                                    <li>Comic: "Adventure Tales" - $10.00</li>
+                                    <li>Comic: "Mystery World" - $8.00</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="login__page">
+            <div id="login">
+                <h1>Login</h1>
+
+                <div class="login__input">
+                    <input type="text" id="login__input--username" placeholder="Username" required value="">
+                </div>
+
+                <div class="login__input">
+                    <input type="password" id="login__input--password" placeholder="Password" required value="">
+                    <label for="login__input--password"></label>
+                </div>
+
+                <div id="login__forget">
+                    <a>Forget your password?</a>
+                </div>
+
+                <button type="submit" id="login__btn">Login</button>
+
+                <div id="login__signup">
+                    <a href="#" id="login__signup--nav">Sign Up</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup__page">
+            <div id="signup">
+                <h1>Sign Up</h1>
+                <!--   Username   -->
+                <div class="signup__input">
+                    <input type="text" id="signup__input--username" placeholder="Username" required value="">
+                    <label for="signup__input--username"></label>
+                </div>
+                <!--   Password   -->
+                <div class="signup__input">
+                    <input type="password" id="signup__input--password" placeholder="Password" required>
+                    <label for="signup__input--password"></label>
+                </div>
+                <!--   Confirm Password   -->
+                <div class="signup__input">
+                    <input type="password" id="signup__input--confpasword" placeholder="Confirm Password" required>
+                    <label for="signup__input--confpasword"></label>
+                </div>
+                <!--   Email   -->
+                <div class="signup__input">
+                    <input type="email" id="signup__input--email" placeholder="Email" required>
+                    <label for="signup__input--email"></label>
+                </div>
+                <!--   Phone number   -->
+                <div class="signup__input">
+                    <input type="tel" id="signup__input--phone" placeholder="076 302 0810" required>
+                    <label for="signup__input--phone"></label>
+                </div>
+
+                <button type="submit" id="signup__btn">Create account</button>
+
+                <div id="signup__login">
+                    <a href="#" id="signup__login--nav">Already has account?</a>
+                </div>
+            </div>
+        </section>
+        <div id="notification"></div>
+    </main>
+
+
+    <special-footer id="special-footer"></special-footer>
+
+    <!-- js -->
+    <script src="../js/validation.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/header_footer_1.js"></script>
+    <script src="../js/product.js"></script>
+    <script src="../js/purchase.js"></script>
+    <script>
+        function viewHome() {
+            document.getElementById('main__page').style.display = 'inherit'
+        }
+        function viewCart() {
+            document.getElementById('main__page').style.display = 'none'
+            document.querySelector('.cart__container').style.display = 'inherit'
+            document.querySelector('.billing-info').style.display = 'none'
+        }
+        function viewBill() {
+            document.getElementById('main__page').style.display = 'none'
+            document.querySelector('.cart__container').style.display = 'none'
+            document.querySelector('.billing-info').style.display = 'inherit'
+        }
+
+        (() => {
+            const URLOfIndex = window.location.href
+            const URLToAdmin = URLOfIndex.split("html")
+            if (localStorage.getItem('admin') === 'admin') {
+                window.location.href = `${URLToAdmin[0]}html/admin.html`
+            }
+            Product.onloadViewIndex();
+            renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
+            Cart.renderCartPreview(cartTable)
+            Order.renderOrderView(orderTable)
+
+            // if (!localStorage.getItem('View')) {
+            //     viewHome();
+            // }
+            // if (JSON.parse(localStorage.getItem('View')) === 'cart') {
+            //     viewCart();
+            // }
+            // if (JSON.parse(localStorage.getItem('View')) === 'bill') {
+            //     viewBill();
+            // }
+        })()
+
+        // document.querySelector('.backToHome').addEventListener('click', () => {
+        //     localStorage.removeItem('View')
+        //     viewHome();
+        // })
+
+        // document.getElementById('shopping__icon').addEventListener('click', () => {
+        //     localStorage.setItem('View', JSON.stringify('cart'))
+        //     viewCart()
+        // })
+
+        // document.querySelector('.checkout-button').addEventListener('click', () => {
+        //     localStorage.setItem('View', JSON.stringify('bill'))
+        //     viewBill()
+        // })
+
+        function toggleUserInfo(e) {
+            const userInfo = document.querySelector('.user-info__container')
+            const orderHistory = document.querySelector('.order__history')
+            if(e.id === userInfo.className){
+                userInfo.style.display = 'inherit'
+                orderHistory.style.display = 'none'
+            }
+            else{
+                userInfo.style.display = 'none'
+                orderHistory.style.display = 'inherit'
+            }
+        }
+    </script>
+</body>
+
+</html>

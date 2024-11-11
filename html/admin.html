@@ -27,7 +27,7 @@
                         </button>
                         <div id="dropdown" class="dropdown__content">
                             <a href="/">Ghi chép (Logs)</a>
-                            <a href="index.html">Đăng xuất (Logout)</a>
+                            <a href="index.html" onclick="logOutAdmin()">Đăng xuất (Logout)</a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div id="static">Thống kê</div>
                 <div id="product" onclick="togglePage(this)">Sản phẩm (Product)</div>
                 <div id="user" onclick="togglePage(this)">Khách hàng (Clients)</div>
-                <div id="order">Hóa đơn (Order)</div>
+                <div id="order" onclick="togglePage(this)">Hóa đơn (Order)</div>
             </div>
 
 
@@ -55,7 +55,7 @@
                     <!-- Menu Body -->
                     <div class="product table__search">
                         <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">Search by name:</div>
+                            <div class="product table__search-label">Search by sei:</div>
                             <input type="text" class="product-table__search-input"
                                 id="product-table__search-input--name" />
                         </div>
@@ -143,34 +143,59 @@
                     </div>
 
                     <div id="product-menu__body" class="product-menu__body">
-                        <label class="product-menu__label" for="product-menu__input--cover">Cover:</label>
-                        <input class="product-menu__input" id="product-menu__input--cover" type="file"
-                            aria-label="Product Image" /><br />
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--cover1">Cover primary:</label>
+                            <input class="product-menu__input" id="product-menu__input--cover1" type="file"
+                                aria-label="Product Image" /><br />
+                        </div>
 
-                        <label class="product-menu__label" for="product-menu__input--series">Series:</label>
-                        <input class="product-menu__input" id="product-menu__input--series" type="text"
-                            placeholder="Title" aria-label="Product Title" /><br />
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--cover2">Cover back:</label>
+                            <input class="product-menu__input" id="product-menu__input--cover2" type="file"
+                                aria-label="Product Image" /><br />
+                        </div>
 
-                        <label class="product-menu__label" for="product-menu__input--category">Category:</label>
-                        <select class="product-menu__select" id="product-menu__input--category"
-                            aria-label="Product Tags">
-                            <option value="">--Choose a tag--</option>
-                            <option value="Rom Com">Rom Com</option>
-                            <option value="Brain Rot">Brain Rot</option>
-                            <option value="Shonen">Shonen</option>
-                        </select><br />
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--series">Series:</label>
+                            <input class="product-menu__input" id="product-menu__input--series" type="text"
+                                placeholder="Title" aria-label="Product Title" /><br />
+                        </div>
 
-                        <label class="product-menu__label" for="product-menu__input--author">Author:</label>
-                        <input class="product-menu__input" id="product-menu__input--author" type="text"
-                            placeholder="Author" aria-label="Product Author" /><br />
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--category">Category:</label>
+                            <select class="product-menu__select" id="product-menu__input--category"
+                                aria-label="Product Tags">
+                                <option value="">--Choose a tag--</option>
+                                <option value="Rom Com">Rom Com</option>
+                                <option value="Brain Rot">Brain Rot</option>
+                                <option value="Shonen">Shonen</option>
+                            </select><br />
+                        </div>
 
-                        <label class="product-menu__label" for="product-menu__input--stock">Stock:</label>
-                        <input class="product-menu__input" id="product-menu__input--stock" type="text"
-                            placeholder="Stock" aria-label="Product Stock" /><br />
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--author">Author:</label>
+                            <input class="product-menu__input" id="product-menu__input--author" type="text"
+                                placeholder="Author" aria-label="Product Author" /><br />
+                        </div>
 
-                        <label class="product-menu__label" for="product-menu__input--price">Price:</label>
-                        <input class="product-menu__input" id="product-menu__input--price" type="text"
-                            placeholder="Price" aria-label="Product Price" /><br />
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--stock">Stock:</label>
+                            <input class="product-menu__input" id="product-menu__input--stock" type="text"
+                                placeholder="Stock" aria-label="Product Stock" /><br />
+                        </div>
+
+                        <div class="product-menu__content">
+                            <label class="product-menu__label" for="product-menu__input--price">Price:</label>
+                            <input class="product-menu__input" id="product-menu__input--price" type="text"
+                                placeholder="Price" aria-label="Product Price" /><br />
+                        </div>
+
+                        <div class="product-menu__content">
+                            <label class="product-menu__label"
+                                for="product-menu__input--description">Description:</label>
+                            <input class="product-menu__input" id="product-menu__input--description" type="text"
+                                placeholder="Description" aria-label="Product Description" /><br />
+                        </div>
                     </div>
 
                     <div class="product-menu__footer">
@@ -179,7 +204,7 @@
                             Close
                         </button> -->
                         <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
-                            type="button">
+                            type="button" onclick="Product.add()">
                             Save (Add Mode)
                         </button>
                         <button class="product-menu__button product-menu__button--save" id="product-menu__button--save"
@@ -220,17 +245,20 @@
                         <table class="user table__container" style="width: 100%">
                             <thead class="user table__head">
                                 <tr class="user table__row">
-                                    <th class="user table__cell product-table__cell--id">
+                                    <th class="user table__cell user-table__cell id">
                                         UserID
                                     </th>
-                                    <th class="user table__cell product-table__cell cover">
+                                    <th class="user table__cell user-table__cell cover">
                                         Username
                                     </th>
-                                    <th class="user table__cell product-table__cell cover">
+                                    <th class="user table__cell user-table__cell cover">
                                         Date Create
                                     </th>
-                                    <th class="user table__cell product-table__cell title">
+                                    <th class="user table__cell user-table__cell title">
                                         Status
+                                    </th>
+                                    <th>
+
                                     </th>
                                 </tr>
                             </thead>
@@ -246,13 +274,79 @@
                     </div>
                 </div>
             </div>
+            <!-- ORDER PAGE -->
+            <div id="order-page" class="order-page page">
+                <!-- TABLE PRODUCT -->
+                <div class="order table">
+                    <!-- Menu Header -->
+                    <header class="order table__header">
+                        <p class="order table__title">Danh sách sản phẩm</p>
+                    </header>
+
+                    <!-- Menu Body -->
+                    <div class="order table__search">
+                        <div style="display: flex; flex-direction: row">
+                            <div class="order table__search-label">Search by name:</div>
+                            <input type="text" class="order-table__search-input" id="order-table__search-input--name" />
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="product table__search-label">
+                                Search by category:
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order table__body">
+                        <table class="order table__container" style="width: 100%">
+                            <thead class="order table__head">
+                                <tr class="order table__row">
+                                    <th class="order table__cell order-table__cell orderid">
+                                        OrderID
+                                    </th>
+                                    <th class="order table__cell user-table__cell userid">
+                                        UserID
+                                    </th>
+                                    <th class="user table__cell user-table__cell itemlist">
+                                        Item list
+                                    </th>
+                                    <th class="user table__cell user-table__cell price">
+                                        Price
+                                    </th>
+                                    <th class="user table__cell user-table__cell datecreate">
+                                        Date Create
+                                    </th>
+                                    <th class="user table__cell user-table__cell status">
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-table__body-content" class="product table__body-content">
+                                <!-- Product rows will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Menu Footer -->
+                    <div class="user-table__footer" id="user-table__footer">
+                        <!-- Pagination or additional controls can go here -->
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
 
-<script src="../js/priceSlider.js"></script>
 <script src="../js/toggleSideNav.js"></script>
 <script src="../js/adminController.js"></script>
+<script src="../js/priceSlider.js"></script>
 <script src="../js/product.js"></script>
+<script src="../js/purchase.js"></script>
+<script>
+    (() => {
+        Product.onloadViewAdmin();
+        Order.renderOrderAdmin(orderTable);
+    })()
+</script>
 
 </html>
