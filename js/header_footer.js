@@ -20,7 +20,7 @@ class SpecialHeader extends HTMLElement{
 
                         <ul>
                             <li><a href="">Black Clover</a></li>
-                            <li><a href="">My Hero Academia</a></li>
+                            <li><a href="">Tokyo Ghoul</a></li>
                         </ul>
 
                         <ul>
@@ -40,7 +40,7 @@ class SpecialHeader extends HTMLElement{
                     <div class="navbar__category">
                         <ul>
                             <li><a href="">Shounen</a></li>
-                            <li><a href="">Slice Of Life</a></li>
+                            <li><a href="">Seinen</a></li>
                         </ul>
 
                         <ul>
@@ -64,23 +64,23 @@ class SpecialHeader extends HTMLElement{
                     <a href="#" class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
-                            <li><a href="">Murata Yusuke</a></li>
-                            <li><a href="">Fukuda Shinichi</a></li>
+                            <li><a href="">Yusuke Murata</a></li>
+                            <li><a href="">Shinichi Fukuda</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Komoto Hajime</a></li>
-                            <li><a href="">Tabata Yūki</a></li>
+                            <li><a href="">Hajime Komoto</a></li>
+                            <li><a href="">Yuki Tabata</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Horikoshi Kohei</a></li>
-                            <li><a href="">Gege Akutami</a></li>
+                            <li><a href="">Kohei Horikoshi</a></li>
+                            <li><a href="">Akutami Gege</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Suzuki Yuto</a></li>
-                            <li><a href="">Gege Akutami</a></li>
+                            <li><a href="">Yuto Suzuki</a></li>
+                            <li><a href="">Tatsuya Endo</a></li>
                         </ul>
                     </div>
                 </li>
@@ -176,7 +176,7 @@ class SpecialHeader extends HTMLElement{
                         <li><a href="">Sakamoto Days</a></li>
                         <li><a href="">My Dress Up Darling</a></li>
                         <li><a href="">Black Clover</a></li>
-                        <li><a href="">My Hero Academia</a></li>
+                        <li><a href="">Tokyo Ghoul</a></li>
                         <li><a href="">Jujutsu Kaisen</a></li>
                         <li><a href="">Mashle: Magic And Muscles</a></li>
                         <li><a href="">One Punch Man</a></li>
@@ -186,7 +186,7 @@ class SpecialHeader extends HTMLElement{
                     <ul class="navbar__responsive--category__drops">
                         <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
                         <li><a href="">Shounen</a></li>
-                        <li><a href="">Slice Of Life</a></li>
+                        <li><a href="">Seinen</a></li>
                         <li><a href="">Rom-Com</a></li>
                         <li><a href="">Action</a></li>
                         <li><a href="">Family</a></li>
@@ -197,14 +197,14 @@ class SpecialHeader extends HTMLElement{
     
                     <ul class="navbar__responsive--author__drops">
                         <li id="navbar__responsive--author__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="">Murata Yusuke</a></li>
-                        <li><a href="">Fukuda Shinichi</a></li>
-                        <li><a href="">Komoto Hajime</a></li>
-                        <li><a href="">Tabata Yūki</a></li>   
-                        <li><a href="">Horikoshi Kohei</a></li>
-                        <li><a href="">Gege Akutami</a></li>                       
-                        <li><a href="">Suzuki Yuto</a></li>
-                        <li><a href="">Gege Akutami</a></li>
+                        <li><a href="">Yusuke Murata</a></li>
+                        <li><a href="">Shinichi Fukuda</a></li>
+                        <li><a href="">Hajime Komoto</a></li>
+                        <li><a href="">Yuki Tabata</a></li>   
+                        <li><a href="">Kohei Horikoshi</a></li>
+                        <li><a href="">Akutami Gege</a></li>    
+                        <li><a href="">Yuto Suzuki</a></li>
+                        <li><a href="">Tatsuya Endo</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--price__drops">

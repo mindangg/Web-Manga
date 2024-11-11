@@ -52,7 +52,7 @@ dots.forEach((li, key) =>{
 
 var bestSellingProduct = [
     {
-        productId: "manga_1", 
+        productId: "manga_0", 
         series: "Sakamoto Days", 
         author: "Suzuki Yuto", 
         category: "Action", 
@@ -66,7 +66,7 @@ var bestSellingProduct = [
     },
 
     {
-        productId: "manga_2", 
+        productId: "manga_1", 
         series: "Jujutsu Kaisen", 
         author: "Gege Akutami", 
         category: "Action", 
@@ -80,7 +80,7 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_3", 
+        productId:"manga_2", 
         series: "Spy X Family", 
         author: "Tatsuya Endo", 
         category: "Comedy", 
@@ -95,7 +95,7 @@ var bestSellingProduct = [
 
 
     {
-        productId:"manga_4", 
+        productId:"manga_3", 
         series: "My Dress Up Darling", 
         author: "Fukuda Shinichi", 
         category: "Rom-Com", 
@@ -109,7 +109,7 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_5", 
+        productId:"manga_4", 
         series: "Black Clover", 
         author: "Yuki Tabata", 
         category: "Shounen", 
@@ -123,7 +123,7 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_6", 
+        productId:"manga_5", 
         series: "My Hero Academia", 
         author: "Yuki Tabata", 
         category: "Shounen", 
@@ -137,7 +137,7 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_7", 
+        productId:"manga_6", 
         series: "One Punch Man", 
         author: "Yusuke Murata", 
         category: "Shounen", 
@@ -151,9 +151,9 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_8", 
+        productId:"manga_7", 
         series: "Mashle: Magic And Muscles", 
-        author: "Hajime Komoto", 
+        author: "Komoto Hajime", 
         category: "Comedy", 
         img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-primary.jpeg", 
         img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-back.jpeg", 
@@ -221,7 +221,7 @@ function showBestInfo(e) {
                         <p>Author:</p>
                         <h2>${p.author}</h2>
                         <p>${p.category}</p>
-                        <p>Quantity: ${p.stock}</p>
+                        <p>Quantity: </p>
 
                         <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
                         <button id="product__add">Add to cart</button>
