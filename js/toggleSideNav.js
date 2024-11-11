@@ -1,20 +1,17 @@
-var sidenav = document.getElementById("sidenav");
-var main = document.getElementById("main");
-var productPage = document.getElementById("product-page");
 function toggleNav() {
-    let productPage = document.getElementById('product-page');
-    let userPage = document.getElementById('user-page');
-    let orderPage = document.getElementById('order-page');
+    var sidenav = document.getElementById("sidenav");
+    console.log(sidenav.style.wi)
+    var page = document.querySelectorAll(".page")
     if (sidenav.style.width === "200px") {
         sidenav.style.width = "0";
-        productPage.style.marginLeft = "0";
-        userPage.style.marginLeft = "0";
-        orderPage.style.marginLeft = "0";
+        page.forEach(p => {
+            p.style.marginLeft = "0"
+        })
     } else {
         sidenav.style.width = "200px";
-        productPage.style.marginLeft = "200px";
-        userPage.style.marginLeft = "200px";
-        orderPage.style.marginLeft = "200px";
+        page.forEach(p => {
+            p.style.marginLeft = "200px"
+        })
     }
 }
 

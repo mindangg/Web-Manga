@@ -330,8 +330,8 @@
 }
 
 #user-table__footer {
+  margin-top: 15px;
   text-align: center;
-
 }
 
 .user.table__row {
