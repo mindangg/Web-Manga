@@ -1,18 +1,20 @@
+var sidenav = document.getElementById("sidenav");
+var main = document.getElementById("main");
+var productPage = document.getElementById("product-page");
 function toggleNav() {
-    var sidenav = document.getElementById("sidenav");
-    var main = document.getElementById("main");
-    var productPage = document.getElementById("product-page");
-
-    toggle(productPage)
-}
-
-function toggle(e) {
+    let productPage = document.getElementById('product-page');
+    let userPage = document.getElementById('user-page');
+    let orderPage = document.getElementById('order-page');
     if (sidenav.style.width === "200px") {
         sidenav.style.width = "0";
-        e.style.marginLeft = "0";
+        productPage.style.marginLeft = "0";
+        userPage.style.marginLeft = "0";
+        orderPage.style.marginLeft = "0";
     } else {
         sidenav.style.width = "200px";
-        e.style.marginLeft = "200px";
+        productPage.style.marginLeft = "200px";
+        userPage.style.marginLeft = "200px";
+        orderPage.style.marginLeft = "200px";
     }
 }
 

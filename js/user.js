@@ -6,7 +6,7 @@ let mm = String(day.getMonth() + 1).padStart(2, '0');
 let yyyy = day.getFullYear();
 let curDay = dd + "/" + mm + "/" + yyyy;
 
-let userList = [
+let userList = JSON.parse(localStorage.getItem('users')) || [
     {
         userId: "user_0",
         username: "1",
@@ -106,7 +106,6 @@ let userList = [
 ];
 
 let account = null;
-
 
 //FOR SIGN UP
 const signup = document.getElementById('signup');
@@ -268,9 +267,7 @@ class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.createDate = curDay;
-        this.address1 = '';
-        this.address2 = '';
-        this.address3 = ''
+        this.address = [];
         this.status = true; //check if account is block or not
     }
 
@@ -388,6 +385,7 @@ function clearField(field) {
         input.value = '';
     });
 }
+
 
 User.onload();
 User.renderAccountLogin();
