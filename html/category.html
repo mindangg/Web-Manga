@@ -348,7 +348,20 @@
                     <input type="text" id="fullName" required>
 
                     <label for="address">Shipping Address</label>
-                    <input id="address" required></input>
+                    <!-- <input id="address" required></input> -->
+                    <select name="" id="selectAddressOrder" onchange="toggleAddressOrder(this)">
+                        <option value="userAddress">Địa chỉ của người dùng</option>
+                        <option value="newAddress">Địa chỉ mới</option>
+                    </select>
+
+                    <div id="newAddress" style="display: none;">
+                        <input type="text" placeholder="Full name" value="" class="form-group">
+                        <input type="text" placeholder="Số nhà" class="form-group">
+                        <input type="text" placeholder="Đường" class="form-group">
+                        <input type="text" placeholder="Quận/Huyện" class="form-group">
+                        <input type="text" placeholder="Thành phố" class="form-group">
+                        <input type="text" placeholder="Tỉnh" class="form-group">
+                    </div>
 
                     <!-- <label for="paymentMethod">Payment Method</label>
                         <div style="overflow: hidden;">
@@ -408,10 +421,12 @@
                             <div class="form-group">
                                 <input type="text" placeholder="Full name" value="" class="form-group">
                                 <input type="text" placeholder="Phone number" class="form-group">
-                                <input type="text" placeholder="Address 1" class="form-group">
-                                <input type="text" placeholder="Address 2" class="form-group">
+                                <input type="text" placeholder="Số nhà" class="form-group">
+                                <input type="text" placeholder="Đường" class="form-group">
+                                <input type="text" placeholder="Quận/Huyện" class="form-group">
+                                <input type="text" placeholder="Thành phố" class="form-group">
+                                <input type="text" placeholder="Tỉnh" class="form-group">
                             </div>
-
                             <button type="submit" class="user-info__save-btn">Save address</button>
                         </form>
                     </div>
@@ -574,13 +589,26 @@
         function toggleUserInfo(e) {
             const userInfo = document.querySelector('.user-info__container')
             const orderHistory = document.querySelector('.order__history')
-            if(e.id === userInfo.className){
+            if (e.id === userInfo.className) {
                 userInfo.style.display = 'inherit'
                 orderHistory.style.display = 'none'
             }
-            else{
+            else {
                 userInfo.style.display = 'none'
                 orderHistory.style.display = 'inherit'
+            }
+        }
+
+        function toggleAddressOrder(e) {
+            const userAddress = document.getElementById('newAddress')
+            console.log(e.value)
+            if (e.value === 'userAddress') {
+                userAddress.style.display = 'none'
+                return;
+            }
+            if (e.value === 'newAddress') {
+                userAddress.style.display = 'inherit'
+                return;
             }
         }
     </script>
