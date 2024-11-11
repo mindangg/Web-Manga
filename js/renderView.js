@@ -24,7 +24,7 @@ var bestSellingProduct = [
         price: 7.99, 
         stock: 90,
         descr1: "Jujutsu Kaisen manga volume 14 features story and art by Gege Akutami.",
-        descr2: "While investigating a strange set of mysterious deaths, Itadori meets Junpei, a troubled kid who is often bullied at school, and they immediately hit it off. However, Junpei is also befriended by the culprit behind the bloody incidents—Mahito, a mischievous cursed spirit! Mahito sets in motion a devious plan involving Junpei, hoping to ensnare Itadori as well.",
+        descr2: "While investigating a strange set of mysterious deaths, Itadori meets Junpei, a troubled kid who is often bullied at school, and they immediately hit it off. ",
     },
 
     {
@@ -148,17 +148,15 @@ document.getElementById("product__close").addEventListener("click", function(){
       }, 365);
 })
 
-document.querySelector(".best__slider__item a").addEventListener("click", function(){
-    document.querySelector(".product__page").style.display = "inline";
-    document.querySelector(".product").style.animationName = "topDown";
-    showBestInfo();
-})
+
 
 function test(){
     console.log("abc")
 }
 
 function showBestInfo(e) {
+    document.querySelector(".product__page").style.display = "inline";
+    document.querySelector(".product").style.animationName = "topDown";
     const productInfo = document.querySelector(".product__page");
     const p = bestSellingProduct.find(product => product.productId === e.id);
 
@@ -167,6 +165,7 @@ function showBestInfo(e) {
         return;
     }
 
+    productInfo.innerHTML = ""
     productInfo.innerHTML = `
                 <div class="product">
                     <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
@@ -192,7 +191,7 @@ function showBestInfo(e) {
                         <p>Author:</p>
                         <h2>${p.author}</h2>
                         <p>${p.category}</p>
-                        <p>Quantity: </p>
+                        <p>Quantity: ${p.stock}</p>
 
                         <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
                         <button id="product__add">Add to cart</button>
@@ -207,11 +206,7 @@ function showBestInfo(e) {
     `
 }
 
-// function showBestInfo(e){
-//     const productInfo = document.querySelector(".product__page")
-//     bestSellingProduct.find(p => p.productId === e.productId)
 
-// }
 
 
 

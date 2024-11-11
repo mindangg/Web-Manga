@@ -17,17 +17,17 @@ class SpecialHeader extends HTMLElement{
                             <li><a href="">Sakamoto Days</a></li>
                             <li><a href="">My Dress Up Darling</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Black Clover</a></li>
                             <li><a href="">My Hero Academia</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Jujutsu Kaisen</a></li>
                             <li><a href="">Mashle: Magic And Muscles</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">One Punch Man</a></li>
                             <li><a href="">Spy X Family</a></li>
@@ -42,24 +42,24 @@ class SpecialHeader extends HTMLElement{
                             <li><a href="">Shounen</a></li>
                             <li><a href="">Slice Of Life</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Rom-Com</a></li>
                             <li><a href="">Action</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Family</a></li>
                             <li><a href="">Comedy</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Fantasy</a></li>
                             <li><a href="">Drama</a></li>
                         </ul>
                     </div>
                 </li>
-                
+
                 <li class="navbar__link--author">
                     <a href="#" class="navbar__link">Author</a>
                     <div class="navbar__author">
@@ -67,17 +67,17 @@ class SpecialHeader extends HTMLElement{
                             <li><a href="">Murata Yusuke</a></li>
                             <li><a href="">Fukuda Shinichi</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Komoto Hajime</a></li>
                             <li><a href="">Tabata Yūki</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Horikoshi Kohei</a></li>
                             <li><a href="">Gege Akutami</a></li>
                         </ul>
-                                    
+
                         <ul>
                             <li><a href="">Suzuki Yuto</a></li>
                             <li><a href="">Gege Akutami</a></li>
@@ -90,15 +90,15 @@ class SpecialHeader extends HTMLElement{
                         <ul>
                             <li><a href="">Under $5 Dollars</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">$5 To $7 Dollars</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">$7 To $15 Dollars</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Over $15 Dollars</a></li>
                         </ul>
@@ -108,18 +108,28 @@ class SpecialHeader extends HTMLElement{
             </ul>
 
             <!-- nav bar icons -->
-            <div class="navbar__home">
+            <div class="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="#" id="login__icon"><i class="fa-regular fa-user"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
                 <a id="shopping__icon"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
 
             <div class="navbar__bar">
                 <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
-                <a href="#" id="login__icon__responsive"><i class="fa-regular fa-user"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon__responsive">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
             </div>
 
-            <div class="navbar__responsive__popup">
+             <div class="navbar__responsive__popup">
                 <div class="navbar__responsive">
                     <div class="navbar__responsive__close">
                         <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
@@ -163,7 +173,6 @@ class SpecialHeader extends HTMLElement{
 
                     <ul class="navbar__responsive--series__drops">
                         <li id="navbar__responsive--series__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-
                         <li><a href="">Sakamoto Days</a></li>
                         <li><a href="">My Dress Up Darling</a></li>
                         <li><a href="">Black Clover</a></li>
@@ -207,15 +216,7 @@ class SpecialHeader extends HTMLElement{
                     </ul>
                 </div>
             </div>    
-                <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
-                <div style="display: flex">
-                    <a href="#" id="login__icon">
-                        <i class="fa-regular fa-user" style="color:white;"></i>
-                    </a>
-                    <div></div>
-                </div>
-                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
-            </div>
+
         </nav>
 
         <!-- searchbox -->
@@ -224,14 +225,14 @@ class SpecialHeader extends HTMLElement{
                 <div class="searchbox">
                     <input type="search" placeholder="Search for...">
                     <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                </div> 
+                </div>
             </div>
         </div>
 
         <!-- shopping cart -->
         <div class="shopping__popup">
             <div class="shopping__container">
-                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>     
+                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 <div class="shopping">
                     <div class="shopping__icon">
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
@@ -242,7 +243,7 @@ class SpecialHeader extends HTMLElement{
                 </div>
             </div>
         </div>
-    </header>     
+    </header>   
     `
     }
 }
@@ -310,8 +311,6 @@ customElements.define(`special-footer`, SpecialFooter);
 const toLoginPage = () => {
     document.getElementById("main__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
-    console.log("ok")
-})
     document.getElementById("signup__page").style.display = "none";
 }
 
@@ -319,56 +318,42 @@ document.getElementById("login__icon").addEventListener("click", toLoginPage);
 
 document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
 
+
 document.getElementById("login__signup--nav").addEventListener("click", function(){
     document.getElementById("login__page").style.display = "none";
     document.getElementById("signup__page").style.display = "inline";
-});
+})
 
 document.getElementById("signup__login--nav").addEventListener("click", function(){
     document.getElementById("signup__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
 })
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // search and shopping cart popup
 
-document.getElementById("search__icon").addEventListener("click", function () {
+document.getElementById("search__icon").addEventListener("click", function(){
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
     console.log("DM Trong Duy")
 })
 
-document.getElementById("search__close").addEventListener("click", function () {
+document.getElementById("search__close").addEventListener("click", function(){
     document.querySelector(".search").style.animationName = "leftToRight"
-    setTimeout(function () {
+    setTimeout(function() {
         document.querySelector(".search__popup").style.display = "none";
-    }, 390);
+      }, 390);
 })
 
-document.getElementById("shopping__icon").addEventListener("click", function () {
+document.getElementById("shopping__icon").addEventListener("click", function(){
     document.querySelector(".shopping__popup").style.display = "flex";
     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
 })
 
-document.getElementById("shopping__close").addEventListener("click", function () {
+document.getElementById("shopping__close").addEventListener("click", function(){
     document.querySelector(".shopping__container").style.animationName = "leftToRight"
-    setTimeout(function () {
+    setTimeout(function() {
         document.querySelector(".shopping__popup").style.display = "none";
-    }, 390);
+      }, 390);
 })
 
 // document.getElementById("shopping__close").addEventListener("click", function(){
@@ -386,21 +371,25 @@ document.getElementById("navbar__bar__icon").addEventListener("click", function(
 document.getElementById("navbar__responsive__close__button").addEventListener("click", function(){
     document.querySelector(".navbar__responsive").style.animationName = "topDown";
     setTimeout(function(){
-        document.querySelector(".navbar__responsive__popup").style.display = "none";
+        document.querySelector(".navbar__responsive--series__drops").style.display = "none"
+        document.querySelector(".navbar__responsive--category__drops").style.display = "none"
+        document.querySelector(".navbar__responsive--author__drops").style.display = "none"
+        document.querySelector(".navbar__responsive--price__drops").style.display = "none"
+
+        document.querySelector(".navbar__responsive__links").style.display = "inline"
+        document.querySelector(".navbar__responsive__popup").style.display = "none"
+        
+
     }, 300)
     console.log("hello")
 })
 
-// var x = matchMedia("(max-width: 619px)")
-// if(!x.matches)
-//     document.querySelector(".navbar__responsive").style.display = "none";
 
 window,onresize = function(){
     if(window.innerWidth > 619){
         document.querySelector(".navbar__responsive__popup").style.display = "none";
     }
 }
-
 
 document.querySelector(".navbar__responsive--series").addEventListener("click", function(){
     document.querySelector(".navbar__responsive__links").style.display = "none"
@@ -409,7 +398,7 @@ document.querySelector(".navbar__responsive--series").addEventListener("click", 
 
 document.getElementById("navbar__responsive--series__back").addEventListener("click", function(){
     document.querySelector(".navbar__responsive--series__drops").style.display = "none"
-        document.querySelector(".navbar__responsive__links").style.display = "inline"
+    document.querySelector(".navbar__responsive__links").style.display = "inline"
 })
 
 document.querySelector(".navbar__responsive--category").addEventListener("click", function(){
@@ -441,8 +430,3 @@ document.getElementById("navbar__responsive--price__back").addEventListener("cli
     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
     document.querySelector(".navbar__responsive__links").style.display = "inline"
 })
-
-
-
-
-
