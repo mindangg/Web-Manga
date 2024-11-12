@@ -6,7 +6,7 @@ let mm = String(day.getMonth() + 1).padStart(2, '0');
 let yyyy = day.getFullYear();
 let curDay = dd + "/" + mm + "/" + yyyy;
 
-let userList = [
+let userList = JSON.parse(localStorage.getItem('users')) || [
     {
         userId: "user_0",
         username: "1",
@@ -14,9 +14,13 @@ let userList = [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381431",
         createDate: '10/02/2005',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
     {
@@ -26,9 +30,13 @@ let userList = [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381431",
         createDate: '10/02/2005',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '28/2',
+            street: 'Phung Ta Chu',
+            ward: 'An Lac A',
+            district: 'Binh Tan',
+            city: 'TP.HCM'
+        },
         status: true,
     },
     {
@@ -38,21 +46,29 @@ let userList = [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381432",
         createDate: '30/10/2024',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
     {
-        id: "user_3",
+        userId: "user_3",
         username: "quocbao",
         password: "Baohoo100205",
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381433",
         createDate: '05/11/2024',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
     {
@@ -62,9 +78,13 @@ let userList = [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381434",
         createDate: '24/12/2023',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
     {
@@ -74,9 +94,13 @@ let userList = [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
         createDate: '01/01/2020',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
     {
@@ -86,9 +110,13 @@ let userList = [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
         createDate: '11/09/2001',
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
     {
@@ -98,15 +126,18 @@ let userList = [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381435",
         createDate: curDay,
-        address1: '',
-        address2: '',
-        address3: '',
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
         status: true,
     },
 ];
 
 let account = null;
-
 
 //FOR SIGN UP
 const signup = document.getElementById('signup');
@@ -268,9 +299,13 @@ class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.createDate = curDay;
-        this.address1 = '';
-        this.address2 = '';
-        this.address3 = ''
+        this.address = {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        };
         this.status = true; //check if account is block or not
     }
 
@@ -388,6 +423,7 @@ function clearField(field) {
         input.value = '';
     });
 }
+
 
 User.onload();
 User.renderAccountLogin();

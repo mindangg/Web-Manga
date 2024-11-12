@@ -1,18 +1,17 @@
 function toggleNav() {
     var sidenav = document.getElementById("sidenav");
-    var main = document.getElementById("main");
-    var productPage = document.getElementById("product-page");
-
-    toggle(productPage)
-}
-
-function toggle(e) {
+    console.log(sidenav.style.wi)
+    var page = document.querySelectorAll(".page")
     if (sidenav.style.width === "200px") {
         sidenav.style.width = "0";
-        e.style.marginLeft = "0";
+        page.forEach(p => {
+            p.style.marginLeft = "0"
+        })
     } else {
         sidenav.style.width = "200px";
-        e.style.marginLeft = "200px";
+        page.forEach(p => {
+            p.style.marginLeft = "200px"
+        })
     }
 }
 

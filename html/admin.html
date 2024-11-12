@@ -17,7 +17,7 @@
 
                 <div class="topnav__toggle">
                     <span id="navToggle" style="font-size: 30px; cursor: pointer"
-                        onclick="toggleNav(this)">&#9776;</span>
+                        onclick="toggleNav()">&#9776;</span>
                 </div>
 
                 <div class="setting">
@@ -219,12 +219,12 @@
                 </div>
             </div>
 
-            <div id="user-page" class="user-page page">
-                <!-- TABLE PRODUCT -->
+            <div id="user-page" class="user-page page" style="display: none">
+                <!-- TABLE USER -->
                 <div class="user table">
                     <!-- Menu Header -->
                     <header class="user table__header">
-                        <p class="user table__title">Danh sách sản phẩm</p>
+                        <p class="user table__title">User</p>
                     </header>
 
                     <!-- Menu Body -->
@@ -245,24 +245,33 @@
                         <table class="user table__container" style="width: 100%">
                             <thead class="user table__head">
                                 <tr class="user table__row">
-                                    <th class="user table__cell user-table__cell id">
-                                        UserID
+                                    <th class="user table__cell user-table__cell userId">
+                                        UserId
                                     </th>
-                                    <th class="user table__cell user-table__cell cover">
+                                    <th class="user table__cell user-table__cell username">
                                         Username
                                     </th>
-                                    <th class="user table__cell user-table__cell cover">
-                                        Date Create
+                                    <th class="user table__cell user-table__cell password">
+                                        Password
                                     </th>
-                                    <th class="user table__cell user-table__cell title">
+                                    <th class="user table__cell user-table__cell email">
+                                        Email
+                                    </th>
+                                    <th class="user table__cell user-table__cell phoneNumber">
+                                        Phone number
+                                    </th>
+                                    <th class="user table__cell user-table__cell createDate">
+                                        Date create
+                                    </th>
+                                    <th class="user table__cell user-table__cell address">
+                                        Address
+                                    </th>
+                                    <th class="user table__cell user-table__cell status">
                                         Status
-                                    </th>
-                                    <th>
-
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody id="user-table__body-content" class="product table__body-content">
+                            <tbody id="user-table__body-content" class="user table__body-content">
                                 <!-- Product rows will be displayed here -->
                             </tbody>
                         </table>
@@ -274,6 +283,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- ORDER PAGE -->
             <div id="order-page" class="order-page page">
                 <!-- TABLE PRODUCT -->
@@ -327,20 +337,19 @@
                     </div>
 
                     <!-- Menu Footer -->
-                    <div class="user-table__footer" id="user-table__footer">
+                    <div class="order-table__footer" id="order-table__footer">
                         <!-- Pagination or additional controls can go here -->
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
 
 <script src="../js/toggleSideNav.js"></script>
+<script src="../js/product.js"></script>
 <script src="../js/adminController.js"></script>
 <script src="../js/priceSlider.js"></script>
-<script src="../js/product.js"></script>
 <script src="../js/purchase.js"></script>
 <script>
     (() => {

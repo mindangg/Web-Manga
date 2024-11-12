@@ -9,23 +9,6 @@ const orderTableContainer = document.getElementById("order-table__body-content")
 const paymentInfoContainer = document.querySelector(".payment-info__container")
 const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
-function renderViewIndex(renderProduct) {
-    productContainer.innerHTML = ""
-    renderProduct.forEach(p => {
-        productContainer.innerHTML += `
-            <div id="${p.productId}" class="product__item">
-                <a>
-                    <img src="${p.cover1}" alt="">
-                </a>
-                <h4>${p.series}</h4>
-                <p>$${p.price}</p>
-                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
-                <p>Stock: ${p.stock}</p>
-            </div>
-        `
-    });
-}
-
 class Cart {
     static addToCart(e) {
         console.log(e.id)
@@ -44,6 +27,7 @@ class Cart {
         }
 
         const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
+        console.log(alreadyInCart)
         if (alreadyInCart) {
             alert("Sản phẩm đã có trong giỏ hàng");
             return;
@@ -211,11 +195,16 @@ class Order {
             })),
             cartTable.reduce((total, item) => total + item.price * item.quantity, 0),
             "Tu Anh Phu",
-            "Quan 8"
+            {
+                street: "123 Main St",
+                district: "Quan 1",
+                city: "TPHCM",
+                province: ""
+            }
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
-        alert("Your order has been successfully placed!");
+        alert("Dặt hàng thành công!")
 
         cartTable = [];
         localStorage.setItem("cart", JSON.stringify(cartTable));
@@ -242,7 +231,8 @@ class Order {
         localStorage.setItem("productTable", JSON.stringify(productTable));
 
         if (productContainer) {
-            renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
+            // renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
+            fetchURLCategory()
         }
     }
     // 
@@ -260,7 +250,7 @@ class Order {
                         <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
                     </div>
                     <div style="margin-left: 100px;">
-                        <div class="order__items__details">
+                        <div class="order__items__details" style="display: none">
                             ${o.orderItems.map(item => `
                                 <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
                             `).join('')}
