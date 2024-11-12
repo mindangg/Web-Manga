@@ -31,11 +31,15 @@ function render(users){
     let userList = users.slice(start, end);
 
     userTableBody.innerHTML = '';
-    userList.map(user => {
+    userList.map((user) => {
         let row = document.createElement('tr');
         row.className = 'user table__row'
         row.id = `${user.userId}`
+        let index = user.userId.split('_')[1];
         row.innerHTML += `
+        <td class="user table__cell user-table__cell serial">
+            ${index}
+        </td>
         <td class="user table__cell user-table__cell userId">
             ${user.userId}
         </td>
@@ -55,14 +59,28 @@ function render(users){
             ${user.createDate}
         </td>
         <td class="user table__cell user-table__cell address">
-            ${user.address.houseNumber} ${user.address.street} ${user.address.ward} ${user.address.district} ${user.address.city}
+            ${user.address.houseNumber} ${user.address.street}, ${user.address.ward}, ${user.address.district}, ${user.address.city}
         </td>
         <td class="user table__cell user-table__cell status">
-            <input type="checkbox" id="${user.userId}-status" checked="${user.status}">
+            <input type="checkbox" id="${user.userId}-status" checked="${user.status}" onclick="disableUser(this)">
+        </td>
+        <td class="user table__cell user-table__cell editbtn">
+            <button id="${user.userId}-editbtn">Edit</button>
         </td>
         `
         userTableBody.append(row);
     });
+    userList.forEach(user => {
+        let userRow = document.getElementById(user.userId);
+        let statusCheckbox = document.getElementById(user.userId + '-status');
+        if (user.status === true){
+            userRow.classList.remove('disable');
+            statusCheckbox.checked = true;
+        } else {
+            userRow.classList.add('disable');
+            statusCheckbox.checked = false;
+        }
+    })
     console.log("Render user successfully");
 }
 
@@ -108,6 +126,24 @@ function renderUser(){
                 }
             });
     }
+}
+
+function disableUser(checkbox){
+    let userId = checkbox.id.split('-')[0];
+
+    const row = document.getElementById(userId);
+    let users = JSON.parse(localStorage.getItem('users'));
+    let user = users.find(u => u.userId === userId)
+
+    if (checkbox.checked === true){
+        row.classList.remove('disable');
+        user.status = true;
+    } else {
+        row.classList.add('disable');
+        user.status = false;
+    }
+
+    localStorage.setItem('users', JSON.stringify(users));
 }
 
 function toAddressString(address){
