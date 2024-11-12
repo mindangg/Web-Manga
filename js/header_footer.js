@@ -55,7 +55,7 @@ class SpecialHeader extends HTMLElement{
 
                         <ul>
                             <li><a href="">Fantasy</a></li>
-                            <li><a href="">Drama</a></li>
+                            <li><a href="">Dark Fantasy</a></li>
                         </ul>
                     </div>
                 </li>
@@ -74,7 +74,7 @@ class SpecialHeader extends HTMLElement{
                         </ul>
 
                         <ul>
-                            <li><a href="">Kohei Horikoshi</a></li>
+                            <li><a href="">Sui Ishida</a></li>
                             <li><a href="">Akutami Gege</a></li>
                         </ul>
 
@@ -192,7 +192,7 @@ class SpecialHeader extends HTMLElement{
                         <li><a href="">Family</a></li>
                         <li><a href="">Comedy</a></li>
                         <li><a href="">Fantasy</a></li>
-                        <li><a href="">Drama</a></li>
+                        <li><a href="">Dark Fantasy</a></li>
                     </ul>
     
                     <ul class="navbar__responsive--author__drops">
@@ -201,7 +201,7 @@ class SpecialHeader extends HTMLElement{
                         <li><a href="">Shinichi Fukuda</a></li>
                         <li><a href="">Hajime Komoto</a></li>
                         <li><a href="">Yuki Tabata</a></li>   
-                        <li><a href="">Kohei Horikoshi</a></li>
+                        <li><a href="">Sui Ishida</a></li>
                         <li><a href="">Akutami Gege</a></li>    
                         <li><a href="">Yuto Suzuki</a></li>
                         <li><a href="">Tatsuya Endo</a></li>

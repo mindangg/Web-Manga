@@ -209,7 +209,183 @@ function showBestInfo(e) {
 
 
 
+//book slider
 
+var bookProduct = [
+    {
+        productId:"manga_8", 
+        series: "One Punch Man", 
+        author: "Yusuke Murata", 
+        category: "Shounen", 
+        img1: "../img/books/one punch man/one-punch-man-volume-18-primary.jpg", 
+        img2: "../img/books/one punch man/one-punch-man-volume-18-back.jpg", 
+        name: "One Punch Man - Volume 18", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "One-Punch Man manga volume 18 features story by ONE and art by Yusuke Murata.",
+        descr2: "Garo has just left the Monster Association’s hideout when he crosses paths with Saitama, who’s in quite a pinch, but Saitama still doesn't know Garo is the Hero Hunter. Later, King the Ripper can no longer hold back his murderous urges and confronts Garo himself!"
+    },
+
+    {
+        productId:"manga_9", 
+        series: "My Dress Up Darling", 
+        author: "Fukuda Shinichi", 
+        category: "Rom-Com", 
+        img1: "../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg", 
+        img2: "../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg", 
+        name: "My Dress Up Darling - Volume 01", 
+        price: 9.99, 
+        stock: 150,
+        descr1: "My Dress-Up Darling manga volume 1 features story and art by Shinichi Fukuda.",
+        descr2: "Traumatized by a childhood incident with a friend who took exception to his love of traditional dolls, doll-artisan hopeful Wakana Gojou passes his days as a loner, finding solace in the home ec room at his high school."
+    },
+
+    {
+        productId:"manga_10", 
+        series: "Tokyo Ghoul", 
+        author: "Sui Ishida", 
+        category: "Seinen", 
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-primary.jpg", 
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-back.jpg", 
+        name: "Tokyo Ghoul - Volume 02", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "Tokyo Ghoul Volume 02 features story and art by Sui Ishida.",
+        descr2: "Unable to discard his humanity but equally unable to suppress his Ghoul hunger, Ken finds salvation in the kindness of friendly Ghouls who teach him how to pass as human and eat flesh humanely."
+    },
+
+    {
+        productId:"manga_11", 
+        series: "Mashle: Magic And Muscles", 
+        author: "Komoto Hajime", 
+        category: "Comedy", 
+        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg", 
+        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg", 
+        name: "Mashle: Magic And Muscles - Volume 16", 
+        price: 9.59, 
+        stock: 150,
+        descr1: "Mashle: Magic and Muscles manga volume 16 features story and art by Hajime Komoto.",
+        descr2: "Mash shows off the hard-won results of his strenuous training against his greatest and final obstacle before confronting Innocent Zero—Doom! Now that he knows the extent of his body’s capabilities and how to control them, Mash’s strength has grown to an unimaginable level!"
+    },
+
+    {
+        productId:"manga_12", 
+        series: "Spy X Family", 
+        author: "Tatsuya Endo", 
+        category: "Comedy", 
+        img1: "../img/books/spy x family/spy-x-family-volume-1-primary.jpg", 
+        img2: "../img/books/spy x family/spy-x-family-volume-1-back.jpg", 
+        name: "Spy X Family - Volume 01", 
+        price: 7.99, 
+        stock: 100,
+        descr1: "Spy x Family manga volume 1 features story and art by Tatsuya Endo.",
+        descr2: "Twilight has overcome many challenges in putting together the Forger family, but now all his hard work might come undone when Yor’s younger brother Yuri pops in for a surprise visit! Can Twilight outsmart Yuri when he finds out Yuri is actually a mortal enemy of his intelligence agency—an Ostanian Secret Service officer?"
+    },
+
+    {
+        productId:"manga_13", 
+        series: "Black Clover", 
+        author: "Yuki Tabata", 
+        category: "Shounen", 
+        img1: "../img/books/black clover/black-clover-volume-7-primary.jpg", 
+        img2: "../img/books/black clover/black-clover-volume-7-back.jpg", 
+        name: "Black Clover - Volume 07", 
+        price: 9.99, 
+        stock: 150,
+        descr1: "Black Clover manga volume 7 features story and art by Yuki Tabata.",
+        descr2: "After the battle with the Eye of the Midnight Sun, the Wizard King suspects that there might be a traitor among the Magic Knights. But who is it, and how can Asta help expose the crooked knight?"
+    },
+
+    {
+        productId: "manga_14", 
+        series: "Sakamoto Days", 
+        author: "Suzuki Yuto", 
+        category: "Action", 
+        img1: "../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg", 
+        img2: "../img/books/sakamoto days/sakamoto-days-volume-10-back.jpg", 
+        name: "Sakamoto Days - Volume 10", 
+        price: 9.99, 
+        stock: 120,
+        descr1: "Sakamoto Days manga volume 10 features story and art by Yuto Suzuki.",
+        descr2: "As Sakamoto and his friends hunt for the database at the JCC, Shin winds up in a serious duel with a teacher who might have information on what they want. Meanwhile, Sakamoto deals with Amane, a boy with a connection to X. Thanks to X's schemes, the JCC faces an unprecedented crisis!",
+    },
+
+    {
+        productId: "manga_15", 
+        series: "Jujutsu Kaisen", 
+        author: "Gege Akutami", 
+        category: "Action", 
+        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-primary.jpg", 
+        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-back.jpg", 
+        name: "Jujutsu Kaisen - Volume 22", 
+        price: 7.99, 
+        stock: 90,
+        descr1: "Jujutsu Kaisen manga volume 22 features story and art by Gege Akutami.",
+        descr2: "A mysterious cursed spirit suddenly flies into Sakurajima Colony. It’s someone who became a curse after death and bears a grudge against Maki! The cursed spirit evolves with incredible speed from cursed womb to adult form and threatens to overcome Maki and Noritoshi. Just then, two other combatants join the battle...",
+    },
+]
+
+bookProduct.forEach(p => {
+    document.querySelector(".book__slider__list").innerHTML += `
+                <div class="book__slider__item">
+                    <a id="${p.productId}" onclick="showBookInfo(this)">
+                        <img src="${p.img1}" alt="">
+                        <img src="${p.img2}" alt="">
+                    </a>
+                    <h4>${p.name}</h4>
+                    <p>$${p.price}</p>
+                    <button>+ Add to cart</button>
+                </div>
+    `
+})
+
+function showBookInfo(e) {
+    document.querySelector(".product__page").style.display = "inline";
+    document.querySelector(".product").style.animationName = "topDown";
+    const productInfo = document.querySelector(".product__page");
+    const p = bookProduct.find(product => product.productId === e.id);
+
+    if (!p) {
+        console.error("Product not found");
+        return;
+    }
+
+    productInfo.innerHTML = `
+                <div class="product">
+                    <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="${p.img1}">
+                        <img id="product__img2" src="${p.img2}">
+
+                        <a id="product__view1" onclick="changeProductView(this)"><img src="${p.img1}"></a>
+                        <a id="product__view2" onclick="changeProductView(this)"><img src="${p.img2}"></a>
+                    </div>
+
+                    <div class="product__info">
+                        <h1>${p.name}</h1>
+                        <div class="product__info--rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Author:</p>
+                        <h2>${p.author}</h2>
+                        <p>${p.category}</p>
+                        <p>Quantity: </p>
+
+                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+                        <button id="product__add">Add to cart</button>
+
+                        <p>Availability: ${p.stock}</p><br>
+                        <h4>Description</h4>
+                        <p>${p.descr1}</p><br>
+                        <p>${p.descr2}</p>
+                    </div>
+                </div>
+    `
+}
 
 
 

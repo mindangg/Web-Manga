@@ -797,13 +797,13 @@ hr{
         }
     
         to{
-            transform: translateY(360px);
+            transform: translateY(380px);
         }
     }
 
     @keyframes bottomUp{
         from{
-            transform: translateY(360px);
+            transform: translateY(380px);
         }
     
         to{
