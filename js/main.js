@@ -50,7 +50,7 @@ dots.forEach((li, key) =>{
 
 //best slider
 
-var bestSellingProduct = [
+var productArray = [
     {
         productId: "manga_0", 
         series: "Sakamoto Days", 
@@ -403,7 +403,7 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_5", 
+        productId:"manga_25", 
         series: "Tokyo Ghoul", 
         author: "Sui Ishida", 
         category: "Seinen", 
@@ -417,7 +417,63 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_6", 
+        productId:"manga_26", 
+        series: "Tokyo Ghoul", 
+        author: "Sui Ishida", 
+        category: "Seinen", 
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-primary.jpg", 
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-back.jpg", 
+        name: "Tokyo Ghoul - Volume 02", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "Tokyo Ghoul Volume 02 features story and art by Sui Ishida.",
+        descr2: "Unable to discard his humanity but equally unable to suppress his Ghoul hunger, Ken finds salvation in the kindness of friendly Ghouls who teach him how to pass as human and eat flesh humanely."
+    },
+
+    {
+        productId:"manga_27", 
+        series: "Tokyo Ghoul", 
+        author: "Sui Ishida", 
+        category: "Seinen", 
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-5-primary.jpg", 
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-5-back.jpg", 
+        name: "Tokyo Ghoul - Volume 05", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "Tokyo Ghoul Volume 05 features story and art by Sui Ishida.",
+        descr2: "Kaneki, Nishio, and Touka struggle to work together to rescue their human friend Kimi while Ghoul Investigator deaths skyrocket in Wards 9 through 12. When reinforcements are called in on both sides, the stakes are suddenly higher than ever in volume 5 of Tokyo Ghoul!"
+    },
+
+    {
+        productId:"manga_28", 
+        series: "Tokyo Ghoul", 
+        author: "Sui Ishida", 
+        category: "Seinen", 
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-9-primary.jpg", 
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-9-back.jpg", 
+        name: "Tokyo Ghoul - Volume 09", 
+        price: 10.39, 
+        stock: 150,
+        descr1: "Tokyo Ghoul Volume 09 features story and art by Sui Ishida.",
+        descr2: "Ghouls live among us, the same as normal people in every way—except their craving for human flesh. Ken Kaneki is an ordinary college student until a violent encounter turns him into the first half-human half-ghoul hybrid. Trapped between two worlds, he must survive Ghoul turf wars, learn more about Ghoul society and master his new powers."
+    },
+
+    {
+        productId:"manga_29", 
+        series: "Tokyo Ghoul", 
+        author: "Sui Ishida", 
+        category: "Seinen", 
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-11-primary.jpg", 
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-11-back.jpg", 
+        name: "Tokyo Ghoul - Volume 11", 
+        price: 10.39, 
+        stock: 150,
+        descr1: "Tokyo Ghoul Volume 11 features story and art by Sui Ishida.",
+        descr2: "Amid clashes between Ghouls and the Commission of Counter Ghoul investigators at Doctor Kano’s underground facility, Kaneki finds himself locked in battle with Special Class Ghoul investigator Yukinori Shinohara. When the battle subsides, the CCG discovers shocking evidence that leads them closer to discovering the truth behind Kano’s sinister plans."
+    },
+
+    {
+        productId:"manga_30", 
         series: "One Punch Man", 
         author: "Yusuke Murata", 
         category: "Shounen", 
@@ -431,7 +487,63 @@ var bestSellingProduct = [
     },
 
     {
-        productId:"manga_7", 
+        productId:"manga_31", 
+        series: "One Punch Man", 
+        author: "Yusuke Murata", 
+        category: "Shounen", 
+        img1: "../img/books/one punch man/one-punch-man-volume-18-primary.jpg", 
+        img2: "../img/books/one punch man/one-punch-man-volume-18-back.jpg", 
+        name: "One Punch Man - Volume 18", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "One-Punch Man manga volume 18 features story by ONE and art by Yusuke Murata.",
+        descr2: "Garo has just left the Monster Association’s hideout when he crosses paths with Saitama, who’s in quite a pinch, but Saitama still doesn't know Garo is the Hero Hunter. Later, King the Ripper can no longer hold back his murderous urges and confronts Garo himself!"
+    },
+
+    {
+        productId:"manga_32", 
+        series: "One Punch Man", 
+        author: "Yusuke Murata", 
+        category: "Shounen", 
+        img1: "../img/books/one punch man/one-punch-man-volume-9-primary.jpg", 
+        img2: "../img/books/one punch man/one-punch-man-volume-9-back.jpg", 
+        name: "One Punch Man - Volume 09", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "One-Punch Man manga volume 9 features story by ONE and art by Yusuke Murata.",
+        descr2: "Garo, a man who admires monsters, attacks the Hero Association! But after pulverizing the heroes there, he just leaves. What the heck does this guy want?! Meanwhile, Class-B, Rank-1 Miss Blizzard visits Saitama at his apartment. Since he’s just a low-ranking hero, she thinks she can make him one of her subordinates, but as always, Saitama has other plans!"
+    },
+
+    {
+        productId:"manga_33", 
+        series: "One Punch Man", 
+        author: "Yusuke Murata", 
+        category: "Shounen", 
+        img1: "../img/books/one punch man/one-punch-man-volume-27-primary.jpg", 
+        img2: "../img/books/one punch man/one-punch-man-volume-27-back.jpg", 
+        name: "One Punch Man - Volume 27", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "One-Punch Man manga volume 27 features story by ONE and art by Yusuke Murata.",
+        descr2: "Psychos intends to fuse with Orochi, the Monster King, which would give them immense power against Tornado. Superalloy confronts Garo and experiences fear of his opponent’s strength… Meanwhile, Saitama gets caught up in a cave-in in the underground labyrinth!"
+    },
+
+    {
+        productId:"manga_34", 
+        series: "One Punch Man", 
+        author: "Yusuke Murata", 
+        category: "Shounen", 
+        img1: "../img/books/one punch man/one-punch-man-volume-28-primary.jpg", 
+        img2: "../img/books/one punch man/one-punch-man-volume-28-back.jpg", 
+        name: "One Punch Man - Volume 28", 
+        price: 7.99, 
+        stock: 150,
+        descr1: "One-Punch Man manga volume 28 features story by ONE and art by Yusuke Murata.",
+        descr2: "Psychos and Tornado’s psychic battle rages on! With Genos’s help, Tornado succeeds in rescuing the scattered heroes from their fight against the monsters, allowing her to unleash a devastating attack that warps the city… And although the outlook appears grim, a group of S-class heroes finds the inspiration to turn the tide of battle!"
+    },
+
+    {
+        productId:"manga_35", 
         series: "Mashle: Magic And Muscles", 
         author: "Komoto Hajime", 
         category: "Comedy", 
@@ -443,39 +555,103 @@ var bestSellingProduct = [
         descr1: "Mashle: Magic and Muscles manga volume 17 features story and art by Hajime Komoto.",
         descr2: "Innocent Zero’s youngest child, Domina, steps in to put a stop to his father’s pursuit of Mash. Using the reprieve afforded them, Mash’s friends race against the clock in hopes of getting him to Meliadoul."
     },
+
+    {
+        productId:"manga_36", 
+        series: "Mashle: Magic And Muscles", 
+        author: "Komoto Hajime", 
+        category: "Comedy", 
+        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg", 
+        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg", 
+        name: "Mashle: Magic And Muscles - Volume 16", 
+        price: 9.59, 
+        stock: 150,
+        descr1: "Mashle: Magic and Muscles manga volume 16 features story and art by Hajime Komoto.",
+        descr2: "Mash shows off the hard-won results of his strenuous training against his greatest and final obstacle before confronting Innocent Zero—Doom! Now that he knows the extent of his body’s capabilities and how to control them, Mash’s strength has grown to an unimaginable level!"
+    },
+
+    {
+        productId:"manga_37", 
+        series: "Mashle: Magic And Muscles", 
+        author: "Komoto Hajime", 
+        category: "Comedy", 
+        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-3-primary.jpeg", 
+        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-3-back.jpeg", 
+        name: "Mashle: Magic And Muscles - Volume 03", 
+        price: 9.59, 
+        stock: 150,
+        descr1: "Mashle: Magic and Muscles manga volume 3 features story and art by Hajime Komoto.",
+        descr2: "Lang’s vicious hunt for coins is in full swing! To stop them from monopolizing the chance to earn a Divine Visionary position, Mash teams up with his Adler compatriots. Afterwards, the Sixth and Seventh Fangs of the Magia Lupus swoop in to attack Mash while he’s cleaning the owl huts."
+    },
+
+    {
+        productId:"manga_38", 
+        series: "Mashle: Magic And Muscles", 
+        author: "Komoto Hajime", 
+        category: "Comedy", 
+        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-15-primary.jpeg", 
+        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-15-back.jpeg", 
+        name: "Mashle: Magic And Muscles - Volume 15", 
+        price: 9.59, 
+        stock: 150,
+        descr1: "Mashle: Magic and Muscles manga volume 15 features story and art by Hajime Komoto.",
+        descr2: "Orter, Rayne, and the others join forces to try and take down Innocent Zero’s eldest son, Doom. But Doom overwhelms them all, and according to him, he’s still holding back. With Doom unaffected by their attacks, the situation seems desperate. That is, until their ace in the hole arrives. Will humanity’s greatest creation be the light it needs in its darkest hour?"
+    },
+
+    {
+        productId:"manga_39", 
+        series: "Mashle: Magic And Muscles", 
+        author: "Komoto Hajime", 
+        category: "Comedy", 
+        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-primary.jpeg", 
+        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-back.jpeg", 
+        name: "Mashle: Magic And Muscles - Volume 18", 
+        price: 9.59, 
+        stock: 150,
+        descr1: "Mashle: Magic and Muscles manga volume 18 features story and art by Hajime Komoto.",
+        descr2: "Innocent Zero has exceeded the limits of human existence and become a god! Humanity has no choice but to bow down before his awe-inspiring divinity. Except for Mash, whose muscles have unlocked an unimaginable power to give Innocent Zero a flick to the forehead he won’t soon forget!"
+    },
 ]
 
+showSlider()
 
+function showSlider(){
+    for(var i = 0; i < productArray.length; i+=5){
+        document.querySelector(".best__slider__list").innerHTML += `
+        <div class="best__slider__item">
+            <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                <img src="${productArray[i].img1}" alt="">
+                <img src="${productArray[i].img2}" alt="">
+            </a>
+            <h4>${productArray[i].name}</h4>
+            <p>$${productArray[i].price}</p>
+            <button>+ Add to cart</button>
+        </div>
+        `
 
+        document.querySelector(".book__slider__list").innerHTML += `
+        <div class="book__slider__item">
+            <a id="${productArray[i+1].productId}" onclick="showProductInfo(this)">
+                <img src="${productArray[i+1].img1}" alt="">
+                <img src="${productArray[i+1].img2}" alt="">
+            </a>
+            <h4>${productArray[i+1].name}</h4>
+            <p>$${productArray[i+1].price}</p>
+            <button>+ Add to cart</button>
+        </div>
+        `
+    }
+}
 
-
-
-
-bestSellingProduct.forEach(p => {
-    document.querySelector(".best__slider__list").innerHTML += `
-                <div class="best__slider__item">
-                    <a id="${p.productId}" onclick="showBestInfo(this)">
-                        <img src="${p.img1}" alt="">
-                        <img src="${p.img2}" alt="">
-                    </a>
-                    <h4>${p.name}</h4>
-                    <p>$${p.price}</p>
-                    <button>+ Add to cart</button>
-                </div>
-    `
-})
-
-//best slider popup
-
-function showBestInfo(e){
-    document.querySelector(".product__page").style.display = "inline";
-    document.querySelector(".product").style.animationName = "topDown";
-    const productInfo = document.querySelector(".product__page");
-    const p = bestSellingProduct.find(product => product.productId === e.id);
+function showProductInfo(e){
+    document.querySelector(".product__page").style.display = "inline"
+    document.querySelector(".product").style.animationName = "topDown"
+    const productInfo = document.querySelector(".product__page")
+    const p = productArray.find(product => product.productId === e.id)
 
     if(!p){
-        console.error("Product not found");
-        return;
+        console.error("Product not found")
+        return
     }
 
     productInfo.innerHTML = `
@@ -523,11 +699,13 @@ function changeProductView(e){
 }
 
 function closeProduct(){
-    document.querySelector(".product").style.animationName = "bottomUp";
+    document.querySelector(".product").style.animationName = "bottomUp"
     setTimeout(function(){
-        document.querySelector(".product__page").style.display = "none";
-      }, 365);
+        document.querySelector(".product__page").style.display = "none"
+      }, 365)
 }
+
+//best slider
 
 let best_list = document.querySelector(".best__slider .best__slider__list");
 let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
@@ -575,119 +753,6 @@ function best_RemoveSlider()
 }
 
 //book slider
-
-var bookProduct = [
-    {
-        productId:"manga_8", 
-        series: "One Punch Man", 
-        author: "Yusuke Murata", 
-        category: "Shounen", 
-        img1: "../img/books/one punch man/one-punch-man-volume-18-primary.jpg", 
-        img2: "../img/books/one punch man/one-punch-man-volume-18-back.jpg", 
-        name: "One Punch Man - Volume 18", 
-        price: 7.99, 
-        stock: 150,
-        descr1: "One-Punch Man manga volume 18 features story by ONE and art by Yusuke Murata.",
-        descr2: "Garo has just left the Monster Association’s hideout when he crosses paths with Saitama, who’s in quite a pinch, but Saitama still doesn't know Garo is the Hero Hunter. Later, King the Ripper can no longer hold back his murderous urges and confronts Garo himself!"
-    },
-
-
-
-    {
-        productId:"manga_10", 
-        series: "Tokyo Ghoul", 
-        author: "Sui Ishida", 
-        category: "Seinen", 
-        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-primary.jpg", 
-        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-back.jpg", 
-        name: "Tokyo Ghoul - Volume 02", 
-        price: 7.99, 
-        stock: 150,
-        descr1: "Tokyo Ghoul Volume 02 features story and art by Sui Ishida.",
-        descr2: "Unable to discard his humanity but equally unable to suppress his Ghoul hunger, Ken finds salvation in the kindness of friendly Ghouls who teach him how to pass as human and eat flesh humanely."
-    },
-
-    {
-        productId:"manga_11", 
-        series: "Mashle: Magic And Muscles", 
-        author: "Komoto Hajime", 
-        category: "Comedy", 
-        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg", 
-        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg", 
-        name: "Mashle: Magic And Muscles - Volume 16", 
-        price: 9.59, 
-        stock: 150,
-        descr1: "Mashle: Magic and Muscles manga volume 16 features story and art by Hajime Komoto.",
-        descr2: "Mash shows off the hard-won results of his strenuous training against his greatest and final obstacle before confronting Innocent Zero—Doom! Now that he knows the extent of his body’s capabilities and how to control them, Mash’s strength has grown to an unimaginable level!"
-    },
-
-
-
-
-
-]
-
-bookProduct.forEach(p => {
-    document.querySelector(".book__slider__list").innerHTML += `
-                <div class="book__slider__item">
-                    <a id="${p.productId}" onclick="showBookInfo(this)">
-                        <img src="${p.img1}" alt="">
-                        <img src="${p.img2}" alt="">
-                    </a>
-                    <h4>${p.name}</h4>
-                    <p>$${p.price}</p>
-                    <button>+ Add to cart</button>
-                </div>
-    `
-})
-
-function showBookInfo(e) {
-    document.querySelector(".product__page").style.display = "inline";
-    document.querySelector(".product").style.animationName = "topDown";
-    const productInfo = document.querySelector(".product__page");
-    const p = bookProduct.find(product => product.productId === e.id);
-
-    if(!p){
-        console.error("Product not found");
-        return;
-    }
-
-    productInfo.innerHTML = `
-                <div class="product">
-                    <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                    <div class="product__img">
-                        <img id="product__img1" src="${p.img1}">
-                        <img id="product__img2" src="${p.img2}">
-
-                        <a id="product__view1" onclick="changeProductView(this)"><img src="${p.img1}"></a>
-                        <a id="product__view2" onclick="changeProductView(this)"><img src="${p.img2}"></a>
-                    </div>
-
-                    <div class="product__info">
-                        <h1>${p.name}</h1>
-                        <div class="product__info--rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p>Author:</p>
-                        <h2>${p.author}</h2>
-                        <p>${p.category}</p>
-                        <p>Quantity: </p>
-
-                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
-                        <button id="product__add">Add to cart</button>
-
-                        <p>Availability: ${p.stock}</p><br>
-                        <h4>Description</h4>
-                        <p>${p.descr1}</p><br>
-                        <p>${p.descr2}</p>
-                    </div>
-                </div>
-    `
-}
 
 let book_list = document.querySelector(".book__slider .book__slider__list");
 let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");

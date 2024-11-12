@@ -356,12 +356,6 @@ document.getElementById("shopping__close").addEventListener("click", function(){
       }, 390);
 })
 
-// document.getElementById("shopping__close").addEventListener("click", function(){
-
-//     document.querySelector(".shopping__popup").style.display = "none";
-// })
-
-
 //responsive
 document.getElementById("navbar__bar__icon").addEventListener("click", function(){
     document.querySelector(".navbar__responsive__popup").style.display = "inline"
@@ -379,7 +373,6 @@ document.getElementById("navbar__responsive__close__button").addEventListener("c
         document.querySelector(".navbar__responsive__links").style.display = "inline"
         document.querySelector(".navbar__responsive__popup").style.display = "none"
         
-
     }, 300)
     console.log("hello")
 })
