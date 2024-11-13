@@ -270,6 +270,7 @@ submitLogin.addEventListener('click', (event) => {
             passwordLogin.labels[0].innerText = '';
             passwordLogin.labels[0].style.display = 'none';
             clearField(login);
+            showNotification('Welcome, ' + account.username);
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${account.username}`;

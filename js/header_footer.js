@@ -17,17 +17,17 @@ class SpecialHeader extends HTMLElement{
                             <li><a href="">Sakamoto Days</a></li>
                             <li><a href="">My Dress Up Darling</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Black Clover</a></li>
-                            <li><a href="">My Hero Academia</a></li>
+                            <li><a href="">Tokyo Ghoul</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Jujutsu Kaisen</a></li>
                             <li><a href="">Mashle: Magic And Muscles</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">One Punch Man</a></li>
                             <li><a href="">Spy X Family</a></li>
@@ -40,47 +40,47 @@ class SpecialHeader extends HTMLElement{
                     <div class="navbar__category">
                         <ul>
                             <li><a href="">Shounen</a></li>
-                            <li><a href="">Slice Of Life</a></li>
+                            <li><a href="">Seinen</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Rom-Com</a></li>
                             <li><a href="">Action</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Family</a></li>
                             <li><a href="">Comedy</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Fantasy</a></li>
-                            <li><a href="">Drama</a></li>
+                            <li><a href="">Dark Fantasy</a></li>
                         </ul>
                     </div>
                 </li>
-                
+
                 <li class="navbar__link--author">
                     <a href="#" class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
-                            <li><a href="">Murata Yusuke</a></li>
-                            <li><a href="">Fukuda Shinichi</a></li>
+                            <li><a href="">Yusuke Murata</a></li>
+                            <li><a href="">Shinichi Fukuda</a></li>
                         </ul>
-            
+
                         <ul>
-                            <li><a href="">Komoto Hajime</a></li>
-                            <li><a href="">Tabata Yūki</a></li>
+                            <li><a href="">Hajime Komoto</a></li>
+                            <li><a href="">Yuki Tabata</a></li>
                         </ul>
-            
+
                         <ul>
-                            <li><a href="">Horikoshi Kohei</a></li>
-                            <li><a href="">Gege Akutami</a></li>
+                            <li><a href="">Sui Ishida</a></li>
+                            <li><a href="">Akutami Gege</a></li>
                         </ul>
-                                    
+
                         <ul>
-                            <li><a href="">Suzuki Yuto</a></li>
-                            <li><a href="">Gege Akutami</a></li>
+                            <li><a href="">Yuto Suzuki</a></li>
+                            <li><a href="">Tatsuya Endo</a></li>
                         </ul>
                     </div>
                 </li>
@@ -90,15 +90,15 @@ class SpecialHeader extends HTMLElement{
                         <ul>
                             <li><a href="">Under $5 Dollars</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">$5 To $7 Dollars</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">$7 To $15 Dollars</a></li>
                         </ul>
-            
+
                         <ul>
                             <li><a href="">Over $15 Dollars</a></li>
                         </ul>
@@ -108,16 +108,115 @@ class SpecialHeader extends HTMLElement{
             </ul>
 
             <!-- nav bar icons -->
-            <div class="navbar__home">
-                <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
+            <div class="navbar__home" style="display: flex">
+                <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
                     <a href="#" id="login__icon">
-                        <i class="fa-regular fa-user" style="color:white;"></i>
+                        <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>
                 </div>
-                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping" style="color:white;"></i></a>
+                <a id="shopping__icon"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
+
+            <div class="navbar__bar">
+                <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
+                <div style="display: flex">
+                    <a href="#" id="login__icon__responsive">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div></div>
+                </div>
+            </div>
+
+             <div class="navbar__responsive__popup">
+                <div class="navbar__responsive">
+                    <div class="navbar__responsive__close">
+                        <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                    <ul class="navbar__responsive__links">
+                        <li class="navbar__responsive--home">
+                            <a href="index.html" class="navbar__responsive__link">Home</a>
+                        </li>
+                        <li class="navbar__responsive--series">
+                            <a class="navbar__responsive__link">Series</a>
+                            <button id="navbar__responsive--series__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--category">
+                            <a class="navbar__responsive__link">Category</a>
+                            <button id="navbar__responsive--category__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--author">
+                            <a class="navbar__responsive__link">Author</a>
+                            <button id="navbar__responsive--author__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--price">
+                            <a class="navbar__responsive__link">Price</a>
+                            <button id="navbar__responsive--price__button">
+                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                            </button>
+                        </li>
+                        <li class="navbar__responsive--about">
+                            <a href="#special-footer" class="navbar__responsive__link">About Us</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar__responsive--series__drops">
+                        <li id="navbar__responsive--series__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Sakamoto Days</a></li>
+                        <li><a href="">My Dress Up Darling</a></li>
+                        <li><a href="">Black Clover</a></li>
+                        <li><a href="">Tokyo Ghoul</a></li>
+                        <li><a href="">Jujutsu Kaisen</a></li>
+                        <li><a href="">Mashle: Magic And Muscles</a></li>
+                        <li><a href="">One Punch Man</a></li>
+                        <li><a href="">Spy X Family</a></li>
+                    </ul>
+        
+                    <ul class="navbar__responsive--category__drops">
+                        <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Shounen</a></li>
+                        <li><a href="">Seinen</a></li>
+                        <li><a href="">Rom-Com</a></li>
+                        <li><a href="">Action</a></li>
+                        <li><a href="">Family</a></li>
+                        <li><a href="">Comedy</a></li>
+                        <li><a href="">Fantasy</a></li>
+                        <li><a href="">Dark Fantasy</a></li>
+                    </ul>
+    
+                    <ul class="navbar__responsive--author__drops">
+                        <li id="navbar__responsive--author__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Yusuke Murata</a></li>
+                        <li><a href="">Shinichi Fukuda</a></li>
+                        <li><a href="">Hajime Komoto</a></li>
+                        <li><a href="">Yuki Tabata</a></li>   
+                        <li><a href="">Sui Ishida</a></li>
+                        <li><a href="">Akutami Gege</a></li>    
+                        <li><a href="">Yuto Suzuki</a></li>
+                        <li><a href="">Tatsuya Endo</a></li>
+                    </ul>
+        
+                    <ul class="navbar__responsive--price__drops">
+                        <li id="navbar__responsive--price__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="">Under $5 Dollars</a></li>
+                        <li><a href="">$5 To $7 Dollars</a></li>
+                        <li><a href="">$7 To $15 Dollars</a></li>
+                        <li><a href="">Over $15 Dollars</a></li>
+                    </ul>
+                </div>
+            </div>    
+
         </nav>
 
         <!-- searchbox -->
@@ -126,14 +225,14 @@ class SpecialHeader extends HTMLElement{
                 <div class="searchbox">
                     <input type="search" placeholder="Search for...">
                     <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                </div> 
+                </div>
             </div>
         </div>
 
         <!-- shopping cart -->
         <div class="shopping__popup">
             <div class="shopping__container">
-                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>     
+                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 <div class="shopping">
                     <div class="shopping__icon">
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
@@ -144,8 +243,8 @@ class SpecialHeader extends HTMLElement{
                 </div>
             </div>
         </div>
-    </header>
-        `
+    </header>   
+    `
     }
 }
 
@@ -196,18 +295,15 @@ class SpecialFooter extends HTMLElement{
                     <a href="https://www.youtube.com/@dangkoo4896" target="_blank"><i class="fa-brands fa-youtube" style="color:white;"></i></a>
                 </div>
             </div>
-        </div><br>
-        <hr>
-        <p class="copyright">© 2024, Web Development, Powered by J97</p>
+            <hr>
+            <p class="copyright">© 2024, Web Development, Powered by J97</p>
+        </div>
     </footer>
         `
     }
 }
 
 customElements.define(`special-footer`, SpecialFooter);
-
-
-
 
 
 //navigation between pages
@@ -222,75 +318,108 @@ document.getElementById("login__icon").addEventListener("click", toLoginPage);
 
 document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
 
+
 document.getElementById("login__signup--nav").addEventListener("click", function(){
     document.getElementById("login__page").style.display = "none";
     document.getElementById("signup__page").style.display = "inline";
-});
+})
 
 document.getElementById("signup__login--nav").addEventListener("click", function(){
     document.getElementById("signup__page").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
 
 // search and shopping cart popup
 
-document.getElementById("search__icon").addEventListener("click", function () {
+document.getElementById("search__icon").addEventListener("click", function(){
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
+    console.log("DM Trong Duy")
 })
 
-document.getElementById("search__close").addEventListener("click", function () {
+document.getElementById("search__close").addEventListener("click", function(){
     document.querySelector(".search").style.animationName = "leftToRight"
-    setTimeout(function () {
+    setTimeout(function() {
         document.querySelector(".search__popup").style.display = "none";
-    }, 390);
+      }, 390);
 })
 
-document.getElementById("shopping__icon").addEventListener("click", function () {
+document.getElementById("shopping__icon").addEventListener("click", function(){
     document.querySelector(".shopping__popup").style.display = "flex";
     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
 })
 
-document.getElementById("shopping__close").addEventListener("click", function () {
+document.getElementById("shopping__close").addEventListener("click", function(){
     document.querySelector(".shopping__container").style.animationName = "leftToRight"
-    setTimeout(function () {
+    setTimeout(function() {
         document.querySelector(".shopping__popup").style.display = "none";
-    }, 390);
+      }, 390);
 })
-
-// document.getElementById("shopping__close").addEventListener("click", function(){
-
-//     document.querySelector(".shopping__popup").style.display = "none";
-// })
-
 
 //responsive
 document.getElementById("navbar__bar__icon").addEventListener("click", function(){
-    document.querySelector(".navbar__responsive__popup").style.display = "inline";
-    console.log("hello");
+    document.querySelector(".navbar__responsive__popup").style.display = "inline"
+    document.querySelector(".navbar__responsive").style.animationName = "bottomUp"
 })
 
 document.getElementById("navbar__responsive__close__button").addEventListener("click", function(){
-    document.querySelector(".navbar__responsive__popup").style.display = "none";
+    document.querySelector(".navbar__responsive").style.animationName = "topDown";
+    setTimeout(function(){
+        document.querySelector(".navbar__responsive--series__drops").style.display = "none"
+        document.querySelector(".navbar__responsive--category__drops").style.display = "none"
+        document.querySelector(".navbar__responsive--author__drops").style.display = "none"
+        document.querySelector(".navbar__responsive--price__drops").style.display = "none"
 
+        document.querySelector(".navbar__responsive__links").style.display = "inline"
+        document.querySelector(".navbar__responsive__popup").style.display = "none"
+        
+    }, 300)
+    console.log("hello")
 })
 
 
+window,onresize = function(){
+    if(window.innerWidth > 619){
+        document.querySelector(".navbar__responsive__popup").style.display = "none";
+    }
+}
 
+document.querySelector(".navbar__responsive--series").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__links").style.display = "none"
+    document.querySelector(".navbar__responsive--series__drops").style.display = "inline"
+})
 
+document.getElementById("navbar__responsive--series__back").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive--series__drops").style.display = "none"
+    document.querySelector(".navbar__responsive__links").style.display = "inline"
+})
 
+document.querySelector(".navbar__responsive--category").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__links").style.display = "none"
+    document.querySelector(".navbar__responsive--category__drops").style.display = "inline"
+})
 
+document.getElementById("navbar__responsive--category__back").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive--category__drops").style.display = "none"
+    document.querySelector(".navbar__responsive__links").style.display = "inline"
+})
+
+document.querySelector(".navbar__responsive--author").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__links").style.display = "none"
+    document.querySelector(".navbar__responsive--author__drops").style.display = "inline"
+})
+
+document.getElementById("navbar__responsive--author__back").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive--author__drops").style.display = "none"
+    document.querySelector(".navbar__responsive__links").style.display = "inline"
+})
+
+document.querySelector(".navbar__responsive--price").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive__links").style.display = "none"
+    document.querySelector(".navbar__responsive--price__drops").style.display = "inline"
+})
+
+document.getElementById("navbar__responsive--price__back").addEventListener("click", function(){
+    document.querySelector(".navbar__responsive--price__drops").style.display = "none"
+    document.querySelector(".navbar__responsive__links").style.display = "inline"
+})
