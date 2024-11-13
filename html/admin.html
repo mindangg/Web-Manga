@@ -231,8 +231,8 @@
                     <div class="user table__search">
                         <div style="display: flex; flex-direction: row">
                             <div class="product table__search-label">Search by name:</div>
-                            <input type="text" class="product-table__search-input"
-                                id="product-table__search-input--name" />
+                            <input type="text" class="user-table__search-input"
+                                id="user-table__search-input--name" />
                         </div>
                         <div style="display: flex; flex-direction: row">
                             <div class="product table__search-label">
@@ -286,6 +286,43 @@
                     <!-- Menu Footer -->
                     <div class="user-table__footer" id="user-table__footer">
                         <!-- Pagination or additional controls can go here -->
+                    </div>
+                </div>
+                <div id="user__edit-menu--container">
+                    <div id="user__edit-menu">
+                        <div id="user__edit-menu--userId">User ID</div>
+                        <div class="user edit-component" style="margin-top: 15px">
+                            <label for="user-page__edit-menu--username"></label>
+                            <input type="text" id="user-page__edit-menu--username" placeholder="Username" value="">
+
+                            <label for="user-page__edit-menu--password"></label>
+                            <input type="text" id="user-page__edit-menu--password" placeholder="Password" value="">
+                        </div>
+                        <div class="user edit-component">
+                            <label for="user-page__edit-menu--email"></label>
+                            <input type="text" id="user-page__edit-menu--email" placeholder="Email" value="">
+
+                            <label for="user-page__edit-menu--phoneNumber"></label>
+                            <input type="text" id="user-page__edit-menu--phoneNumber" placeholder="Phone Number" value="">
+                        </div>
+                        <div class="user edit-component user-address" style="margin-top: 10px">
+                            <div class="address-component label">
+                                <label id="user__edit-menu--address-label">Address:</label>
+                            </div>
+                            <div class="address-component first">
+                                <input type="text" id="user-page__edit-menu--houseNumber" placeholder="House Number" value="">
+                                <input type="text" id="user-page__edit-menu--street" placeholder="Street" value="">
+                            </div>
+                            <div class="address-component second">
+                                <input type="text" id="user-page__edit-menu--ward" placeholder="Ward" value="">
+                                <input type="text" id="user-page__edit-menu--district" placeholder="District" value="">
+                                <input type="text" id="user-page__edit-menu--city" placeholder="City" value="">
+                            </div>
+                        </div>
+                        <div class="user edit-component user-buttons">
+                            <button id="user__edit-menu--save">Save</button>
+                            <button id="user__edit-menu--cancel">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -357,6 +394,7 @@
 <script src="../js/adminController.js"></script>
 <script src="../js/priceSlider.js"></script>
 <script src="../js/purchase.js"></script>
+
 <script>
     (() => {
         Product.onloadViewAdmin();
