@@ -74,7 +74,7 @@
 
 .navbar__home i:hover{
     cursor: pointer;
-    transform: translateY(1px);
+    transform: translateY(-5px);
 }
 
 .navbar__home div div {
@@ -673,11 +673,11 @@ hr{
         order: 3;
     }
 
-    .navbar__responsive__popup {
+    .navbar__responsive__popup{
         background-color: rgba(0, 0, 0, 0.4);
         width: 100%;
         height: 100%;
-        display: inline;
+        /* display: inline; */
         position: fixed;
         top: 0;
         left: 0;
@@ -685,33 +685,14 @@ hr{
         display: none;
     }
 
-    .navbar__responsive__close {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--black);
-        color: #fff;
-        border: none;
-        font-weight: bold;
-        position: relative;
-        top: 250px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .navbar__responsive__close a {
+    .navbar__responsive__close a{
         position: absolute;
-        top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        /* transform: translate(-50%, -50%); */
         color: white;
     }
-
-    .navbar__responsive__close a:hover {
-        cursor: pointer;
-    }
-
-    .navbar__responsive {
+    
+    .navbar__responsive{
         position: absolute;
         background-color: var(--black);
         bottom: 0;
@@ -720,31 +701,33 @@ hr{
         /* margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px; */
-        margin: auto;
+        /* margin: auto; */
         /* margin-left: 10px; */
-        margin-right: 10px;
+        /* margin-right: 10px; */
         padding: 15px 15px;
+        animation: bottomUp 0.3s ease;
+        
     }
 
-    .navbar__responsive li {
+    .navbar__responsive li{
         list-style: none;
         margin: 15px 15px;
         cursor: pointer;
     }
 
-    .navbar__responsive li:hover button:nth-child(2) #right__angle {
+    .navbar__responsive li:hover button:nth-child(2) #right__angle{
         display: none;
     }
 
-    .navbar__responsive li:hover button:nth-child(2) #right__arrow {
+    .navbar__responsive li:hover button:nth-child(2) #right__arrow{
         display: inline;
     }
 
-    .navbar__responsive li:hover a::after {
+    .navbar__responsive li:hover a::after{
         width: 100%;
     }
 
-    .navbar__responsive a {
+    .navbar__responsive a{
         position: relative;
         color: white;
         font-weight: bold;
@@ -755,7 +738,7 @@ hr{
         cursor: pointer;
     }
 
-    .navbar__responsive a::after {
+    .navbar__responsive a::after{
         content: '';
         background-color: var(--gray);
         height: 1px;
@@ -766,12 +749,12 @@ hr{
         transition: 0.3s;
     }
 
-    .navbar__responsive a:hover::after {
+    .navbar__responsive a:hover::after{
         width: 100%;
     }
 
 
-    .navbar__responsive__links button {
+    .navbar__responsive__links button{
         position: absolute;
         width: 25px;
         height: 25px;
@@ -784,48 +767,64 @@ hr{
         left: 90%;
     }
 
-    .navbar__responsive__links button:hover {
+    .navbar__responsive__links button:hover{
         cursor: pointer;
     }
-
-    .navbar__responsive__links button i:nth-child(2) {
+    
+    .navbar__responsive__links button i:nth-child(2){
         display: none;
     }
-
-    .navbar__responsive__links button:nth-child(2):hover #right__angle {
+    
+    .navbar__responsive__links button:nth-child(2):hover #right__angle{
         display: none;
     }
-
-    .navbar__responsive__links button:nth-child(2):hover #right__arrow {
+    
+    .navbar__responsive__links button:nth-child(2):hover #right__arrow{
         display: inline;
     }
 
-
-    /*navigation bar drop down */
-    .navbar__series,
-    .navbar__category,
-    .navbar__author,
-    .navbar__price {
-        position: fixed;
-        top: 124px;
-        left: 0;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        align-items: center;
-        transition: 0.5s;
-        padding: 20px 0;
-        background-color: var(--black);
-        z-index: 1;
-        opacity: 0;
-        visibility: hidden;
+    .navbar__responsive--series__drops,
+    .navbar__responsive--category__drops,
+    .navbar__responsive--author__drops,
+    .navbar__responsive--price__drops
+    {
+        display: none;
     }
 
-    .navbar__series li,
-    .navbar__category li,
-    .navbar__author li,
-    .navbar__price li {
-        margin: 40px;
+    @keyframes topDown{
+        from{
+            transform: translateY(0);
+        }
+    
+        to{
+            transform: translateY(380px);
+        }
+    }
+
+    @keyframes bottomUp{
+        from{
+            transform: translateY(380px);
+        }
+    
+        to{
+            transform: translateY(0);
+        }
+    }
+
+
+
+
+    /* search box */
+
+    .search,
+    .shopping__container
+    {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        margin: auto;
+        background-color: var(--black);
+        animation: rightToLeft 0.5s ease;  
     }
 }
 
