@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!--css -->
+    <link rel="stylesheet" href="../css/cart_hbao.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="icon" type="image/png" href="../img/WEBTOON_Logo.png">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/758055a090.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <special-header></special-header>
+
+    <main>
+        <div class="cart">
+            <h1>Cart</h1>
+            <table class="table">
+                <tr>
+                    <th class="table__th__product" colspan="2">Product</th>
+                    <th class="table__th__quantity">Quantity</th>
+                    <th class="table__th__total">Total</th>
+                </tr>
+                <tr>
+                    <td class="table__td__img"><img src="../img/one-punch-man-volume-26-primary.jpg" ></img></td>
+                    <td class="table__td__name">
+                        <p>name</p>
+                    </td>
+                    <td class="table__td__quantity">
+                        <input type="number" name="Quantity" value=1 ><br>
+                        <input type="button" value="Remove" id="reMove" onclick="remove">
+                    
+                    </td>
+                    <td class="table__td__total">
+                        <p>150000d</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table__td__img"><img src="../img/black-clover-volume-23-primary.jpg" class="cart__main__img"></img></td>
+                    <td class="table__td__name">
+                        <p>name</p>
+                    </td>
+                    <td class="table__td__quantity">
+                        <input type="number" name="Quantity" value=1 ><br>
+                        <input type="button" value="Remove" id="reMove" onclick="remove">
+                    </td>
+                    <td class="table__td__total">
+                        <p>150000d</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table__td__img"><img src="../img/jujutsu-kaisen-volume-4-primary.jpg" class="cart__main__img"></img></td>
+                    <td class="table__td__name">
+                        <p>name</p>
+                    </td>
+                    <td class="table__td__quantity">
+                        <input type="number" name="Quantity" value=1 ><br>
+                        <input type="button" value="Remove" id="reMove" onclick="remove">
+                    </td>
+                    <td class="table__td__total">
+                        <p>150000d</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table__td__img"><img src="../img/my-dress-up-darling-volume-7-primary.jpg" class="cart__main__img"></img></td>
+                    <td class="table__td__name">
+                        <p>name</p>
+                    </td>
+                    <td class="table__td__quantity">
+                        <input type="number" name="Quantity" value=1 ><br>
+                        <input type="button" value="Remove" id="reMove" onclick="remove">
+                    </td>
+                    <td class="table__td__total">
+                        <p>150000d</p>
+                    </td>
+                </tr>
+            </table>
+            <div class="cart__bill">
+                <h1>Bill</h1>
+                <table class="cart__bill__table">
+                    <tr>
+                        <th>Total: </th>
+                        <td>200$</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">Address: </th>
+                        <td >Ap Ong Nhan Dong, xa Binh Hiep, thi xa Kien tuong, Long An</td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="Change Address" id="change_address"></td>
+                    </tr>
+                </table>
+                    <div> <input type="button" value="Payment by transfer" id="transfer"> </div>
+                    <div> <input type="button" value="Payment in cash" id="cash"> </div>
+                
+            </div>
+        </div>
+        <div class="address">
+            <h1>Address</h1>
+            <div class="address__main">
+                <div class="address__item">
+                    <input type="radio" name="address" checked>
+                    <p>Day la dia chi 1</p>
+                </div>
+                <div class="address__item">
+                    <input type="radio" name="address"> 
+                    <p>Day la dia chi 2</p>
+                </div>
+                <div class="address__item">
+                    <input type="radio" name="address">
+                    <p>Day la dia chi 3</p>
+                </div>
+                <button id="add__address">Add Address</button>
+                
+            </div>
+            <button id="next__address">Next</button>
+        </div>
+    </main>
+
+    <special-footer id="special-footer"></special-footer>
+
+    <script src="../js/header_footer.js"></script>
+</body>
+</html>
