@@ -231,8 +231,7 @@ class Order {
         localStorage.setItem("productTable", JSON.stringify(productTable));
 
         if (productContainer) {
-            // renderViewIndex(JSON.parse(localStorage.getItem("productTable")))
-            fetchURLCategory()
+            fetchPropertyProduct(URLOfWebpage);
         }
     }
     // 

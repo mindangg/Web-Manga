@@ -529,6 +529,11 @@
     <special-footer id="special-footer"></special-footer>
 
     <!-- js -->
+    <script>
+        const URLOfWebpage = new URL(window.location)
+        const URLOfIndex = window.location.href
+        const URLToAdmin = URLOfIndex.split("html")
+    </script>
     <script src="../js/validation.js"></script>
     <script src="../js/user.js"></script>
     <script src="../js/header_footer_1.js"></script>
@@ -567,9 +572,6 @@
         }
 
         (() => {
-            const URLOfWebpage = new URL(window.location)
-            const URLOfIndex = window.location.href
-            const URLToAdmin = URLOfIndex.split("html")
             if (localStorage.getItem('admin') === 'admin') {
                 window.location.href = `${URLToAdmin[0]}html/admin.html`
             }
@@ -640,9 +642,11 @@
         function fetchPropertyProduct(url) {
             if (url.search) {
                 const categorySearch = url.searchParams.get('category')
-                const filterProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
-                if (filterProduct.length > 0 && categorySearch.length > 0) {
-                    renderViewIndex(filterProduct)
+                const authorSearch = url.searchParams.get('author')
+                const categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
+                const authorOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.author === categorySearch)
+                if (categoryOfProduct.length > 0 && categorySearch.length > 0) {
+                    renderViewIndex(categoryOfProduct)
                 }
             } else {
                 renderViewIndex(JSON.parse(localStorage.getItem('productTable')))

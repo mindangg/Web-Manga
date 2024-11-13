@@ -169,6 +169,7 @@ body{
 
 .best__slider__item img:nth-child(1){
     position: absolute;
+    /* display: none; */
 }
 
 .best__slider__item img:hover{
@@ -527,7 +528,7 @@ body{
 
 
 .product h1{
-    font-size: 1.7em;
+    font-size: 1.5em;
 }
 
 
@@ -815,13 +816,13 @@ body{
     cursor: pointer;
 }
 
-#signup a{
+#signup__login a{
     color: var(--gray);
     text-decoration: none;
     position: relative;
 }
 
-#signup a::after{
+#signup__login a::after{
     content: '';
     background-color: var(--gray);
     height: 1px;
@@ -832,7 +833,7 @@ body{
     transition: 0.3s;
 }
 
-#signup a:hover::after{
+#signup__login a:hover::after{
     width: 0;
 }
 
@@ -840,7 +841,7 @@ body{
     font-size: 20px;
     display: flex;
     justify-content: center;
-    margin: 25px;
+    margin: 25px 0;
 }
 
 .signup__input label {
