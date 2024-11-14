@@ -29,16 +29,16 @@ function render(users){
     let start = (userPageIndex - 1) * totalUserPerPage;
     let end = start + totalUserPerPage;
     let userList = users.slice(start, end);
+    let startIndex = start;
 
     userTableBody.innerHTML = '';
     userList.map((user) => {
         let row = document.createElement('tr');
         row.className = 'user table__row'
         row.id = `${user.userId}`
-        let index = user.userId.split('_')[1];
         row.innerHTML += `
         <td class="user table__cell user-table__cell serial">
-            ${index}
+            ${startIndex + 1}
         </td>
         <td class="user table__cell user-table__cell userId">
             ${user.userId}
@@ -62,15 +62,14 @@ function render(users){
             ${user.address.houseNumber} ${user.address.street}, ${user.address.ward}, ${user.address.district}, ${user.address.city}
         </td>
         <td class="user table__cell user-table__cell status">
-            <input type="checkbox" id="${user.userId}-status" checked="${user.status}" onclick="disableUser(this)">
+            <input type="checkbox" id="${user.userId}-status" onclick="disableUser(this)">
         </td>
         <td class="user table__cell user-table__cell editbtn">
             <button id="${user.userId}-editbtn">Edit</button>
         </td>
         `
         userTableBody.append(row);
-    });
-    userList.forEach(user => {
+        startIndex++;
         let userRow = document.getElementById(user.userId);
         let statusCheckbox = document.getElementById(user.userId + '-status');
         if (user.status === true){
@@ -80,7 +79,7 @@ function render(users){
             userRow.classList.add('disable');
             statusCheckbox.checked = false;
         }
-    })
+    });
     console.log("Render user successfully");
 }
 
@@ -128,6 +127,11 @@ function renderUser(){
     }
 }
 
+function editUser(button){
+    let userId = button.id.split('-')[0];
+
+}
+
 function disableUser(checkbox){
     let userId = checkbox.id.split('-')[0];
 
@@ -144,10 +148,6 @@ function disableUser(checkbox){
     }
 
     localStorage.setItem('users', JSON.stringify(users));
-}
-
-function toAddressString(address){
-    return address.houseNumber + " " + address.street + ", " + address.ward + ", " + address.district + ", " + address.city;
 }
 
 renderUser();

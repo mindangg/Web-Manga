@@ -105,7 +105,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
     },
     {
         userId: "user_6",
-        username: "bael10205",
+        username: "bael100205",
         password: "Baohoo100205",
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
@@ -424,7 +424,6 @@ function clearField(field) {
         input.value = '';
     });
 }
-
 
 User.onload();
 User.renderAccountLogin();

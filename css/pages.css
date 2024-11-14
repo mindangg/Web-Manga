@@ -320,6 +320,8 @@
 
 /* bao */
 
+/*for user table*/
+
 .user.table__body{
   height: 500px;
 }
@@ -345,12 +347,13 @@
 
 .user.table__row.disable {
   opacity: 0.5;
-  background: #8d8d8d;
+  background: lightgrey;
 }
 
 .user.table__cell{
   text-align: center;
   padding: 5px;
+  border: 1px solid #1a1a1a;
 }
 
 .user.table__cell.user-table__cell button{
@@ -406,6 +409,115 @@
 
 .user.table__cell.user-table__cell.editbtn{
   width: 5%;
+}
+
+/*for edit menu*/
+
+#user__edit-menu--container{
+  display: none; /* Ẩn modal ban đầu */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+}
+
+#user__edit-menu {
+  background: white;
+  height: 320px;
+  width: 400px;
+  border-radius: 10px;
+  position: relative;
+  contain: content;
+  border-bottom: 2px solid black;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+#user__edit-menu--userId {
+  height: 30px;
+  align-content: center;
+  text-align: center;
+  font-size: 18px;
+  background: #00b63a;
+  border-bottom: 2px solid black;
+}
+
+.user.edit-component{
+  height: 15%;
+  text-align: center;
+  align-content: center;
+}
+
+.user.edit-component input{
+  height: 60%;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.user.edit-component.user-address{
+
+}
+
+.user.edit-component.user-address input{
+  height: 60%;
+}
+
+.address-component.label {
+  text-align: left;
+  margin-left: 2.5%;
+}
+
+.address-component.first input{
+  width: calc(50% - 16px);
+}
+
+.address-component.second input{
+  width: calc(33.3% - 14px);
+}
+
+.user.edit-component.user-buttons{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.user.edit-component.user-buttons button {
+  height: 65%;
+  width: 45%;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+#user__edit-menu--save {
+  background-color: #007bff;
+}
+
+#user__edit-menu--save:hover {
+  background-color: #0056b3;
+}
+
+#user__edit-menu--cancel {
+  background-color: #dc3545;
+}
+
+#user__edit-menu--cancel:hover {
+  background-color: #c82333;
 }
 
 /*end of bao*/
