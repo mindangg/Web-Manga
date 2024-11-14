@@ -1,3 +1,7 @@
+.user-info{
+    margin-top: 144px;
+}
+
 .user-info__navbar {
     display: flex;
     justify-content: space-between;

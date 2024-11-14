@@ -15,28 +15,27 @@ class Cart {
         const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
         const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
         const quantity = quantityInput ? (quantityInput.value) : 1;
-
+        const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
+        // Check if the product is out of stock
         if (cartItem.stock === 0) {
             alert("Hết hàng");
             return;
         }
-
+        // Check if the product is existed in productTable
         if (!cartItem) {
             alert("Sản phẩm này không tồn tại");
             return;
         }
-
-        const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
-        console.log(alreadyInCart)
+        // Check if the product is already in the cart
         if (alreadyInCart) {
             alert("Sản phẩm đã có trong giỏ hàng");
             return;
         } else {
             cartTable.push({ ...cartItem, quantity })
         }
-
         localStorage.setItem('cart', JSON.stringify(cartTable))
         Cart.renderCartPreview(cartTable)
+        alert("Thêm vào giỏ hàng thành công");
     }
 
     static renderCartPreview(cartItem) {
@@ -128,7 +127,7 @@ class Cart {
         cartSummary.innerHTML = ""
         cartSummary.innerHTML = `
             <h3> Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
-            <button class="checkout-button">Checkout</button>
+            <button class="checkout-button" onclick="viewBill()">Checkout</button>
         `
     }
 }
@@ -144,7 +143,7 @@ class Order {
         this.userFullname = userFullname
         this.orderAddrress = orderAddrress
     }
-
+    // Insert new order  
     static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullname, orderAddrress) {
         const newOrder = new Order(
             orderId, // `order_${ Order.generateId(orderTable) } `
@@ -159,7 +158,7 @@ class Order {
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
     }
-
+    // Generate ID for new order
     static generateId = (data) => {
         if (data.length === 0) {
             return 0;
@@ -168,15 +167,13 @@ class Order {
             return parseInt(index) + 1;
         }
     };
-    //
+    // handle logic of payment
     static handlePayNow() {
         console.log("Handling pay now...")
-
-        Order.addToOrder('Pending');
-
+        Order.addToOrder('Pending')
         Cart.renderCartSummary();
     }
-    //
+    // 
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
         console.log(orderTable)
@@ -196,10 +193,11 @@ class Order {
             cartTable.reduce((total, item) => total + item.price * item.quantity, 0),
             "Tu Anh Phu",
             {
+                houseNumber: "123",
                 street: "123 Main St",
+                ward: "Tan Binh",
                 district: "Quan 1",
                 city: "TPHCM",
-                province: ""
             }
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
