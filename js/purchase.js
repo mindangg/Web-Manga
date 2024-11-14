@@ -9,6 +9,15 @@ const orderTableContainer = document.getElementById("order-table__body-content")
 const paymentInfoContainer = document.querySelector(".payment-info__container")
 const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
+const billingInfo = document.getElementById("billing-info")
+const billingFullName = document.getElementById("billing-info__fullName")
+const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
+const billingHouseNumber = document.getElementById("billing-info__houseNumber")
+const billingStreet = document.getElementById("billing-info__street")
+const billingWard = document.getElementById("billing-info__ward")
+const billingDistrict = document.getElementById("billing-info__district")
+const billingCity = document.getElementById("billing-info__city")
+
 class Cart {
     static addToCart(e) {
         console.log(e.id)
@@ -170,8 +179,9 @@ class Order {
     // handle logic of payment
     static handlePayNow() {
         console.log("Handling pay now...")
-        Order.addToOrder('Pending')
-        Cart.renderCartSummary();
+        Validation.checkBlankField(billingInfo)
+        // Order.addToOrder('Pending')
+        // Cart.renderCartSummary();
     }
     // 
     static addToOrder(status = "Pending") {
@@ -179,7 +189,7 @@ class Order {
         console.log(orderTable)
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
-            `user_1`,
+            localStorage.getItem('accountLogin'),
             new Date().toISOString().split('T')[0],
             status,
             cartTable.map(item => ({

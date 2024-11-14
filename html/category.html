@@ -312,25 +312,51 @@
         </section>
 
         <section id="billing-info" class="layer billing-info" style="display: flex">
-            <div id="billingForm">
+            <div class="billing-form">
                 <h2>Billing Information</h2>
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" required>
+                <label>Full Name</label>
+                <div class="billing-info__input">
+                    <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
+                    <label class="error" for="billing-info__fullName"></label>
+                </div>
+                <div class="billing-info__input">
+                    <label>Phone Number</label>
+                    <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
+                    <label class="error" for="billing-info__phoneNumber"></label>
+                </div>
 
                 <label for="address">Shipping Address</label>
-                <!-- <input id="address" required></input> -->
-                <select name="" id="selectAddressOrder" onchange="toggleAddressOrder(this)">
-                    <option value="userAddress">Địa chỉ của người dùng</option>
+                <select id="selectAddressOrder" onchange="toggleAddressOrder(this)">
+                    <option value="userAddress" selected>Địa chỉ của người dùng</option>
                     <option value="newAddress">Địa chỉ mới</option>
                 </select>
 
                 <div id="newAddress" style="display: none;">
-                    <input type="text" placeholder="Full name" class="form-group">
-                    <input type="text" placeholder="Số nhà" class="form-group">
-                    <input type="text" placeholder="Đường" class="form-group">
-                    <input type="text" placeholder="Quận/Huyện" class="form-group">
-                    <input type="text" placeholder="Thành phố" class="form-group">
-                    <input type="text" placeholder="Tỉnh" class="form-group">
+                    <div class="billing-info__input">
+                        <label>House Number</label>
+                        <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
+                        <label class="error" for="billing-info__houseNumber" class="form-group"></label>
+                    </div>
+                    <div class="billing-info__input">
+                        <label>House Number</label>
+                        <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
+                        <label class="error" for="billing-info__street"></label>
+                    </div>
+                    <div>
+                        <label>Ward</label>
+                        <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
+                        <label class="error" for="billing-info__ward"></label>
+                    </div>
+                    <div>
+                        <label>District</label>
+                        <input id="billing-info__district" type="text" placeholder="District" class="form-group">
+                        <label class="error" for="billing-info__district"></label>
+                    </div>
+                    <div>
+                        <label>City</label>
+                        <input id="billing-info__city" type="text" placeholder="City" class="form-group">
+                        <label class="error" for="billing-info__city"></label>
+                    </div>
                 </div>
 
                 <!-- <label for="paymentMethod">Payment Method</label>
@@ -341,9 +367,8 @@
                                 <option value="bankTransfer">Bank Transfer</option>
                             </select>
                         </div> -->
-                <div style="text-align: center;">
-                    <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
-                </div>
+
+                <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
             </div>
             <div class="payment-info">
                 <div class="payment-info__container">
@@ -378,10 +403,12 @@
                 </div>
                 <div class="logout__user" onclick="logoutUser()">Logout</div>
             </div>
-
-            <div class="user-info__container" style="display: none;">
+            <!--
+                TODO: lấy dữ liệu từ user gắn vào input 
+                nút save để lưu thông tin cho user
+            -->
+            <div class="user-info__container">
                 <div class="modal">
-                    <a href="#" class="close-btn">&times;</a>
                     <h2>Edit user info</h2>
                     <p>Please fill in the information below:</p>
 
@@ -398,37 +425,38 @@
                         <button type="submit" class="user-info__save-btn">Save address</button>
                     </form>
                 </div>
+            </div>
 
-                <div class="order__history">
-                    <h2>Your Order History</h2>
-                    <div class="order" style="max-height: 310px; overflow: auto;">
-                        <!-- <div style="display: flex;">
-                        <div>
-                            <div class="order__id">Order ID: #12345</div>
-                            <div class="order__date">Date: 2023-11-01</div>
-                            <div class="order__status status--cancel">Status: Pending</div>
-                            <span class="show__details" onclick="toggleDetails(this)">View Details</span>
-                        </div>
-                        <div style="margin-left: 100px;">
-                            <div class="order__items__details">
-                                <strong>Items:</strong>
-                                <ul>
-                                    <li>Comic: "Adventure Tales" - $10.00</li>
-                                    <li>Comic: "Mystery World" - $8.00</li>
-                                    <li>Comic: "Adventure Tales" - $10.00</li>
-                                    <li>Comic: "Mystery World" - $8.00</li>
-                                    <li>Comic: "Adventure Tales" - $10.00</li>
-                                    <li>Comic: "Mystery World" - $8.00</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
+            <div class="order__history" style="display: none;">
+                <h2>Your Order History</h2>
+                <div class="order" style="max-height: 310px; overflow: auto;">
+                    <!-- <div style="display: flex;">
+                    <div>
+                        <div class="order__id">Order ID: #12345</div>
+                        <div class="order__date">Date: 2023-11-01</div>
+                        <div class="order__status status--cancel">Status: Pending</div>
+                        <span class="show__details" onclick="toggleDetails(this)">View Details</span>
                     </div>
+                    <div style="margin-left: 100px;">
+                        <div class="order__items__details">
+                            <strong>Items:</strong>
+                            <ul>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
                 </div>
+            </div>
         </section>
         </div>
 
-        <section id="login__page" class="layer login__page">
+        <section id="login__page" class="layer login__page" style="display: inherit;">
             <div id="login">
                 <h1>Login</h1>
 
@@ -630,9 +658,11 @@
             console.log(e)
             const billingInfo = document.querySelector('.billing-info')
             if (e === billingInfo) {
-                layerOfView.forEach(l => l === billingInfo ? l.style.display = 'flex' : l.style.display = 'none')
+                layerOfView.forEach(layer => layer === billingInfo ?
+                    layer.style.display = 'flex' : layer.style.display = 'none')
             } else {
-                layerOfView.forEach(l => l === e ? l.style.display = 'inherit' : l.style.display = 'none')
+                layerOfView.forEach(layer => layer === e ?
+                    layer.style.display = 'inherit' : layer.style.display = 'none')
             }
         }
 
@@ -669,17 +699,18 @@
         function viewUserInfo() {
             if (localStorage.getItem('accountLogin')) {
                 localStorage.setItem('View', JSON.stringify('user-info'))
-                document.getElementById('main__page').style.display = 'none'
-                document.querySelector('.cart__container').style.display = 'none'
-                document.querySelector('.billing-info').style.display = 'none'
-                document.getElementById("login__page").style.display = 'none';
-                document.querySelector('.user-info').style.display = 'inherit'
+                const userInfo = document.querySelector('.user-info')
+                renderView(userInfo)
             } else {
                 viewLogin();
             }
         }
 
         (() => {
+            // Set default value for select address
+            const defaultBillingSelect = document.getElementById('selectAddressOrder')
+            defaultBillingSelect.value = `userAddress`
+
             if (localStorage.getItem('admin') === 'admin') {
                 window.location.href = `${URLToAdmin[0]}html/admin.html`
             }
