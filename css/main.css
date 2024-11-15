@@ -957,7 +957,16 @@ body{
     }
  }
 
-
+ @media screen  and (min-width: 620px) and (max-width: 900px){
+    #signup{
+        width: 450px;
+        position: relative;
+        height: 700px;
+        top: 180px;
+        margin: auto;
+        margin-bottom: 100px;
+    }
+ }
 
 
 
