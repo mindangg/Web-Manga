@@ -9,34 +9,90 @@ const orderTableContainer = document.getElementById("order-table__body-content")
 const paymentInfoContainer = document.querySelector(".payment-info__container")
 const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
+const billingInfo = document.getElementById("billing-info")
+const billingFullName = document.getElementById("billing-info__fullName")
+const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
+const billingHouseNumber = document.getElementById("billing-info__houseNumber")
+const billingStreet = document.getElementById("billing-info__street")
+const billingWard = document.getElementById("billing-info__ward")
+const billingDistrict = document.getElementById("billing-info__district")
+const billingCity = document.getElementById("billing-info__city")
+
+// TODO: move to user.js
+const userInfo = document.getElementById("user-info")
+const userFullname = document.getElementById("user-info__fullName")
+const userphoneNumber = document.getElementById("user-info__phoneNumber")
+const userHouseNumber = document.getElementById("user-info__houseNumber")
+const userStreet = document.getElementById("user-info__street")
+const userWard = document.getElementById("user-info__ward")
+const userDistrict = document.getElementById("user-info__district")
+const userCity = document.getElementById("user-info__city")
+
+function clearForm(e) {
+    e.querySelectorAll("input").forEach(input => {
+        document.getElementById(input.id).value = "";
+    });
+}
+
+const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
+
+function renderUserInfo() {
+    // clearForm(userInfo)
+    userFullname.value = accoutLoginInfo.fullName;
+    userphoneNumber.value = accoutLoginInfo.phoneNumber;
+    userHouseNumber.value = accoutLoginInfo.address.houseNumber;
+    userStreet.value = accoutLoginInfo.address.street;
+    userWard.value = accoutLoginInfo.address.ward;
+    userDistrict.value = accoutLoginInfo.address.district;
+    userCity.value = accoutLoginInfo.address.city;
+}
+
+function editUserInfo() {
+    if (!Validation.checkBlankField(userInfo)) {
+        const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
+        const queryUserInfoInput = document.querySelector(".edit-user__form").querySelectorAll("input");
+        for (const userInfoInput of queryUserInfoInput) {
+            const metadata = userInfoInput.id.split("__")[1];
+            if (metadata === "fullName" || metadata === "phoneNumber") {
+                userList[currentEditUserIndex][metadata] = userInfoInput.value;
+            } else {
+                userList[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
+            }
+        }
+
+        localStorage.setItem('users', JSON.stringify(userList));
+        alert("Cập nhật thông tin thành công");
+        window.location.reload();
+    }
+}
+
 class Cart {
     static addToCart(e) {
         console.log(e.id)
         const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
         const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
         const quantity = quantityInput ? (quantityInput.value) : 1;
-
+        const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
+        // Check if the product is out of stock
         if (cartItem.stock === 0) {
             alert("Hết hàng");
             return;
         }
-
+        // Check if the product is existed in productTable
         if (!cartItem) {
             alert("Sản phẩm này không tồn tại");
             return;
         }
-
-        const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
-        console.log(alreadyInCart)
+        // Check if the product is already in the cart
         if (alreadyInCart) {
             alert("Sản phẩm đã có trong giỏ hàng");
             return;
         } else {
             cartTable.push({ ...cartItem, quantity })
         }
-
         localStorage.setItem('cart', JSON.stringify(cartTable))
         Cart.renderCartPreview(cartTable)
+        alert("Thêm vào giỏ hàng thành công");
     }
 
     static renderCartPreview(cartItem) {
@@ -128,38 +184,40 @@ class Cart {
         cartSummary.innerHTML = ""
         cartSummary.innerHTML = `
             <h3> Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
-            <button class="checkout-button">Checkout</button>
+            <button class="checkout-button" onclick="viewBill()">Checkout</button>
         `
     }
 }
 
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullname, orderAddrress) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
         this.orderStatus = orderStatus
         this.orderItems = orderItems
         this.orderPrice = orderPrice
-        this.userFullname = userFullname
+        this.userFullName = userFullName
+        this.userPhoneNumber = userPhoneNumber
         this.orderAddrress = orderAddrress
     }
-
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullname, orderAddrress) {
+    // Insert new order  
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
         const newOrder = new Order(
-            orderId, // `order_${ Order.generateId(orderTable) } `
+            orderId,
             userId,
-            orderDate, // new Date()
+            orderDate,
             orderStatus,
             orderItems,
             orderPrice,
-            userFullname,
+            userFullName,
+            userPhoneNumber,
             orderAddrress
         )
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
     }
-
+    // Generate ID for new order
     static generateId = (data) => {
         if (data.length === 0) {
             return 0;
@@ -168,21 +226,20 @@ class Order {
             return parseInt(index) + 1;
         }
     };
-    //
+    // handle logic of payment
     static handlePayNow() {
         console.log("Handling pay now...")
-
-        Order.addToOrder('Pending');
-
+        Validation.checkBlankField(billingInfo)
+        Order.addToOrder('Pending')
         Cart.renderCartSummary();
     }
-    //
+    // 
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
         console.log(orderTable)
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
-            `user_1`,
+            localStorage.getItem('accountLogin'),
             new Date().toISOString().split('T')[0],
             status,
             cartTable.map(item => ({
@@ -194,23 +251,25 @@ class Order {
                 totalPrice: item.price * item.quantity
             })),
             cartTable.reduce((total, item) => total + item.price * item.quantity, 0),
-            "Tu Anh Phu",
+            billingFullName.value,
+            billingPhoneNumber.value,
             {
-                street: "123 Main St",
-                district: "Quan 1",
-                city: "TPHCM",
-                province: ""
+                houseNumber: billingHouseNumber.value,
+                street: billingStreet.value,
+                ward: billingWard.value,
+                district: billingDistrict.value,
+                city: billingCity.value,
             }
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
-        alert("Dặt hàng thành công!")
+        alert("Đặt hàng thành công!")
 
         cartTable = [];
         localStorage.setItem("cart", JSON.stringify(cartTable));
 
         Cart.renderCartPreview(cartTable);
-        Order.renderOrderView(orderTable);
+        Order.renderOrderView();
     }
 
     static updateStockForOrder(order, action) {
@@ -235,30 +294,35 @@ class Order {
         }
     }
     // 
-    static renderOrderView(renderOrder) {
-        orderContainer.innerHTML = ""
+    static renderOrderView() {
+        const orderOfUser = orderTable.filter(o => o.userId === localStorage.getItem('accountLogin'));
+        println(orderOfUser)
 
-        renderOrder.forEach(o => {
-            orderContainer.innerHTML += `
-                <hr>
-                <div style="display: flex;">
-                    <div>
-                        <div class="order__id">Order ID: ${o.orderId}</div>
-                        <div class="order__date">Date: ${o.orderDate}</div>
-                        <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
-                        <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <div class="order__items__details" style="display: none">
-                            ${o.orderItems.map(item => `
-                                <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
-                            `).join('')}
-                            <div class="order__price">Order Price: $${o.orderPrice}</div>
+        if (orderOfUser) {
+            orderContainer.innerHTML = ""
+
+            orderOfUser.forEach(o => {
+                orderContainer.innerHTML += `
+                    <hr>
+                    <div style="display: flex;">
+                        <div>
+                            <div class="order__id">Order ID: ${o.orderId}</div>
+                            <div class="order__date">Date: ${o.orderDate}</div>
+                            <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
+                            <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
+                        </div>
+                        <div style="margin-left: 100px;">
+                            <div class="order__items__details" style="display: none">
+                                ${o.orderItems.map(item => `
+                                    <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
+                                `).join('')}
+                                <div class="order__price">Order Price: $${o.orderPrice}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `
-        })
+                `
+            })
+        }
     }
     // 
     static renderOrderAdmin(renderOrder) {
@@ -366,6 +430,38 @@ class Order {
         } else {
             details.style.display = "none";
             e.textContent = "View Details";
+        }
+    }
+    // clear form Bill
+    static clearFormBillInfo(e) {
+        e.querySelectorAll("input").forEach(input => {
+            if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
+                document.getElementById(input.id).value = "";
+                document.getElementById(input.id).disabled = false;
+            }
+            document.getElementById(input.id).disabled = false;
+        });
+    }
+    static renderBillingForm() {
+        billingFullName.value = accoutLoginInfo.fullName;
+        billingPhoneNumber.value = accoutLoginInfo.phoneNumber;
+        billingHouseNumber.value = accoutLoginInfo.address.houseNumber;
+        billingStreet.value = accoutLoginInfo.address.street;
+        billingWard.value = accoutLoginInfo.address.ward;
+        billingDistrict.value = accoutLoginInfo.address.district;
+        billingCity.value = accoutLoginInfo.address.city;
+        document.getElementById("billing-info").querySelectorAll("input").forEach(input => {
+            document.getElementById(input.id).disabled = true;
+        });
+    }
+    // toggle order form input address
+    static toggleAddressOrder(e) {
+        if (e.value === 'userAddress') {
+            Order.renderBillingForm();
+        }
+        if (e.value === 'newAddress') {
+            println("dia chi moi")
+            Order.clearFormBillInfo(billingInfo)
         }
     }
 }

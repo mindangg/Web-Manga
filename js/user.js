@@ -1,4 +1,3 @@
-
 //Get current date
 let day = new Date();
 let dd = String(day.getDate()).padStart(2, '0');
@@ -14,6 +13,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381431",
         createDate: '10/02/2005',
+        fullName: "",
         address: {
             houseNumber: '',
             street: '',
@@ -30,6 +30,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381431",
         createDate: '10/02/2005',
+        fullName: "Bao Hoo",
         address: {
             houseNumber: '28/2',
             street: 'Phung Ta Chu',
@@ -46,6 +47,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381432",
         createDate: '30/10/2024',
+        fullName: "",
         address: {
             houseNumber: '',
             street: '',
@@ -62,6 +64,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381433",
         createDate: '05/11/2024',
+        fullName: "Bao",
         address: {
             houseNumber: '',
             street: '',
@@ -78,6 +81,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381434",
         createDate: '24/12/2023',
+        fullName: "Bao",
         address: {
             houseNumber: '',
             street: '',
@@ -94,6 +98,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
         createDate: '01/01/2020',
+        fullName: "Bael",
         address: {
             houseNumber: '',
             street: '',
@@ -110,6 +115,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
         createDate: '11/09/2001',
+        fullName: "Bao Hoo",
         address: {
             houseNumber: '',
             street: '',
@@ -126,6 +132,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381435",
         createDate: curDay,
+        fullName: "Admin",
         address: {
             houseNumber: '',
             street: '',
@@ -134,7 +141,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
             city: ''
         },
         status: true,
-    },
+    }
 ];
 
 let account = null;
@@ -201,7 +208,7 @@ submitSignUp.addEventListener("click", (event) => {
         Validation.emailIsValid(email) &&
         Validation.phoneIsValid(phoneNumber)
     ) {
-        if (User.insert(`user_${User.generateId(userList)}`, username.value, password.value, phoneNumber.value, email.value)) {
+        if (User.insert(`user_${User.generateId(userList)}`, username.value, password.value, email.value, phoneNumber.value)) {
             clearField(signup);
             document.getElementById("signup__page").style.display = "none";
             document.getElementById("login__page").style.display = "inline";
@@ -277,10 +284,10 @@ submitLogin.addEventListener('click', (event) => {
             document.getElementsByClassName('navbar__bar')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${account.username}`;
-            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
-            document.getElementById("login__page").style.display = "none";
-            document.getElementById("main__page").style.display = "inline";
+            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            // document.getElementById("login__page").style.display = "none";
+            // document.getElementById("main__page").style.display = "inline";
         }
     }
 })
@@ -298,8 +305,9 @@ class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.phoneNumber = phoneNumber;
         this.createDate = curDay;
+        this.phoneNumber = phoneNumber;
+        this.fullName = '';
         this.address = {
             houseNumber: '',
             street: '',
@@ -370,8 +378,8 @@ class User {
         }
     };
 
-    static insert(userId, username, password, phone_number, email) {
-        const newUser = new User(userId, username, password, phone_number, email);
+    static insert(userId, username, password, email, phone_number) {
+        const newUser = new User(userId, username, password, email, phone_number);
         console.log("Add new user:")
         console.log(newUser);
         try {
@@ -424,6 +432,3 @@ function clearField(field) {
         input.value = '';
     });
 }
-
-User.onload();
-User.renderAccountLogin();

@@ -209,15 +209,15 @@ customElements.define(`special-footer`, SpecialFooter);
 
 //navigation between pages
 
-const toLoginPage = () => {
-    document.getElementById("main__page").style.display = "none";
-    document.getElementById("login__page").style.display = "inline";
-    document.getElementById("signup__page").style.display = "none";
-}
+// const toLoginPage = () => {
+//     document.getElementById("main__page").style.display = "none";
+//     document.getElementById("login__page").style.display = "inline";
+//     document.getElementById("signup__page").style.display = "none";
+// }
 
-document.getElementById("login__icon").addEventListener("click", toLoginPage);
+// document.getElementById("login__icon").addEventListener("click", toLoginPage);
 
-document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
+// document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
 
 document.getElementById("login__signup--nav").addEventListener("click", function () {
     document.getElementById("login__page").style.display = "none";
