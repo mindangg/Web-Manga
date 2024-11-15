@@ -55,9 +55,7 @@ class Validation {
     }
 
     static checkBlankField(field) {
-        console.log(field);
         const inputs = field.getElementsByTagName('input');
-        console.log(inputs);
         let check = false;
         for (let input of inputs) {
             if (this.isBlank(input.value)) {

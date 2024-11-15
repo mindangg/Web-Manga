@@ -314,6 +314,10 @@
         <section id="billing-info" class="layer billing-info" style="display: flex">
             <div class="billing-form">
                 <h2>Billing Information</h2>
+                <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
+                    <option value="userAddress" selected>Địa chỉ và thông tin của người dùng</option>
+                    <option value="newAddress">Địa chỉ và thông tin mới</option>
+                </select>
                 <label>Full Name</label>
                 <div class="billing-info__input">
                     <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
@@ -324,14 +328,7 @@
                     <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
                     <label class="error" for="billing-info__phoneNumber"></label>
                 </div>
-
-                <label for="address">Shipping Address</label>
-                <select id="selectAddressOrder" onchange="toggleAddressOrder(this)">
-                    <option value="userAddress" selected>Địa chỉ của người dùng</option>
-                    <option value="newAddress">Địa chỉ mới</option>
-                </select>
-
-                <div id="newAddress" style="display: none;">
+                <div id="newAddress">
                     <div class="billing-info__input">
                         <label>House Number</label>
                         <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
@@ -412,18 +409,48 @@
                     <h2>Edit user info</h2>
                     <p>Please fill in the information below:</p>
 
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Full name" value="" class="form-group">
-                            <input type="text" placeholder="Phone number" class="form-group">
-                            <input type="text" placeholder="Số nhà" class="form-group">
-                            <input type="text" placeholder="Đường" class="form-group">
-                            <input type="text" placeholder="Quận/Huyện" class="form-group">
-                            <input type="text" placeholder="Thành phố" class="form-group">
-                            <input type="text" placeholder="Tỉnh" class="form-group">
+                    <div id="edit-user__form" class="edit-user__form">
+                        <div class="user-info__input">
+                            <label>Full Name</label>
+                            <input id="user-info__fullName" class="form-group" type="text" placeholder="Full name"
+                                value="">
+                            <label class="error" for="user-info__fullName"></label>
                         </div>
-                        <button type="submit" class="user-info__save-btn">Save address</button>
-                    </form>
+                        <div class="user-info__input">
+                            <label>Phone Number</label>
+                            <input id="user-info__phoneNumber" class="form-group" type="text"
+                                placeholder="Phone number">
+                            <label class="error" for="user-info__phoneNumber"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>House Number</label>
+                            <input id="user-info__houseNumber" class="form-group" type="text"
+                                placeholder="House Number">
+                            <label class="error" for="user-info__houseNumber"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>Street</label>
+                            <input id="user-info__street" class="form-group" type="text" placeholder="Đường">
+                            <label class="error" for="user-info__street"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>Ward</label>
+                            <input id="user-info__ward" class="form-group" type="text" placeholder="Phường">
+                            <label class="error" for="user-info__ward"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>District</label>
+                            <input id="user-info__district" class="form-group" type="text" placeholder="Quận">
+                            <label class="error" for="user-info__district"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label for="">City</label>
+                            <input id="user-info__city" class="form-group" type="text" placeholder="Thành phố">
+                            <label class="error" for="user-info__city"></label>
+                        </div>
+                        <button type="button" class="button user-info__save" id="user-info__save"
+                            onclick="editUserInfo()">Save user info</button>
+                    </div>
                 </div>
             </div>
 
@@ -524,16 +551,17 @@
     <special-footer id="special-footer"></special-footer>
 
     <!-- js -->
+    <script src="../js/helper.js"></script>
     <script>
         const URLOfWebpage = new URL(window.location)
         const URLOfIndex = window.location.href
         const URLToAdmin = URLOfIndex.split("html")
         const layerOfView = document.querySelectorAll('.layer')
-        console.log(layerOfView)
+        println(layerOfView)
     </script>
     <script src="../js/header_footer_1.js"></script>
-    <script src="../js/purchase.js"></script>
     <script src="../js/user.js"></script>
+    <script src="../js/purchase.js"></script>
     <script src="../js/product.js"></script>
     <script src="../js/validation.js"></script>
     <script>
@@ -618,20 +646,7 @@
             else {
                 userInfo.style.display = 'none'
                 orderHistory.style.display = 'inherit'
-            }
-        }
-
-        // toggle order form input address
-        function toggleAddressOrder(e) {
-            const userAddress = document.getElementById('newAddress')
-            console.log(e.value)
-            if (e.value === 'userAddress') {
-                userAddress.style.display = 'none'
-                return;
-            }
-            if (e.value === 'newAddress') {
-                userAddress.style.display = 'inherit'
-                return;
+                Order.renderOrderView()
             }
         }
 
@@ -688,6 +703,7 @@
             localStorage.setItem('View', JSON.stringify('bill'))
             const billingInfo = document.querySelector('.billing-info')
             renderView(billingInfo)
+            Order.renderBillingForm();
         }
 
         function viewLogin() {
@@ -715,9 +731,10 @@
                 window.location.href = `${URLToAdmin[0]}html/admin.html`
             }
             Product.onloadViewIndex();
-            fetchPropertyProduct(URLOfWebpage)
+            User.onload();
+            User.renderAccountLogin();
             Cart.renderCartPreview(cartTable)
-            Order.renderOrderView(orderTable)
+            fetchPropertyProduct(URLOfWebpage)
             switch (JSON.parse(localStorage.getItem('View'))) {
                 case 'home': viewHome(); break;
                 case 'cart': viewCart(); break;

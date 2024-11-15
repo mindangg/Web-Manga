@@ -9,7 +9,7 @@
     background-color: #333333;
 }
 
-.user-info__navbar>div {
+.user-info__navbar > div {
     color: #ffffff;
     margin: 0 1rem;
     font-weight: 500;
@@ -19,7 +19,6 @@
 .user-info__container {
     max-width: 600px;
     margin: 2rem auto;
-    text-align: center;
 }
 
 .user-info__container h1 {
@@ -56,19 +55,25 @@
     margin-bottom: 1rem;
 }
 
-.form-group input,
-.form-group select,
-.form-group label {
+.user-info input{
     width: 100%;
-    background-color: #262626;
-    border: 1px solid #333333;
-    padding: 0.8rem;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #333333;
+    padding: 15px 45px 15px 20px;
     color: #ffffff;
     font-size: 0.9rem;
 }
 
-input::placeholder,
-label {
+.user-info .error{
+    color: red;
+    font-size: 0.9em;
+    display: none;
+    margin-top: -10px;
+}
+
+input::placeholder{
     color: #aaaaaa;
 }
 
@@ -85,7 +90,7 @@ label {
 }
 
 /* Save button styling */
-.user-info__save-btn {
+.edit-user__form button {
     background-color: #00ff00;
     color: #1a1a1a;
     padding: 0.8rem 1.5rem;
@@ -98,16 +103,6 @@ label {
 
 .save-btn:hover {
     background-color: #00e600;
-}
-
-/* Close button */
-.close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.2rem;
-    color: #ffffff;
-    text-decoration: none;
 }
 
 .logout__user{
