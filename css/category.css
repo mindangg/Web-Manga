@@ -19,15 +19,25 @@
 
 .product__item {
     position: relative;
-    border-radius: 8px;
-    padding: 10px;
-    transition: transform 0.3s ease;
-    overflow: hidden;
+    margin-right: 10px;
 }
 
-.product__item > a > img {
+.product__item img:nth-child(1){
+    position: absolute;
+}
+
+.product__item img:hover{
+    cursor: pointer;
+}
+
+.product__item img:nth-child(1):hover{
+    opacity: 0;
+}
+
+.product__item img {
     width: 342px;
     height: 360px;
+    transition: 0.22s ease-in;
 }
 
 .product__item h4 {
@@ -42,7 +52,7 @@
     margin: 0;
 }
 
-.product__item button {
+.product__item button{
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -50,6 +60,16 @@
     bottom: 135px;
     left: 215px;
     /* Positions the button at the bottom right */
+    padding: 14px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product__info button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
     padding: 14px;
     font-size: 1em;
     cursor: pointer;
