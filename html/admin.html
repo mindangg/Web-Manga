@@ -16,8 +16,7 @@
                 <div class="topnav__title">WEBTOON</div>
 
                 <div class="topnav__toggle">
-                    <span id="navToggle" style="font-size: 30px; cursor: pointer"
-                        onclick="toggleNav()">&#9776;</span>
+                    <span id="navToggle" style="font-size: 30px; cursor: pointer" onclick="toggleNav()">&#9776;</span>
                 </div>
 
                 <div class="setting">
@@ -231,8 +230,7 @@
                     <div class="user table__search">
                         <div style="display: flex; flex-direction: row">
                             <div class="product table__search-label">Search by name:</div>
-                            <input type="text" class="user-table__search-input"
-                                id="user-table__search-input--name" />
+                            <input type="text" class="user-table__search-input" id="user-table__search-input--name" />
                         </div>
                         <div style="display: flex; flex-direction: row">
                             <div class="product table__search-label">
@@ -292,31 +290,33 @@
                     <div id="user__edit-menu">
                         <div id="user__edit-menu--userId">User ID</div>
                         <div class="user edit-component" style="margin-top: 15px">
-                            <label for="user__edit-menu--username"></label>
-                            <input type="text" id="user__edit-menu--username" placeholder="Username" value="">
+                            <label for="user-page__edit-menu--username"></label>
+                            <input type="text" id="user-page__edit-menu--username" placeholder="Username" value="">
 
-                            <label for="user__edit-menu--password"></label>
-                            <input type="text" id="user__edit-menu--password" placeholder="Password" value="">
+                            <label for="user-page__edit-menu--password"></label>
+                            <input type="text" id="user-page__edit-menu--password" placeholder="Password" value="">
                         </div>
                         <div class="user edit-component">
-                            <label for="user__edit-menu--email"></label>
-                            <input type="text" id="user__edit-menu--email" placeholder="Email" value="">
+                            <label for="user-page__edit-menu--email"></label>
+                            <input type="text" id="user-page__edit-menu--email" placeholder="Email" value="">
 
-                            <label for="user__edit-menu--phoneNumber"></label>
-                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone Number" value="">
+                            <label for="user-page__edit-menu--phoneNumber"></label>
+                            <input type="text" id="user-page__edit-menu--phoneNumber" placeholder="Phone Number"
+                                value="">
                         </div>
                         <div class="user edit-component user-address" style="margin-top: 10px">
                             <div class="address-component label">
                                 <label id="user__edit-menu--address-label">Address:</label>
                             </div>
                             <div class="address-component first">
-                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number" value="">
-                                <input type="text" id="user__edit-menu--street" placeholder="Street" value="">
+                                <input type="text" id="user-page__edit-menu--houseNumber" placeholder="House Number"
+                                    value="">
+                                <input type="text" id="user-page__edit-menu--street" placeholder="Street" value="">
                             </div>
                             <div class="address-component second">
-                                <input type="text" id="user__edit-menu--ward" placeholder="Ward" value="">
-                                <input type="text" id="user__edit-menu--district" placeholder="District" value="">
-                                <input type="text" id="user__edit-menu--city" placeholder="City" value="">
+                                <input type="text" id="user-page__edit-menu--ward" placeholder="Ward" value="">
+                                <input type="text" id="user-page__edit-menu--district" placeholder="District" value="">
+                                <input type="text" id="user-page__edit-menu--city" placeholder="City" value="">
                             </div>
                         </div>
                         <div class="user edit-component user-buttons">
@@ -356,19 +356,19 @@
                                     <th class="order table__cell order-table__cell orderid">
                                         OrderID
                                     </th>
-                                    <th class="order table__cell user-table__cell userid">
+                                    <th class="order table__cell order-table__cell userid">
                                         UserID
                                     </th>
-                                    <th class="user table__cell user-table__cell itemlist">
+                                    <th class="order table__cell order-table__cell itemlist">
                                         Item list
                                     </th>
-                                    <th class="user table__cell user-table__cell price">
+                                    <th class="order table__cell order-table__cell price">
                                         Price
                                     </th>
-                                    <th class="user table__cell user-table__cell datecreate">
+                                    <th class="order table__cell order-table__cell datecreate">
                                         Date Create
                                     </th>
-                                    <th class="user table__cell user-table__cell status">
+                                    <th class="order table__cell order-table__cell status">
                                         Status
                                     </th>
                                 </tr>
@@ -388,16 +388,16 @@
         </div>
     </div>
 </body>
-
 <script src="../js/toggleSideNav.js"></script>
-<script src="../js/product.js"></script>
-<script src="../js/adminController.js"></script>
 <script src="../js/priceSlider.js"></script>
+<script src="../js/adminController.js"></script>
 <script src="../js/purchase.js"></script>
-
+<script src="../js/product.js"></script>
+<script src="../js/user.js"></script>
 <script>
     (() => {
-        Product.onloadViewAdmin();
+        Product.onload()
+        Product.onloadFilterViewAdmin();
         Order.renderOrderAdmin(orderTable);
     })()
 </script>

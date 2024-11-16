@@ -1,4 +1,3 @@
-
 //Get current date
 let day = new Date();
 let dd = String(day.getDate()).padStart(2, '0');
@@ -14,6 +13,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381431",
         createDate: '10/02/2005',
+        fullName: "",
         address: {
             houseNumber: '',
             street: '',
@@ -30,6 +30,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381431",
         createDate: '10/02/2005',
+        fullName: "Bao Hoo",
         address: {
             houseNumber: '28/2',
             street: 'Phung Ta Chu',
@@ -46,6 +47,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381432",
         createDate: '30/10/2024',
+        fullName: "",
         address: {
             houseNumber: '',
             street: '',
@@ -62,6 +64,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381433",
         createDate: '05/11/2024',
+        fullName: "Bao",
         address: {
             houseNumber: '',
             street: '',
@@ -78,6 +81,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381434",
         createDate: '24/12/2023',
+        fullName: "Bao",
         address: {
             houseNumber: '',
             street: '',
@@ -94,6 +98,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
         createDate: '01/01/2020',
+        fullName: "Bael",
         address: {
             houseNumber: '',
             street: '',
@@ -110,6 +115,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo1002@gmail.com",
         phoneNumber: "0938381435",
         createDate: '11/09/2001',
+        fullName: "Bao Hoo",
         address: {
             houseNumber: '',
             street: '',
@@ -126,6 +132,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         email: "baohoo10205@gmail.com",
         phoneNumber: "0938381435",
         createDate: curDay,
+        fullName: "Admin",
         address: {
             houseNumber: '',
             street: '',
@@ -134,7 +141,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
             city: ''
         },
         status: true,
-    },
+    }
 ];
 
 let account = null;
@@ -156,6 +163,16 @@ const usernameLogin = document.getElementById('login__input--username');
 const passwordLogin = document.getElementById('login__input--password');
 const forget = document.getElementById('login__forget');
 const submitLogin = document.getElementById('login__btn');
+
+// FOR EDIT USER
+const userInfo = document.getElementById("user-info")
+const userFullname = document.getElementById("user-info__fullName")
+const userphoneNumber = document.getElementById("user-info__phoneNumber")
+const userHouseNumber = document.getElementById("user-info__houseNumber")
+const userStreet = document.getElementById("user-info__street")
+const userWard = document.getElementById("user-info__ward")
+const userDistrict = document.getElementById("user-info__district")
+const userCity = document.getElementById("user-info__city")
 
 //SIGN UP EVENT
 submitSignUp.addEventListener("click", (event) => {
@@ -201,7 +218,7 @@ submitSignUp.addEventListener("click", (event) => {
         Validation.emailIsValid(email) &&
         Validation.phoneIsValid(phoneNumber)
     ) {
-        if (User.insert(`user_${User.generateId(userList)}`, username.value, password.value, phoneNumber.value, email.value)) {
+        if (User.insert(`user_${User.generateId(userList)}`, username.value, password.value, email.value, phoneNumber.value)) {
             clearField(signup);
             document.getElementById("signup__page").style.display = "none";
             document.getElementById("login__page").style.display = "inline";
@@ -271,16 +288,21 @@ submitLogin.addEventListener('click', (event) => {
             passwordLogin.labels[0].style.display = 'none';
             clearField(login);
             showNotification('Welcome, ' + account.username);
-            document.getElementsByClassName('navbar__home')[0]
-                .querySelectorAll('div')[1]
-                .innerText = `${account.username}`;
-            document.getElementsByClassName('navbar__bar')[0]
-                .querySelectorAll('div')[1]
-                .innerText = `${account.username}`;
-            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            // document.getElementsByClassName('navbar__home')[0]
+            //     .querySelectorAll('div')[1]
+            //     .innerText = `${account.username}`;
+            // document.getElementsByClassName('navbar__bar')[0]
+            //     .querySelectorAll('div')[1]
+            //     .innerText = `${account.username}`;
             document.getElementById("login__page").style.display = "none";
             document.getElementById("main__page").style.display = "inline";
+            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            document.getElementById('login__icon').addEventListener('click', viewUserInfo);
+            document.getElementById('login__icon__responsive').removeEventListener('click', viewUserInfo);
+            // phusomnia
+            User.renderAccountLogin();
+            // viewHome(); BUG
         }
     }
 })
@@ -298,8 +320,9 @@ class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.phoneNumber = phoneNumber;
         this.createDate = curDay;
+        this.phoneNumber = phoneNumber;
+        this.fullName = '';
         this.address = {
             houseNumber: '',
             street: '',
@@ -370,8 +393,8 @@ class User {
         }
     };
 
-    static insert(userId, username, password, phone_number, email) {
-        const newUser = new User(userId, username, password, phone_number, email);
+    static insert(userId, username, password, email, phone_number) {
+        const newUser = new User(userId, username, password, email, phone_number);
         console.log("Add new user:")
         console.log(newUser);
         try {
@@ -386,6 +409,10 @@ class User {
         }
     }
 
+    static findByUserid(id) {
+        return userList.find(u => u.userId === id);
+    }
+
     static onload() {
         if (JSON.parse(localStorage.getItem('users')) === null) {
             localStorage.setItem('users', JSON.stringify(userList));
@@ -395,17 +422,59 @@ class User {
             console.log('Get users');
         }
     }
+
+    static renderUserInfo() {
+        if (localStorage.getItem('accountLogin')) {
+            let accountLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            clearField(userInfo)
+            userFullname.value = accountLoginInfo.fullName;
+            userphoneNumber.value = accountLoginInfo.phoneNumber;
+            userHouseNumber.value = accountLoginInfo.address.houseNumber;
+            userStreet.value = accountLoginInfo.address.street;
+            userWard.value = accountLoginInfo.address.ward;
+            userDistrict.value = accountLoginInfo.address.district;
+            userCity.value = accountLoginInfo.address.city;
+        }
+    }
+
+    static editUserInfo() {
+        if (!Validation.checkBlankField(userInfo)) {
+            const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            const queryUserInfoInput = document.querySelector(".edit-user__form").querySelectorAll("input");
+            for (const userInfoInput of queryUserInfoInput) {
+                const metadata = userInfoInput.id.split("__")[1];
+                if (metadata === "fullName" || metadata === "phoneNumber") {
+                    userList[currentEditUserIndex][metadata] = userInfoInput.value;
+                } else {
+                    userList[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
+                }
+            }
+
+            localStorage.setItem('users', JSON.stringify(userList));
+            alert("Updated information successfully");
+        }
+    }
     // 
     static renderAccountLogin() {
-        console.log(localStorage.getItem('accountLogin'))
         if (localStorage.getItem('accountLogin')) {
-            let accountLogin = userList.find(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')));
+            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            let accountLogin = User.findByUserid(JSON.parse(localStorage.getItem('accountLogin')));
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${accountLogin.username}`;
             document.getElementsByClassName('navbar__bar')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${accountLogin.username}`;
+        } else {
+            // document.getElementById('login__icon').addEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').addEventListener('click', toLoginPage);
+            document.getElementsByClassName('navbar__home')[0]
+                .querySelectorAll('div')[1]
+                .innerText = "";
+            document.getElementsByClassName('navbar__bar')[0]
+                .querySelectorAll('div')[1]
+                .innerText = "";
         }
     }
 }
@@ -424,6 +493,3 @@ function clearField(field) {
         input.value = '';
     });
 }
-
-User.onload();
-User.renderAccountLogin();

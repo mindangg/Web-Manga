@@ -108,7 +108,7 @@ class SpecialHeader extends HTMLElement {
             </ul>
 
             <!-- nav bar icons -->
-            <div class="navbar__home">
+            <div class="navbar__home" id="navbar__home">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
                 <div style="display: flex">
                     <a href="#" id="login__icon">
@@ -209,15 +209,15 @@ customElements.define(`special-footer`, SpecialFooter);
 
 //navigation between pages
 
-const toLoginPage = () => {
-    document.getElementById("main__page").style.display = "none";
-    document.getElementById("login__page").style.display = "inline";
-    document.getElementById("signup__page").style.display = "none";
-}
+// const toLoginPage = () => {
+//     document.getElementById("main__page").style.display = "none";
+//     document.getElementById("login__page").style.display = "inline";
+//     document.getElementById("signup__page").style.display = "none";
+// }
 
-document.getElementById("login__icon").addEventListener("click", toLoginPage);
+// document.getElementById("login__icon").addEventListener("click", toLoginPage);
 
-document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
+// document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
 
 document.getElementById("login__signup--nav").addEventListener("click", function () {
     document.getElementById("login__page").style.display = "none";

@@ -216,7 +216,7 @@ class Product {
         productList = renderProduct.slice(start, end);
 
         // renderProduct truyen vao co so luong thi render
-        if  (productList.length > 0) {
+        if (productList.length > 0) {
             productList.map((p, index) => {
                 const row = document.createElement("tr");
                 row.id = `${p.productId}`;
@@ -487,15 +487,14 @@ class Product {
     // ONLOAD PRODUCT
     // ==================================================================================
     // load san pham khi trang reload
-    static onloadViewAdmin() {
-        localStorage.setItem("productTable", JSON.stringify(productTable));
+    static onloadFilterViewAdmin() {
         Product.render(productTable);
         Product.search();
         document.addEventListener("DOMContentLoaded", () => {
             Product.applyFilters()
         });
     }
-    static onloadViewIndex() {
+    static onload() {
         localStorage.setItem("productTable", JSON.stringify(productTable));
     }
 }
