@@ -65,7 +65,7 @@ function render(users){
             <input type="checkbox" id="${user.userId}-status" onclick="disableUser(this)">
         </td>
         <td class="user table__cell user-table__cell editbtn">
-            <button id="${user.userId}-editbtn">Edit</button>
+            <button id="${user.userId}-editbtn" onclick="editUser(this)">Edit</button>
         </td>
         `
         userTableBody.append(row);
@@ -129,7 +129,20 @@ function renderUser(){
 
 function editUser(button){
     let userId = button.id.split('-')[0];
+    let users = JSON.parse(localStorage.getItem('users'))
+    let user = users.find(user => user.userId === userId);
 
+    const editMenu = document.getElementById('user__edit-menu--container');
+    const cancelbtn = document.getElementById('user__edit-menu--cancel')
+
+    editMenu.style.display = 'flex';
+    document.getElementById('user__edit-menu--userId').value = userId;
+    document.getElementById('')
+
+    cancelbtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        editMenu.style.display = 'none';
+    })
 }
 
 function disableUser(checkbox){
