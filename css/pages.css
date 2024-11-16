@@ -218,7 +218,7 @@
 .table__header {
   background-color: #343a40;
   color: white;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -320,6 +320,59 @@
 
 /* bao */
 
+/*for user search bar*/
+
+#user__search--container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  border: 1px solid black;
+  background-color: lightgrey;
+  height: 30px;
+  padding: 15px 10px 15px 10px;
+}
+
+.user.search-label{
+  color: black;
+  background-color: #007bff;
+  padding: 5px 10px 5px 10px;
+  height: 20px;
+  border-radius: 5px;
+  margin-right: 5px;
+  width: 70px;
+  justify-content: center;
+  align-content: center;
+}
+
+#user__search--container select{
+  margin-right: 5px;
+  border-radius: 5px;
+  height: 31px;
+  padding: 5px 10px 5px 10px;
+}
+
+#user__search--container input{
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 31px;
+  padding: 5px;
+}
+
+#user__addbtn {
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  width: 80px;
+  height: 32px;
+}
+
+#user__addbtn:hover {
+  background-color: #0056b3;
+}
 /*for user table*/
 
 .user.table__body{
@@ -371,20 +424,20 @@
   background-color: #0056b3;
 }
 
-.user.table__cell.user-table__cell.serial{
-  width: 3%;
-}
-
 .user.table__cell.user-table__cell.userId{
   width: 5%;
 }
 
+.user.table__cell.user-table__cell.fullName{
+  width: 7%;
+}
+
 .user.table__cell.user-table__cell.username{
-  width: 10%;
+  width: 9%;
 }
 
 .user.table__cell.user-table__cell.password{
-  width: 10%;
+  width: 9%;
 }
 
 .user.table__cell.user-table__cell.email{
@@ -404,7 +457,7 @@
 }
 
 .user.table__cell.user-table__cell.status{
-  width: 5%;
+  width: 3%;
 }
 
 .user.table__cell.user-table__cell.editbtn{
@@ -433,7 +486,7 @@
   position: relative;
   contain: content;
   border-bottom: 2px solid black;
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
 }
@@ -459,6 +512,13 @@
   border-radius: 5px;
   font-size: 14px;
   padding: 5px;
+}
+
+#user__edit-menu--fullName,
+#user__edit-menu--username,
+#user__edit-menu--password {
+  width: calc(33% - 10px);
+  margin: 2px;
 }
 
 .user.edit-component.user-address{
