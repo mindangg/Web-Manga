@@ -356,19 +356,19 @@
                                     <th class="order table__cell order-table__cell orderid">
                                         OrderID
                                     </th>
-                                    <th class="order table__cell user-table__cell userid">
+                                    <th class="order table__cell order-table__cell userid">
                                         UserID
                                     </th>
-                                    <th class="user table__cell user-table__cell itemlist">
+                                    <th class="order table__cell order-table__cell itemlist">
                                         Item list
                                     </th>
-                                    <th class="user table__cell user-table__cell price">
+                                    <th class="order table__cell order-table__cell price">
                                         Price
                                     </th>
-                                    <th class="user table__cell user-table__cell datecreate">
+                                    <th class="order table__cell order-table__cell datecreate">
                                         Date Create
                                     </th>
-                                    <th class="user table__cell user-table__cell status">
+                                    <th class="order table__cell order-table__cell status">
                                         Status
                                     </th>
                                 </tr>
@@ -389,14 +389,14 @@
     </div>
 </body>
 <script src="../js/toggleSideNav.js"></script>
-<script src="../js/product.js"></script>
-<script src="../js/adminController.js"></script>
 <script src="../js/priceSlider.js"></script>
+<script src="../js/adminController.js"></script>
 <script src="../js/purchase.js"></script>
-
+<script src="../js/product.js"></script>
 <script>
     (() => {
-        Product.onloadViewAdmin();
+        Product.onload()
+        Product.onloadFilterViewAdmin();
         Order.renderOrderAdmin(orderTable);
     })()
 </script>
