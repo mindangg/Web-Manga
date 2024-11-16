@@ -1,23 +1,6 @@
 let cartTable = JSON.parse(localStorage.getItem('cart')) || []
 let orderTable = JSON.parse(localStorage.getItem('order')) || []
 
-const productContainer = document.querySelector(".product__container")
-const cartItemContainer = document.querySelector(".cart-items")
-const orderContainer = document.querySelector(".order");
-const cartSummary = document.querySelector(".cart-summary")
-const orderTableContainer = document.getElementById("order-table__body-content")
-const paymentInfoContainer = document.querySelector(".payment-info__container")
-const paymentInfoSummary = document.querySelector(".payment-info__summary")
-
-const billingInfo = document.getElementById("billing-info")
-const billingFullName = document.getElementById("billing-info__fullName")
-const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
-const billingHouseNumber = document.getElementById("billing-info__houseNumber")
-const billingStreet = document.getElementById("billing-info__street")
-const billingWard = document.getElementById("billing-info__ward")
-const billingDistrict = document.getElementById("billing-info__district")
-const billingCity = document.getElementById("billing-info__city")
-
 class Cart {
     static addToCart(e) {
         if (!localStorage.getItem('accountLogin')) {

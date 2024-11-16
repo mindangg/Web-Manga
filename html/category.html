@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manga</title>
     <!--css -->
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main_phusomnia.css">
     <link rel="stylesheet" href="../css/category.css">
     <link rel="stylesheet" href="../css/header_footer.css">
     <link rel="stylesheet" href="../css/category.css">
-    <link rel="stylesheet" href="../css/cart_1.css">
+    <link rel="stylesheet" href="../css/cart_phusomnia.css">
     <link rel="stylesheet" href="../css/billing.css">
     <link rel="stylesheet" href="../css/order.css">
     <link rel="stylesheet" href="../css/user_info.css">
@@ -225,8 +225,80 @@
 
     <main class="main">
         <section id="main__page" class="layer main__page" style="display: inline;">
-            <div class="product__list">
-                <h1>Products</h1>
+            <div class="slider">
+                <div class="slider__list">
+                    <div class="slider__item">
+                        <img src="../img/banner/1.png" alt="Sakamoto Days Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/2.png" alt="My Dress Up Darling Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/3.jpeg" alt="Classroom Of The Elite Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/4.jpeg" alt="Spy X Family Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/5.jpg" alt="Black Clover Cover">
+                    </div>
+                </div>
+
+                <div class="slider__button">
+                    <button id="slider__prev">&lt;</button>
+                    <button id="slider__next">&gt;</button>
+                </div>
+
+                <ul class="slider__dots">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+
+            <div class="book__slider">
+                <div class="book__slider__list">
+                    <div class="book__slider__item">
+                        <a id="testVN" onclick="showProductInfo(this)">
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-primary.jpeg" alt="">
+                            <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-back.jpg" alt="">
+                        </a>
+                        <h4>JJK</h4>
+                        <p>$11</p>
+                        <button>+ Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="book__slider__button">
+                    <button id="book__slider__prev">
+                        <i class="fa-solid fa-angle-left" id="left__angle"></i>
+                        <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                    </button>
+                    <button id="book__slider__next">
+                        <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                        <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                    </button>
+                </div>
+
+                <ul class="book__slider__dots">
+                    <li class="book__active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+
+            <div class="product-list">
+                <div class="product-list__title">
+                    <h1>Books</h1>
+                </div>
                 <div class="product__container">
                     <div id="id_asdasd" class="product__item">
                         <a>
@@ -239,6 +311,7 @@
                         <p>Stock: 1</p>
                     </div>
                 </div>
+                <div class="product-container__footer"></div>
             </div>
 
             <div class="product__page">
@@ -556,6 +629,7 @@
 
     <!-- js -->
     <script src="../js/helper.js"></script>
+    <script src="../js/main_phusomnia.js"></script>
     <script src="../js/header_footer_1.js"></script>
     <script>
         const URLOfWebpage = new URL(window.location)
@@ -576,14 +650,44 @@
         }
     </script>
     <script src="../js/user.js"></script>
+    <script>
+        const productContainer = document.querySelector(".product__container")
+        const cartItemContainer = document.querySelector(".cart-items")
+        const orderContainer = document.querySelector(".order");
+        const cartSummary = document.querySelector(".cart-summary")
+        const orderTableContainer = document.getElementById("order-table__body-content")
+        const paymentInfoContainer = document.querySelector(".payment-info__container")
+        const paymentInfoSummary = document.querySelector(".payment-info__summary")
+
+        const billingInfo = document.getElementById("billing-info")
+        const billingFullName = document.getElementById("billing-info__fullName")
+        const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
+        const billingHouseNumber = document.getElementById("billing-info__houseNumber")
+        const billingStreet = document.getElementById("billing-info__street")
+        const billingWard = document.getElementById("billing-info__ward")
+        const billingDistrict = document.getElementById("billing-info__district")
+        const billingCity = document.getElementById("billing-info__city")
+    </script>
     <script src="../js/purchase.js"></script>
     <script src="../js/product.js"></script>
     <script src="../js/validation.js"></script>
     <script>
+        let productCurrentHomePage = 1;
+        let productPerHomePage = 9;
+        let prduct
+        // ==================================================================================
+        // RENDER HOME PAGE 
+        // ==================================================================================
         function renderViewIndex(renderProduct) {
             productContainer.innerHTML = ""
-            renderProduct.forEach(p => {
-                productContainer.innerHTML += `
+
+            let start = (productCurrentHomePage - 1) * productPerHomePage;
+            let end = start + productPerHomePage;
+            let productList = renderProduct.slice(start, end);
+
+            if (productList.length > 0) {
+                productList.forEach(p => {
+                    productContainer.innerHTML += `
                     <div id="${p.productId}" class="product__item">
                         <a id=${p.productId} onclick="showProductInfo(this)">
                             <img src="${p.cover1}" alt="">
@@ -595,10 +699,60 @@
                         <p>Stock: ${p.stock}</p>
                     </div>
                 `
-            });
+                });
+                renderPagination(renderProduct);
+            } else {
+                alert("Chưa có sản phẩm !!!")
+            }
         }
 
-        // Render product info
+        function renderPagination(renderProduct) {
+            let productContainerFooter = document.querySelector('.product-container__footer');
+            println(productContainerFooter)
+            productContainerFooter.innerHTML = ""
+
+            const productTotalPages = Math.ceil(renderProduct.length / productPerHomePage);
+
+            if (productTotalPages > 1) {
+                productContainerFooter.innerHTML = `
+                    <div class="pagination">
+                        <button class="button button__product__prev-pagi" 
+                        id="button__product__prev-pagi"> &lt; </button>
+
+                        <span type="text" class="page-info"> 
+                            <pre id="input-product__pagi"> </pre>    
+                        </span>
+                        
+                        <button class="button button__product__next-pagi" 
+                        id="button__next-pagi"> &gt; </button>
+                    </div>
+                `
+
+                const inputPagi = document.getElementById("input-product__pagi");
+                inputPagi.innerText = `${productCurrentHomePage} / ${productTotalPages}`;
+
+                document.getElementById("button__product__prev-pagi").addEventListener("click", () => {
+                    if (productCurrentHomePage > 1) {
+                        productCurrentHomePage--;
+                        renderViewIndex(renderProduct);
+                    } else {
+                        console.error("Không thể điều hướng trang trước đó.");
+                    }
+                });
+
+                document.getElementById("button__next-pagi").addEventListener("click", () => {
+                    if (productCurrentHomePage < productTotalPages) {
+                        productCurrentHomePage++;
+                        renderViewIndex(renderProduct);
+                    } else {
+                        console.error("Không thể điều hướng trang tiếp theo.");
+                    }
+                });
+            }
+        }
+        // ==================================================================================
+        // RENDER PRODUCT DETAIL
+        // ==================================================================================
         function showProductInfo(e) {
             const productInfo = document.querySelector('.product__page')
             productInfo.style.display = 'inline'
