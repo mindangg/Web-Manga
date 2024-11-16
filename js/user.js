@@ -298,8 +298,6 @@ submitLogin.addEventListener('click', (event) => {
             document.getElementById("main__page").style.display = "inline";
             document.getElementById('login__icon').removeEventListener('click', toLoginPage);
             document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
-            document.getElementById('login__icon').addEventListener('click', viewUserInfo);
-            document.getElementById('login__icon__responsive').removeEventListener('click', viewUserInfo);
             // phusomnia
             User.renderAccountLogin();
             // viewHome(); BUG
