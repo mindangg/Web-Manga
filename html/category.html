@@ -26,8 +26,8 @@
     <header>
         <nav class="navbar">
             <!-- logo -->
-            <div class="navbar__logo" onclick="viewHome()">
-                <a href="category.html"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+            <div class="navbar__logo" onclick="viewHome()" style="cursor: pointer;">
+                <a id="logo__icon"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
             </div>
             <!-- links -->
             <ul class="navbar__links">
@@ -133,7 +133,7 @@
             <div class="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
-                    <a href="#" id="login__icon" onclick="viewUserInfo()">
+                    <a id="login__icon" onclick="viewUserInfo()">
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>
@@ -285,7 +285,7 @@
             </div>
         </section>
 
-        <section id="cart__container" class="layer cart__container">
+        <section id="cart__container" class="layer cart__container" style="display: none;">
             <h1>Cart</h1>
             <div class="cart-content">
                 <!-- Cart Items List -->
@@ -306,12 +306,16 @@
                         <span>Total of order: </span>
                         <span>$0.00</span>
                     </div>
-                    <button class="checkout-button">Checkout</button>
+                    <a href="">
+                        <button class="checkout-button">
+                            Checkout
+                        </button>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="billing-info" class="layer billing-info" style="display: flex">
+        <section id="billing-info" class="layer billing-info" style="display: none;">
             <div class="billing-form">
                 <h2>Billing Information</h2>
                 <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
@@ -391,7 +395,7 @@
             </div>
         </section>
 
-        <section id="user-info" class="layer user-info">
+        <section id="user-info" class="layer user-info" style="display: none;">
             <div class="user-info__navbar">
                 <div></div>
                 <div style="display: flex; gap: 60px">
@@ -449,7 +453,7 @@
                             <label class="error" for="user-info__city"></label>
                         </div>
                         <button type="button" class="button user-info__save" id="user-info__save"
-                            onclick="editUserInfo()">Save user info</button>
+                            onclick="User.editUserInfo()">Save user info</button>
                     </div>
                 </div>
             </div>
@@ -483,7 +487,7 @@
         </section>
         </div>
 
-        <section id="login__page" class="layer login__page" style="display: inherit;">
+        <section id="login__page" class="layer login__page" style="display: none;">
             <div id="login">
                 <h1>Login</h1>
 
@@ -508,7 +512,7 @@
             </div>
         </section>
 
-        <section id="signup__page" class="layer signup__page">
+        <section id="signup__page" class="layer signup__page" style="display: none;">
             <div id="signup">
                 <h1>Sign Up</h1>
                 <!--   Username   -->
@@ -552,14 +556,25 @@
 
     <!-- js -->
     <script src="../js/helper.js"></script>
+    <script src="../js/header_footer_1.js"></script>
     <script>
         const URLOfWebpage = new URL(window.location)
         const URLOfIndex = window.location.href
         const URLToAdmin = URLOfIndex.split("html")
         const layerOfView = document.querySelectorAll('.layer')
-        println(layerOfView)
+        const page = URLOfWebpage.searchParams.get('page')
+        const home = "category.html"
+
+        function setURLForPage(page) {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (page === "home") {
+                window.history.replaceState({}, '', home);
+            } else {
+                urlParams.set('page', page);
+                window.history.replaceState({}, '', '?' + urlParams.toString());
+            }
+        }
     </script>
-    <script src="../js/header_footer_1.js"></script>
     <script src="../js/user.js"></script>
     <script src="../js/purchase.js"></script>
     <script src="../js/product.js"></script>
@@ -583,6 +598,7 @@
             });
         }
 
+        // Render product info
         function showProductInfo(e) {
             const productInfo = document.querySelector('.product__page')
             productInfo.style.display = 'inline'
@@ -627,15 +643,15 @@
                 </div>
             `
         }
-
         function closeProduct() {
             document.querySelector(".product").style.animationName = "bottomUp"
             setTimeout(function () {
                 document.querySelector(".product__page").style.display = "none"
             }, 365)
         }
-
-        // toggle user info
+        // ==================================================================================
+        // TOGGLE USER INFO 
+        // ==================================================================================
         function toggleUserInfo(e) {
             const userInfo = document.querySelector('.user-info__container')
             const orderHistory = document.querySelector('.order__history')
@@ -649,12 +665,14 @@
                 Order.renderOrderView()
             }
         }
-
+        // ==================================================================================
         function logoutUser() {
             localStorage.removeItem('accountLogin')
-            location.reload()
+            User.renderAccountLogin()
+            viewHome()
+            window.location.reload()
         }
-
+        // ==================================================================================\
         function fetchPropertyProduct(url) {
             if (url.search) {
                 const categorySearch = url.searchParams.get('category')
@@ -668,78 +686,89 @@
                 renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
             }
         }
-
+        // ==================================================================================
+        // RENDER VIEW OF PAGE
+        // ==================================================================================
         function renderView(e) {
+            println(layerOfView)
             console.log(e)
             const billingInfo = document.querySelector('.billing-info')
             if (e === billingInfo) {
                 layerOfView.forEach(layer => layer === billingInfo ?
                     layer.style.display = 'flex' : layer.style.display = 'none')
-            } else {
+            }
+            else {
                 layerOfView.forEach(layer => layer === e ?
                     layer.style.display = 'inherit' : layer.style.display = 'none')
             }
         }
-
+        // ==================================================================================
         function viewHome() {
-            localStorage.setItem('View', JSON.stringify('home'))
+            setURLForPage('home')
             const mainPage = document.querySelector('.main__page')
-            console.log(mainPage)
             renderView(mainPage)
+            renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
         }
-
+        // ==================================================================================
         function viewCart() {
-            localStorage.setItem('View', JSON.stringify('cart'))
+            setURLForPage('cart')
             const cartContainer = document.querySelector('.cart__container')
             renderView(cartContainer)
         }
-
+        // ==================================================================================
         function viewBill() {
             const emptyCart = cartTable.length === 0
             if (emptyCart) {
-                alert("Giỏ hàng trống")
-                return;
+                alert('Your cart is empty')
+                return
+            } else {
+                setURLForPage('bill')
+                const billingInfo = document.querySelector('.billing-info')
+                renderView(billingInfo)
+                Order.renderBillingForm();
             }
-            localStorage.setItem('View', JSON.stringify('bill'))
-            const billingInfo = document.querySelector('.billing-info')
-            renderView(billingInfo)
-            Order.renderBillingForm();
         }
-
+        // ==================================================================================
         function viewLogin() {
-            localStorage.setItem('View', JSON.stringify('login'))
             const signupPage = document.querySelector('.login__page')
             renderView(signupPage)
         }
-
+        // ==================================================================================
         function viewUserInfo() {
             if (localStorage.getItem('accountLogin')) {
-                localStorage.setItem('View', JSON.stringify('user-info'))
+                setURLForPage('user-info')
                 const userInfo = document.querySelector('.user-info')
                 renderView(userInfo)
+                User.renderUserInfo()
             } else {
+                setURLForPage('login')
                 viewLogin();
             }
         }
-
+        // ==================================================================================
+        // IIFE
+        // ==================================================================================
         (() => {
             // Set default value for select address
             const defaultBillingSelect = document.getElementById('selectAddressOrder')
             defaultBillingSelect.value = `userAddress`
 
             if (localStorage.getItem('admin') === 'admin') {
-                window.location.href = `${URLToAdmin[0]}html/admin.html`
+                window.location.href = `${URLToAdmin[0]} html / admin.html`
             }
-            Product.onloadViewIndex();
+            Product.onload();
             User.onload();
-            User.renderAccountLogin();
-            Cart.renderCartPreview(cartTable)
             fetchPropertyProduct(URLOfWebpage)
-            switch (JSON.parse(localStorage.getItem('View'))) {
+            User.renderAccountLogin()
+            User.renderUserInfo()
+            Cart.renderCartPreview(cartTable)
+            Order.renderOrderView();
+            switch (page) {
                 case 'home': viewHome(); break;
                 case 'cart': viewCart(); break;
-                case 'bill': viewBill(); break;
+                case 'bill': viewBill();; break;
                 case 'user-info': viewUserInfo(); break;
+                case 'login': viewLogin(); break;
                 default: break;
             }
         })()

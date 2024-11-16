@@ -487,15 +487,14 @@ class Product {
     // ONLOAD PRODUCT
     // ==================================================================================
     // load san pham khi trang reload
-    static onloadViewAdmin() {
-        localStorage.setItem("productTable", JSON.stringify(productTable));
+    static onloadFilterViewAdmin() {
         Product.render(productTable);
         Product.search();
         document.addEventListener("DOMContentLoaded", () => {
             Product.applyFilters()
         });
     }
-    static onloadViewIndex() {
+    static onload() {
         localStorage.setItem("productTable", JSON.stringify(productTable));
     }
 }
