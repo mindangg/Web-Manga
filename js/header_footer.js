@@ -108,7 +108,7 @@ class SpecialHeader extends HTMLElement{
             </ul>
 
             <!-- nav bar icons -->
-            <div class="navbar__home" style="display: flex">
+            <div class="navbar__home" id="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
                     <a href="#" id="login__icon">
@@ -119,7 +119,7 @@ class SpecialHeader extends HTMLElement{
                 <a id="shopping__icon"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
 
-            <div class="navbar__bar">
+            <div class="navbar__bar" id="navbar__bar">
                 <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
                 <div style="display: flex">
                     <a href="#" id="login__icon__responsive">

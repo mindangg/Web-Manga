@@ -108,7 +108,7 @@ class SpecialHeader extends HTMLElement {
             </ul>
 
             <!-- nav bar icons -->
-            <div class="navbar__home">
+            <div class="navbar__home" id="navbar__home">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></a>
                 <div style="display: flex">
                     <a href="#" id="login__icon">
