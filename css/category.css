@@ -53,7 +53,7 @@
 
 .product__item button {
     background-color: #4CAF50;
-    color: white;
+    color: #333;
     border: none;
     position: relative;
     bottom: 135px;
@@ -121,8 +121,6 @@
     width: 12%;
     color: #fff;
 }
-
-
 
 .pagination > button {
     background-color: transparent;

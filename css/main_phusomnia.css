@@ -451,14 +451,6 @@ body{
     height: 560px;
 }
 
-
-
-
-
-
-
-
-
 .product__page{
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
@@ -648,12 +640,6 @@ body{
 #product__add:hover{
     background-color: var(--green-l);
 }
-
-
-
-
-
-
 
 /* login page */
 
