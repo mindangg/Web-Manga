@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="admin" style="display: none;">
+    <div class="admin">
         <div class="admin__header">
             <div class="topnav">
                 <div class="topnav__title">WEBTOON</div>
@@ -228,7 +228,7 @@
                     </header>
 
                     <!-- Menu Body -->
-                    <div class="user table__search" id="user__search--container" >
+                    <div class="user table__search" id="user__search--container">
                         <div id="user__search" style="display: flex; flex-direction: row">
                             <div class="user search-label">Search by:</div>
                             <select id="select-search-field">
@@ -239,7 +239,8 @@
                                 <option value="5">Phone number</option>
                                 <option value="6">Address</option>
                             </select>
-                            <input type="text" class="user user__search--input" id="user__search--input" placeholder="Full name"/>
+                            <input type="text" class="user user__search--input" id="user__search--input"
+                                placeholder="Full name" />
                         </div>
                         <div id="user__filter" style="display: flex; flex-direction: row">
                             <div class="user search-label">Filter by:</div>
@@ -319,8 +320,7 @@
                         <div class="user edit-component">
                             <input type="text" id="user__edit-menu--email" placeholder="Email" value="">
 
-                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone Number"
-                                value="">
+                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone Number" value="">
                         </div>
                         <div class="user edit-component user-address" style="margin-top: 10px">
                             <div class="address-component label">
@@ -409,7 +409,7 @@
         </div>
     </div>
 
-    <div class="order-detail">
+    <div class="order-detail" style="display: none;">
         <div class="order-detail__summary">
             <h1>Order Details</h1>
             <p><strong>Order ID:</strong> #123456</p>

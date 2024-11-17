@@ -25,7 +25,7 @@ const userTableBody = document.getElementById('user-table__body-content');
 let userPageIndex = 1;
 let totalUserPerPage = 6;
 
-function render(users){
+function render(users) {
     let start = (userPageIndex - 1) * totalUserPerPage;
     let end = start + totalUserPerPage;
     let userList = users.slice(start, end);
@@ -71,7 +71,7 @@ function render(users){
         const editbtn = document.getElementById(user.userId + '-editbtn');
         const userRow = document.getElementById(user.userId);
         const statusCheckbox = document.getElementById(user.userId + '-status');
-        if (user.status === true){
+        if (user.status === true) {
             userRow.classList.remove('disable');
             statusCheckbox.checked = true;
             editbtn.disabled = false;
@@ -84,10 +84,10 @@ function render(users){
     console.log("Render user successfully");
 }
 
-function renderUser(){
+function renderUser() {
     let users = JSON.parse(localStorage.getItem('users'));
     let userTotalPage = Math.ceil(users.length / totalUserPerPage);
-    if(userTotalPage > 1){
+    if (userTotalPage > 1) {
         userTableFooter.innerHTML = `
                 <button class="button button__user__prev-pagi" 
                     id="button__user__prev-pagi"> << 
@@ -128,7 +128,7 @@ function renderUser(){
     }
 }
 
-function editUser(button){
+function editUser(button) {
     let userId = button.id.split('-')[0];
     let users = JSON.parse(localStorage.getItem('users'));
     let user = users.find(u => u.userId === userId);
@@ -185,7 +185,7 @@ function editUser(button){
     })
 }
 
-function disableUser(checkbox){
+function disableUser(checkbox) {
     let userId = checkbox.id.split('-')[0];
 
     const editbtn = document.getElementById(userId + "-editbtn");
@@ -193,7 +193,7 @@ function disableUser(checkbox){
     let users = JSON.parse(localStorage.getItem('users'));
     let user = users.find(u => u.userId === userId)
 
-    if (checkbox.checked === true){
+    if (checkbox.checked === true) {
         row.classList.remove('disable');
         user.status = true;
         editbtn.disabled = false;
@@ -205,7 +205,7 @@ function disableUser(checkbox){
     localStorage.setItem('users', JSON.stringify(users));
 }
 
-function searchUser(value){
+function searchUser(value) {
 
 }
 
