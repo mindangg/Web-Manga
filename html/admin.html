@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/orderDetail.css" />
     <link rel="stylesheet" href="../css/admin.css" />
     <link rel="stylesheet" href="../css/pages.css" />
 </head>
@@ -35,10 +36,10 @@
 
         <div class="admin__body" style="display: flex; flex-direction: row">
             <div id="sidenav" class="sidenav" style="display: flex; flex-direction: column">
-                <div id="static">Thống kê</div>
-                <div id="product" onclick="togglePage(this)">Sản phẩm (Product)</div>
-                <div id="user" onclick="togglePage(this)">Khách hàng (Clients)</div>
-                <div id="order" onclick="togglePage(this)">Hóa đơn (Order)</div>
+                <div id="static">Statistic</div>
+                <div id="product" onclick="togglePage(this)">Product</div>
+                <div id="user" onclick="togglePage(this)">User</div>
+                <div id="order" onclick="togglePage(this)">Order</div>
             </div>
 
 
@@ -54,7 +55,7 @@
                     <!-- Menu Body -->
                     <div class="product table__search">
                         <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">Search by sei:</div>
+                            <div class="product table__search-label">Search by series:</div>
                             <input type="text" class="product-table__search-input"
                                 id="product-table__search-input--name" />
                         </div>
@@ -227,27 +228,47 @@
                     </header>
 
                     <!-- Menu Body -->
-                    <div class="user table__search">
-                        <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">Search by name:</div>
-                            <input type="text" class="user-table__search-input" id="user-table__search-input--name" />
+                    <div class="user table__search" id="user__search--container">
+                        <div id="user__search" style="display: flex; flex-direction: row">
+                            <div class="user search-label">Search by:</div>
+                            <select id="select-search-field">
+                                <option value="1">Full name</option>
+                                <option value="2">Username</option>
+                                <option value="3">Password</option>
+                                <option value="4">Email</option>
+                                <option value="5">Phone number</option>
+                                <option value="6">Address</option>
+                            </select>
+                            <input type="text" class="user user__search--input" id="user__search--input"
+                                placeholder="Full name" />
                         </div>
-                        <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">
-                                Search by category:
-                            </div>
+                        <div id="user__filter" style="display: flex; flex-direction: row">
+                            <div class="user search-label">Filter by:</div>
+                            <select id="select-filter-field">
+                                <option value="0">--Choose--</option>
+                                <option value="1">Enable</option>
+                                <option value="2">Disable</option>
+                            </select>
                         </div>
+                        <div id="user__sort" style="display: flex; flex-direction: row">
+                            <div class="user search-label">Sort by:</div>
+                            <select id="select-sort-field">
+                                <option value="0">--Choose--</option>
+                                <option value="1">Day create</option>
+                            </select>
+                        </div>
+                        <button id="user__addbtn">Add user</button>
                     </div>
 
                     <div class="user table__body">
                         <table class="user table__container" style="width: 100%">
                             <thead class="user table__head">
                                 <tr class="user table__row">
-                                    <th class="user table__cell user-table__cell serial">
-                                        Serial
-                                    </th>
                                     <th class="user table__cell user-table__cell userId">
                                         UserId
+                                    </th>
+                                    <th class="user table__cell user-table__cell fullName">
+                                        Full name
                                     </th>
                                     <th class="user table__cell user-table__cell username">
                                         Username
@@ -290,33 +311,30 @@
                     <div id="user__edit-menu">
                         <div id="user__edit-menu--userId">User ID</div>
                         <div class="user edit-component" style="margin-top: 15px">
-                            <label for="user-page__edit-menu--username"></label>
-                            <input type="text" id="user-page__edit-menu--username" placeholder="Username" value="">
+                            <input type="text" id="user__edit-menu--fullName" placeholder="Full name" value="">
 
-                            <label for="user-page__edit-menu--password"></label>
-                            <input type="text" id="user-page__edit-menu--password" placeholder="Password" value="">
+                            <input type="text" id="user__edit-menu--username" placeholder="Username" value="">
+
+                            <input type="text" id="user__edit-menu--password" placeholder="Password" value="">
                         </div>
                         <div class="user edit-component">
-                            <label for="user-page__edit-menu--email"></label>
-                            <input type="text" id="user-page__edit-menu--email" placeholder="Email" value="">
+                            <input type="text" id="user__edit-menu--email" placeholder="Email" value="">
 
-                            <label for="user-page__edit-menu--phoneNumber"></label>
-                            <input type="text" id="user-page__edit-menu--phoneNumber" placeholder="Phone Number"
-                                value="">
+                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone Number" value="">
                         </div>
                         <div class="user edit-component user-address" style="margin-top: 10px">
                             <div class="address-component label">
                                 <label id="user__edit-menu--address-label">Address:</label>
                             </div>
                             <div class="address-component first">
-                                <input type="text" id="user-page__edit-menu--houseNumber" placeholder="House Number"
+                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number"
                                     value="">
-                                <input type="text" id="user-page__edit-menu--street" placeholder="Street" value="">
+                                <input type="text" id="user__edit-menu--street" placeholder="Street" value="">
                             </div>
                             <div class="address-component second">
-                                <input type="text" id="user-page__edit-menu--ward" placeholder="Ward" value="">
-                                <input type="text" id="user-page__edit-menu--district" placeholder="District" value="">
-                                <input type="text" id="user-page__edit-menu--city" placeholder="City" value="">
+                                <input type="text" id="user__edit-menu--ward" placeholder="Ward" value="">
+                                <input type="text" id="user__edit-menu--district" placeholder="District" value="">
+                                <input type="text" id="user__edit-menu--city" placeholder="City" value="">
                             </div>
                         </div>
                         <div class="user edit-component user-buttons">
@@ -339,13 +357,13 @@
                     <!-- Menu Body -->
                     <div class="order table__search">
                         <div style="display: flex; flex-direction: row">
-                            <div class="order table__search-label">Search by name:</div>
-                            <input type="text" class="order-table__search-input" id="order-table__search-input--name" />
+                            <div class="order table__search-label">Search by date:</div>
+                            <input type="date" class="order-table__search-input" id="order-table__search-input--date" />
                         </div>
                         <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">
-                                Search by category:
-                            </div>
+                            <div class="order table__search-label">Search by address:</div>
+                            <input type="text" class="order-table__search-input"
+                                id="order-table__search-input--district" />
                         </div>
                     </div>
 
@@ -356,19 +374,22 @@
                                     <th class="order table__cell order-table__cell orderid">
                                         OrderID
                                     </th>
-                                    <th class="order table__cell user-table__cell userid">
+                                    <th class="order table__cell order-table__cell userid">
                                         UserID
                                     </th>
-                                    <th class="user table__cell user-table__cell itemlist">
+                                    <th class="order table__cell order-table__cell itemlist">
                                         Item list
                                     </th>
-                                    <th class="user table__cell user-table__cell price">
+                                    <th class="order table__cell order-table__cell price">
                                         Price
                                     </th>
-                                    <th class="user table__cell user-table__cell datecreate">
+                                    <th class="order table__cell order-table__cell datecreate">
                                         Date Create
                                     </th>
-                                    <th class="user table__cell user-table__cell status">
+                                    <th class="order table__cell order-table__cell datecreate">
+                                        Address
+                                    </th>
+                                    <th class="order table__cell order-table__cell status">
                                         Status
                                     </th>
                                 </tr>
@@ -387,17 +408,80 @@
             </div>
         </div>
     </div>
-</body>
-<script src="../js/toggleSideNav.js"></script>
-<script src="../js/product.js"></script>
-<script src="../js/adminController.js"></script>
-<script src="../js/priceSlider.js"></script>
-<script src="../js/purchase.js"></script>
 
+    <div class="order-detail" style="display: none;">
+        <div class="order-detail__summary">
+            <h1>Order Details</h1>
+            <p><strong>Order ID:</strong> #123456</p>
+            <p><strong>Order Date:</strong> November 16, 2024</p>
+            <p><strong>Status:</strong> Completed</p>
+        </div>
+
+        <div class="order-detail__items">
+            <h2>Items</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Webtoon A - Chapter 1</td>
+                        <td>1</td>
+                        <td>$3.00</td>
+                    </tr>
+                    <tr>
+                        <td>Webtoon B - Chapter 5</td>
+                        <td>2</td>
+                        <td>$5.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">Total:</td>
+                        <td>$13.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="order-detail__customer-info">
+            <h2>Customer Info</h2>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> johndoe@example.com</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+        </div>
+    </div>
+</body>
+<script src="../js//helper.js"></script>
+<script src="../js/toggleSideNav.js"></script>
+<script src="../js/priceSlider.js"></script>
+<script src="../js/adminController.js"></script>
+<script src="../js/purchase.js"></script>
+<script src="../js/product.js"></script>
+<script>
+    function formatDate(date) {
+        const splitDate = date.split('-');
+        const formattedDate = `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
+        return formattedDate;
+    }
+
+    const orderTableContainer = document.getElementById('order-table__body-content');
+
+    // Search order
+    const orderSearchDate = document.getElementById('order-table__search-input--date');
+    println(formatDate(orderSearchDate.value));
+</script>
 <script>
     (() => {
-        Product.onloadViewAdmin();
-        Order.renderOrderAdmin(orderTable);
+        Product.onload()
+        Product.onloadFilterViewAdmin();
+        if (orderTable.length > 0) {
+            Order.renderOrderAdmin(orderTable);
+        }
     })()
 </script>
 

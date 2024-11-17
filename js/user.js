@@ -164,6 +164,16 @@ const passwordLogin = document.getElementById('login__input--password');
 const forget = document.getElementById('login__forget');
 const submitLogin = document.getElementById('login__btn');
 
+// FOR EDIT USER
+const userInfo = document.getElementById("user-info")
+const userFullname = document.getElementById("user-info__fullName")
+const userphoneNumber = document.getElementById("user-info__phoneNumber")
+const userHouseNumber = document.getElementById("user-info__houseNumber")
+const userStreet = document.getElementById("user-info__street")
+const userWard = document.getElementById("user-info__ward")
+const userDistrict = document.getElementById("user-info__district")
+const userCity = document.getElementById("user-info__city")
+
 //SIGN UP EVENT
 submitSignUp.addEventListener("click", (event) => {
     event.preventDefault();
@@ -278,16 +288,19 @@ submitLogin.addEventListener('click', (event) => {
             passwordLogin.labels[0].style.display = 'none';
             clearField(login);
             showNotification('Welcome, ' + account.username);
-            document.getElementsByClassName('navbar__home')[0]
-                .querySelectorAll('div')[1]
-                .innerText = `${account.username}`;
-            document.getElementsByClassName('navbar__bar')[0]
-                .querySelectorAll('div')[1]
-                .innerText = `${account.username}`;
-            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
-            // document.getElementById("login__page").style.display = "none";
-            // document.getElementById("main__page").style.display = "inline";
+            // document.getElementsByClassName('navbar__home')[0]
+            //     .querySelectorAll('div')[1]
+            //     .innerText = `${account.username}`;
+            // document.getElementsByClassName('navbar__bar')[0]
+            //     .querySelectorAll('div')[1]
+            //     .innerText = `${account.username}`;
+            document.getElementById("login__page").style.display = "none";
+            document.getElementById("main__page").style.display = "inline";
+            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            // phusomnia
+            User.renderAccountLogin();
+            // viewHome(); BUG
         }
     }
 })
@@ -394,6 +407,10 @@ class User {
         }
     }
 
+    static findByUserid(id) {
+        return userList.find(u => u.userId === id);
+    }
+
     static onload() {
         if (JSON.parse(localStorage.getItem('users')) === null) {
             localStorage.setItem('users', JSON.stringify(userList));
@@ -403,17 +420,59 @@ class User {
             console.log('Get users');
         }
     }
+
+    static renderUserInfo() {
+        if (localStorage.getItem('accountLogin')) {
+            let accountLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            clearField(userInfo)
+            userFullname.value = accountLoginInfo.fullName;
+            userphoneNumber.value = accountLoginInfo.phoneNumber;
+            userHouseNumber.value = accountLoginInfo.address.houseNumber;
+            userStreet.value = accountLoginInfo.address.street;
+            userWard.value = accountLoginInfo.address.ward;
+            userDistrict.value = accountLoginInfo.address.district;
+            userCity.value = accountLoginInfo.address.city;
+        }
+    }
+
+    static editUserInfo() {
+        if (!Validation.checkBlankField(userInfo)) {
+            const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            const queryUserInfoInput = document.querySelector(".edit-user__form").querySelectorAll("input");
+            for (const userInfoInput of queryUserInfoInput) {
+                const metadata = userInfoInput.id.split("__")[1];
+                if (metadata === "fullName" || metadata === "phoneNumber") {
+                    userList[currentEditUserIndex][metadata] = userInfoInput.value;
+                } else {
+                    userList[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
+                }
+            }
+
+            localStorage.setItem('users', JSON.stringify(userList));
+            alert("Updated information successfully");
+        }
+    }
     // 
     static renderAccountLogin() {
-        console.log(localStorage.getItem('accountLogin'))
         if (localStorage.getItem('accountLogin')) {
-            let accountLogin = userList.find(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')));
+            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+            let accountLogin = User.findByUserid(JSON.parse(localStorage.getItem('accountLogin')));
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${accountLogin.username}`;
             document.getElementsByClassName('navbar__bar')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${accountLogin.username}`;
+        } else {
+            // document.getElementById('login__icon').addEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').addEventListener('click', toLoginPage);
+            document.getElementsByClassName('navbar__home')[0]
+                .querySelectorAll('div')[1]
+                .innerText = "";
+            document.getElementsByClassName('navbar__bar')[0]
+                .querySelectorAll('div')[1]
+                .innerText = "";
         }
     }
 }

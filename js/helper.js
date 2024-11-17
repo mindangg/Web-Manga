@@ -1,3 +1,3 @@
 function println(...args) {
-    console.log(...args)
+    console.log(...args);
 }
