@@ -231,20 +231,20 @@
                     <div class="user table__search" id="user__search--container">
                         <div id="user__search" style="display: flex; flex-direction: row">
                             <div class="user search-label">Search by:</div>
-                            <select id="select-search-field">
-                                <option value="1">Full name</option>
-                                <option value="2">Username</option>
-                                <option value="3">Password</option>
-                                <option value="4">Email</option>
-                                <option value="5">Phone number</option>
-                                <option value="6">Address</option>
+                            <select id="select-search-field" onchange="searchUser()">
+                                <option value="User ID">User ID</option>
+                                <option value="Full name">Full name</option>
+                                <option value="Username">Username</option>
+                                <option value="Password">Password</option>
+                                <option value="Email">Email</option>
+                                <option value="Phone number">Phone number</option>
+                                <option value="Address">Address</option>
                             </select>
-                            <input type="text" class="user user__search--input" id="user__search--input"
-                                placeholder="Full name" />
+                            <input type="text" class="user user__search--input" id="user__search--input" placeholder="User ID"/>
                         </div>
                         <div id="user__filter" style="display: flex; flex-direction: row">
                             <div class="user search-label">Filter by:</div>
-                            <select id="select-filter-field">
+                            <select id="select-filter-field" onchange="searchUser()">
                                 <option value="0">--Choose--</option>
                                 <option value="1">Enable</option>
                                 <option value="2">Disable</option>
@@ -252,12 +252,13 @@
                         </div>
                         <div id="user__sort" style="display: flex; flex-direction: row">
                             <div class="user search-label">Sort by:</div>
-                            <select id="select-sort-field">
+                            <select id="select-sort-field" onchange="searchUser()">
                                 <option value="0">--Choose--</option>
-                                <option value="1">Day create</option>
+                                <option value="1">A-Z &uarr;</option>
+                                <option value="2">A-Z &darr;</option>
                             </select>
                         </div>
-                        <button id="user__addbtn">Add user</button>
+                        <button id="user__addbtn" onclick="addUser()">Add user</button>
                     </div>
 
                     <div class="user table__body">
@@ -320,15 +321,16 @@
                         <div class="user edit-component">
                             <input type="text" id="user__edit-menu--email" placeholder="Email" value="">
 
-                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone Number" value="">
+                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone number" value="">
+
+                            <input type="date" id="user__edit-menu--createDate" placeholder="Create date">
                         </div>
-                        <div class="user edit-component user-address" style="margin-top: 10px">
+                        <div class="user edit-component user-address">
                             <div class="address-component label">
                                 <label id="user__edit-menu--address-label">Address:</label>
                             </div>
                             <div class="address-component first">
-                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number"
-                                    value="">
+                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number" value="">
                                 <input type="text" id="user__edit-menu--street" placeholder="Street" value="">
                             </div>
                             <div class="address-component second">
@@ -337,6 +339,7 @@
                                 <input type="text" id="user__edit-menu--city" placeholder="City" value="">
                             </div>
                         </div>
+                        <div id="user__edit-menu--error"></div>
                         <div class="user edit-component user-buttons">
                             <button id="user__edit-menu--save">Save</button>
                             <button id="user__edit-menu--cancel">Cancel</button>

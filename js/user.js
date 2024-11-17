@@ -8,29 +8,12 @@ let curDay = dd + "/" + mm + "/" + yyyy;
 let userList = JSON.parse(localStorage.getItem('users')) || [
     {
         userId: "user_0",
-        username: "1",
-        password: "1",
+        username: "admin",
+        password: "admin",
         email: "baohoo10205@gmail.com",
-        phoneNumber: "0938381431",
+        phoneNumber: "0938381433",
         createDate: '10/02/2005',
-        fullName: "",
-        address: {
-            houseNumber: '',
-            street: '',
-            ward: '',
-            district: '',
-            city: ''
-        },
-        status: true,
-    },
-    {
-        userId: "user_1",
-        username: "baohoo100205",
-        password: "Baohoo100205",
-        email: "baohoo10205@gmail.com",
-        phoneNumber: "0938381431",
-        createDate: '10/02/2005',
-        fullName: "Bao Hoo",
+        fullName: "Ho Quoc Bao",
         address: {
             houseNumber: '28/2',
             street: 'Phung Ta Chu',
@@ -41,13 +24,30 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         status: true,
     },
     {
+        userId: "user_1",
+        username: "baohoo10205",
+        password: "Bao10205",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381430",
+        createDate: '20/11/2023',
+        fullName: "Bao Ho",
+        address: {
+            houseNumber: '28',
+            street: 'Phung Ta Chu',
+            ward: 'An Lac A',
+            district: 'Binh Tan',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
+    {
         userId: "user_2",
-        username: "baohoo1002",
-        password: "Baohoo100205",
+        username: "baohoo100205",
+        password: "Bao100205",
         email: "baohoo1002@gmail.com",
-        phoneNumber: "0938381432",
-        createDate: '30/10/2024',
-        fullName: "",
+        phoneNumber: "0938381431",
+        createDate: '24/12/2023',
+        fullName: "Quoc Bao",
         address: {
             houseNumber: '',
             street: '',
@@ -55,50 +55,50 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
             district: '',
             city: ''
         },
-        status: true,
+        status: false,
     },
     {
         userId: "user_3",
-        username: "quocbao",
-        password: "Baohoo100205",
-        email: "baohoo10205@gmail.com",
-        phoneNumber: "0938381433",
-        createDate: '05/11/2024',
+        username: "baohoo1002",
+        password: "Bao1002",
+        email: "quocbao10205@gmail.com",
+        phoneNumber: "0938381432",
+        createDate: '01/01/2024',
         fullName: "Bao",
         address: {
-            houseNumber: '',
-            street: '',
-            ward: '',
-            district: '',
-            city: ''
+            houseNumber: '273',
+            street: 'An Duong Vuong',
+            ward: '3',
+            district: '5',
+            city: 'TP.HCM'
         },
         status: true,
     },
     {
         userId: "user_4",
-        username: "quocbaohoo",
-        password: "Baohoo1002",
-        email: "baohoo10205@gmail.com",
-        phoneNumber: "0938381434",
-        createDate: '24/12/2023',
-        fullName: "Bao",
+        username: "quocbao",
+        password: "Bao100205",
+        email: "baoho10205@gmail.com",
+        phoneNumber: "0938381433",
+        createDate: '10/02/2024',
+        fullName: "Ho Bao",
         address: {
-            houseNumber: '',
-            street: '',
-            ward: '',
-            district: '',
-            city: ''
+            houseNumber: '105',
+            street: 'Ba Huyen Thanh Quan',
+            ward: 'Vo Thi Sau',
+            district: '3',
+            city: 'TP.HCM'
         },
         status: true,
     },
     {
         userId: "user_5",
         username: "bael10205",
-        password: "Baohoo100205",
-        email: "baohoo1002@gmail.com",
-        phoneNumber: "0938381435",
-        createDate: '01/01/2020',
-        fullName: "Bael",
+        password: "Bael10205",
+        email: "baoho1002@gmail.com",
+        phoneNumber: "0938381434",
+        createDate: '23/04/2024',
+        fullName: "Anh Linh",
         address: {
             houseNumber: '',
             street: '',
@@ -111,11 +111,28 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
     {
         userId: "user_6",
         username: "bael100205",
-        password: "Baohoo100205",
-        email: "baohoo1002@gmail.com",
+        password: "Bael100205",
+        email: "anhlinh2707@gmail.com",
         phoneNumber: "0938381435",
-        createDate: '11/09/2001',
-        fullName: "Bao Hoo",
+        createDate: '27/07/2024',
+        fullName: "Quynh",
+        address: {
+            houseNumber: '4',
+            street: 'Ton Duc Thang',
+            ward: 'Ben Nghe',
+            district: '1',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
+    {
+        userId: "user_7",
+        username: "quocbao10205",
+        password: "Quocbao10205",
+        email: "baohoo10205@gmail.com",
+        phoneNumber: "0938381436",
+        createDate: '05/11/2024',
+        fullName: "Bael",
         address: {
             houseNumber: '',
             street: '',
@@ -126,13 +143,64 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         status: true,
     },
     {
-        userId: "user_7",
-        username: "admin",
-        password: "admin",
+        userId: "user_8",
+        username: "mindang",
+        password: "Dangmin",
         email: "baohoo10205@gmail.com",
-        phoneNumber: "0938381435",
-        createDate: curDay,
-        fullName: "Admin",
+        phoneNumber: "0938381437",
+        createDate: '20/11/2024',
+        fullName: "Dang",
+        address: {
+            houseNumber: '273',
+            street: 'An Duong Vuong',
+            ward: '3',
+            district: '5',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
+    {
+        userId: "user_9",
+        username: "huybao",
+        password: "Huybao0015",
+        email: "dthbao@gmail.com",
+        phoneNumber: "0838381433",
+        createDate: '20/11/2024',
+        fullName: "Huy Bao",
+        address: {
+            houseNumber: '99',
+            street: 'An Duong Vuong',
+            ward: '16',
+            district: '8',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
+    {
+        userId: "user_10",
+        username: "phusomia",
+        password: "Phusomia666",
+        email: "phusomia@gmail.com",
+        phoneNumber: "0288381433",
+        createDate: '12/11/2024',
+        fullName: "Tu Anh Phu",
+        address: {
+            houseNumber: '99',
+            street: 'An Duong Vuong',
+            ward: '16',
+            district: '8',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
+    {
+        userId: "user_11",
+        username: "hetytuong",
+        password: "Hetytuong",
+        email: "phusomia@gmail.com",
+        phoneNumber: "0288381434",
+        createDate: '13/11/2024',
+        fullName: "Anh Phu",
         address: {
             houseNumber: '',
             street: '',
@@ -141,7 +209,41 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
             city: ''
         },
         status: true,
-    }
+    },
+    {
+        userId: "user_11",
+        username: "bael1002",
+        password: "69Bao69",
+        email: "3123410016@gmail.com",
+        phoneNumber: "0289381433",
+        createDate: '11/11/2024',
+        fullName: "Baro",
+        address: {
+            houseNumber: '227',
+            street: 'Nguyen Van Cu',
+            ward: '4',
+            district: '5',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
+    {
+        userId: "user_12",
+        username: "bael666",
+        password: "leaB1002",
+        email: "3123410016@gmail.com",
+        phoneNumber: "0289381533",
+        createDate: '17/11/2024',
+        fullName: "Quagmire",
+        address: {
+            houseNumber: '220',
+            street: 'Tran Binh Trong',
+            ward: '4',
+            district: '5',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
 ];
 
 let account = null;
@@ -491,3 +593,5 @@ function clearField(field) {
         input.value = '';
     });
 }
+
+User.onload();
