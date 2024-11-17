@@ -35,6 +35,7 @@ body{
     top: 150px;
     clear: both;
     margin-bottom: 150px;
+    display: block;
 }
 .cart h1{
     font-size: 40px;
@@ -45,10 +46,11 @@ body{
     width: calc(30% - 10px) ;
     border: solid 2px var(--gray);
     border-radius: 10px;
-    height: 350px;
     left: calc(70% + 5px);
     color: white;
-    position: fixed;
+    float: left;
+    margin-bottom: 10px;
+    contain: content;
 }
 .cart__bill__table tr{
     height: 60px;
@@ -86,6 +88,7 @@ body{
     width: 100%;
     font-size: 14px;
     margin-top: 15px;
+    margin-bottom: 15px;
     border-radius: 15px;
 }
 #transfer:hover{
@@ -99,27 +102,11 @@ body{
     width: 100%;
     font-size: 14px;
     margin-top: 15px;
+    margin-bottom: 15px;
     border-radius: 15px;
 }
 #cash:hover{
     background-color: rgb(148, 42, 42);
-}
-.cart__bill__checkout{
-    background-color:#08dc64;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15%;
-    padding-right: 15%;
-    margin-left: 25%;
-    margin-right: 20% ;
-    border: solid var(--gray) 2px;    
-    border-radius: 10px;
-    position: absolute;
-    bottom: 10px;
-}
-.cart__bill__checkout:hover{
-    cursor: pointer;
-    background-color: var(--green-l);
 }
 .table{
     background-color: var(--black) ;
@@ -155,7 +142,7 @@ body{
     border: solid var(--gray) 2px;
     text-align: center;
 }
-.table__td__quantity input{
+.cart__quantity{
     background-color: var(--black);
     width: 40px;
     height: 40px;
@@ -174,17 +161,18 @@ body{
 }
 .table img{
     width: 100%;
-    height: 100%;
+    height: 100%;   
 }
-#reMove{
+.reMove{
     background: none;
     border: none ;
     cursor: pointer;
     text-decoration: underline;
     text-align: center;
     width: 50px;
+    color: white;
 }
-#reMove:hover{
+.reMove:hover{
    color: purple;
 }
 
@@ -235,7 +223,7 @@ body{
 #add__address:hover{
     background-color: var(--green-l);
 }
-#next__address{
+#next{
     width: 100px;
     text-align: center;
     padding-top: 10px;
@@ -247,6 +235,6 @@ body{
     right: 50px;
     position: absolute;
 }
-#next__address:hover{
+#next:hover{
     background-color: var(--green-l);
 }
