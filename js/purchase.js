@@ -1,22 +1,68 @@
 let cartTable = JSON.parse(localStorage.getItem('cart')) || []
-let orderTable = JSON.parse(localStorage.getItem('order')) || []
-
-const productContainer = document.querySelector(".product__container")
-const cartItemContainer = document.querySelector(".cart-items")
-const orderContainer = document.querySelector(".order");
-const cartSummary = document.querySelector(".cart-summary")
-const orderTableContainer = document.getElementById("order-table__body-content")
-const paymentInfoContainer = document.querySelector(".payment-info__container")
-const paymentInfoSummary = document.querySelector(".payment-info__summary")
-
-const billingInfo = document.getElementById("billing-info")
-const billingFullName = document.getElementById("billing-info__fullName")
-const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
-const billingHouseNumber = document.getElementById("billing-info__houseNumber")
-const billingStreet = document.getElementById("billing-info__street")
-const billingWard = document.getElementById("billing-info__ward")
-const billingDistrict = document.getElementById("billing-info__district")
-const billingCity = document.getElementById("billing-info__city")
+let orderTable = JSON.parse(localStorage.getItem('order')) || [
+    {
+        orderId: "orderTesting_1",
+        userId: "user_1",
+        orderDate: "16/11/2024",
+        orderStatus: "Cancelled",
+        orderItems: [
+            {
+                productId: "manga_1",
+                series: "Item 1",
+                quantity: 2,
+                price: 9.0,
+                totalPrice: 18.0,
+            },
+            {
+                productId: "manga_2",
+                series: "Item 2",
+                quantity: 3,
+                price: 10.0,
+                totalPrice: 300.0,
+            },
+        ],
+        orderPrice: 600.0,
+        userFullName: "John Doe",
+        userPhoneNumber: "0123456789",
+        orderAddress: {
+            houseNumber: "123",
+            street: "Main Street",
+            ward: "Ward 1",
+            district: "District 1",
+            city: "City 1",
+        }
+    },
+    {
+        orderId: "orderTesting_2",
+        userId: "user_1",
+        orderDate: "16/11/2024",
+        orderStatus: "Cancelled",
+        orderItems: [
+            {
+                productId: "manga_1",
+                series: "Item 1",
+                quantity: 2,
+                price: 9.0,
+            },
+            {
+                productId: "manga_2",
+                series: "Item 2",
+                quantity: 1,
+                price: 300.0,
+            },
+        ],
+        orderPrice: 600.0,
+        userFullName: "John Doe",
+        userPhoneNumber: "0123456789",
+        orderAddress: {
+            houseNumber: "123",
+            street: "Main Street",
+            ward: "Ward 1",
+            district: "District 1",
+            city: "City 1",
+        }
+    },
+]
 
 class Cart {
     static addToCart(e) {
@@ -200,7 +246,7 @@ class Order {
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
             localStorage.getItem('accountLogin'),
-            new Date().toISOString().split('T')[0],
+            new Date().toISOString().split('T')[0].split('-').reverse().join('/'),
             status,
             cartTable.map(item => ({
                 productId: item.productId,
@@ -208,6 +254,7 @@ class Order {
                 category: item.category,
                 author: item.author,
                 quantity: item.quantity,
+                price: item.price,
                 totalPrice: item.price * item.quantity
             })),
             cartTable.reduce((total, item) => total + item.price * item.quantity, 0),
@@ -300,9 +347,9 @@ class Order {
                         ${o.orderItems.map(item => `
                             <p>Series: ${item.series}</p>
                             Quantity: ${item.quantity}
-                            Price: $${item.totalPrice}
+                            - Price: $${item.price}
+                            - Total price: $${item.totalPrice}
                         `).join('')}
-                        <hr>
                     </td>
                     <td style="text-align: center;">
                         ${o.orderPrice}
@@ -322,6 +369,30 @@ class Order {
             `
         })
     }
+    // 
+    static showDetailOrder(orderId) {
+        const order = orderTable.find(o => o.orderId === orderId);
+
+        if (!order) {
+            alert("Order not found.");
+            return;
+        }
+
+        
+    }
+    // 
+    // 
+    // 
+    static applyFilters() {
+        let filteredOrder = JSON.parse(localStorage.getItem("orderTable"));
+
+        if (formatDate(orderSearchDate.value) !== "") {
+            filteredOrder = filteredOrder.filter(o => o.orderDate === formatDate(orderSearchDate.value));
+        }
+    }
+    // 
+    // 
+    // 
     static handleStatusChange(selectElement) {
         const orderId = selectElement.getAttribute("data-order-id");
         const newStatus = selectElement.value;

@@ -294,14 +294,13 @@ submitLogin.addEventListener('click', (event) => {
             // document.getElementsByClassName('navbar__bar')[0]
             //     .querySelectorAll('div')[1]
             //     .innerText = `${account.username}`;
-            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
-            // document.getElementById("login__page").style.display = "none";
-            // document.getElementById("main__page").style.display = "inline";
-
+            document.getElementById("login__page").style.display = "none";
+            document.getElementById("main__page").style.display = "inline";
+            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
             // phusomnia
             User.renderAccountLogin();
-            viewHome();
+            // viewHome(); BUG
         }
     }
 })
@@ -424,15 +423,15 @@ class User {
 
     static renderUserInfo() {
         if (localStorage.getItem('accountLogin')) {
-            let accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            let accountLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
             clearField(userInfo)
-            userFullname.value = accoutLoginInfo.fullName;
-            userphoneNumber.value = accoutLoginInfo.phoneNumber;
-            userHouseNumber.value = accoutLoginInfo.address.houseNumber;
-            userStreet.value = accoutLoginInfo.address.street;
-            userWard.value = accoutLoginInfo.address.ward;
-            userDistrict.value = accoutLoginInfo.address.district;
-            userCity.value = accoutLoginInfo.address.city;
+            userFullname.value = accountLoginInfo.fullName;
+            userphoneNumber.value = accountLoginInfo.phoneNumber;
+            userHouseNumber.value = accountLoginInfo.address.houseNumber;
+            userStreet.value = accountLoginInfo.address.street;
+            userWard.value = accountLoginInfo.address.ward;
+            userDistrict.value = accountLoginInfo.address.district;
+            userCity.value = accountLoginInfo.address.city;
         }
     }
 
@@ -450,12 +449,14 @@ class User {
             }
 
             localStorage.setItem('users', JSON.stringify(userList));
-            alert("Cập nhật thông tin thành công");
+            alert("Updated information successfully");
         }
     }
     // 
     static renderAccountLogin() {
         if (localStorage.getItem('accountLogin')) {
+            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
             let accountLogin = User.findByUserid(JSON.parse(localStorage.getItem('accountLogin')));
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
@@ -464,6 +465,8 @@ class User {
                 .querySelectorAll('div')[1]
                 .innerText = `${accountLogin.username}`;
         } else {
+            // document.getElementById('login__icon').addEventListener('click', toLoginPage);
+            // document.getElementById('login__icon__responsive').addEventListener('click', toLoginPage);
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = "";
