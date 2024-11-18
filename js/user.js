@@ -246,7 +246,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
     },
 ];
 
-let account = null;
+let account = JSON.parse(localStorage.getItem('accountLogin')) || null;
 
 //FOR SIGN UP
 const signup = document.getElementById('signup');
@@ -267,7 +267,6 @@ const forget = document.getElementById('login__forget');
 const submitLogin = document.getElementById('login__btn');
 
 // FOR EDIT USER
-const userInfo = document.getElementById("user-info")
 const userFullname = document.getElementById("user-info__fullName")
 const userphoneNumber = document.getElementById("user-info__phoneNumber")
 const userHouseNumber = document.getElementById("user-info__houseNumber")
@@ -346,7 +345,7 @@ username.addEventListener('blur', (event) => {
     }
 })
 
-password.addEventListener('focus', (event) => {
+password.addEventListener('focus', (event   ) => {
     password.labels[0].innerText = 'Password must be at least 6 characters long, and include at least one uppercase letter, one number.';
     password.labels[0].style.display = 'block';
     password.labels[0].style.color = 'gray';
@@ -384,7 +383,7 @@ submitLogin.addEventListener('click', (event) => {
             return true;
         } else {
             // phusomnia
-            localStorage.setItem('accountLogin', JSON.stringify(account.userId));
+            localStorage.setItem('accountLogin', JSON.stringify(account));
             //
             passwordLogin.labels[0].innerText = '';
             passwordLogin.labels[0].style.display = 'none';
@@ -398,11 +397,16 @@ submitLogin.addEventListener('click', (event) => {
             //     .innerText = `${account.username}`;
             document.getElementById("login__page").style.display = "none";
             document.getElementById("main__page").style.display = "inline";
-            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+
+            const loginIcon= document.getElementById('login__icon');
+            const loginIconResponsive = document.getElementById('login__icon__responsive');
+            loginIcon.removeEventListener('click', toLoginPage);
+            loginIconResponsive.removeEventListener('click', toLoginPage);
+            // loginIcon.addEventListener('click', User.renderUserInfo);
+            // loginIconResponsive.addEventListener('click', User.renderUserInfo);
             // phusomnia
             User.renderAccountLogin();
-            // viewHome(); BUG
+            viewHome();
         }
     }
 })
@@ -524,16 +528,16 @@ class User {
     }
 
     static renderUserInfo() {
-        if (localStorage.getItem('accountLogin')) {
-            let accountLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
-            clearField(userInfo)
-            userFullname.value = accountLoginInfo.fullName;
-            userphoneNumber.value = accountLoginInfo.phoneNumber;
-            userHouseNumber.value = accountLoginInfo.address.houseNumber;
-            userStreet.value = accountLoginInfo.address.street;
-            userWard.value = accountLoginInfo.address.ward;
-            userDistrict.value = accountLoginInfo.address.district;
-            userCity.value = accountLoginInfo.address.city;
+        if (account) {
+            const userInfo = document.getElementById("user-info");
+            clearField(userInfo);
+            userFullname.value = account.fullName;
+            userphoneNumber.value = account.phoneNumber;
+            userHouseNumber.value = account.address.houseNumber;
+            userStreet.value = account.address.street;
+            userWard.value = account.address.ward;
+            userDistrict.value = account.address.district;
+            userCity.value = account.address.city;
         }
     }
 
@@ -556,19 +560,29 @@ class User {
     }
     // 
     static renderAccountLogin() {
-        if (localStorage.getItem('accountLogin')) {
-            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
-            let accountLogin = User.findByUserid(JSON.parse(localStorage.getItem('accountLogin')));
+        const loginIcon= document.getElementById('login__icon');
+        const loginIconResponsive = document.getElementById('login__icon__responsive');
+        account = JSON.parse(localStorage.getItem('accountLogin'));
+        if (account) {
+
+            loginIcon.removeEventListener('click', toLoginPage);
+            loginIconResponsive.removeEventListener('click', toLoginPage);
+            // loginIcon.addEventListener('click', User.renderUserInfo);
+            // loginIconResponsive.addEventListener('click', User.renderUserInfo);
+
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
-                .innerText = `${accountLogin.username}`;
+                .innerText = `${account.username}`;
             document.getElementsByClassName('navbar__bar')[0]
                 .querySelectorAll('div')[1]
-                .innerText = `${accountLogin.username}`;
+                .innerText = `${account.username}`;
         } else {
-            // document.getElementById('login__icon').addEventListener('click', toLoginPage);
-            // document.getElementById('login__icon__responsive').addEventListener('click', toLoginPage);
+
+            loginIcon.addEventListener('click', toLoginPage);
+            loginIconResponsive.addEventListener('click', toLoginPage);
+            // loginIcon.removeEventListener('click', User.renderUserInfo);
+            // loginIconResponsive.removeEventListener('click', User.renderUserInfo);
+
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = "";
@@ -594,4 +608,5 @@ function clearField(field) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
 User.onload();

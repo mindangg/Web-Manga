@@ -216,7 +216,6 @@ class SpecialHeader extends HTMLElement{
                     </ul>
                 </div>
             </div>    
-
         </nav>
 
         <!-- searchbox -->
@@ -243,6 +242,7 @@ class SpecialHeader extends HTMLElement{
                 </div>
             </div>
         </div>
+        <script src="user.js"></script>
     </header>   
     `
     }
