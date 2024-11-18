@@ -27,9 +27,9 @@ let orderTable = JSON.parse(localStorage.getItem('order')) || [
         orderAddress: {
             houseNumber: "123",
             street: "Main Street",
-            ward: "...",
-            district: "Bình Tân",
-            city: "City 1",
+            ward: "X.Binh Hung",
+            district: "H.Bình Chanh",
+            city: "TP.HCM",
         }
     },
     {
@@ -420,7 +420,7 @@ class Order {
                         ${o.orderDate}
                     </td>
                     <td style="text-align: center;">
-                        nhà ${o.orderAddress.houseNumber}, đường ${o.orderAddress.street}, phường ${o.orderAddress.ward}, quận ${o.orderAddress.district}, ${o.orderAddress.city} 
+                        ${o.orderAddress.houseNumber} ${o.orderAddress.street}, ${o.orderAddress.ward}, ${o.orderAddress.district}, ${o.orderAddress.city} 
                     </td>
                     <td style="text-align: center;">
                         ${o.orderPrice}
@@ -532,7 +532,7 @@ class Order {
 
         if (orderSearchDistrict.value !== "") {
             const regex = RegExp(orderSearchDistrict.value, "i");
-            filteredOrder = filteredOrder.filter(item => regex.test(item.orderAddress.district));
+            filteredOrder = filteredOrder.filter(item => regex.test(removeDiaritics(item.orderAddress.district)));
         }
 
         Order.renderOrderAdmin(filteredOrder);
