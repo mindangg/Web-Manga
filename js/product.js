@@ -9,7 +9,7 @@ class Helper {
         });
     }
 }
-// =================================================
+// =======================================================================
 // $$$$$$$\                            $$\                       $$\
 // $$  __$$\                           $$ |                      $$ |
 // $$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$$ |$$\   $$\  $$$$$$$\ $$$$$$\
@@ -466,6 +466,7 @@ class Product {
 
         Product.render(filteredProduct);
     }
+    
     // Chua tim ra phuong phap de sort ma khong anh huong den product table
     // static applySort() {
     //     renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
@@ -487,7 +488,7 @@ class Product {
     // ONLOAD PRODUCT
     // ==================================================================================
     // load san pham khi trang reload
-    static onloadFilterViewAdmin() {
+    static onloadFilterProduct() {
         Product.render(productTable);
         Product.search();
         document.addEventListener("DOMContentLoaded", () => {

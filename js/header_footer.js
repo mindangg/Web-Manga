@@ -334,48 +334,48 @@ document.getElementById("navbar__responsive__close__button").addEventListener("c
 })
 
 
-window, onresize = function () {
-    if (window.innerWidth > 619) {
-        document.querySelector(".navbar__responsive__popup").style.display = "none";
-    }
-}
+// window, onresize = function () {
+//     if (window.innerWidth > 619) {
+//         document.querySelector(".navbar__responsive__popup").style.display = "none";
+//     }
+// }
 
-document.querySelector(".navbar__responsive--series").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive__links").style.display = "none"
-    document.querySelector(".navbar__responsive--series__drops").style.display = "inline"
-})
+// document.querySelector(".navbar__responsive--series").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--series__drops").style.display = "inline"
+// })
 
-document.getElementById("navbar__responsive--series__back").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive--series__drops").style.display = "none"
-    document.querySelector(".navbar__responsive__links").style.display = "inline"
-})
+// document.getElementById("navbar__responsive--series__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--series__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
 
-document.querySelector(".navbar__responsive--category").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive__links").style.display = "none"
-    document.querySelector(".navbar__responsive--category__drops").style.display = "inline"
-})
+// document.querySelector(".navbar__responsive--category").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--category__drops").style.display = "inline"
+// })
 
-document.getElementById("navbar__responsive--category__back").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive--category__drops").style.display = "none"
-    document.querySelector(".navbar__responsive__links").style.display = "inline"
-})
+// document.getElementById("navbar__responsive--category__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--category__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
 
-document.querySelector(".navbar__responsive--author").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive__links").style.display = "none"
-    document.querySelector(".navbar__responsive--author__drops").style.display = "inline"
-})
+// document.querySelector(".navbar__responsive--author").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--author__drops").style.display = "inline"
+// })
 
-document.getElementById("navbar__responsive--author__back").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive--author__drops").style.display = "none"
-    document.querySelector(".navbar__responsive__links").style.display = "inline"
-})
+// document.getElementById("navbar__responsive--author__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--author__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
 
-document.querySelector(".navbar__responsive--price").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive__links").style.display = "none"
-    document.querySelector(".navbar__responsive--price__drops").style.display = "inline"
-})
+// document.querySelector(".navbar__responsive--price").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--price__drops").style.display = "inline"
+// })
 
-document.getElementById("navbar__responsive--price__back").addEventListener("click", function () {
-    document.querySelector(".navbar__responsive--price__drops").style.display = "none"
-    document.querySelector(".navbar__responsive__links").style.display = "inline"
-})
+// document.getElementById("navbar__responsive--price__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
