@@ -1,10 +1,14 @@
+// phusomnia
 let productCurrentHomePage = 1;
 let productPerHomePage = 9;
 let prduct
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
+// render sản phẩm ở end-user
+// ==================================================================================
 function renderViewIndex(renderProduct) {
+
     productContainer.innerHTML = ""
 
     let start = (productCurrentHomePage - 1) * productPerHomePage;
@@ -14,24 +18,28 @@ function renderViewIndex(renderProduct) {
     if (productList.length > 0) {
         productList.forEach(p => {
             productContainer.innerHTML += `
-            <div id="${p.productId}" class="product__item">
-                <a id=${p.productId} onclick="showProductInfo(this)">
-                    <img src="${p.cover1}" alt="">
-                    <img src="${p.cover2}" alt="">
-                </a>
-                <h4>${p.series}</h4>
-                <p>$${p.price}</p>
-                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
-                <p>Stock: ${p.stock}</p>
-            </div>
-        `
+                <div id="${p.productId}" class="product__item">
+                    <a id=${p.productId} onclick="showProductInfo(this)">
+                        <img src="${p.cover1}" alt="">
+                        <img src="${p.cover2}" alt="">
+                    </a>
+                    <h4>${p.series}</h4>
+                    <p>$${p.price}</p>
+                    <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
+                    <p>Stock: ${p.stock}</p>
+                </div>
+            `
         });
         renderPagination(renderProduct);
     } else {
         alert("Chưa có sản phẩm !!!")
     }
 }
-
+// ==================================================================================
+// RENDER HOME PAGE 
+// ==================================================================================
+// render phân trang sản phẩm ở end-user
+// ==================================================================================
 function renderPagination(renderProduct) {
     let productContainerFooter = document.querySelector('.product-container__footer');
     println(productContainerFooter)
@@ -41,18 +49,18 @@ function renderPagination(renderProduct) {
 
     if (productTotalPages > 1) {
         productContainerFooter.innerHTML = `
-            <div class="pagination">
-                <button class="button button__product__prev-pagi" 
-                id="button__product__prev-pagi"> &lt; </button>
+    <div class="pagination">
+        <button class="button button__product__prev-pagi" 
+        id="button__product__prev-pagi"> &lt; </button>
 
-                <span type="text" class="page-info"> 
-                    <pre id="input-product__pagi"> </pre>    
-                </span>
-                
-                <button class="button button__product__next-pagi" 
-                id="button__next-pagi"> &gt; </button>
-            </div>
-        `
+        <span type="text" class="page-info"> 
+            <pre id="input-product__pagi"> </pre>    
+        </span>
+        
+        <button class="button button__product__next-pagi" 
+        id="button__next-pagi"> &gt; </button>
+    </div>
+`
 
         const inputPagi = document.getElementById("input-product__pagi");
         inputPagi.innerText = `${productCurrentHomePage} / ${productTotalPages}`;
@@ -79,6 +87,9 @@ function renderPagination(renderProduct) {
 // ==================================================================================
 // RENDER PRODUCT DETAIL
 // ==================================================================================
+// xem chi tiết sản phẩm ở end-user
+// ==================================================================================
+// show product detail
 function showProductInfo(e) {
     const productInfo = document.querySelector('.product__page')
     productInfo.style.display = 'inline'
@@ -123,6 +134,7 @@ function showProductInfo(e) {
         </div>
     `
 }
+// close product detail
 function closeProduct() {
     document.querySelector(".product").style.animationName = "bottomUp"
     setTimeout(function () {
@@ -132,6 +144,7 @@ function closeProduct() {
 // ==================================================================================
 // TOGGLE USER INFO 
 // ==================================================================================
+// xem thông tin user
 function toggleUserInfo(e) {
     const userInfo = document.querySelector('.user-info__container')
     const orderHistory = document.querySelector('.order__history')
@@ -146,13 +159,15 @@ function toggleUserInfo(e) {
     }
 }
 // ==================================================================================
+// thoát tài khoản
 function logoutUser() {
     localStorage.removeItem('accountLogin')
     User.renderAccountLogin()
     viewHome()
     window.location.reload()
 }
-// ==================================================================================\
+// ==================================================================================
+// TODO: tìm theo author, price
 function fetchPropertyProduct(url) {
     if (url.search) {
         const categorySearch = url.searchParams.get('category')
@@ -169,9 +184,8 @@ function fetchPropertyProduct(url) {
 // ==================================================================================
 // RENDER VIEW OF PAGE
 // ==================================================================================
+// render khi qua các trang khác
 function renderView(e) {
-    println(layerOfView)
-    console.log(e)
     const billingInfo = document.querySelector('.billing-info')
     if (e === billingInfo) {
         layerOfView.forEach(layer => layer === billingInfo ?
@@ -183,19 +197,26 @@ function renderView(e) {
     }
 }
 // ==================================================================================
+// về trang chủ
 function viewHome() {
     setURLForPage('home')
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
+    const bookSlider = document.querySelector('.book__slider')
+    bookSlider.style.display = 'inherit'
     renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
+    window.scrollTo(530, 530);
 }
 // ==================================================================================
+// trang giỏ hàng
 function viewCart() {
     setURLForPage('cart')
     const cartContainer = document.querySelector('.cart__container')
     renderView(cartContainer)
+    window.scrollTo(5, 5);
 }
 // ==================================================================================
+// trang thanh toán
 function viewBill() {
     const emptyCart = cartTable.length === 0
     if (emptyCart) {
@@ -209,11 +230,15 @@ function viewBill() {
     }
 }
 // ==================================================================================
+// trang đăng ký
 function viewLogin() {
     const signupPage = document.querySelector('.login__page')
     renderView(signupPage)
+    // mặc định scroll bar ở x: 30, y: 30
+    window.scrollTo(30, 30)
 }
 // ==================================================================================
+// thông tin người dùng
 function viewUserInfo() {
     if (localStorage.getItem('accountLogin')) {
         setURLForPage('user-info')
@@ -228,21 +253,33 @@ function viewUserInfo() {
 // ==================================================================================
 // IIFE
 // ==================================================================================
+// thực thi các hàm khi load hoặc reload trang
+// ==================================================================================
 (() => {
-    // Set default value for select address
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
     defaultBillingSelect.value = `userAddress`
 
+    // nếu local storage có admin: admin thì chuyển hướng đến trang admin
     if (localStorage.getItem('admin') === 'admin') {
-        window.location.href = `${URLToAdmin[0]} html / admin.html`
+        window.location.href = `${URLToAdmin[0]}/html/admin.html`
     }
+
+    // load các local storage của product, user
     Product.onload();
     User.onload();
+
+    // lấy tham số url trang hiện tại để render product 
     fetchPropertyProduct(URLOfWebpage)
+
+    // render tài khoản đăng nhập và thông tin người dùng
     User.renderAccountLogin()
     User.renderUserInfo()
+
+    // render giỏ hàng, đơn hàng
     Cart.renderCartPreview(cartTable)
     Order.renderOrderView();
+
+    // render các trang
     switch (page) {
         case 'home': viewHome(); break;
         case 'cart': viewCart(); break;

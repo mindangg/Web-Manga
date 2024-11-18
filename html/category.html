@@ -22,206 +22,7 @@
 </head>
 
 <body>
-     <special-header></special-header>
-    <header>
-        <nav class="navbar">
-            <!-- logo -->
-            <div class="navbar__logo" onclick="viewHome()" style="cursor: pointer;">
-                <a id="logo__icon"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
-            </div>
-            <!-- links -->
-            <ul class="navbar__links">
-                <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
-                <li class="navbar__link--series">
-                    <a href="#" class="navbar__link">Series</a>
-                    <div class="navbar__series">
-                        <ul>
-                            <li><a href="">Sakamoto Days</a></li>
-                            <li><a href="">My Dress Up Darling</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Black Clover</a></li>
-                            <li><a href="">My Hero Academia</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Jujutsu Kaisen</a></li>
-                            <li><a href="">Mashle: Magic And Muscles</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">One Punch Man</a></li>
-                            <li><a href="">Spy X Family</a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="navbar__link--category">
-                    <a href="#" class="navbar__link">Category</a>
-                    <div class="navbar__category">
-                        <ul>
-                            <li><a href="?category=Shonen">Shounen</a></li>
-                            <li><a href="?category=slice_of_life">Slice Of Life</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="?category=Romcom">Rom-Com</a></li>
-                            <li><a href="?category=Action">Action</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="?category=Family">Family</a></li>
-                            <li><a href="?category=Comedy">Comedy</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Fantasy</a></li>
-                            <li><a href="">Drama</a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="navbar__link--author">
-                    <a href="#" class="navbar__link">Author</a>
-                    <div class="navbar__author">
-                        <ul>
-                            <li><a href="">Murata Yusuke</a></li>
-                            <li><a href="">Fukuda Shinichi</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Komoto Hajime</a></li>
-                            <li><a href="">Tabata Yūki</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Horikoshi Kohei</a></li>
-                            <li><a href="">Gege Akutami</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Suzuki Yuto</a></li>
-                            <li><a href="">Gege Akutami</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="navbar__link--price">
-                    <a href="#" class="navbar__link">Price</a>
-                    <div class="navbar__price">
-                        <ul>
-                            <li><a href="">Under $5 Dollars</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">$5 To $7 Dollars</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">$7 To $15 Dollars</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><a href="">Over $15 Dollars</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="navbar__link--about"><a href="#special-footer" class="navbar__link">About Us</a></li>
-            </ul>
-
-            <!-- nav bar icons -->
-            <div class="navbar__home" style="display: flex">
-                <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <div style="display: flex">
-                    <a id="login__icon" onclick="viewUserInfo()">
-                        <i class="fa-regular fa-user"></i>
-                    </a>
-                    <div></div>
-                </div>
-                <a id="shopping__icon" onclick="viewCart()"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-
-            <div class="navbar__bar">
-                <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
-                <div style="display: flex">
-                    <a href="#" id="login__icon__responsive" onclick="viewUserInfo()">
-                        <i class=" fa-regular fa-user"></i>
-                    </a>
-                    <div></div>
-                </div>
-            </div>
-
-            <div class="navbar__responsive__popup">
-                <div class="navbar__responsive__close">
-                    <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
-                </div>
-                <div class="navbar__responsive">
-                    <ul class="navbar__responsive__links">
-                        <li class="navbar__responsive--home">
-                            <a href="index.html" class="navbar__responsive__link">Home</a>
-                        </li>
-                        <li class="navbar__responsive--series">
-                            <a class="navbar__responsive__link">Series</a>
-                            <button id="navbar__responsive--series__button">
-                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                            </button>
-                        </li>
-                        <li class="navbar__responsive--category">
-                            <a class="navbar__responsive__link">Category</a>
-                            <button id="navbar__responsive--category__button">
-                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                            </button>
-                        </li>
-                        <li class="navbar__responsive--author">
-                            <a class="navbar__responsive__link">Author</a>
-                            <button id="navbar__responsive--author__button">
-                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                            </button>
-                        </li>
-                        <li class="navbar__responsive--price">
-                            <a class="navbar__responsive__link">Price</a>
-                            <button id="navbar__responsive--price__button">
-                                <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                                <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                            </button>
-                        </li>
-                        <li class="navbar__responsive--about">
-                            <a href="#special-footer" class="navbar__responsive__link">About Us</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </nav>
-
-        <!-- searchbox -->
-        <div class="search__popup">
-            <div class="search">
-                <div class="searchbox">
-                    <input type="search" placeholder="Search for...">
-                    <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- shopping cart -->
-        <div class="shopping__popup">
-            <div class="shopping__container">
-                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                <div class="shopping">
-                    <div class="shopping__icon">
-                        <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
-                    </div>
-                    <br>
-                    <h2>Your cart is empty</h2>
-                    <button class="shopping__btn">Continue shopping</button>
-                </div>
-            </div>
-        </div>
-    </header>
+    <special-header></special-header>
 
     <main class="main">
         <section id="main__page" class="layer main__page" style="display: inline;">
@@ -630,7 +431,7 @@
     <!-- js -->
     <script src="../js/helper.js"></script>
     <script src="../js/main_phusomnia.js"></script>
-    <script src="../js/header_footer_1.js"></script>
+    <script src="../js/header_footer.js"></script>
     <!-- 
     // ==================================================================================
     // URL OF WEBPAGE
@@ -655,33 +456,10 @@
         }
     </script>
     <script src="../js/user.js"></script>
-    <script>
-        const productContainer = document.querySelector(".product__container")
-        const cartItemContainer = document.querySelector(".cart-items")
-        const orderContainer = document.querySelector(".order");
-        const cartSummary = document.querySelector(".cart-summary")
-        const orderTableContainer = document.getElementById("order-table__body-content")
-        const paymentInfoContainer = document.querySelector(".payment-info__container")
-        const paymentInfoSummary = document.querySelector(".payment-info__summary")
-
-        const billingInfo = document.getElementById("billing-info")
-        const billingFullName = document.getElementById("billing-info__fullName")
-        const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
-        const billingHouseNumber = document.getElementById("billing-info__houseNumber")
-        const billingStreet = document.getElementById("billing-info__street")
-        const billingWard = document.getElementById("billing-info__ward")
-        const billingDistrict = document.getElementById("billing-info__district")
-        const billingCity = document.getElementById("billing-info__city")
-    </script>
     <script src="../js/purchase.js"></script>
     <script src="../js/product.js"></script>
     <script src="../js/validation.js"></script>
-    <!-- 
-    // ==================================================================================
-    // VIEW CONTROLLER
-    // ==================================================================================
-    -->
-    <script src="../js/viewHome.js"></script>
+    <script src="../js/viewController.js"></script>
 </body>
 
 </html>
