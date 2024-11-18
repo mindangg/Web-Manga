@@ -18,61 +18,18 @@ const billingWard = document.getElementById("billing-info__ward")
 const billingDistrict = document.getElementById("billing-info__district")
 const billingCity = document.getElementById("billing-info__city")
 
-// TODO: move to user.js
-const userInfo = document.getElementById("user-info")
-const userFullname = document.getElementById("user-info__fullName")
-const userphoneNumber = document.getElementById("user-info__phoneNumber")
-const userHouseNumber = document.getElementById("user-info__houseNumber")
-const userStreet = document.getElementById("user-info__street")
-const userWard = document.getElementById("user-info__ward")
-const userDistrict = document.getElementById("user-info__district")
-const userCity = document.getElementById("user-info__city")
-
-function clearForm(e) {
-    e.querySelectorAll("input").forEach(input => {
-        document.getElementById(input.id).value = "";
-    });
-}
-
-const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
-
-function renderUserInfo() {
-    // clearForm(userInfo)
-    userFullname.value = accoutLoginInfo.fullName;
-    userphoneNumber.value = accoutLoginInfo.phoneNumber;
-    userHouseNumber.value = accoutLoginInfo.address.houseNumber;
-    userStreet.value = accoutLoginInfo.address.street;
-    userWard.value = accoutLoginInfo.address.ward;
-    userDistrict.value = accoutLoginInfo.address.district;
-    userCity.value = accoutLoginInfo.address.city;
-}
-
-function editUserInfo() {
-    if (!Validation.checkBlankField(userInfo)) {
-        const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
-        const queryUserInfoInput = document.querySelector(".edit-user__form").querySelectorAll("input");
-        for (const userInfoInput of queryUserInfoInput) {
-            const metadata = userInfoInput.id.split("__")[1];
-            if (metadata === "fullName" || metadata === "phoneNumber") {
-                userList[currentEditUserIndex][metadata] = userInfoInput.value;
-            } else {
-                userList[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
-            }
-        }
-
-        localStorage.setItem('users', JSON.stringify(userList));
-        alert("Cập nhật thông tin thành công");
-        window.location.reload();
-    }
-}
-
 class Cart {
     static addToCart(e) {
-        console.log(e.id)
+        if (!localStorage.getItem('accountLogin')) {
+            alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
+            return;
+        }
+
         const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
         const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
         const quantity = quantityInput ? (quantityInput.value) : 1;
         const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
+
         // Check if the product is out of stock
         if (cartItem.stock === 0) {
             alert("Hết hàng");
@@ -88,7 +45,8 @@ class Cart {
             alert("Sản phẩm đã có trong giỏ hàng");
             return;
         } else {
-            cartTable.push({ ...cartItem, quantity })
+            cartTable.push({ ...cartItem, quantity: quantity })
+            println(cartTable)
         }
         localStorage.setItem('cart', JSON.stringify(cartTable))
         Cart.renderCartPreview(cartTable)
@@ -184,7 +142,9 @@ class Cart {
         cartSummary.innerHTML = ""
         cartSummary.innerHTML = `
             <h3> Total of order: ${cartTable.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
-            <button class="checkout-button" onclick="viewBill()">Checkout</button>
+            <button class="checkout-button" onclick="viewBill()">
+                Checkout
+            </button>
         `
     }
 }
@@ -351,9 +311,10 @@ class Order {
                         ${o.orderDate}
                     </td>
                     <td style="text-align: center;">
-                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${o.orderStatus !== "Pending" ? "disabled" : ""}>
+                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${o.orderStatus !== "Pending" && o.orderStatus !== "Confirmed" ? "disabled" : ""}>
                             <option value="Pending" ${o.orderStatus === "Pending" ? "selected" : ""}>Pending</option>
                             <option value="Completed" ${o.orderStatus === "Completed" ? "selected" : ""}>Completed</option>
+                            <option value="Confirmed" ${o.orderStatus === "Confirmed" ? "selected" : ""}>Confirmed</option>
                             <option value="Cancelled" ${o.orderStatus === "Cancelled" ? "selected" : ""}>Cancelled</option>
                         </select>
                     </td>
@@ -372,7 +333,6 @@ class Order {
         }
 
         selectElement.disabled = true;
-
         if (newStatus === "Cancelled" && order.status !== "Cancelled") {
             const confirmCancel = confirm("Bạn muốn hủy đơn hàng này không ?");
             if (!confirmCancel) {
@@ -397,11 +357,22 @@ class Order {
             Order.renderOrderAdmin(orderTable);
             alert("Đơn hàng đã được giao");
         }
+        if (newStatus === "Confirmed" && order.orderStatus !== "Confirmed") {
+            order.orderStatus = "Confirmed";
+            localStorage.setItem("order", JSON.stringify(orderTable));
+
+            Order.renderOrderAdmin(orderTable);
+            alert("Đơn hàng đã được xử lý");
+            selectElement.disabled = false;
+        }
     }
     //  
     static getStatus(status) {
         if (status === "Pending") {
             return "status--pending"
+        }
+        if (status === "Confirmed") {
+            return "status--confirmed"
         }
         if (status === "Completed") {
             return "status--completed"
@@ -413,6 +384,9 @@ class Order {
     static setStatus(status) {
         if (status === "Pending") {
             return "Đang xử lý đơn hàng"
+        }
+        if (status === "Confirmed") {
+            return "Đã xử lý đơn hàng"
         }
         if (status === "Completed") {
             return "Đã giao hàng"
@@ -443,6 +417,7 @@ class Order {
         });
     }
     static renderBillingForm() {
+        const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')));
         billingFullName.value = accoutLoginInfo.fullName;
         billingPhoneNumber.value = accoutLoginInfo.phoneNumber;
         billingHouseNumber.value = accoutLoginInfo.address.houseNumber;
