@@ -608,5 +608,5 @@ function clearField(field) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
+// document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
 User.onload();

@@ -246,7 +246,7 @@ function viewUserInfo() {
     switch (page) {
         case 'home': viewHome(); break;
         case 'cart': viewCart(); break;
-        case 'bill': viewBill();; break;
+        case 'bill': viewBill(); break;
         case 'user-info': viewUserInfo(); break;
         case 'login': viewLogin(); break;
         default: break;
