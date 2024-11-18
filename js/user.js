@@ -244,6 +244,23 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         },
         status: true,
     },
+    {
+        userId: "user_13",
+        username: "1",
+        password: "1",
+        email: "3123410016@gmail.com",
+        phoneNumber: "0289381533",
+        createDate: '17/11/2024',
+        fullName: "Quagmire",
+        address: {
+            houseNumber: '220',
+            street: 'Tran Binh Trong',
+            ward: '4',
+            district: '5',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
 ];
 
 let account = JSON.parse(localStorage.getItem('accountLogin')) || null;
@@ -345,7 +362,7 @@ username.addEventListener('blur', (event) => {
     }
 })
 
-password.addEventListener('focus', (event   ) => {
+password.addEventListener('focus', (event) => {
     password.labels[0].innerText = 'Password must be at least 6 characters long, and include at least one uppercase letter, one number.';
     password.labels[0].style.display = 'block';
     password.labels[0].style.color = 'gray';
@@ -398,7 +415,7 @@ submitLogin.addEventListener('click', (event) => {
             document.getElementById("login__page").style.display = "none";
             document.getElementById("main__page").style.display = "inline";
 
-            const loginIcon= document.getElementById('login__icon');
+            const loginIcon = document.getElementById('login__icon');
             const loginIconResponsive = document.getElementById('login__icon__responsive');
             loginIcon.removeEventListener('click', toLoginPage);
             loginIconResponsive.removeEventListener('click', toLoginPage);
@@ -564,9 +581,9 @@ class User {
     }
     // 
     static renderAccountLogin() {
-        const loginIcon= document.getElementById('login__icon');
+        const loginIcon = document.getElementById('login__icon');
         const loginIconResponsive = document.getElementById('login__icon__responsive');
-        account = JSON.parse(localStorage.getItem('accountLogin'));
+        // account = JSON.parse(localStorage.getItem('accountLogin'));
         if (account) {
 
             loginIcon.removeEventListener('click', toLoginPage);
@@ -612,5 +629,5 @@ function clearField(field) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
+// document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
 User.onload();
