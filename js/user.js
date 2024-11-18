@@ -420,10 +420,12 @@ class User {
             console.log('Get users');
         }
     }
-
+    // ==================================================================================
+    // RENDER USER-INFO
+    // ==================================================================================
     static renderUserInfo() {
         if (localStorage.getItem('accountLogin')) {
-            let accountLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            let accountLoginInfo = this.findByUserid(JSON.parse(localStorage.getItem('accountLogin')))
             clearField(userInfo)
             userFullname.value = accountLoginInfo.fullName;
             userphoneNumber.value = accountLoginInfo.phoneNumber;
@@ -434,7 +436,9 @@ class User {
             userCity.value = accountLoginInfo.address.city;
         }
     }
-
+    // ==================================================================================
+    // EDIT USER-INFO
+    // ==================================================================================
     static editUserInfo() {
         if (!Validation.checkBlankField(userInfo)) {
             const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
@@ -449,7 +453,7 @@ class User {
             }
 
             localStorage.setItem('users', JSON.stringify(userList));
-            alert("Updated information successfully");
+            alert("Thông tin tài khoản cập nhật thành công");
         }
     }
     // 
