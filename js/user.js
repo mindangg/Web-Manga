@@ -284,6 +284,7 @@ const forget = document.getElementById('login__forget');
 const submitLogin = document.getElementById('login__btn');
 
 // FOR EDIT USER
+const userInfo = document.getElementById("user-info");
 const userFullname = document.getElementById("user-info__fullName")
 const userphoneNumber = document.getElementById("user-info__phoneNumber")
 const userHouseNumber = document.getElementById("user-info__houseNumber")
@@ -548,7 +549,6 @@ class User {
     // ==================================================================================
     static renderUserInfo() {
         if (account) {
-            const userInfo = document.getElementById("user-info");
             clearField(userInfo);
             userFullname.value = account.fullName;
             userphoneNumber.value = account.phoneNumber;
@@ -563,19 +563,22 @@ class User {
     // EDIT USER-INFO
     // ==================================================================================
     static editUserInfo() {
+        let users = JSON.parse(localStorage.getItem('users'));
         if (!Validation.checkBlankField(userInfo)) {
-            const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            const currentEditUserIndex = users.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')).userId)
             const queryUserInfoInput = document.querySelector(".edit-user__form").querySelectorAll("input");
             for (const userInfoInput of queryUserInfoInput) {
                 const metadata = userInfoInput.id.split("__")[1];
                 if (metadata === "fullName" || metadata === "phoneNumber") {
-                    userList[currentEditUserIndex][metadata] = userInfoInput.value;
+                    users[currentEditUserIndex][metadata] = userInfoInput.value;
                 } else {
-                    userList[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
+                    users[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
                 }
             }
-
-            localStorage.setItem('users', JSON.stringify(userList));
+            account = users[currentEditUserIndex];
+            localStorage.setItem('accountLogin', JSON.stringify(account));
+            this.renderUserInfo();
+            localStorage.setItem('users', JSON.stringify(users));
             alert("Thông tin tài khoản cập nhật thành công");
         }
     }
@@ -629,5 +632,5 @@ function clearField(field) {
     });
 }
 
-// document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
+document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
 User.onload();

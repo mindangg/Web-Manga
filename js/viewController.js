@@ -240,7 +240,7 @@ function viewLogin() {
 // ==================================================================================
 // thông tin người dùng
 function viewUserInfo() {
-    if (localStorage.getItem('accountLogin')) {
+    if (account) {
         setURLForPage('user-info')
         const userInfo = document.querySelector('.user-info')
         renderView(userInfo)
