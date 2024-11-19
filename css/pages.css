@@ -481,7 +481,7 @@
 #user__edit-menu {
   background: white;
   height: 320px;
-  width: 400px;
+  width: 450px;
   border-radius: 10px;
   position: relative;
   contain: content;
@@ -489,6 +489,7 @@
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  align-content: center;
 }
 
 #user__edit-menu--userId {
@@ -508,7 +509,7 @@
 
 .user.edit-component input{
   height: 60%;
-  margin: 5px;
+  margin: 5px 1px 5px 1px;
   border-radius: 5px;
   font-size: 14px;
   padding: 5px;
@@ -517,21 +518,29 @@
 #user__edit-menu--fullName,
 #user__edit-menu--username,
 #user__edit-menu--password {
-  width: calc(33% - 10px);
+  width: calc(33% - 13px);
   margin: 2px;
 }
 
-.user.edit-component.user-address{
+#user__edit-menu--email,
+#user__edit-menu--phoneNumber {
+  width: calc(50% - 16px);
+}
 
+.user.edit-component.user-address{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 30%
 }
 
 .user.edit-component.user-address input{
-  height: 60%;
+  height: 72%;
 }
 
 .address-component.label {
   text-align: left;
-  margin-left: 2.5%;
+  margin-left: 3%;
 }
 
 .address-component.first input{
@@ -539,7 +548,7 @@
 }
 
 .address-component.second input{
-  width: calc(33.3% - 14px);
+  width: calc(33.3% - 13px);
 }
 
 .user.edit-component.user-buttons{
@@ -578,5 +587,20 @@
 #user__edit-menu--cancel:hover {
   background-color: #c82333;
 }
+
+#user__edit-menu--createDate {
+  display: none;
+  width: 28%;
+}
+
+#user__edit-menu--error {
+  display: none;
+  height: 22px;
+  margin-left: 3.5%;
+  color: rgba(255, 51, 0, 1);
+  font-size: 14px;
+}
+
+/*42 23 28*/
 
 /*end of bao*/
