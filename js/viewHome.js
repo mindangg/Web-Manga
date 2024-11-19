@@ -99,7 +99,7 @@ function showProductInfo(e) {
     <div class="product__img">
         <img id="product__img1" src="${p.cover1}">
         <img id="product__img2" src="${p.cover2}">
-
+        
         <a id="product__view1" onclick="changeProductView(this)"><img src="${p.cover1}"></a>
         <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
     </div>

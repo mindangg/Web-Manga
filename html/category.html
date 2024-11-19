@@ -644,11 +644,13 @@
         const page = URLOfWebpage.searchParams.get('page')
         const home = "category.html"
 
-        function setURLForPage(page) {
+        function setURLForPage(page){
             const urlParams = new URLSearchParams(window.location.search);
-            if (page === "home") {
+            if(page === "home"){
                 window.history.replaceState({}, '', home);
-            } else {
+            }
+
+            else{
                 urlParams.set('page', page);
                 window.history.replaceState({}, '', '?' + urlParams.toString());
             }

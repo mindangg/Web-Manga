@@ -11,96 +11,96 @@ class SpecialHeader extends HTMLElement{
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
                 <li class="navbar__link--series">
-                    <a href="#" class="navbar__link">Series</a>
+                    <a class="navbar__link">Series</a>
                     <div class="navbar__series">
                         <ul>
-                            <li><a href="">Sakamoto Days</a></li>
-                            <li><a href="">My Dress Up Darling</a></li>
+                            <li><a href="?series=sakamoto-days" onclick="searchProduct(URLOfIndex)">Sakamoto Days</a></li>
+                            <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Black Clover</a></li>
-                            <li><a href="">Tokyo Ghoul</a></li>
+                            <li><a href="?series=black-clover">Black Clover</a></li>
+                            <li><a href="?series=tokyo-ghoul">Tokyo Ghoul</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Jujutsu Kaisen</a></li>
-                            <li><a href="">Mashle: Magic And Muscles</a></li>
+                            <li><a href="?series=jujutsu-kaisen">Jujutsu Kaisen</a></li>
+                            <li><a href="?series=mashle-magic-and-muscles">Mashle: Magic And Muscles</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">One Punch Man</a></li>
-                            <li><a href="">Spy X Family</a></li>
+                            <li><a href="?series=one-punch-man">One Punch Man</a></li>
+                            <li><a href="?series=spy-x-family">Spy X Family</a></li>
                         </ul>
                     </div>
                 </li>
 
                 <li class="navbar__link--category">
-                    <a href="#" class="navbar__link">Category</a>
+                    <a class="navbar__link">Category</a>
                     <div class="navbar__category">
                         <ul>
-                            <li><a href="">Shounen</a></li>
-                            <li><a href="">Seinen</a></li>
+                            <li><a href="?category=shounen">Shounen</a></li>
+                            <li><a href="?category=seinen">Seinen</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Rom-Com</a></li>
-                            <li><a href="">Action</a></li>
+                            <li><a href="?category=rom-com">Rom-Com</a></li>
+                            <li><a href="?category=action">Action</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Family</a></li>
-                            <li><a href="">Comedy</a></li>
+                            <li><a href="?category=family">Family</a></li>
+                            <li><a href="?category=comedy">Comedy</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Fantasy</a></li>
-                            <li><a href="">Dark Fantasy</a></li>
+                            <li><a href="?category=fantasy">Fantasy</a></li>
+                            <li><a href="?category=dark-fantasy">Dark Fantasy</a></li>
                         </ul>
                     </div>
                 </li>
 
                 <li class="navbar__link--author">
-                    <a href="#" class="navbar__link">Author</a>
+                    <a class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
-                            <li><a href="">Yusuke Murata</a></li>
-                            <li><a href="">Shinichi Fukuda</a></li>
+                            <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
+                            <li><a href="?author=shinichi-fukuda">Shinichi Fukuda</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Hajime Komoto</a></li>
-                            <li><a href="">Yuki Tabata</a></li>
+                            <li><a href="?author=hajime-komoto">Hajime Komoto</a></li>
+                            <li><a href="?author=yuki-tabata">Yuki Tabata</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Sui Ishida</a></li>
-                            <li><a href="">Akutami Gege</a></li>
+                            <li><a href="?author=sui-ishida">Sui Ishida</a></li>
+                            <li><a href="?author=akutami-gege">Akutami Gege</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Yuto Suzuki</a></li>
-                            <li><a href="">Tatsuya Endo</a></li>
+                            <li><a href="?author=yuto-suzuki">Yuto Suzuki</a></li>
+                            <li><a href="?author=tatsuya-endo">Tatsuya Endo</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="navbar__link--price">
-                    <a href="#" class="navbar__link">Price</a>
+                    <a class="navbar__link">Price</a>
                     <div class="navbar__price">
                         <ul>
-                            <li><a href="">Under $5 Dollars</a></li>
+                            <li><a href="?price=under-5-dollars">Under $5 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">$5 To $7 Dollars</a></li>
+                            <li><a href="?price=5-to-10-dollars">$5 To $10 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">$7 To $15 Dollars</a></li>
+                            <li><a href="?price=10-to-15-dollars">$10 To $15 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Over $15 Dollars</a></li>
+                            <li><a href="?price=over-15-dollars">Over $15 Dollars</a></li>
                         </ul>
                     </div>
                 </li>
@@ -210,8 +210,8 @@ class SpecialHeader extends HTMLElement{
                     <ul class="navbar__responsive--price__drops">
                         <li id="navbar__responsive--price__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
                         <li><a href="">Under $5 Dollars</a></li>
-                        <li><a href="">$5 To $7 Dollars</a></li>
-                        <li><a href="">$7 To $15 Dollars</a></li>
+                        <li><a href="">$5 To $10 Dollars</a></li>
+                        <li><a href="">$10 To $15 Dollars</a></li>
                         <li><a href="">Over $15 Dollars</a></li>
                     </ul>
                 </div>
@@ -223,7 +223,7 @@ class SpecialHeader extends HTMLElement{
         <div class="search__popup">
             <div class="search">
                 <div class="searchbox">
-                    <input type="search" placeholder="Search for...">
+                    <input id="search__input" type="search" placeholder="Search for...">
                     <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 </div>
             </div>
@@ -334,7 +334,6 @@ document.getElementById("signup__login--nav").addEventListener("click", function
 document.getElementById("search__icon").addEventListener("click", function(){
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
-    console.log("DM Trong Duy")
 })
 
 document.getElementById("search__close").addEventListener("click", function(){
@@ -422,4 +421,33 @@ document.querySelector(".navbar__responsive--price").addEventListener("click", f
 document.getElementById("navbar__responsive--price__back").addEventListener("click", function(){
     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
     document.querySelector(".navbar__responsive__links").style.display = "inline"
+})
+
+//seach bar
+var search__input = document.getElementById("search__input")
+search__input.addEventListener("keydown", (e) =>{
+    if(e.key == "Enter"){
+        let a = search__input
+        switch(a.value.toLowerCase()){
+            case "sakamoto days":
+                break
+            case "my dress up darling":
+                break
+            case "black clover":
+                break
+            case "sakamoto days":
+                break
+            case "sakamoto days":
+                break
+            case "sakamoto days":
+                break
+            case "sakamoto days":
+                break
+
+            case "black clover": 
+                break
+        }
+        
+        search__input.value = ""
+    }
 })
