@@ -2,6 +2,8 @@
 .product-menu {
   background-color: grey;
   padding: 20px;
+  margin-top: 50px;
+  color: white;
 }
 
 .product-menu__header {
@@ -10,6 +12,9 @@
   text-align: center;
   justify-content: center;
   gap: 44%;
+  border: solid rgb(46, 41, 41) 2px;
+  border-radius: 10px;
+  background-color: rgb(110, 103, 103);
 }
 
 .product-menu__title {
@@ -96,6 +101,10 @@
 .product-menu__button--save:hover {
   background-color: #0069d9;
 }
+.product-table__button--edit:hover
+{
+  background-color: #0453a8;
+}
 
 .product-menu__button--cancel,
 .product-table__button--delete
@@ -103,7 +112,28 @@
   background-color: #ff0000;
   color: white;
 }
-
+.product-table__button--delete:hover{
+  background-color: #b00808;
+}
+.product-menu__button--cancel:hover{
+  background-color: #b00808;
+}
+#input-product__pagi{
+  border: none;
+}
+#button__product__prev-pagi{
+  background-color: #4d555e;
+}
+#button__product__prev-pagi:hover{
+  background-color: #272c30;
+}
+#button__next-pagi{
+  background-color: #4d555e;
+  margin-left: 5px;
+}
+#button__next-pagi:hover{
+  background-color: #272c30;
+}
 /* 
 // ========================================================================
 // PRODUC TABLE SEARCH
@@ -114,13 +144,20 @@
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: #333;
+  border: 1px solid black;
+  background-color: lightgrey;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 
 /* Element: product-table__search-label */
 .table__search-label {
   padding: 5px;
-  background-color: #007bff;
+  background-color: #f1ba60;
+  margin-left: 20px;
+  border-radius: 5px;
 }
 
 /* Element: product-table__search-input (with square look) */
@@ -129,6 +166,8 @@
   border: 1px solid #ccc;
   border-radius: 0; /* Make the input square */
   width: 200px; /* Set a width */
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 /* Focus effect for the input */
@@ -214,6 +253,11 @@
   overflow: hidden;
   margin: 57px 0 0 0;
 }
+.table tr,td,th{
+  border: solid 1px lightgray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 .table__header {
   background-color: #343a40;
@@ -233,7 +277,7 @@
 }
 
 .table__head {
-  background-color: #f2f2f2;
+  background-color: #f1ba60;
 }
 
 .table__cell {
@@ -335,7 +379,7 @@
 
 .user.search-label{
   color: black;
-  background-color: #007bff;
+  background-color: #f1ba60;
   padding: 5px 10px 5px 10px;
   height: 20px;
   border-radius: 5px;
@@ -481,7 +525,7 @@
 #user__edit-menu {
   background: white;
   height: 320px;
-  width: 400px;
+  width: 450px;
   border-radius: 10px;
   position: relative;
   contain: content;
@@ -489,6 +533,7 @@
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  align-content: center;
 }
 
 #user__edit-menu--userId {
@@ -508,7 +553,7 @@
 
 .user.edit-component input{
   height: 60%;
-  margin: 5px;
+  margin: 5px 1px 5px 1px;
   border-radius: 5px;
   font-size: 14px;
   padding: 5px;
@@ -517,21 +562,29 @@
 #user__edit-menu--fullName,
 #user__edit-menu--username,
 #user__edit-menu--password {
-  width: calc(33% - 10px);
+  width: calc(33% - 13px);
   margin: 2px;
 }
 
-.user.edit-component.user-address{
+#user__edit-menu--email,
+#user__edit-menu--phoneNumber {
+  width: calc(50% - 16px);
+}
 
+.user.edit-component.user-address{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 30%
 }
 
 .user.edit-component.user-address input{
-  height: 60%;
+  height: 72%;
 }
 
 .address-component.label {
   text-align: left;
-  margin-left: 2.5%;
+  margin-left: 3%;
 }
 
 .address-component.first input{
@@ -539,7 +592,7 @@
 }
 
 .address-component.second input{
-  width: calc(33.3% - 14px);
+  width: calc(33.3% - 13px);
 }
 
 .user.edit-component.user-buttons{
@@ -578,5 +631,20 @@
 #user__edit-menu--cancel:hover {
   background-color: #c82333;
 }
+
+#user__edit-menu--createDate {
+  display: none;
+  width: 28%;
+}
+
+#user__edit-menu--error {
+  display: none;
+  height: 22px;
+  margin-left: 3.5%;
+  color: rgba(255, 51, 0, 1);
+  font-size: 14px;
+}
+
+/*42 23 28*/
 
 /*end of bao*/
