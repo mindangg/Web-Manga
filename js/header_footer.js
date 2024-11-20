@@ -305,11 +305,11 @@ class SpecialFooter extends HTMLElement{
 
 customElements.define(`special-footer`, SpecialFooter);
 
-
 //navigation between pages
 
 const toLoginPage = () => {
     document.getElementById("main__page").style.display = "none";
+    document.querySelector(".slider").style.display = "none";
     document.getElementById("login__page").style.display = "inline";
     document.getElementById("signup__page").style.display = "none";
 }
