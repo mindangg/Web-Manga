@@ -10,6 +10,10 @@ class Validation {
         return false;
     }
 
+    static IsNumber(value) {
+        return Number.isInteger(value);
+    }
+
     static usernameIsValid(username) {
         const usernameRegex = /^[a-zA-Z0-9]{1,}$/;
         try {

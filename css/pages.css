@@ -19,10 +19,6 @@
   font-weight: bold;
 }
 
-.product-menu__body{
-  display: flex;
-}
-
 .product-menu__content{
   width: 100%;
 }

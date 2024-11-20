@@ -144,25 +144,28 @@
 
                     <div id="product-menu__body" class="product-menu__body">
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--cover1">Cover primary:</label>
+                            <label>Cover primary:</label>
                             <input class="product-menu__input" id="product-menu__input--cover1" type="file"
                                 aria-label="Product Image" /><br />
+                            <label class="error" for="product-menu__input--cover1"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--cover2">Cover back:</label>
+                            <label>Cover back:</label>
                             <input class="product-menu__input" id="product-menu__input--cover2" type="file"
                                 aria-label="Product Image" /><br />
+                            <label class="error" for="product-menu__input--cover2"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--series">Series:</label>
+                            <label>Series:</label>
                             <input class="product-menu__input" id="product-menu__input--series" type="text"
                                 placeholder="Title" aria-label="Product Title" /><br />
+                            <label class="error" for="product-menu__input--series"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--category">Category:</label>
+                            <label>Category:</label>
                             <select class="product-menu__select" id="product-menu__input--category"
                                 aria-label="Product Tags">
                                 <option value="">--Choose a tag--</option>
@@ -170,39 +173,39 @@
                                 <option value="Brain Rot">Brain Rot</option>
                                 <option value="Shonen">Shonen</option>
                             </select><br />
+                            <label class="error" for="product-menu__input--category"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--author">Author:</label>
+                            <label>Author:</label>
                             <input class="product-menu__input" id="product-menu__input--author" type="text"
                                 placeholder="Author" aria-label="Product Author" /><br />
+                            <label class="error" for="product-menu__input--author"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--stock">Stock:</label>
+                            <label>Stock:</label>
                             <input class="product-menu__input" id="product-menu__input--stock" type="text"
                                 placeholder="Stock" aria-label="Product Stock" /><br />
+                            <label class="error" for="product-menu__input--stock"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--price">Price:</label>
+                            <label>Price:</label>
                             <input class="product-menu__input" id="product-menu__input--price" type="text"
                                 placeholder="Price" aria-label="Product Price" /><br />
+                            <label class="error" for="product-menu__input--price"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label"
-                                for="product-menu__input--description">Description:</label>
+                            <label>Description:</label>
                             <input class="product-menu__input" id="product-menu__input--description" type="text"
                                 placeholder="Description" aria-label="Product Description" /><br />
+                            <label class="error" for="product-menu__input--description"></label>
                         </div>
                     </div>
 
                     <div class="product-menu__footer">
-                        <!-- <button class="product-menu__button product-menu__button--close" id="product-menu__button--close"
-                            type="button" onclick="closeTask()">
-                            Close
-                        </button> -->
                         <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
                             type="button" onclick="Product.add()">
                             Save (Add Mode)
@@ -468,11 +471,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
 </body>
 <script src="../js//helper.js"></script>
 <script src="../js/toggleSideNav.js"></script>

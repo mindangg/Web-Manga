@@ -88,6 +88,7 @@ let orderTable = JSON.parse(localStorage.getItem('order')) || [
     },
 ]
 
+// Payment information field
 const productContainer = document.querySelector(".product__container")
 const cartItemContainer = document.querySelector(".cart-items")
 const orderContainer = document.querySelector(".order");
@@ -613,7 +614,9 @@ class Order {
             return "Hủy đơn hàng"
         }
     }
-
+    //
+    //
+    //
     static toggleDetails(e) {
         const details = e.parentElement.nextElementSibling.children[0];
         if (details.style.display === "none") {
@@ -624,7 +627,9 @@ class Order {
             e.textContent = "View Details";
         }
     }
+    //
     // clear form Bill
+    //
     static clearFormBillInfo(e) {
         e.querySelectorAll("input").forEach(input => {
             if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
@@ -647,7 +652,9 @@ class Order {
             document.getElementById(input.id).disabled = true;
         });
     }
+    //
     // toggle order form input address
+    //
     static toggleAddressOrder(e) {
         if (e.value === 'userAddress') {
             Order.renderBillingForm();
@@ -657,6 +664,9 @@ class Order {
             Order.clearFormBillInfo(billingInfo)
         }
     }
+    //
+    //
+    //
     static onloadFilterOrder() {
         Order.renderOrderAdmin(orderTable);
         Order.search();
