@@ -649,12 +649,19 @@ function searchProduct(){
 
 searchProduct()
 
+function capitalizeAllWords(str){
+    return str
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+}
+
 function renderViewSearchProduct(renderProduct){
     document.getElementById("main__page").style.display = "none"
     document.getElementById("search__page").style.display = "inline"
     let searchPage = document.querySelector(".search__page__list");
-
     searchPage.innerHTML = ""
+    document.querySelector(".search__page__lists h1").innerText = capitalizeAllWords(renderProduct)
     
     for(let i = 0; i < productArray.length; i++){
         if(renderProduct == productArray[i].series.toLowerCase() || 
@@ -705,13 +712,13 @@ function showSlider(){
     }
 }
 
-function showProductInfo(e) {
+function showProductInfo(e){
     document.querySelector(".product__page").style.display = "inline"
     document.querySelector(".product").style.animationName = "topDown"
     const productInfo = document.querySelector(".product__page")
     const p = productArray.find(product => product.productId === e.id)
 
-    if (!p) {
+    if (!p){
         console.error("Product not found")
         return
     }
