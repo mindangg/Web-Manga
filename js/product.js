@@ -9,6 +9,12 @@ class Helper {
         });
     }
 }
+class Validation {
+    static IsNumber(value) {
+        const parsed = parseInt(value) || parseFloat(value);
+        return !isNaN(parsed)
+    }
+}
 // =======================================================================
 // $$$$$$$\                            $$\                       $$\
 // $$  __$$\                           $$ |                      $$ |
@@ -128,6 +134,20 @@ class Product {
         this.price = price;
         this.description = description
     }
+    static checkStock() {
+        if (!Validation.IsNumber(productInputStock.value)) {
+            productInputStock.labels[0].innerText = "Stock must be a number"
+        } else {
+            productInputStock.labels[0].innerText = ""
+        }
+    }
+    static checkPrice() {
+        if (!Validation.IsNumber(productInputPrice.value)) {
+            productInputPrice.labels[0].innerText = "Price must be a number"
+        } else {
+            productInputPrice.labels[0].innerText = ""
+        }
+    }
     // ========================================================================
     // INSERT
     // ========================================================================
@@ -164,30 +184,32 @@ class Product {
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
-        console.log("Adding product...");
-        Product.insert(
-            `manga_${Product.generateId(productTable)}`,
-            `../img/banner/${productInputCover1.value.split("\\")[2]}`,
-            `../img/banner/${productInputCover2.value.split("\\")[2]}`,
-            productInputSeries.value,
-            productInputCategory.value,
-            productInputAuthor.value,
-            productInputStock.value,
-            parseFloat(productInputPrice.value),
-            productInputDescription.value
-        );
+        Product.checkStock();
+        Product.checkPrice();
+        // console.log("Adding product...");
+        // Product.insert(
+        //     `manga_${Product.generateId(productTable)}`,
+        //     `../img/banner/${productInputCover1.value.split("\\")[2]}`,
+        //     `../img/banner/${productInputCover2.value.split("\\")[2]}`,
+        //     productInputSeries.value,
+        //     productInputCategory.value,
+        //     productInputAuthor.value,
+        //     productInputStock.value,
+        //     parseFloat(productInputPrice.value),
+        //     productInputDescription.value
+        // );
 
-        localStorage.setItem("productTable", JSON.stringify(productTable));
-        console.log("* Insert product to table: ", productTable);
-        console.log(
-            "* Insert product from table to local storage: ",
-            JSON.parse(localStorage.getItem("product table"))
-        );
+        // localStorage.setItem("productTable", JSON.stringify(productTable));
+        // console.log("* Insert product to table: ", productTable);
+        // console.log(
+        //     "* Insert product from table to local storage: ",
+        //     JSON.parse(localStorage.getItem("product table"))
+        // );
 
-        let renderProduct = JSON.parse(
-            localStorage.getItem("productTable")
-        );
-        Product.render(renderProduct);
+        // let renderProduct = JSON.parse(
+        //     localStorage.getItem("productTable")
+        // );
+        // Product.render(renderProduct);
     }
     // ========================================================================
     // RENDER 
@@ -466,7 +488,7 @@ class Product {
 
         Product.render(filteredProduct);
     }
-    
+
     // Chua tim ra phuong phap de sort ma khong anh huong den product table
     // static applySort() {
     //     renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
