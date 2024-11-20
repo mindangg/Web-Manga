@@ -105,10 +105,10 @@
     visibility: hidden;
 }
 
-.navbar__link--series:hover .navbar__series,
-.navbar__link--category:hover .navbar__category,
-.navbar__link--author:hover .navbar__author,
-.navbar__link--price:hover .navbar__price
+.navbar__link--series:hover div,
+.navbar__link--category:hover div,
+.navbar__link--author:hover div,
+.navbar__link--price:hover div
 {
     opacity: 1;
     visibility: visible;

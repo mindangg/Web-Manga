@@ -51,7 +51,7 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_0",
         series: "Sakamoto Days",
-        author: "Suzuki Yuto",
+        author: "Yuto Suzuki",
         category: "Action",
         img1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
         img2: "../img/books/sakamoto days/sakamoto-days-volume-6-back.jpg",
@@ -65,7 +65,7 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_1",
         series: "Sakamoto Days",
-        author: "Suzuki Yuto",
+        author: "Yuto Suzuki",
         category: "Action",
         img1: "../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg",
         img2: "../img/books/sakamoto days/sakamoto-days-volume-10-back.jpg",
@@ -79,7 +79,7 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_2",
         series: "Sakamoto Days",
-        author: "Suzuki Yuto",
+        author: "Yuto Suzuki",
         category: "Action",
         img1: "../img/books/sakamoto days/sakamoto-days-volume-1-primary.jpg",
         img2: "../img/books/sakamoto days/sakamoto-days-volume-1-back.jpg",
@@ -93,7 +93,7 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_3",
         series: "Sakamoto Days",
-        author: "Suzuki Yuto",
+        author: "Yuto Suzuki",
         category: "Action",
         img1: "../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg",
         img2: "../img/books/sakamoto days/sakamoto-days-volume-5-back.jpg",
@@ -107,10 +107,10 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_4",
         series: "Sakamoto Days",
-        author: "Suzuki Yuto",
+        author: "Yuto Suzuki",
         category: "Action",
-        img1: "../img/books/sakamoto days/sakamoto-days-volume-15-primary.jpeg",
-        img2: "../img/books/sakamoto days/sakamoto-days-volume-15-back.jpeg",
+        img1: "../img/books/sakamoto days/sakamoto-days-manga-volume-15-primary.jpg",
+        img2: "../img/books/sakamoto days/sakamoto-days-manga-volume-15-back.jpg",
         name: "Sakamoto Days - Volume 15",
         price: 9.59,
         stock: 120,
@@ -180,8 +180,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "Jujutsu Kaisen",
         author: "Gege Akutami",
         category: "Dark Fantasy",
-        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-23-primary.jpeg",
-        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-23-back.jpeg",
+        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-23-primary.jpeg",
+        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-23-back.jpeg",
         name: "Jujutsu Kaisen - Volume 23",
         price: 7.99,
         stock: 90,
@@ -262,8 +262,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_15",
         series: "My Dress Up Darling",
-        author: "Fukuda Shinichi",
-        category: "Rom-Com",
+        author: "Shinichi Fukuda",
+        category: "Rom Com",
         img1: "../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg",
         img2: "../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg",
         name: "My Dress Up Darling - Volume 07",
@@ -276,8 +276,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_16",
         series: "My Dress Up Darling",
-        author: "Fukuda Shinichi",
-        category: "Rom-Com",
+        author: "Shinichi Fukuda",
+        category: "Rom Com",
         img1: "../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg",
         img2: "../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg",
         name: "My Dress Up Darling - Volume 01",
@@ -290,8 +290,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_17",
         series: "My Dress Up Darling",
-        author: "Fukuda Shinichi",
-        category: "Rom-Com",
+        author: "Shinichi Fukuda",
+        category: "Rom Com",
         img1: "../img/books/my dress up darling/my-dress-up-darling-volume-3-primary.jpg",
         img2: "../img/books/my dress up darling/my-dress-up-darling-volume-3-back.jpg",
         name: "My Dress Up Darling - Volume 03",
@@ -304,8 +304,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_18",
         series: "My Dress Up Darling",
-        author: "Fukuda Shinichi",
-        category: "Rom-Com",
+        author: "Shinichi Fukuda",
+        category: "Rom Com",
         img1: "../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg",
         img2: "../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg",
         name: "My Dress Up Darling - Volume 06",
@@ -318,8 +318,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_19",
         series: "My Dress Up Darling",
-        author: "Fukuda Shinichi",
-        category: "Rom-Com",
+        author: "Shinichi Fukuda",
+        category: "Rom Com",
         img1: "../img/books/my dress up darling/my-dress-up-darling-volume-9-primary.jpg",
         img2: "../img/books/my dress up darling/my-dress-up-darling-volume-9-back.jpg",
         name: "My Dress Up Darling - Volume 09",
@@ -418,8 +418,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "Tokyo Ghoul",
         author: "Sui Ishida",
         category: "Seinen",
-        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-primary.jpg",
-        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-back.jpg",
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-2-primary.jpg",
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-2-back.jpg",
         name: "Tokyo Ghoul - Volume 02",
         price: 14.39,
         stock: 150,
@@ -432,8 +432,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "Tokyo Ghoul",
         author: "Sui Ishida",
         category: "Seinen",
-        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-5-primary.jpg",
-        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-5-back.jpg",
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-5-primary.jpg",
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-5-back.jpg",
         name: "Tokyo Ghoul - Volume 05",
         price: 14.39,
         stock: 150,
@@ -446,8 +446,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "Tokyo Ghoul",
         author: "Sui Ishida",
         category: "Seinen",
-        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-9-primary.jpg",
-        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-9-back.jpg",
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-9-primary.jpg",
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-9-back.jpg",
         name: "Tokyo Ghoul - Volume 09",
         price: 14.39,
         stock: 150,
@@ -460,8 +460,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "Tokyo Ghoul",
         author: "Sui Ishida",
         category: "Seinen",
-        img1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-11-primary.jpg",
-        img2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-11-back.jpg",
+        img1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-11-primary.jpg",
+        img2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-11-back.jpg",
         name: "Tokyo Ghoul - Volume 11",
         price: 14.39,
         stock: 150,
@@ -502,8 +502,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "One Punch Man",
         author: "Yusuke Murata",
         category: "Shounen",
-        img1: "../img/books/one punch man/one-punch-man-volume-9-primary.jpg",
-        img2: "../img/books/one punch man/one-punch-man-volume-9-back.jpg",
+        img1: "../img/books/one punch man/one-punch-man-manga-volume-9-primary.jpg",
+        img2: "../img/books/one punch man/one-punch-man-manga-volume-9-back.jpg",
         name: "One Punch Man - Volume 09",
         price: 15.59,
         stock: 150,
@@ -530,8 +530,8 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
         series: "One Punch Man",
         author: "Yusuke Murata",
         category: "Shounen",
-        img1: "../img/books/one punch man/one-punch-man-volume-28-primary.jpg",
-        img2: "../img/books/one punch man/one-punch-man-volume-28-back.jpg",
+        img1: "../img/books/one punch man/one-punch-man-manga-volume-28-primary.jpg",
+        img2: "../img/books/one punch man/one-punch-man-manga-volume-28-back.jpg",
         name: "One Punch Man - Volume 28",
         price: 15.59,
         stock: 150,
@@ -542,7 +542,7 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_35",
         series: "Mashle Magic And Muscles",
-        author: "Komoto Hajime",
+        author: "Hajime Komoto",
         category: "Comedy",
         img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-primary.jpeg",
         img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-back.jpeg",
@@ -556,7 +556,7 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_36",
         series: "Mashle Magic And Muscles",
-        author: "Komoto Hajime",
+        author: "Hajime Komoto",
         category: "Comedy",
         img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg",
         img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg",
@@ -570,10 +570,10 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_37",
         series: "Mashle Magic And Muscles",
-        author: "Komoto Hajime",
+        author: "Hajime Komoto",
         category: "Comedy",
-        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-3-primary.jpeg",
-        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-3-back.jpeg",
+        img1: "../img/books/mashle/mashle-magic-and-muscles-volume-3-primary.jpg",
+        img2: "../img/books/mashle/mashle-magic-and-muscles-volume-3-back.jpg",
         name: "Mashle: Magic And Muscles - Volume 03",
         price: 17.39,
         stock: 150,
@@ -584,10 +584,10 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_38",
         series: "Mashle Magic And Muscles",
-        author: "Komoto Hajime",
+        author: "Hajime Komoto",
         category: "Comedy",
-        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-15-primary.jpeg",
-        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-15-back.jpeg",
+        img1: "../img/books/mashle/mashle-magic-and-muscles-volume-15-primary.jpg",
+        img2: "../img/books/mashle/mashle-magic-and-muscles-volume-15-back.jpg",
         name: "Mashle: Magic And Muscles - Volume 15",
         price: 17.39,
         stock: 150,
@@ -598,10 +598,10 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
     {
         productId: "manga_39",
         series: "Mashle Magic And Muscles",
-        author: "Komoto Hajime",
+        author: "Hajime Komoto",
         category: "Comedy",
-        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-primary.jpeg",
-        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-back.jpeg",
+        img1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-primary.jpg",
+        img2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-back.jpg",
         name: "Mashle Magic And Muscles - Volume 18",
         price: 17.39,
         stock: 150,
@@ -614,45 +614,40 @@ var productArray = JSON.parse(localStorage.getItem("productArray")) || [
 function convert(e){
     return (e.replaceAll("-", " ")).toLowerCase()
 }
+function searchProduct(){
+    const urlSearchIndex = window.location.search
+    console.log(urlSearchIndex)
 
-console.log(convert("spy-x-family"))
+    const urlSearch = new URLSearchParams(urlSearchIndex)
 
-// setTimeout(searchProduct(window.location.href), 1000)
+    if(urlSearch.get("series")){
+        console.log("1")
+        const seriesSearch = urlSearch.get("series")
+        renderViewSearchProduct(convert(seriesSearch))
+    }
 
-function searchProduct(url){
-    if(url.search){
-        const seriesSearch = url.searchParams.get("series")
-        const categorySearch = url.searchParams.get("category")
-        const authorSearch = url.searchParams.get("author")
-        const priceSearch = url.searchParams.get("price")
-
-        // seriesOfProduct =  JSON.parse(localStorage.getItem("productArray")).filter(p => p.series.toLowerCase() === convert(seriesSearch))
-        // categoryOfProduct = JSON.parse(localStorage.getItem("productArray")).filter(p => p.category.toLowerCase() === convert(categorySearch))
-        // authorOfProduct = JSON.parse(localStorage.getItem("productArray")).filter(p => p.author.toLowerCase() === convert(authorSearch))
-        // priceOfProduct = JSON.parse(localStorage.getItem("productArray")).filter(p => p.price.toLowerCase() === convert(priceSearch))
-
-
-        // seriesOfProduct =  seriesSearch.filter(p => p.series.toLowerCase() === convert(seriesSearch))
-        // categoryOfProduct = filter(p => p.category.toLowerCase() === convert(categorySearch))
-        // authorOfProduct = filter(p => p.author.toLowerCase() === convert(authorSearch))
-        // priceOfProduct = filter(p => p.price.toLowerCase() === convert(priceSearch))
+    else if(urlSearch.get("category")){
+        console.log("2")
+        const categorySearch = urlSearch.get("category")
+        renderViewSearchProduct(convert(categorySearch))
+    }
 
 
-        // if(seriesOfProduct.length > 0 && seriesSearch.length > 0){
-        //     console.log(url)
-        //     renderViewIndex(seriesOfProduct)
-        // }
-        // else if(categoryOfProduct.length > 0 && categorySearch.length > 0){
-        //     renderViewIndex(categoryOfProduct)
-        // }
-        // else if(authorOfProduct.length > 0 && authorSearch.length > 0){
-        //     renderViewIndex(authorOfProduct)
-        // }
-        // else if(priceOfProduct.length > 0 && priceSearch.length > 0){
-        //     renderViewIndex(priceOfProduct)
-        // }
-    } 
+    else if(urlSearch.get("author")){
+        console.log("3")
+        const authorSearch = urlSearch.get("author")
+        renderViewSearchProduct(convert(authorSearch))
+    }
+
+
+    else if(urlSearch.get("price")){
+        console.log("4")
+        const priceSearch = urlSearch.get("price")
+        renderViewSearchProduct(convert(priceSearch))
+    }
 }
+
+searchProduct()
 
 function renderViewSearchProduct(renderProduct){
     document.getElementById("main__page").style.display = "none"
@@ -662,7 +657,10 @@ function renderViewSearchProduct(renderProduct){
     searchPage.innerHTML = ""
     
     for(let i = 0; i < productArray.length; i++){
-        if(renderProduct == productArray[i].series)
+        if(renderProduct == productArray[i].series.toLowerCase() || 
+            renderProduct == productArray[i].category.toLowerCase() ||
+            renderProduct == productArray[i].author.toLowerCase()
+        )
         searchPage.innerHTML += `
         <div class="search__page__item">
             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
@@ -676,59 +674,6 @@ function renderViewSearchProduct(renderProduct){
         `   
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 showSlider()
 

@@ -14,7 +14,7 @@ class SpecialHeader extends HTMLElement{
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
                         <ul>
-                            <li><a href="?series=sakamoto-days" onclick="searchProduct(URLOfIndex)">Sakamoto Days</a></li>
+                            <li><a href="?series=sakamoto-days">Sakamoto Days</a></li>
                             <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
                         </ul>
 
@@ -44,7 +44,7 @@ class SpecialHeader extends HTMLElement{
                         </ul>
 
                         <ul>
-                            <li><a href="?category=rom-com">Rom-Com</a></li>
+                            <li><a href="?category=rom-com">Rom Com</a></li>
                             <li><a href="?category=action">Action</a></li>
                         </ul>
 
@@ -75,7 +75,7 @@ class SpecialHeader extends HTMLElement{
 
                         <ul>
                             <li><a href="?author=sui-ishida">Sui Ishida</a></li>
-                            <li><a href="?author=akutami-gege">Akutami Gege</a></li>
+                            <li><a href="?author=gege-akutami">Gege Akutami</a></li>
                         </ul>
 
                         <ul>
@@ -187,7 +187,7 @@ class SpecialHeader extends HTMLElement{
                         <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
                         <li><a href="">Shounen</a></li>
                         <li><a href="">Seinen</a></li>
-                        <li><a href="">Rom-Com</a></li>
+                        <li><a href="">Rom Com</a></li>
                         <li><a href="">Action</a></li>
                         <li><a href="">Family</a></li>
                         <li><a href="">Comedy</a></li>
@@ -202,7 +202,7 @@ class SpecialHeader extends HTMLElement{
                         <li><a href="">Hajime Komoto</a></li>
                         <li><a href="">Yuki Tabata</a></li>   
                         <li><a href="">Sui Ishida</a></li>
-                        <li><a href="">Akutami Gege</a></li>    
+                        <li><a href="">Gege Akutami</a></li>    
                         <li><a href="">Yuto Suzuki</a></li>
                         <li><a href="">Tatsuya Endo</a></li>
                     </ul>
