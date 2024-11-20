@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/validation/error.css" />
     <link rel="stylesheet" href="../css/admin/orderDetailPage.css" />
     <link rel="stylesheet" href="../css/admin/adminPage.css" />
     <link rel="stylesheet" href="../css/admin/productPage.css" />
@@ -477,8 +478,8 @@
         </div>
     </div>
 </body>
-<script src="../js//helper.js"></script>
-<script src="../js/toggleSideNav.js"></script>
+<script src="../js/Utility/helper.js"></script>
+<script src="../js/Utility/toggleSideNav.js"></script>
 <script src="../js/priceSlider.js"></script>
 <script src="../js/adminController.js"></script>
 <script src="../js/purchase.js"></script>
@@ -499,8 +500,7 @@
             Order.renderOrderDetail(e.id);
         }
     }
-</script>
-<script>
+
     (() => {
         Product.onload()
         Order.onload();

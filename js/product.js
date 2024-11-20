@@ -1,18 +1,8 @@
-// =================================================
-// Class nay dung de xu ly cac chuc nang phu
-// =================================================
-class Helper {
-    static clearForm(e) {
-        const queryProductInput = e.querySelectorAll("input, select");
-        queryProductInput.forEach((input) => {
-            document.getElementById(input.id).value = "";
-        });
-    }
-}
 class Validation {
     static IsNumber(value) {
-        const parsed = parseInt(value) || parseFloat(value);
-        return !isNaN(parsed)
+        if (value === '') return false;
+        const parsed = Number(value);
+        return !isNaN(parsed);
     }
 }
 // =======================================================================
@@ -29,11 +19,10 @@ class Validation {
 //  INITIALIZE PPRODUCT
 // ========================================================================
 // Product variable
-var productIdIndex = 0;
-var currentEditIndex;
-var productCurrentPage = 1;
-var productPerPage = 5;
-var productIndex = productCurrentPage;
+let productIdIndex = 0;
+let currentEditIndex;
+let productCurrentPage = 1;
+let productPerPage = 5;
 
 // Product property
 const productBtnAdd = document.getElementById("product-menu__button--add");
@@ -121,7 +110,6 @@ let productTable = JSON.parse(localStorage.getItem("productTable")) || [
 // ========================================================================
 // PRODUCT TABLE
 // ========================================================================
-// class san pham
 class Product {
     constructor(productId, cover1, cover2, series, category, author, stock, price, description) {
         this.productId = productId;
@@ -134,19 +122,51 @@ class Product {
         this.price = price;
         this.description = description
     }
-    static checkStock() {
-        if (!Validation.IsNumber(productInputStock.value)) {
-            productInputStock.labels[0].innerText = "Stock must be a number"
-        } else {
-            productInputStock.labels[0].innerText = ""
+    // 
+    // VALIDATION OF PRODUCT
+    // 
+    static checkIsBlank() {
+        let isBlank = false
+        const productInput = productMenuBody.querySelectorAll("input, select");
+        for (const product of productInput) {
+            if (product.value === "" && product.type !== "file") {
+                product.labels[0].innerText = "This field cannot be empty"
+                isBlank = true
+            } else {
+                product.labels[0].innerText = ""
+            }
         }
+        return isBlank
+    }
+    static checkStock() {
+        let isNumber = true
+        if (productInputStock.value === "") {
+            productInputStock.labels[0].innerText = "This field cannot be empty"
+            isNumber = false
+        } else {
+            if (!Validation.IsNumber(productInputStock.value)) {
+                productInputStock.labels[0].innerText = "Stock must be a number"
+                isNumber = false
+            } else {
+                productInputStock.labels[0].innerText = ""
+            }
+        }
+        return isNumber
     }
     static checkPrice() {
-        if (!Validation.IsNumber(productInputPrice.value)) {
-            productInputPrice.labels[0].innerText = "Price must be a number"
+        let isNumber = true
+        if (productInputPrice.value === "") {
+            productInputPrice.labels[0].innerText = "This field cannot be empty"
+            isNumber = false
         } else {
-            productInputPrice.labels[0].innerText = ""
+            if (!Validation.IsNumber(productInputPrice.value)) {
+                productInputPrice.labels[0].innerText = "Price must be a number"
+                isNumber = false
+            } else {
+                productInputPrice.labels[0].innerText = ""
+            }
         }
+        return isNumber
     }
     // ========================================================================
     // INSERT
@@ -184,32 +204,36 @@ class Product {
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
-        Product.checkStock();
-        Product.checkPrice();
-        // console.log("Adding product...");
-        // Product.insert(
-        //     `manga_${Product.generateId(productTable)}`,
-        //     `../img/banner/${productInputCover1.value.split("\\")[2]}`,
-        //     `../img/banner/${productInputCover2.value.split("\\")[2]}`,
-        //     productInputSeries.value,
-        //     productInputCategory.value,
-        //     productInputAuthor.value,
-        //     productInputStock.value,
-        //     parseFloat(productInputPrice.value),
-        //     productInputDescription.value
-        // );
+        // function checkValidation() {
+        //     return Product.checkIsBlank() || !Product.checkStock() || !Product.checkPrice()
+        // }
 
-        // localStorage.setItem("productTable", JSON.stringify(productTable));
-        // console.log("* Insert product to table: ", productTable);
-        // console.log(
-        //     "* Insert product from table to local storage: ",
-        //     JSON.parse(localStorage.getItem("product table"))
-        // );
+        // if (checkValidation()) {
+        //     return
+        // }
+        console.log("Adding product...");
+        const lowerStr = Helper.lowerStr(productInputSeries.value)
+        const cover1 = `../img/${lowerStr}/${productInputCover1.value.split("\\")[2]}`
+        const cover2 = `../img/${lowerStr}/${productInputCover2.value.split("\\")[2]}`
 
-        // let renderProduct = JSON.parse(
-        //     localStorage.getItem("productTable")
-        // );
-        // Product.render(renderProduct);
+        Product.insert(
+            `manga_${Product.generateId(productTable)}`,
+            `../img/${lowerStr}/${cover1}`,
+            `../img/${lowerStr}/${cover2}`,
+            productInputSeries.value,
+            productInputCategory.value,
+            productInputAuthor.value,
+            productInputStock.value,
+            parseFloat(productInputPrice.value),
+            productInputDescription.value
+        )
+
+        localStorage.setItem("productTable", JSON.stringify(productTable));
+        productTable = JSON.parse(
+            localStorage.getItem("productTable")
+        );
+
+        Product.render(productTable);
     }
     // ========================================================================
     // RENDER 
@@ -229,11 +253,7 @@ class Product {
         // render theo so luong ma mot page co the chua duoc
         // neu san pham co hon 5 gia tri thi render theo trang hien tai
         // tranh loi khi xoa san pham khoi bang
-        if (renderProduct.length > 5) {
-            start = (productCurrentPage - 1) * productPerPage;
-        } else {
-            start = (1 - 1) * productPerPage;
-        }
+        start = (productCurrentPage - 1) * productPerPage;
         end = start + productPerPage;
         productList = renderProduct.slice(start, end);
 
@@ -300,15 +320,14 @@ class Product {
                 id="button__next-pagi"> >> </button>
             `;
             const inputPagi = document.getElementById("input-product__pagi");
-            inputPagi.value = productIndex;
+            inputPagi.value = productCurrentPage;
 
             document
                 .getElementById("button__product__prev-pagi")
                 .addEventListener("click", () => {
                     console.log("Go to previous page");
-                    if (productIndex > 1) {
-                        productIndex--;
-                        productCurrentPage = productIndex;
+                    if (productCurrentPage > 1) {
+                        productCurrentPage--;
                         Product.render(renderProduct);
                     } else {
                         console.error("Error");
@@ -319,9 +338,8 @@ class Product {
                 .getElementById("button__next-pagi")
                 .addEventListener("click", () => {
                     console.log("Go to next page");
-                    if (productIndex < productTotalPages) {
-                        productIndex++;
-                        productCurrentPage = productIndex;
+                    if (productCurrentPage < productTotalPages) {
+                        productCurrentPage++;
                         Product.render(renderProduct);
                     } else {
                         console.error("Error");
@@ -369,7 +387,7 @@ class Product {
         queryProductInput.forEach((productInput) => {
             const metadata = productInput.id.split("--")[1];
             if (productInput.type === "file") {
-                productTable[currentEditIndex][metadata] = `../img/banner/${productInput.value.split("\\")[2]
+                productTable[currentEditIndex][metadata] = `../img/books/${productInput.value.split("\\")[2]
                     }`;
             } else {
                 productTable[currentEditIndex][metadata] = productInput.value;
@@ -381,8 +399,6 @@ class Product {
             localStorage.getItem("productTable")
         );
 
-        Product.render(productTable);
-        Product.applyFilters()
         Helper.clearForm(productMenuBody);
 
         productRenderTable.style.display = "";
@@ -403,17 +419,26 @@ class Product {
 
         const deleteProductRow = e.parentElement.parentElement;
 
+        const start = (productCurrentPage - 1) * productPerPage
+        const end = start + productPerPage
+
+        const currentPage = productTable.slice(start, end)
+
+        if (currentPage.length === 1) {
+            productCurrentPage = productCurrentPage - 1
+        }
+
         productTable = productTable.filter((p) => p.productId !== deleteProductRow.id)
-        console.log(productTable)
 
         localStorage.setItem("productTable", JSON.stringify(productTable));
-        productTable = JSON.parse(localStorage.getItem("productTable"));
-        console.log(productTable)
+        productTable = JSON.parse(
+            localStorage.getItem("productTable")
+        );
+
         Product.render(productTable);
+        Product.applyFilters()
 
         console.log("Delete product from table succesfully ✓");
-
-        Product.applyFilters();
     }
     // ==================================================================================
     // CANCEL BUTTON
