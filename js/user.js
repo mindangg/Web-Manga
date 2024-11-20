@@ -407,21 +407,9 @@ submitLogin.addEventListener('click', (event) => {
             passwordLogin.labels[0].style.display = 'none';
             clearField(login);
             showNotification('Welcome, ' + account.username);
-            // document.getElementsByClassName('navbar__home')[0]
-            //     .querySelectorAll('div')[1]
-            //     .innerText = `${account.username}`;
-            // document.getElementsByClassName('navbar__bar')[0]
-            //     .querySelectorAll('div')[1]
-            //     .innerText = `${account.username}`;
             document.getElementById("login__page").style.display = "none";
             document.getElementById("main__page").style.display = "inline";
 
-            const loginIcon = document.getElementById('login__icon');
-            const loginIconResponsive = document.getElementById('login__icon__responsive');
-            loginIcon.removeEventListener('click', toLoginPage);
-            loginIconResponsive.removeEventListener('click', toLoginPage);
-            // loginIcon.addEventListener('click', User.renderUserInfo);
-            // loginIconResponsive.addEventListener('click', User.renderUserInfo);
             // phusomnia
             User.renderAccountLogin();
             viewHome();
@@ -586,13 +574,11 @@ class User {
     static renderAccountLogin() {
         const loginIcon = document.getElementById('login__icon');
         const loginIconResponsive = document.getElementById('login__icon__responsive');
-        // account = JSON.parse(localStorage.getItem('accountLogin'));
+        account = JSON.parse(localStorage.getItem('accountLogin'));
         if (account) {
 
             loginIcon.removeEventListener('click', toLoginPage);
             loginIconResponsive.removeEventListener('click', toLoginPage);
-            // loginIcon.addEventListener('click', User.renderUserInfo);
-            // loginIconResponsive.addEventListener('click', User.renderUserInfo);
 
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
@@ -604,8 +590,6 @@ class User {
 
             loginIcon.addEventListener('click', toLoginPage);
             loginIconResponsive.addEventListener('click', toLoginPage);
-            // loginIcon.removeEventListener('click', User.renderUserInfo);
-            // loginIconResponsive.removeEventListener('click', User.renderUserInfo);
 
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
