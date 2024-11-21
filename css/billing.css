@@ -16,6 +16,12 @@
 
 .billing-form {
     width: 600px;
+    padding-left: 20px;
+}
+.transfer-form{
+    width: 600px;
+    padding-left: 20px;
+    display: none;
 }
 
 .billing-info label {

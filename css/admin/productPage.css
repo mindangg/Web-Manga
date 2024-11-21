@@ -2,6 +2,8 @@
 .product-menu {
   background-color: grey;
   padding: 20px;
+  margin-top: 50px;
+  color: white;
 }
 
 .product-menu__header {
@@ -10,6 +12,9 @@
   text-align: center;
   justify-content: center;
   gap: 44%;
+  border: solid rgb(46, 41, 41) 2px;
+  border-radius: 10px;
+  background-color: rgb(110, 103, 103);
 }
 
 .product-menu__title {
@@ -92,6 +97,10 @@
 .product-menu__button--save:hover {
   background-color: #0069d9;
 }
+.product-table__button--edit:hover
+{
+  background-color: #0453a8;
+}
 
 .product-menu__button--cancel,
 .product-table__button--delete
@@ -99,7 +108,28 @@
   background-color: #ff0000;
   color: white;
 }
-
+.product-table__button--delete:hover{
+  background-color: #b00808;
+}
+.product-menu__button--cancel:hover{
+  background-color: #b00808;
+}
+#input-product__pagi{
+  border: none;
+}
+#button__product__prev-pagi{
+  background-color: #4d555e;
+}
+#button__product__prev-pagi:hover{
+  background-color: #272c30;
+}
+#button__next-pagi{
+  background-color: #4d555e;
+  margin-left: 5px;
+}
+#button__next-pagi:hover{
+  background-color: #272c30;
+}
 /* 
 // ========================================================================
 // PRODUC TABLE SEARCH
@@ -110,13 +140,20 @@
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: #333;
+  border: 1px solid black;
+  background-color: lightgrey;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 
 /* Element: product-table__search-label */
 .table__search-label {
   padding: 5px;
-  background-color: #007bff;
+  background-color: #f1ba60;
+  margin-left: 20px;
+  border-radius: 5px;
 }
 
 /* Element: product-table__search-input (with square look) */
@@ -125,6 +162,8 @@
   border: 1px solid #ccc;
   border-radius: 0; /* Make the input square */
   width: 200px; /* Set a width */
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 /* Focus effect for the input */
@@ -210,6 +249,11 @@
   overflow: hidden;
   margin: 57px 0 0 0;
 }
+.table tr,td,th{
+  border: solid 1px lightgray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 .table__header {
   background-color: #343a40;
@@ -229,7 +273,7 @@
 }
 
 .table__head {
-  background-color: #f2f2f2;
+  background-color: #f1ba60;
 }
 
 .table__cell {

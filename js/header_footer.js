@@ -116,7 +116,7 @@ class SpecialHeader extends HTMLElement {
                     </a>
                     <div></div>
                 </div>
-                <a id="shopping__icon" onclick="viewCart()"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a id="shopping__icon" "><i class="fa-solid fa-cart-shopping" onclick="viewCart()"></i></a>
             </div>
 
             <div class="navbar__bar">
