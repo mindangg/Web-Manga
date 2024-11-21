@@ -111,18 +111,18 @@ class SpecialHeader extends HTMLElement {
             <div class="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
-                    <a id="login__icon" >
+                    <a id="login__icon" onclick="viewUserInfo()">
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>
                 </div>
-                <a id="shopping__icon" "><i class="fa-solid fa-cart-shopping"></i></a>
+                <a id="shopping__icon" "><i class="fa-solid fa-cart-shopping" onclick="viewCart()"></i></a>
             </div>
 
             <div class="navbar__bar">
                 <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
                 <div style="display: flex">
-                    <a href="#" id="login__icon__responsive" ">
+                    <a href="#" id="login__icon__responsive" onclick="viewUserInfo()">
                         <i class=" fa-regular fa-user"></i>
                     </a>
                     <div></div>
