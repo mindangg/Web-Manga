@@ -1,5 +1,4 @@
 //slider
-
 let list = document.querySelector(".slider .slider__list");
 let items = document.querySelectorAll(".slider .slider__list .slider__item");
 let dots = document.querySelectorAll(".slider .slider__dots li");
@@ -46,8 +45,7 @@ dots.forEach((li, key) => {
 })
 
 //product
-
-var productArray = JSON.parse(localStorage.getItem("productArray")) || [
+let productArray = JSON.parse(localStorage.getItem('product')) || [
     {
         productId: "manga_0",
         series: "Sakamoto Days",
@@ -951,7 +949,7 @@ function convert(e){
     return (e.replaceAll("-", " ")).toLowerCase()
 }
 
-function searchProduct(){
+function searchProductByURL(){
     const urlSearchIndex = window.location.search
     console.log(urlSearchIndex)
 
@@ -960,31 +958,77 @@ function searchProduct(){
     if(urlSearch.get("series")){
         console.log("1")
         const seriesSearch = urlSearch.get("series")
-        renderViewSearchProduct(convert(seriesSearch), "Series")
+        renderViewSearchProductByURL(convert(seriesSearch), "Series")
     }
 
     else if(urlSearch.get("category")){
         console.log("2")
         const categorySearch = urlSearch.get("category")
-        renderViewSearchProduct(convert(categorySearch), "Category")
+        renderViewSearchProductByURL(convert(categorySearch), "Category")
     }
 
 
     else if(urlSearch.get("author")){
         console.log("3")
         const authorSearch = urlSearch.get("author")
-        renderViewSearchProduct(convert(authorSearch), "Author")
+        renderViewSearchProductByURL(convert(authorSearch), "Author")
     }
 
 
     else if(urlSearch.get("price")){
         console.log("4")
         const priceSearch = urlSearch.get("price")
-        renderViewSearchProduct(convert(priceSearch), "Price")
+        renderViewSearchProductByURL(convert(priceSearch), "Price")
     }
 }
 
-searchProduct()
+searchProductByURL()
+
+function searchProduct(){
+    productSearch = search__input.value.toLowerCase()
+    document.getElementById("main__page").style.display = "none"
+    document.getElementById("search__page").style.display = "inline"
+    let searchPage = document.querySelector(".search__page__list");
+    searchPage.innerHTML = ""
+    // let renderBy = ""
+    // if(productArray[0].series.toLowerCase().search(productSearch) != -1)
+    //     renderBy = "Series"       
+    // else if(productArray[0].category.toLowerCase().search(productSearch) != -1)
+    //     renderBy = "Category"    
+    // else if(productArray[0].author.toLowerCase().search(productSearch) != -1)
+    //     renderBy = "Author"   
+
+    //document.querySelector(".search__page__lists h1").innerText = "Search by " + renderBy + " : " + search__input.value 
+    for(let i = 0; i < productArray.length; i++){
+        if(((productArray[i].series.toLowerCase().search(productSearch) != -1) ||
+            (productArray[i].category.toLowerCase().search(productSearch) != -1) ||
+            (productArray[i].author.toLowerCase().search(productSearch) != -1)) && 
+            productSearch != ''){
+            searchPage.innerHTML += `
+            <div class="search__page__item">
+                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${productArray[i].img1}" alt="">
+                    <img src="${productArray[i].img2}" alt="">
+                </a>
+                <h4>${productArray[i].name}</h4>
+                <p>$${productArray[i].price}</p>
+                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+            ` 
+        }
+    }
+    search__input.value = ""
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    var search__input = document.getElementById("search__input")
+    search__input.addEventListener("keydown", (e) =>{
+        if(e.key == "Enter"){
+            console.log("Hi")
+            searchProduct()
+        }
+    })
+})
 
 function capitalizeAllWords(str){
     return str
@@ -1013,7 +1057,33 @@ function renderViewSearchProduct(renderProduct, renderBy){
             </a>
             <h4>${productArray[i].name}</h4>
             <p>$${productArray[i].price}</p>
-            <button id="${productArray[i].id}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+        </div>
+        `   
+    }
+}
+
+function renderViewSearchProductByURL(renderProduct, renderBy){
+    document.getElementById("main__page").style.display = "none"
+    document.getElementById("search__page").style.display = "inline"
+    let searchPage = document.querySelector(".search__page__list");
+    searchPage.innerHTML = ""
+    document.querySelector(".search__page__lists h1").innerText = "Search by " + capitalizeAllWords(renderBy) + " : " + capitalizeAllWords(renderProduct) 
+    
+    for(let i = 0; i < productArray.length; i++){
+        if(renderProduct == productArray[i].series.toLowerCase() || 
+            renderProduct == productArray[i].category.toLowerCase() ||
+            renderProduct == productArray[i].author.toLowerCase()
+        )
+        searchPage.innerHTML += `
+        <div class="search__page__item">
+            <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                <img src="${productArray[i].img1}" alt="">
+                <img src="${productArray[i].img2}" alt="">
+            </a>
+            <h4>${productArray[i].name}</h4>
+            <p>$${productArray[i].price}</p>
+            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
         </div>
         `   
     }

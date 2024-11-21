@@ -226,6 +226,29 @@ class SpecialHeader extends HTMLElement{
                     <input id="search__input" type="search" placeholder="Search for...">
                     <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 </div>
+
+                <a id="filter"><i class="fa-solid fa-filter" style="color:white"></i></a>
+
+                <div class="filterbox">
+
+                    <select>
+                        <option>All</option>
+                        <option>Sakamoto Days</option>
+                        <option>My Dress Up Darling</option>
+                        <option>Black Clover</option>
+                        <option>Tokyo Ghoul</option>
+                        <option>Jujutsu Kaisen</option>
+                        <option>Mashle: Magic And Muscles</option>
+                        <option>One Punch Man</option>
+                        <option>Spy X Family</option>
+                    </select>
+
+                    <span style="color:white">Price</span>
+                    <input type="number" placeholder="Min" id="min-price" onchange="searchProducts()">
+                    <span style="color:white">To</span>
+                    <input type="number" placeholder="Max" id="max-price" onchange="searchProducts()">
+                    <a style="color:white"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                </div>
             </div>
         </div>
 
@@ -421,33 +444,4 @@ document.querySelector(".navbar__responsive--price").addEventListener("click", f
 document.getElementById("navbar__responsive--price__back").addEventListener("click", function(){
     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
     document.querySelector(".navbar__responsive__links").style.display = "inline"
-})
-
-//seach bar
-var search__input = document.getElementById("search__input")
-search__input.addEventListener("keydown", (e) =>{
-    if(e.key == "Enter"){
-        let a = search__input
-        switch(a.value.toLowerCase()){
-            case "sakamoto days":
-                break
-            case "my dress up darling":
-                break
-            case "black clover":
-                break
-            case "sakamoto days":
-                break
-            case "sakamoto days":
-                break
-            case "sakamoto days":
-                break
-            case "sakamoto days":
-                break
-
-            case "black clover": 
-                break
-        }
-        
-        search__input.value = ""
-    }
 })
