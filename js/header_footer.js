@@ -173,14 +173,14 @@ class SpecialHeader extends HTMLElement{
 
                     <ul class="navbar__responsive--series__drops">
                         <li id="navbar__responsive--series__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="">Sakamoto Days</a></li>
-                        <li><a href="">My Dress Up Darling</a></li>
-                        <li><a href="">Black Clover</a></li>
-                        <li><a href="">Tokyo Ghoul</a></li>
-                        <li><a href="">Jujutsu Kaisen</a></li>
-                        <li><a href="">Mashle: Magic And Muscles</a></li>
-                        <li><a href="">One Punch Man</a></li>
-                        <li><a href="">Spy X Family</a></li>
+                        <li><a href="?series=sakamoto-days">Sakamoto Days</a></li>
+                        <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
+                        <li><a href="?series=black-clover">Black Clover</a></li>
+                        <li><a href="?series=tokyo-ghoul">Tokyo Ghoul</a></li>
+                        <li><a href="?series=jujutsu-kaisen">Jujutsu Kaisen</a></li>
+                        <li><a href="?series=mashle-magic-and-muscles">Mashle: Magic And Muscles</a></li>
+                        <li><a href="?series=one-punch-man">One Punch Man</a></li>
+                        <li><a href="?series=spy-x-family">Spy X Family</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--category__drops">
@@ -224,30 +224,29 @@ class SpecialHeader extends HTMLElement{
             <div class="search">
                 <div class="searchbox">
                     <input id="search__input" type="search" placeholder="Search for...">
-                    <a id="search__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <a id="search__close" onclick="closeSearch()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 </div>
 
-                <a id="filter"><i class="fa-solid fa-filter" style="color:white"></i></a>
+                <a id="filter" onclick="showFilter()"><i class="fa-solid fa-filter" style="color:white"></i></a>
 
-                <div class="filterbox">
-
-                    <select>
-                        <option>All</option>
-                        <option>Sakamoto Days</option>
-                        <option>My Dress Up Darling</option>
-                        <option>Black Clover</option>
-                        <option>Tokyo Ghoul</option>
-                        <option>Jujutsu Kaisen</option>
-                        <option>Mashle: Magic And Muscles</option>
-                        <option>One Punch Man</option>
-                        <option>Spy X Family</option>
+                <div class="filter__container">
+                    <select id="filter__series">
+                        <option value="all">All</option>
+                        <option value="sakamoto-days">Sakamoto Days</option>
+                        <option value="my-dress-up-darling">My Dress Up Darling</option>
+                        <option value="black-clover">Black Clover</option>
+                        <option value="tokyo-ghoul">Tokyo Ghoul</option>
+                        <option value="jujutsu-kaisen">Jujutsu Kaisen</option>
+                        <option value="mashle-magic-and-muscles">Mashle: Magic And Muscles</option>
+                        <option value="one-punch-man">One Punch Man</option>
+                        <option value="spy-x-family">Spy X Family</option>
                     </select>
 
                     <span style="color:white">Price</span>
-                    <input type="number" placeholder="Min" id="min-price" onchange="searchProducts()">
-                    <span style="color:white">To</span>
-                    <input type="number" placeholder="Max" id="max-price" onchange="searchProducts()">
-                    <a style="color:white"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    <input type="text" placeholder="Min" id="filter__min">
+                    <span style="color:white">to</span>
+                    <input type="text" placeholder="Max" id="filter__max">
+                    <a style="color:white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
                 </div>
             </div>
         </div>
@@ -352,19 +351,26 @@ document.getElementById("signup__login--nav").addEventListener("click", function
     document.getElementById("login__page").style.display = "inline";
 })
 
-// search and shopping cart popup
+// search, shopping cart, filter popup
 
 document.getElementById("search__icon").addEventListener("click", function(){
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
 })
 
-document.getElementById("search__close").addEventListener("click", function(){
+function closeSearch(){
+    if(document.getElementById("filter").className == "filter__active"){
+        document.getElementById("filter").classList.remove("filter__active")
+		document.querySelector(".filter__container").style.display = "none"
+        document.getElementById("filter__min").value=""
+		document.getElementById("filter__max").value=""
+    }
+    
     document.querySelector(".search").style.animationName = "leftToRight"
     setTimeout(function() {
         document.querySelector(".search__popup").style.display = "none";
       }, 390);
-})
+}
 
 document.getElementById("shopping__icon").addEventListener("click", function(){
     document.querySelector(".shopping__popup").style.display = "flex";
@@ -377,6 +383,20 @@ document.getElementById("shopping__close").addEventListener("click", function(){
         document.querySelector(".shopping__popup").style.display = "none";
       }, 390);
 })
+
+function showFilter(){
+    if(document.getElementById("filter").className == ""){
+		document.getElementById("filter").classList.add("filter__active")
+		document.querySelector(".filter__container").style.display = "inline"
+	}
+
+    else{
+        document.getElementById("filter").classList.remove("filter__active")
+		document.querySelector(".filter__container").style.display = "none"
+        document.getElementById("filter__min").value=""
+		document.getElementById("filter__max").value=""
+    }
+}
 
 //responsive
 document.getElementById("navbar__bar__icon").addEventListener("click", function(){

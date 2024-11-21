@@ -990,38 +990,77 @@ function searchProduct(){
     document.getElementById("search__page").style.display = "inline"
     let searchPage = document.querySelector(".search__page__list");
     searchPage.innerHTML = ""
-    // let renderBy = ""
-    // if(productArray[0].series.toLowerCase().search(productSearch) != -1)
-    //     renderBy = "Series"       
-    // else if(productArray[0].category.toLowerCase().search(productSearch) != -1)
-    //     renderBy = "Category"    
-    // else if(productArray[0].author.toLowerCase().search(productSearch) != -1)
-    //     renderBy = "Author"   
-
-    //document.querySelector(".search__page__lists h1").innerText = "Search by " + renderBy + " : " + search__input.value 
-    for(let i = 0; i < productArray.length; i++){
-        if(((productArray[i].series.toLowerCase().search(productSearch) != -1) ||
-            (productArray[i].category.toLowerCase().search(productSearch) != -1) ||
-            (productArray[i].author.toLowerCase().search(productSearch) != -1)) && 
-            productSearch != ''){
-            searchPage.innerHTML += `
-            <div class="search__page__item">
-                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].img1}" alt="">
-                    <img src="${productArray[i].img2}" alt="">
-                </a>
-                <h4>${productArray[i].name}</h4>
-                <p>$${productArray[i].price}</p>
-                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-            ` 
+    if(document.getElementById("filter").className == ""){
+        for(let i = 0; i < productArray.length; i++){
+            if(((productArray[i].name.toLowerCase().search(productSearch) != -1) ||
+                (productArray[i].series.toLowerCase().search(productSearch) != -1) ||
+                (productArray[i].category.toLowerCase().search(productSearch) != -1) ||
+                (productArray[i].author.toLowerCase().search(productSearch) != -1)) && 
+                productSearch != ''){
+                searchPage.innerHTML += `
+                <div class="search__page__item">
+                    <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                        <img src="${productArray[i].img1}" alt="">
+                        <img src="${productArray[i].img2}" alt="">
+                    </a>
+                    <h4>${productArray[i].name}</h4>
+                    <p>$${productArray[i].price}</p>
+                    <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+                </div>
+                ` 
+            }
         }
+    }
+
+    else{
+        let filter__series = document.getElementById("filter__series")
+        let filter__min = document.getElementById("filter__min").value
+        let filter__max = document.getElementById("filter__max").value
+
+        if(filter__series.value == "all"){
+			for(let i = 0; i<productArray.length; i++){
+				if (productArray[i].series.toLowerCase().search(productSearch) != -1 && productArray[i].price >= filter__min && productArray[i].price <= filter__max){
+                    searchPage.innerHTML += `
+                    <div class="search__page__item">
+                        <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                            <img src="${productArray[i].img1}" alt="">
+                            <img src="${productArray[i].img2}" alt="">
+                        </a>
+                        <h4>${productArray[i].name}</h4>
+                        <p>$${productArray[i].price}</p>
+                        <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+                    </div>
+                    ` 
+				}
+			}
+		}
+
+		else{
+            productSearchFilter = convert(filter__series.value)
+            console.log(productSearchFilter)
+			for(let i = 0; i < productArray.length; i++){
+				if (productArray[i].series.toLowerCase().search(productSearchFilter) != -1 && productArray[i].price >= filter__min && productArray[i].price <= filter__max){
+                    searchPage.innerHTML += `
+                    <div class="search__page__item">
+                        <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                            <img src="${productArray[i].img1}" alt="">
+                            <img src="${productArray[i].img2}" alt="">
+                        </a>
+                        <h4>${productArray[i].name}</h4>
+                        <p>$${productArray[i].price}</p>
+                        <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+                    </div>
+                    ` 
+				}
+			}
+		}
     }
     search__input.value = ""
 }
 
 document.addEventListener("DOMContentLoaded", function(){
     var search__input = document.getElementById("search__input")
+    //var filter__series = document.getElementById("filter__series")
     search__input.addEventListener("keydown", (e) =>{
         if(e.key == "Enter"){
             console.log("Hi")
