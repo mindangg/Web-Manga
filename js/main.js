@@ -951,7 +951,6 @@ function convert(e){
 
 function searchProductByURL(){
     const urlSearchIndex = window.location.search
-    console.log(urlSearchIndex)
 
     const urlSearch = new URLSearchParams(urlSearchIndex)
 
@@ -1060,7 +1059,6 @@ function searchProduct(){
 
 document.addEventListener("DOMContentLoaded", function(){
     var search__input = document.getElementById("search__input")
-    //var filter__series = document.getElementById("filter__series")
     search__input.addEventListener("keydown", (e) =>{
         if(e.key == "Enter"){
             console.log("Hi")
