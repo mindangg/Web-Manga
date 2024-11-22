@@ -615,6 +615,7 @@ function clearField(field) {
         input.value = '';
     });
 }
-
-document.addEventListener('DOMContentLoaded', User.renderAccountLogin);
+document.addEventListener('DOMContentLoaded', () => {
+    User.renderAccountLogin();
+});
 User.onload();

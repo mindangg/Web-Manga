@@ -111,18 +111,18 @@ class SpecialHeader extends HTMLElement {
             <div class="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
-                    <a id="login__icon" >
+                    <a id="login__icon" onclick="viewUserInfo()">
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>
                 </div>
-                <a id="shopping__icon" "><i class="fa-solid fa-cart-shopping"></i></a>
+                <a id="shopping__icon" "><i class="fa-solid fa-cart-shopping" onclick="viewCart()"></i></a>
             </div>
 
             <div class="navbar__bar">
                 <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
                 <div style="display: flex">
-                    <a href="#" id="login__icon__responsive" ">
+                    <a href="#" id="login__icon__responsive" onclick="viewUserInfo()">
                         <i class=" fa-regular fa-user"></i>
                     </a>
                     <div></div>
@@ -334,50 +334,48 @@ document.getElementById("navbar__responsive__close__button").addEventListener("c
 })
 
 
-window.onresize = function () {
-    if (window.innerWidth > 619) {
-        document.querySelector(".navbar__responsive__popup").style.display = "none";
-    }
-}
+// window, onresize = function () {
+//     if (window.innerWidth > 619) {
+//         document.querySelector(".navbar__responsive__popup").style.display = "none";
+//     }
+// }
 
-window.onload = () => {
-    document.querySelector(".navbar__responsive--series").addEventListener("click", function () {
-        document.querySelector(".navbar__responsive__links").style.display = "none"
-        document.querySelector(".navbar__responsive--series__drops").style.display = "inline"
-    })
+// document.querySelector(".navbar__responsive--series").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--series__drops").style.display = "inline"
+// })
 
-    // document.getElementById("navbar__responsive--series__back").addEventListener("click", function () {
-    //     document.querySelector(".navbar__responsive--series__drops").style.display = "none"
-    //     document.querySelector(".navbar__responsive__links").style.display = "inline"
-    // })
+// document.getElementById("navbar__responsive--series__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--series__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
 
-    document.querySelector(".navbar__responsive--category").addEventListener("click", function () {
-        document.querySelector(".navbar__responsive__links").style.display = "none"
-        document.querySelector(".navbar__responsive--category__drops").style.display = "inline"
-    })
+// document.querySelector(".navbar__responsive--category").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--category__drops").style.display = "inline"
+// })
 
-    // document.getElementById("navbar__responsive--category__back").addEventListener("click", function () {
-    //     document.querySelector(".navbar__responsive--category__drops").style.display = "none"
-    //     document.querySelector(".navbar__responsive__links").style.display = "inline"
-    // })
+// document.getElementById("navbar__responsive--category__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--category__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
 
-    document.querySelector(".navbar__responsive--author").addEventListener("click", function () {
-        document.querySelector(".navbar__responsive__links").style.display = "none"
-        document.querySelector(".navbar__responsive--author__drops").style.display = "inline"
-    })
+// document.querySelector(".navbar__responsive--author").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--author__drops").style.display = "inline"
+// })
 
-    // document.getElementById("navbar__responsive--author__back").addEventListener("click", function () {
-    //     document.querySelector(".navbar__responsive--author__drops").style.display = "none"
-    //     document.querySelector(".navbar__responsive__links").style.display = "inline"
-    // })
+// document.getElementById("navbar__responsive--author__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--author__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })
 
-    document.querySelector(".navbar__responsive--price").addEventListener("click", function () {
-        document.querySelector(".navbar__responsive__links").style.display = "none"
-        document.querySelector(".navbar__responsive--price__drops").style.display = "inline"
-    })
+// document.querySelector(".navbar__responsive--price").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive__links").style.display = "none"
+//     document.querySelector(".navbar__responsive--price__drops").style.display = "inline"
+// })
 
-    // document.getElementById("navbar__responsive--price__back").addEventListener("click", function () {
-    //     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
-    //     document.querySelector(".navbar__responsive__links").style.display = "inline"
-    // })
-}
+// document.getElementById("navbar__responsive--price__back").addEventListener("click", function () {
+//     document.querySelector(".navbar__responsive--price__drops").style.display = "none"
+//     document.querySelector(".navbar__responsive__links").style.display = "inline"
+// })

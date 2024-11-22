@@ -255,9 +255,9 @@ function viewUserInfo() {
 // ==================================================================================
 // thực thi các hàm khi load hoặc reload trang
 // ==================================================================================
-(() => {
+document.addEventListener('DOMContentLoaded',() => {
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
-    defaultBillingSelect.value = `userAddress`
+    // defaultBillingSelect.value = "userAddress"
 
     // nếu local storage có admin: admin thì chuyển hướng đến trang admin
     if (localStorage.getItem('admin') === 'admin') {
@@ -288,4 +288,4 @@ function viewUserInfo() {
         case 'login': viewLogin(); break;
         default: break;
     }
-})()
+})

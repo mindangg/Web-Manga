@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/orderDetail.css" />
-    <link rel="stylesheet" href="../css/admin.css" />
-    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/validation/error.css" />
+    <link rel="stylesheet" href="../css/admin/orderDetailPage.css" />
+    <link rel="stylesheet" href="../css/admin/adminPage.css" />
+    <link rel="stylesheet" href="../css/admin/productPage.css" />
+    <link rel="stylesheet" href="../css/admin/userPage.css" />
 </head>
 
 <body>
@@ -144,65 +146,69 @@
 
                     <div id="product-menu__body" class="product-menu__body">
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--cover1">Cover primary:</label>
+                            <label>Cover primary:</label>
                             <input class="product-menu__input" id="product-menu__input--cover1" type="file"
                                 aria-label="Product Image" /><br />
+                            <label class="error" for="product-menu__input--cover1"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--cover2">Cover back:</label>
+                            <label>Cover back:</label>
                             <input class="product-menu__input" id="product-menu__input--cover2" type="file"
                                 aria-label="Product Image" /><br />
+                            <label class="error" for="product-menu__input--cover2"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--series">Series:</label>
+                            <label>Series:</label>
                             <input class="product-menu__input" id="product-menu__input--series" type="text"
                                 placeholder="Title" aria-label="Product Title" /><br />
+                            <label class="error" for="product-menu__input--series"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--category">Category:</label>
+                            <label>Category:</label>
                             <select class="product-menu__select" id="product-menu__input--category"
                                 aria-label="Product Tags">
                                 <option value="">--Choose a tag--</option>
                                 <option value="Rom Com">Rom Com</option>
                                 <option value="Brain Rot">Brain Rot</option>
                                 <option value="Shonen">Shonen</option>
-                            </select><br />
+                            </select>
+                            <label class="error" for="product-menu__input--category"></label>
+                            <br />
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--author">Author:</label>
+                            <label>Author:</label>
                             <input class="product-menu__input" id="product-menu__input--author" type="text"
                                 placeholder="Author" aria-label="Product Author" /><br />
+                            <label class="error" for="product-menu__input--author"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--stock">Stock:</label>
+                            <label>Stock:</label>
                             <input class="product-menu__input" id="product-menu__input--stock" type="text"
-                                placeholder="Stock" aria-label="Product Stock" /><br />
+                                placeholder="Stock" aria-label="Product Stock" />
+                            <label class="error" for="product-menu__input--stock"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--price">Price:</label>
+                            <label>Price:</label>
                             <input class="product-menu__input" id="product-menu__input--price" type="text"
                                 placeholder="Price" aria-label="Product Price" /><br />
+                            <label class="error" for="product-menu__input--price"></label>
                         </div>
 
                         <div class="product-menu__content">
-                            <label class="product-menu__label"
-                                for="product-menu__input--description">Description:</label>
+                            <label>Description:</label>
                             <input class="product-menu__input" id="product-menu__input--description" type="text"
                                 placeholder="Description" aria-label="Product Description" /><br />
+                            <label class="error" for="product-menu__input--description"></label>
                         </div>
                     </div>
 
                     <div class="product-menu__footer">
-                        <!-- <button class="product-menu__button product-menu__button--close" id="product-menu__button--close"
-                            type="button" onclick="closeTask()">
-                            Close
-                        </button> -->
                         <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
                             type="button" onclick="Product.add()">
                             Save (Add Mode)
@@ -244,7 +250,8 @@
                                 <option value="District">District</option>
                                 <option value="City">City</option>
                             </select>
-                            <input type="text" class="user user__search--input" id="user__search--input" placeholder="User ID"/>
+                            <input type="text" class="user user__search--input" id="user__search--input"
+                                placeholder="User ID" />
                         </div>
                         <div id="user__filter" style="display: flex; flex-direction: row">
                             <div class="user search-label">Filter by:</div>
@@ -334,7 +341,8 @@
                                 <label id="user__edit-menu--address-label">Address:</label>
                             </div>
                             <div class="address-component first">
-                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number" value="">
+                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number"
+                                    value="">
                                 <input type="text" id="user__edit-menu--street" placeholder="Street" value="">
                             </div>
                             <div class="address-component second">
@@ -368,7 +376,7 @@
                             <input type="date" class="order-table__search-input" id="order-table__search-input--date" />
                         </div>
                         <div style="display: flex; flex-direction: row">
-                            <div class="order table__search-label">Search by address:</div>
+                            <div class="order table__search-label">Search by district:</div>
                             <input type="text" class="order-table__search-input"
                                 id="order-table__search-input--district" />
                         </div>
@@ -384,20 +392,20 @@
                                     <th class="order table__cell order-table__cell userid">
                                         UserID
                                     </th>
-                                    <th class="order table__cell order-table__cell itemlist">
-                                        Item list
-                                    </th>
-                                    <th class="order table__cell order-table__cell price">
-                                        Price
-                                    </th>
                                     <th class="order table__cell order-table__cell datecreate">
-                                        Date Create
+                                        Date create
                                     </th>
                                     <th class="order table__cell order-table__cell datecreate">
                                         Address
                                     </th>
+                                    <th class="order table__cell order-table__cell price">
+                                        Order price
+                                    </th>
                                     <th class="order table__cell order-table__cell status">
                                         Status
+                                    </th>
+                                    <th class="order table__cell order-table__cell itemlist">
+                                        List items
                                     </th>
                                 </tr>
                             </thead>
@@ -412,83 +420,92 @@
                         <!-- Pagination or additional controls can go here -->
                     </div>
                 </div>
+
+                <div class="order-detail__page">
+                    <div class="order-detail">
+                        <div>
+                            <button class="order-detail__button" onclick="displayOrderDetail()">X</button>
+                        </div>
+                        <div class="order-detail__summary">
+                            <h1>Order Details</h1>
+                            <p><strong>Order ID:</strong> #123456</p>
+                            <p><strong>Order Date:</strong> November 16, 2024</p>
+                            <p><strong>Status:</strong>Completed</p>
+                        </div>
+
+                        <div class="order-detail__items">
+                            <h2>List items</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>I've Somehow Gotten Stronger When I Improved My Farm-Related Skills</td>
+                                        <td>1</td>
+                                        <td>$3.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I've Somehow Gotten Stronger When I Improved My Farm-Related Skil</td>
+                                        <td>2</td>
+                                        <td>$5.00</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">
+                                            Total:
+                                        </td>
+                                        <td>$13.00</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="order-detail__customer-info">
+                            <h2>Customer info</h2>
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Email:</strong> johndoe@example.com</p>
+                            <p><strong>Phone:</strong> +1234567890</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="order-detail" style="display: none;">
-        <div class="order-detail__summary">
-            <h1>Order Details</h1>
-            <p><strong>Order ID:</strong> #123456</p>
-            <p><strong>Order Date:</strong> November 16, 2024</p>
-            <p><strong>Status:</strong> Completed</p>
-        </div>
-
-        <div class="order-detail__items">
-            <h2>Items</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Webtoon A - Chapter 1</td>
-                        <td>1</td>
-                        <td>$3.00</td>
-                    </tr>
-                    <tr>
-                        <td>Webtoon B - Chapter 5</td>
-                        <td>2</td>
-                        <td>$5.00</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">Total:</td>
-                        <td>$13.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <div class="order-detail__customer-info">
-            <h2>Customer Info</h2>
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Email:</strong> johndoe@example.com</p>
-            <p><strong>Phone:</strong> +1234567890</p>
-        </div>
-    </div>
 </body>
-<script src="../js//helper.js"></script>
-<script src="../js/toggleSideNav.js"></script>
+<script src="../js/Utility/helper.js"></script>
+<script src="../js/Utility/toggleSideNav.js"></script>
 <script src="../js/priceSlider.js"></script>
 <script src="../js/adminController.js"></script>
 <script src="../js/purchase.js"></script>
 <script src="../js/product.js"></script>
 <script>
-    function formatDate(date) {
-        const splitDate = date.split('-');
-        const formattedDate = `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
-        return formattedDate;
+    function displayOrderDetail(e) {
+        const orderDetail = document.querySelector('.order-detail__page');
+
+        // Hiển thị hoặc ẩn order detail
+        if (orderDetail.style.display === 'none') {
+            orderDetail.style.display = 'inherit';
+        } else {
+            orderDetail.style.display = 'none';
+        }
+
+        // Nếu truyền tham số e thì render ra chi tiết thanh toán
+        if (e) {
+            Order.renderOrderDetail(e.id);
+        }
     }
 
-    const orderTableContainer = document.getElementById('order-table__body-content');
-
-    // Search order
-    const orderSearchDate = document.getElementById('order-table__search-input--date');
-    println(formatDate(orderSearchDate.value));
-</script>
-<script>
     (() => {
         Product.onload()
-        Product.onloadFilterViewAdmin();
-        if (orderTable.length > 0) {
-            Order.renderOrderAdmin(orderTable);
-        }
+        Order.onload();
+        Product.onloadFilterProduct();
+        Order.onloadFilterOrder()
     })()
 </script>
 
