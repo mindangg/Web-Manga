@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/cart_phusomnia.css">
     <link rel="stylesheet" href="../css/billing.css">
     <link rel="stylesheet" href="../css/category.css">
-    <!--    <link rel="stylesheet" href="../css/main_phusomnia.css">-->
+<!--    <link rel="stylesheet" href="../css/main_phusomnia.css">-->
     <link rel="stylesheet" href="../css/order.css">
     <link rel="stylesheet" href="../css/orderDetail.css">
     <link rel="stylesheet" href="../css/user_info.css">
@@ -21,117 +21,106 @@
 </head>
 
 <body>
-<special-header id="special-header"></special-header>
+    <special-header id="special-header"></special-header>
+  
+    <main>
+        <section id="main__page" class="layer main__page" style="display: inline;">
+            <!-- slider -->
+            <div class="slider">
+                <div class="slider__list">
+                    <div class="slider__item">
+                        <img src="../img/banner/1.png" alt="Sakamoto Days Cover">
+                    </div>
 
-<main>
-    <section id="main__page" class="layer main__page" style="display: inline;">
-        <!-- slider -->
-        <div class="slider">
-            <div class="slider__list">
-                <div class="slider__item">
-                    <img src="../img/banner/1.png" alt="Sakamoto Days Cover">
+                    <div class="slider__item">
+                        <img src="../img/banner/2.png" alt="My Dress Up Darling Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/3.jpeg" alt="Classroom Of The Elite Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/4.jpeg" alt="Spy X Family Cover">
+                    </div>
+
+                    <div class="slider__item">
+                        <img src="../img/banner/5.jpg" alt="Black Clover Cover">
+                    </div>
                 </div>
 
-                <div class="slider__item">
-                    <img src="../img/banner/2.png" alt="My Dress Up Darling Cover">
+                <div class="slider__button">
+                    <button id="slider__prev"><</button>
+                    <button id="slider__next">></button>
                 </div>
 
-                <div class="slider__item">
-                    <img src="../img/banner/3.jpeg" alt="Classroom Of The Elite Cover">
-                </div>
-
-                <div class="slider__item">
-                    <img src="../img/banner/4.jpeg" alt="Spy X Family Cover">
-                </div>
-
-                <div class="slider__item">
-                    <img src="../img/banner/5.jpg" alt="Black Clover Cover">
-                </div>
+                <ul class="slider__dots">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
 
-            <div class="slider__button">
-                <button id="slider__prev"><</button>
-                <button id="slider__next">></button>
+            <!-- best sellers slider -->
+
+            <div class="best__slider">
+                <h1>Best Sellers</h1>
+                <div class="best__slider__list">
+
+                </div>
+            
+                <div class="best__slider__button">
+                    <button id="best__slider__prev">
+                        <i class="fa-solid fa-angle-left" id="left__angle"></i>
+                        <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                    </button>
+                    <button id="best__slider__next">
+                        <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                        <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                    </button>
+                </div>
+
+                <ul class="best__slider__dots">
+                    <li class="best__active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
 
-            <ul class="slider__dots">
-                <li class="active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
+            <div class="banner">
+                <img src="../img/banner/jjk.jpg">
+            </div>
 
-        <div class="product-list" style="display: none">
-            <div class="product-list__title">
+            <div class="book__slider">
                 <h1>Books</h1>
-            </div>
-            <div class="product__container">
-                <div class="product__item">
+
+                <div class="book__slider__list">
+
                 </div>
+
+                <div class="book__slider__button">
+                    <button id="book__slider__prev">
+                        <i class="fa-solid fa-angle-left" id="left__angle"></i>
+                        <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                    </button>
+                    <button id="book__slider__next">
+                        <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                        <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+                    </button>
+                </div>
+
+                <ul class="book__slider__dots">
+                    <li class="book__active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
-            <div class="product-container__footer"></div>
-        </div>
-
-        <!-- best sellers slider -->
-
-        <div class="best__slider">
-            <h1>Best Sellers</h1>
-            <div class="best__slider__list">
-
-            </div>
-
-            <div class="best__slider__button">
-                <button id="best__slider__prev">
-                    <i class="fa-solid fa-angle-left" id="left__angle"></i>
-                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
-                </button>
-                <button id="best__slider__next">
-                    <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                </button>
-            </div>
-
-            <ul class="best__slider__dots">
-                <li class="best__active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-
-        <div class="banner">
-            <img src="../img/banner/jjk.jpg">
-        </div>
-
-        <div class="book__slider">
-            <h1>Books</h1>
-
-            <div class="layer book__slider__list">
-
-            </div>
-
-            <div class="book__slider__button">
-                <button id="book__slider__prev">
-                    <i class="fa-solid fa-angle-left" id="left__angle"></i>
-                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
-                </button>
-                <button id="book__slider__next">
-                    <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-                </button>
-            </div>
-
-            <ul class="book__slider__dots">
-                <li class="book__active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
 
         <div class="product__page">
             <div class="product">
@@ -143,7 +132,7 @@
                     <a id="product__view1" onclick="changeProductView(this)"><img src=""></a>
                     <a id="product__view2" onclick="changeProductView(this)"><img src=""></a>
                 </div>
-
+    
                 <div class="product__info">
                     <h1></h1>
                     <div class="product__info--rating">
@@ -157,13 +146,10 @@
                     <h2></h2>
                     <p></p>
                     <p>Quantity: </p>
-
-                    <button id="product__quantitydown">-</button>
-                    <input type="text" id="product__quantity" value="1">
-                    <button id="product__quantityup">+</button>
-                    <br>
+    
+                    <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
                     <button id="product__add">Add to cart</button>
-
+    
                     <p>Availability: </p><br>
                     <h4>Description</h4>
                     <p></p><br>
@@ -171,288 +157,287 @@
                 </div>
             </div>
         </div>
-    </section>
+        </section>
 
-    <section id="cart__container" class="layer cart__container" style="display: none;">
-        <h1>Cart</h1>
-        <div class="cart-content">
-            <!-- Cart Items List -->
-            <table class="cart-table">
-                <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody class="cart-items">
-                </tbody>
-            </table>
-            <!-- Cart Summary -->
-            <div class="cart-summary">
-                <div>
-                    <span>Total of order: </span>
-                    <span>$0.00</span>
+        <section id="cart__container" class="layer cart__container" style="display: none;">
+            <h1>Cart</h1>
+            <div class="cart-content">
+                <!-- Cart Items List -->
+                <table class="cart-table">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody class="cart-items">
+                    </tbody>
+                </table>
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div>
+                        <span>Total of order: </span>
+                        <span>$0.00</span>
+                    </div>
+                    <a href="">
+                        <button class="checkout-button">
+                            Checkout
+                        </button>
+                    </a>
                 </div>
-                <a href="">
-                    <button class="checkout-button">
-                        Checkout
-                    </button>
-                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="billing-info" class="layer billing-info" style="display: none;">
-        <div class="billing-form">
-            <h2>Billing Information</h2>
-            <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
-                <option value="userAddress" selected>Địa chỉ và thông tin của người dùng</option>
-                <option value="newAddress">Địa chỉ và thông tin mới</option>
-            </select>
-            <label>Full Name</label>
-            <div class="billing-info__input">
-                <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
-                <label class="error" for="billing-info__fullName"></label>
-            </div>
-            <div class="billing-info__input">
-                <label>Phone Number</label>
-                <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
-                <label class="error" for="billing-info__phoneNumber"></label>
-            </div>
-            <div id="newAddress">
+        <section id="billing-info" class="layer billing-info" style="display: none;">
+            <div class="billing-form">
+                <h2>Billing Information</h2>
+                <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
+                    <option value="userAddress" selected>Địa chỉ và thông tin của người dùng</option>
+                    <option value="newAddress">Địa chỉ và thông tin mới</option>
+                </select>
+                <label>Full Name</label>
                 <div class="billing-info__input">
-                    <label>House Number</label>
-                    <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
-                    <label class="error" for="billing-info__houseNumber" class="form-group"></label>
+                    <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
+                    <label class="error" for="billing-info__fullName"></label>
                 </div>
                 <div class="billing-info__input">
-                    <label>House Number</label>
-                    <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
-                    <label class="error" for="billing-info__street"></label>
+                    <label>Phone Number</label>
+                    <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
+                    <label class="error" for="billing-info__phoneNumber"></label>
                 </div>
-                <div>
-                    <label>Ward</label>
-                    <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
-                    <label class="error" for="billing-info__ward"></label>
-                </div>
-                <div>
-                    <label>District</label>
-                    <input id="billing-info__district" type="text" placeholder="District" class="form-group">
-                    <label class="error" for="billing-info__district"></label>
-                </div>
-                <div>
-                    <label>City</label>
-                    <input id="billing-info__city" type="text" placeholder="City" class="form-group">
-                    <label class="error" for="billing-info__city"></label>
-                </div>
-            </div>
-
-            <!-- <label for="paymentMethod">Payment Method</label>
-                    <div style="overflow: hidden;">
-                        <select id="paymentMethod" required>
-                            <option value="creditCard">Credit Card</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="bankTransfer">Bank Transfer</option>
-                        </select>
-                    </div> -->
-
-            <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
-        </div>
-        <div class="payment-info">
-            <div class="payment-info__container">
-                <!-- <div class="payment-info__item">
-                            <img src="https://via.placeholder.com/50" alt="Item Image">
-                            <div class="quantity-circle">1</div>
-                            <div class="payment-info__item-details">
-                                <p>LORE OLYMPUS - GODDESS OF SPRING SATIN SHORTS</p>
-                            </div>
-                            <div class="payment-info__item-price">$40.00</div>
-                        </div> -->
-            </div>
-            <div class="payment-info__summary">
-                <!-- <div class="subtotal">
-                        <span>Subtotal • 4 items</span>
-                        <span>$149.99</span>
-                    </div>
-                    <div class="total">
-                        <span>Total</span>
-                        <span class="order-price">$149.99 USD</span>
-                    </div> -->
-            </div>
-        </div>
-    </section>
-
-    <section id="user-info" class="layer user-info" style="display: none">
-        <div class="user-info__navbar">
-            <div></div>
-            <div style="display: flex; gap: 60px">
-                <div class="user__order" id="order__history" onclick="toggleUserInfo(this)">Orders</div>
-                <div class="user__info" id="user-info__container" onclick="toggleUserInfo(this)">User Info</div>
-            </div>
-            <div class="logout__user" onclick="logoutUser()">Logout</div>
-        </div>
-        <!--
-            TODO: lấy dữ liệu từ user gắn vào input
-            nút save để lưu thông tin cho user
-        -->
-        <div class="user-info__container">
-            <div class="modal">
-                <h2>Edit user info</h2>
-                <p>Please fill in the information below:</p>
-
-                <div id="edit-user__form" class="edit-user__form">
-                    <div class="user-info__input">
-                        <label>Full Name</label>
-                        <input id="user-info__fullName" class="form-group" type="text" placeholder="Full name"
-                               value="">
-                        <label class="error" for="user-info__fullName"></label>
-                    </div>
-                    <div class="user-info__input">
-                        <label>Phone Number</label>
-                        <input id="user-info__phoneNumber" class="form-group" type="text"
-                               placeholder="Phone number">
-                        <label class="error" for="user-info__phoneNumber"></label>
-                    </div>
-                    <div class="user-info__input">
+                <div id="newAddress">
+                    <div class="billing-info__input">
                         <label>House Number</label>
-                        <input id="user-info__houseNumber" class="form-group" type="text"
-                               placeholder="House Number">
-                        <label class="error" for="user-info__houseNumber"></label>
+                        <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
+                        <label class="error" for="billing-info__houseNumber" class="form-group"></label>
                     </div>
-                    <div class="user-info__input">
-                        <label>Street</label>
-                        <input id="user-info__street" class="form-group" type="text" placeholder="Đường">
-                        <label class="error" for="user-info__street"></label>
+                    <div class="billing-info__input">
+                        <label>House Number</label>
+                        <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
+                        <label class="error" for="billing-info__street"></label>
                     </div>
-                    <div class="user-info__input">
+                    <div>
                         <label>Ward</label>
-                        <input id="user-info__ward" class="form-group" type="text" placeholder="Phường">
-                        <label class="error" for="user-info__ward"></label>
+                        <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
+                        <label class="error" for="billing-info__ward"></label>
                     </div>
-                    <div class="user-info__input">
+                    <div>
                         <label>District</label>
-                        <input id="user-info__district" class="form-group" type="text" placeholder="Quận">
-                        <label class="error" for="user-info__district"></label>
+                        <input id="billing-info__district" type="text" placeholder="District" class="form-group">
+                        <label class="error" for="billing-info__district"></label>
                     </div>
-                    <div class="user-info__input">
-                        <label for="">City</label>
-                        <input id="user-info__city" class="form-group" type="text" placeholder="Thành phố">
-                        <label class="error" for="user-info__city"></label>
-                    </div>
-                    <button type="button" class="button user-info__save" id="user-info__save"
-                            onclick="User.editUserInfo()">Save user info
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="order__history" style="display: none;">
-            <h2>Your Order History</h2>
-            <div class="order" style="max-height: 310px; overflow: auto;">
-                <!-- <div style="display: flex;">
-                <div>
-                    <div class="order__id">Order ID: #12345</div>
-                    <div class="order__date">Date: 2023-11-01</div>
-                    <div class="order__status status--cancel">Status: Pending</div>
-                    <span class="show__details" onclick="toggleDetails(this)">View Details</span>
-                </div>
-                <div style="margin-left: 100px;">
-                    <div class="order__items__details">
-                        <strong>Items:</strong>
-                        <ul>
-                            <li>Comic: "Adventure Tales" - $10.00</li>
-                            <li>Comic: "Mystery World" - $8.00</li>
-                            <li>Comic: "Adventure Tales" - $10.00</li>
-                            <li>Comic: "Mystery World" - $8.00</li>
-                            <li>Comic: "Adventure Tales" - $10.00</li>
-                            <li>Comic: "Mystery World" - $8.00</li>
-                        </ul>
+                    <div>
+                        <label>City</label>
+                        <input id="billing-info__city" type="text" placeholder="City" class="form-group">
+                        <label class="error" for="billing-info__city"></label>
                     </div>
                 </div>
-            </div> -->
+
+                <!-- <label for="paymentMethod">Payment Method</label>
+                        <div style="overflow: hidden;">
+                            <select id="paymentMethod" required>
+                                <option value="creditCard">Credit Card</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bankTransfer">Bank Transfer</option>
+                            </select>
+                        </div> -->
+
+                <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
             </div>
-        </div>
-    </section>
+            <div class="payment-info">
+                <div class="payment-info__container">
+                    <!-- <div class="payment-info__item">
+                                <img src="https://via.placeholder.com/50" alt="Item Image">
+                                <div class="quantity-circle">1</div>
+                                <div class="payment-info__item-details">
+                                    <p>LORE OLYMPUS - GODDESS OF SPRING SATIN SHORTS</p>
+                                </div>
+                                <div class="payment-info__item-price">$40.00</div>
+                            </div> -->
+                </div>
+                <div class="payment-info__summary">
+                    <!-- <div class="subtotal">
+                            <span>Subtotal • 4 items</span>
+                            <span>$149.99</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span class="order-price">$149.99 USD</span>
+                        </div> -->
+                </div>
+            </div>
+        </section>
 
-    <section id="login__page">
-        <div id="login">
-            <h1>Login</h1>
+        <section id="user-info" class="layer user-info" style="display: none">
+            <div class="user-info__navbar">
+                <div></div>
+                <div style="display: flex; gap: 60px">
+                    <div class="user__order" id="order__history" onclick="toggleUserInfo(this)">Orders</div>
+                    <div class="user__info" id="user-info__container" onclick="toggleUserInfo(this)">User Info</div>
+                </div>
+                <div class="logout__user" onclick="logoutUser()">Logout</div>
+            </div>
+            <!--
+                TODO: lấy dữ liệu từ user gắn vào input
+                nút save để lưu thông tin cho user
+            -->
+            <div class="user-info__container">
+                <div class="modal">
+                    <h2>Edit user info</h2>
+                    <p>Please fill in the information below:</p>
 
-            <div class="login__input">
-                <input type="text" id="login__input--username" placeholder="Username" required value="">
+                    <div id="edit-user__form" class="edit-user__form">
+                        <div class="user-info__input">
+                            <label>Full Name</label>
+                            <input id="user-info__fullName" class="form-group" type="text" placeholder="Full name"
+                                   value="">
+                            <label class="error" for="user-info__fullName"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>Phone Number</label>
+                            <input id="user-info__phoneNumber" class="form-group" type="text"
+                                   placeholder="Phone number">
+                            <label class="error" for="user-info__phoneNumber"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>House Number</label>
+                            <input id="user-info__houseNumber" class="form-group" type="text"
+                                   placeholder="House Number">
+                            <label class="error" for="user-info__houseNumber"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>Street</label>
+                            <input id="user-info__street" class="form-group" type="text" placeholder="Đường">
+                            <label class="error" for="user-info__street"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>Ward</label>
+                            <input id="user-info__ward" class="form-group" type="text" placeholder="Phường">
+                            <label class="error" for="user-info__ward"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label>District</label>
+                            <input id="user-info__district" class="form-group" type="text" placeholder="Quận">
+                            <label class="error" for="user-info__district"></label>
+                        </div>
+                        <div class="user-info__input">
+                            <label for="">City</label>
+                            <input id="user-info__city" class="form-group" type="text" placeholder="Thành phố">
+                            <label class="error" for="user-info__city"></label>
+                        </div>
+                        <button type="button" class="button user-info__save" id="user-info__save"
+                                onclick="User.editUserInfo()">Save user info</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="login__input">
-                <input type="password" id="login__input--password" placeholder="Password" required value="">
-                <label for="login__input--password"></label>
+            <div class="order__history" style="display: none;">
+                <h2>Your Order History</h2>
+                <div class="order" style="max-height: 310px; overflow: auto;">
+                    <!-- <div style="display: flex;">
+                    <div>
+                        <div class="order__id">Order ID: #12345</div>
+                        <div class="order__date">Date: 2023-11-01</div>
+                        <div class="order__status status--cancel">Status: Pending</div>
+                        <span class="show__details" onclick="toggleDetails(this)">View Details</span>
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <div class="order__items__details">
+                            <strong>Items:</strong>
+                            <ul>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                                <li>Comic: "Adventure Tales" - $10.00</li>
+                                <li>Comic: "Mystery World" - $8.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+                </div>
             </div>
+        </section>
 
-            <div id="login__forget">
-                <a>Forget your password?</a>
+        <section id="login__page">
+            <div id="login">
+                <h1>Login</h1>
+
+                <div class="login__input">
+                    <input type="text" id="login__input--username" placeholder="Username" required value="">
+                </div>
+
+                <div class="login__input">
+                    <input type="password" id="login__input--password" placeholder="Password" required value="">
+                    <label for="login__input--password"></label>
+                </div>
+
+                <div id="login__forget">
+                    <a>Forget your password?</a>
+                </div>
+
+                <button type="submit" id="login__btn">Login</button>
+
+                <div id="login__signup">
+                    <a href="#" id="login__signup--nav">Sign Up</a>
+                </div>
             </div>
+        </section>
 
-            <button type="submit" id="login__btn">Login</button>
+        <section id="signup__page">
+            <div id="signup">
+                <h1>Sign Up</h1>
+                <!--   Username   -->
+                <div class="signup__input">
+                    <input type="text" id="signup__input--username" placeholder="Username" required value="">
+                    <label for="signup__input--username"></label>
+                </div>
+                <!--   Password   -->
+                <div class="signup__input">
+                    <input type="password" id="signup__input--password" placeholder="Password" required>
+                    <label for="signup__input--password"></label>
+                </div>
+                <!--   Confirm Password   -->
+                <div class="signup__input">
+                    <input type="password" id="signup__input--confpasword" placeholder="Confirm Password" required>
+                    <label for="signup__input--confpasword"></label>
+                </div>
+                <!--   Email   -->
+                <div class="signup__input">
+                    <input type="email" id="signup__input--email" placeholder="Email" required>
+                    <label for="signup__input--email"></label>
+                </div>
+                <!--   Phone number   -->
+                <div class="signup__input">
+                    <input type="tel" id="signup__input--phone" placeholder="Phone Number" required>
+                    <label for="signup__input--phone"></label>
+                </div>
 
-            <div id="login__signup">
-                <a href="#" id="login__signup--nav">Sign Up</a>
+                <button type="submit" id="signup__btn">Create account</button>
+
+                <div id="signup__login">
+                    <a href="#" id="signup__login--nav">Already has account?</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="signup__page">
-        <div id="signup">
-            <h1>Sign Up</h1>
-            <!--   Username   -->
-            <div class="signup__input">
-                <input type="text" id="signup__input--username" placeholder="Username" required value="">
-                <label for="signup__input--username"></label>
-            </div>
-            <!--   Password   -->
-            <div class="signup__input">
-                <input type="password" id="signup__input--password" placeholder="Password" required>
-                <label for="signup__input--password"></label>
-            </div>
-            <!--   Confirm Password   -->
-            <div class="signup__input">
-                <input type="password" id="signup__input--confpasword" placeholder="Confirm Password" required>
-                <label for="signup__input--confpasword"></label>
-            </div>
-            <!--   Email   -->
-            <div class="signup__input">
-                <input type="email" id="signup__input--email" placeholder="Email" required>
-                <label for="signup__input--email"></label>
-            </div>
-            <!--   Phone number   -->
-            <div class="signup__input">
-                <input type="tel" id="signup__input--phone" placeholder="Phone Number" required>
-                <label for="signup__input--phone"></label>
-            </div>
-
-            <button type="submit" id="signup__btn">Create account</button>
-
-            <div id="signup__login">
-                <a href="#" id="signup__login--nav">Already has account?</a>
-            </div>
-        </div>
-    </section>
-
-    <div id="notification"></div>
-
-</main>
+            <div id="notification"></div>
+            
+    </main>
 
 
-<special-footer id="special-footer"></special-footer>
+    <special-footer id="special-footer"></special-footer>
 
-<!-- js -->
-<script src="../js/validation.js"></script>
-<script src="../js/user.js"></script>
-<script src="../js/main.js"></script>
-<script src="../js/header_footer.js"></script>
-<script src="../js/product.js"></script>
-<script src="../js/viewController.js"></script>
-<script src="../js/purchase.js"></script>
-<script src="../js/helper.js"></script>
+    <!-- js -->
+    <script src="../js/validation.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/main_phusomnia.js"></script>
+    <script src="../js/header_footer.js"></script>
+    <script src="../js/product.js"></script>
+    <script src="../js/viewController.js"></script>
+    <script src="../js/purchase.js"></script>
+    <script src="../js/helper.js"></script>
 <!--    <script>-->
 <!--        const URLOfIndex = window.location.href-->
 <!--        const URLToAdmin = URLOfIndex.split("html")-->
@@ -460,8 +445,8 @@
 <!--            window.location.href = `${URLToAdmin[0]}/html/admin.html`-->
 <!--        }-->
 <!--    </script>-->
-<!-- <script src="../js/product.js"></script> -->
-<!-- <script src="../js/renderView.js"></script> -->
+    <!-- <script src="../js/product.js"></script> -->
+    <!-- <script src="../js/renderView.js"></script> -->
 </body>
 
 </html>

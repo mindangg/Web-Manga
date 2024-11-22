@@ -1,6 +1,8 @@
 class Validation {
     constructor() { }
-
+    // ==================================================================================
+    // General Validation
+    // ==================================================================================
     static isBlank(value) {
         try {
             return value === null || value === undefined || value === ''
@@ -10,6 +12,14 @@ class Validation {
         return false;
     }
 
+    static IsNumber(value) {
+        if (value === '') return false;
+        const parsed = Number(value);
+        return !isNaN(parsed);
+    }
+    // ==================================================================================
+    // Validation for Username, Password, Email, Phone Number
+    // ==================================================================================
     static usernameIsValid(username) {
         const usernameRegex = /^[a-zA-Z0-9]{1,}$/;
         try {
@@ -76,4 +86,5 @@ class Validation {
         let users = JSON.parse(localStorage.getItem("users"));
         return users.some(user => user.username === username.value);
     }
+    // ==================================================================================
 }
