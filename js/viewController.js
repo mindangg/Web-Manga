@@ -265,7 +265,6 @@ document.addEventListener('DOMContentLoaded',() => {
     if (localStorage.getItem('admin') === 'admin') {
         window.location.href = `${URLToAdmin[0]}/html/admin.html`
     }
-
     // load các local storage của product, user
     Product.onload();
     User.onload();
