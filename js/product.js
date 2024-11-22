@@ -55,7 +55,7 @@ const productSliderPriceMin = document.querySelector(".min");
 const sortIdProduct = document.querySelector(".product-table__cell--id");
 
 // Product table
-var productTable = JSON.parse(localStorage.getItem('productTable')) || [
+let productTable = JSON.parse(localStorage.getItem('productTable')) || [
     {
         productId: "manga_0",
         series: "Sakamoto Days",
@@ -617,6 +617,7 @@ var productTable = JSON.parse(localStorage.getItem('productTable')) || [
             " Innocent Zero has exceeded the limits of human existence and become a god! Humanity has no choice but to bow down before his awe-inspiring divinity. Except for Mash, whose muscles have unlocked an unimaginable power to give Innocent Zero a flick to the forehead he won’t soon forget!"
     },
 ]
+
 // ========================================================================
 // PRODUCT TABLE
 // ========================================================================
