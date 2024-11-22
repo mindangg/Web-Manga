@@ -476,20 +476,20 @@
         return formattedDate;
     }
 
-    const orderTableContainer = document.getElementById('order-table__body-content');
+    // const orderTableContainer = document.getElementById('order-table__body-content');
 
     // Search order
     const orderSearchDate = document.getElementById('order-table__search-input--date');
     println(formatDate(orderSearchDate.value));
 </script>
 <script>
-    (() => {
-        Product.onload()
+    document.addEventListener('DOMContentLoaded', () => {
+        // Product.onload()
         Product.onloadFilterViewAdmin();
         if (orderTable.length > 0) {
             Order.renderOrderAdmin(orderTable);
         }
-    })()
+    })
 </script>
 
 </html>

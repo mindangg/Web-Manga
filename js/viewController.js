@@ -1,14 +1,12 @@
 // phusomnia
 let productCurrentHomePage = 1;
 let productPerHomePage = 9;
-let prduct
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
 // render sản phẩm ở end-user
 // ==================================================================================
 function renderViewIndex(renderProduct) {
-
     productContainer.innerHTML = ""
 
     let start = (productCurrentHomePage - 1) * productPerHomePage;
@@ -105,33 +103,37 @@ function showProductInfo(e) {
     let p = findProductById
     productInfo.innerHTML = `
         <div class="product">
-            <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-            <div class="product__img">
-                <img id="product__img1" src="${p.cover1}">
-                <img id="product__img2" src="${p.cover2}">
+                    <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="${p.cover1}">
+                        <img id="product__img2" src="${p.cover2}">
 
-                <a id="product__view1" onclick="changeProductView(this)"><img src="${p.cover1}"></a>
-                <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
-            </div>
+                        <a id="product__view1" onclick="changeProductView(this)"><img src="${p.cover1}"></a>
+                        <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
+                    </div>
 
-            <div class="product__info">
-                <h1>${p.series}</h1>
-                <div class="product__info--rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                    <div class="product__info">
+                        <h1>${p.name}</h1>
+                        <div class="product__info--rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Author:</p>
+                        <h2>${p.author}</h2>
+                        <p>${p.category}</p>
+                        <p>Quantity: </p>
+
+                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+                        <button id="product__add">Add to cart</button>
+
+                        <p>Availability: ${p.stock}</p><br>
+                        <h4>Description</h4>
+                        <p>${p.description}</p><br>
+                    </div>
                 </div>
-                <p>Author:</p>
-                <h2>${p.author}</h2>
-                <p>${p.category}</p>
-                <p>Stock: ${p.stock}</p>
-                <h4>Description</h4>
-                <p>${p.description}</p><br>
-                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-        </div>
     `
 }
 // close product detail
