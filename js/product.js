@@ -54,6 +54,7 @@ const productSearchPriceMin = document.getElementById("product-table__search-pri
 const productSliderPriceMin = document.querySelector(".min");
 const sortIdProduct = document.querySelector(".product-table__cell--id");
 
+// Product table
 var productTable = JSON.parse(localStorage.getItem('productTable')) || [
     {
         productId: "manga_0",
@@ -616,9 +617,11 @@ var productTable = JSON.parse(localStorage.getItem('productTable')) || [
             " Innocent Zero has exceeded the limits of human existence and become a god! Humanity has no choice but to bow down before his awe-inspiring divinity. Except for Mash, whose muscles have unlocked an unimaginable power to give Innocent Zero a flick to the forehead he won’t soon forget!"
     },
 ]
-
+// ========================================================================
+// PRODUCT TABLE
+// ========================================================================
 class Product {
-    constructor(productId, cover1, cover2, series, category, author, stock, price, description, name) {
+    constructor(productId, cover1, cover2, series, category, author, stock, price, description) {
         this.productId = productId;
         this.cover1 = cover1;
         this.cover2 = cover2;
@@ -627,14 +630,59 @@ class Product {
         this.author = author;
         this.stock = stock;
         this.price = price;
-        this.name = name;
-        this.description = description;
+        this.description = description
+    }
+    //
+    // VALIDATION OF PRODUCT
+    //
+    static checkIsBlank() {
+        let isBlank = false
+        const productInput = productMenuBody.querySelectorAll("input, select");
+        for (const product of productInput) {
+            if (product.value === "" && product.type !== "file") {
+                product.labels[0].innerText = "This field cannot be empty"
+                isBlank = true
+            } else {
+                product.labels[0].innerText = ""
+            }
+        }
+        return isBlank
+    }
+    static checkStock() {
+        let isNumber = true
+        if (productInputStock.value === "") {
+            productInputStock.labels[0].innerText = "This field cannot be empty"
+            isNumber = false
+        } else {
+            if (!Validation.IsNumber(productInputStock.value)) {
+                productInputStock.labels[0].innerText = "Stock must be a number"
+                isNumber = false
+            } else {
+                productInputStock.labels[0].innerText = ""
+            }
+        }
+        return isNumber
+    }
+    static checkPrice() {
+        let isNumber = true
+        if (productInputPrice.value === "") {
+            productInputPrice.labels[0].innerText = "This field cannot be empty"
+            isNumber = false
+        } else {
+            if (!Validation.IsNumber(productInputPrice.value)) {
+                productInputPrice.labels[0].innerText = "Price must be a number"
+                isNumber = false
+            } else {
+                productInputPrice.labels[0].innerText = ""
+            }
+        }
+        return isNumber
     }
     // ========================================================================
     // INSERT
     // ========================================================================
     // dung de insert san pham
-    static insert(productId, cover1, cover2, series, category, author, stock, price, description, name) {
+    static insert(productId, cover1, cover2, series, category, author, stock, price, description) {
         console.log("Inserting product...");
         const newProduct = new Product(
             productId,
@@ -645,8 +693,7 @@ class Product {
             author,
             stock,
             price,
-            description,
-            name
+            description
         );
         productTable.push(newProduct);
     }
@@ -667,30 +714,36 @@ class Product {
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
+        // function checkValidation() {
+        //     return Product.checkIsBlank() || !Product.checkStock() || !Product.checkPrice()
+        // }
+
+        // if (checkValidation()) {
+        //     return
+        // }
         console.log("Adding product...");
+        const lowerStr = Helper.lowerStr(productInputSeries.value)
+        const cover1 = `../img/${lowerStr}/${productInputCover1.value.split("\\")[2]}`
+        const cover2 = `../img/${lowerStr}/${productInputCover2.value.split("\\")[2]}`
+
         Product.insert(
             `manga_${Product.generateId(productTable)}`,
-            `../img/banner/${productInputCover1.value.split("\\")[2]}`,
-            `../img/banner/${productInputCover2.value.split("\\")[2]}`,
+            `../img/${lowerStr}/${cover1}`,
+            `../img/${lowerStr}/${cover2}`,
             productInputSeries.value,
             productInputCategory.value,
             productInputAuthor.value,
             productInputStock.value,
             parseFloat(productInputPrice.value),
             productInputDescription.value
-        );
+        )
 
         localStorage.setItem("productTable", JSON.stringify(productTable));
-        console.log("* Insert product to table: ", productTable);
-        console.log(
-            "* Insert product from table to local storage: ",
-            JSON.parse(localStorage.getItem("product table"))
-        );
-
-        let renderProduct = JSON.parse(
+        productTable = JSON.parse(
             localStorage.getItem("productTable")
         );
-        Product.render(renderProduct);
+
+        Product.render(productTable);
     }
     // ========================================================================
     // RENDER 
@@ -710,11 +763,7 @@ class Product {
         // render theo so luong ma mot page co the chua duoc
         // neu san pham co hon 5 gia tri thi render theo trang hien tai
         // tranh loi khi xoa san pham khoi bang
-        if (renderProduct.length > 5) {
-            start = (productCurrentPage - 1) * productPerPage;
-        } else {
-            start = (1 - 1) * productPerPage;
-        }
+        start = (productCurrentPage - 1) * productPerPage;
         end = start + productPerPage;
         productList = renderProduct.slice(start, end);
 
@@ -781,15 +830,14 @@ class Product {
                 id="button__next-pagi"> >> </button>
             `;
             const inputPagi = document.getElementById("input-product__pagi");
-            inputPagi.value = productIndex;
+            inputPagi.value = productCurrentPage;
 
             document
                 .getElementById("button__product__prev-pagi")
                 .addEventListener("click", () => {
                     console.log("Go to previous page");
-                    if (productIndex > 1) {
-                        productIndex--;
-                        productCurrentPage = productIndex;
+                    if (productCurrentPage > 1) {
+                        productCurrentPage--;
                         Product.render(renderProduct);
                     } else {
                         console.error("Error");
@@ -800,9 +848,8 @@ class Product {
                 .getElementById("button__next-pagi")
                 .addEventListener("click", () => {
                     console.log("Go to next page");
-                    if (productIndex < productTotalPages) {
-                        productIndex++;
-                        productCurrentPage = productIndex;
+                    if (productCurrentPage < productTotalPages) {
+                        productCurrentPage++;
                         Product.render(renderProduct);
                     } else {
                         console.error("Error");
@@ -850,7 +897,7 @@ class Product {
         queryProductInput.forEach((productInput) => {
             const metadata = productInput.id.split("--")[1];
             if (productInput.type === "file") {
-                productTable[currentEditIndex][metadata] = `../img/banner/${productInput.value.split("\\")[2]
+                productTable[currentEditIndex][metadata] = `../img/books/${productInput.value.split("\\")[2]
                     }`;
             } else {
                 productTable[currentEditIndex][metadata] = productInput.value;
@@ -884,13 +931,24 @@ class Product {
 
         const deleteProductRow = e.parentElement.parentElement;
 
+        const start = (productCurrentPage - 1) * productPerPage
+        const end = start + productPerPage
+
+        const currentPage = productTable.slice(start, end)
+
+        if (currentPage.length === 1) {
+            productCurrentPage = productCurrentPage - 1
+        }
+
         productTable = productTable.filter((p) => p.productId !== deleteProductRow.id)
-        console.log(productTable)
 
         localStorage.setItem("productTable", JSON.stringify(productTable));
-        productTable = JSON.parse(localStorage.getItem("productTable"));
-        console.log(productTable)
+        productTable = JSON.parse(
+            localStorage.getItem("productTable")
+        );
+
         Product.render(productTable);
+        Product.applyFilters()
 
         console.log("Delete product from table succesfully ✓");
 
@@ -969,6 +1027,7 @@ class Product {
 
         Product.render(filteredProduct);
     }
+
     // Chua tim ra phuong phap de sort ma khong anh huong den product table
     // static applySort() {
     //     renderProductTable = JSON.parse(localStorage.getItem("renderProductTable"));
@@ -990,7 +1049,7 @@ class Product {
     // ONLOAD PRODUCT
     // ==================================================================================
     // load san pham khi trang reload
-    static onloadFilterViewAdmin() {
+    static onloadFilterProduct() {
         Product.render(productTable);
         Product.search();
         document.addEventListener("DOMContentLoaded", () => {
