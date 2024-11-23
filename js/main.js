@@ -24,9 +24,7 @@ prev.onclick = function () {
     ReloadSlider();
 }
 
-let refreshSlider = setInterval(() => {
-    next.click()
-}, 5000);
+let refreshSlider = setInterval(() => { next.click() }, 5000);
 
 function ReloadSlider() {
     let checkLeft = items[active].offsetLeft;
@@ -36,9 +34,7 @@ function ReloadSlider() {
     lastActiveDot.classList.remove("active");
     dots[active].classList.add("active");
     clearInterval(refreshSlider);
-    refreshSlider = setInterval(() => {
-        next.click()
-    }, 5000);
+    refreshSlider = setInterval(() => { next.click() }, 5000);
 }
 
 dots.forEach((li, key) => {
@@ -49,7 +45,7 @@ dots.forEach((li, key) => {
 })
 
 //product
-let productArray = JSON.parse(localStorage.getItem('product')) || [
+var productArray = JSON.parse(localStorage.getItem('product')) || [
     {
         productId: "manga_0",
         series: "Sakamoto Days",
@@ -1142,7 +1138,7 @@ function showSlider(){
             </a>
             <h4>${productArray[i].name}</h4>
             <p>$${productArray[i].price}</p>
-            <button id="${productArray[i].id}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
         </div>
         `
 
@@ -1154,7 +1150,7 @@ function showSlider(){
             </a>
             <h4>${productArray[i + 1].name}</h4>
             <p>$${productArray[i + 1].price}</p>
-            <button id="${productArray[i+1].id}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            <button id="${productArray[i+1].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
         </div>
         `
     }
@@ -1303,22 +1299,6 @@ function book_RemoveSlider() {
     book_dots[book_active + 1].classList.remove("book__active");
 }
 
-const URLOfWebpage = new URL(window.location)
-const URLOfIndex = window.location.href
-const URLToAdmin = URLOfIndex.split("html")
-const layerOfView = document.querySelectorAll('.layer')
-const page = URLOfWebpage.searchParams.get('page')
-const home = "index.html"
-
-function setURLForPage(page) {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (page === "home") {
-        window.history.replaceState({}, '', home);
-    } else {
-        urlParams.set('page', page);
-        window.history.replaceState({}, '', '?' + urlParams.toString());
-    }
-}
 
 
 
