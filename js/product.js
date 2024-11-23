@@ -1,10 +1,3 @@
-class Validation {
-    static IsNumber(value) {
-        if (value === '') return false;
-        const parsed = Number(value);
-        return !isNaN(parsed);
-    }
-}
 // =======================================================================
 // $$$$$$$\                            $$\                       $$\
 // $$  __$$\                           $$ |                      $$ |
@@ -138,7 +131,7 @@ class Product {
         }
         return isBlank
     }
-    static checkStock() {
+    static checkIsStock() {
         let isNumber = true
         if (productInputStock.value === "") {
             productInputStock.labels[0].innerText = "This field cannot be empty"
@@ -153,7 +146,7 @@ class Product {
         }
         return isNumber
     }
-    static checkPrice() {
+    static checkIsPrice() {
         let isNumber = true
         if (productInputPrice.value === "") {
             productInputPrice.labels[0].innerText = "This field cannot be empty"
@@ -167,6 +160,25 @@ class Product {
             }
         }
         return isNumber
+    }
+    static checkIsImg() {
+        let isImage = true
+        const file1 = productInputCover1.files[0];
+        const file2 = productInputCover2.files[0];
+        console.log(file1)
+
+        if (!file1 || !file2) {
+            alert("Please select both images.")
+            return isImage = false
+        }
+
+        if (file1.type.startsWith("image/") && file2.type.startsWith("image/")) {
+            console.log("Both files are images.")
+            return isImage
+        } else {
+            alert("Files must be images.")
+            return isImage = false
+        }
     }
     // ========================================================================
     // INSERT
@@ -204,36 +216,37 @@ class Product {
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
-        // function checkValidation() {
-        //     return Product.checkIsBlank() || !Product.checkStock() || !Product.checkPrice()
-        // }
+        if (!Product.checkIsBlank()) {
+            if (Product.checkIsImg() && Product.checkIsStock() && Product.checkIsPrice()) {
+                add()
+            }
+        }
 
-        // if (checkValidation()) {
-        //     return
-        // }
-        console.log("Adding product...");
-        const lowerStr = Helper.lowerStr(productInputSeries.value)
-        const cover1 = `../img/${lowerStr}/${productInputCover1.value.split("\\")[2]}`
-        const cover2 = `../img/${lowerStr}/${productInputCover2.value.split("\\")[2]}`
+        function add() {
+            console.log("Adding product...");
+            const lowerStr = Helper.lowerStr(productInputSeries.value)
+            const cover1 = productInputCover1.value.split("\\")[2]
+            const cover2 = productInputCover2.value.split("\\")[2]
 
-        Product.insert(
-            `manga_${Product.generateId(productTable)}`,
-            `../img/${lowerStr}/${cover1}`,
-            `../img/${lowerStr}/${cover2}`,
-            productInputSeries.value,
-            productInputCategory.value,
-            productInputAuthor.value,
-            productInputStock.value,
-            parseFloat(productInputPrice.value),
-            productInputDescription.value
-        )
+            Product.insert(
+                `manga_${Product.generateId(productTable)}`,
+                `../img/books/${lowerStr}/${cover1}`,
+                `../img/books/${lowerStr}/${cover2}`,
+                productInputSeries.value,
+                productInputCategory.value,
+                productInputAuthor.value,
+                productInputStock.value,
+                parseFloat(productInputPrice.value),
+                productInputDescription.value
+            )
 
-        localStorage.setItem("productTable", JSON.stringify(productTable));
-        productTable = JSON.parse(
-            localStorage.getItem("productTable")
-        );
+            localStorage.setItem("productTable", JSON.stringify(productTable));
+            productTable = JSON.parse(
+                localStorage.getItem("productTable")
+            );
 
-        Product.render(productTable);
+            Product.render(productTable);
+        }
     }
     // ========================================================================
     // RENDER 
