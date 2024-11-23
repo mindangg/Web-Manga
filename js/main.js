@@ -24,7 +24,9 @@ prev.onclick = function () {
     ReloadSlider();
 }
 
-let refreshSlider = setInterval(() => { next.click() }, 5000);
+let refreshSlider = setInterval(() => {
+    next.click()
+}, 5000);
 
 function ReloadSlider() {
     let checkLeft = items[active].offsetLeft;
@@ -34,7 +36,9 @@ function ReloadSlider() {
     lastActiveDot.classList.remove("active");
     dots[active].classList.add("active");
     clearInterval(refreshSlider);
-    refreshSlider = setInterval(() => { next.click() }, 5000);
+    refreshSlider = setInterval(() => {
+        next.click()
+    }, 5000);
 }
 
 dots.forEach((li, key) => {
@@ -1299,6 +1303,22 @@ function book_RemoveSlider() {
     book_dots[book_active + 1].classList.remove("book__active");
 }
 
+const URLOfWebpage = new URL(window.location)
+const URLOfIndex = window.location.href
+const URLToAdmin = URLOfIndex.split("html")
+const layerOfView = document.querySelectorAll('.layer')
+const page = URLOfWebpage.searchParams.get('page')
+const home = "index.html"
+
+function setURLForPage(page) {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (page === "home") {
+        window.history.replaceState({}, '', home);
+    } else {
+        urlParams.set('page', page);
+        window.history.replaceState({}, '', '?' + urlParams.toString());
+    }
+}
 
 
 

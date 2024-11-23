@@ -244,9 +244,26 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         },
         status: true,
     },
+    {
+        userId: "user_13",
+        username: "1",
+        password: "1",
+        email: "3123410016@gmail.com",
+        phoneNumber: "0289381533",
+        createDate: '17/11/2024',
+        fullName: "Quagmire",
+        address: {
+            houseNumber: '220',
+            street: 'Tran Binh Trong',
+            ward: '4',
+            district: '5',
+            city: 'TP.HCM'
+        },
+        status: true,
+    },
 ];
 
-let account = null;
+let account = JSON.parse(localStorage.getItem('accountLogin')) || null;
 
 //FOR SIGN UP
 const signup = document.getElementById('signup');
@@ -267,7 +284,7 @@ const forget = document.getElementById('login__forget');
 const submitLogin = document.getElementById('login__btn');
 
 // FOR EDIT USER
-const userInfo = document.getElementById("user-info")
+const userInfo = document.getElementById("user-info");
 const userFullname = document.getElementById("user-info__fullName")
 const userphoneNumber = document.getElementById("user-info__phoneNumber")
 const userHouseNumber = document.getElementById("user-info__houseNumber")
@@ -384,25 +401,18 @@ submitLogin.addEventListener('click', (event) => {
             return true;
         } else {
             // phusomnia
-            localStorage.setItem('accountLogin', JSON.stringify(account.userId));
+            localStorage.setItem('accountLogin', JSON.stringify(account));
             //
             passwordLogin.labels[0].innerText = '';
             passwordLogin.labels[0].style.display = 'none';
             clearField(login);
             showNotification('Welcome, ' + account.username);
-            // document.getElementsByClassName('navbar__home')[0]
-            //     .querySelectorAll('div')[1]
-            //     .innerText = `${account.username}`;
-            // document.getElementsByClassName('navbar__bar')[0]
-            //     .querySelectorAll('div')[1]
-            //     .innerText = `${account.username}`;
             document.getElementById("login__page").style.display = "none";
             document.getElementById("main__page").style.display = "inline";
-            document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
+
             // phusomnia
             User.renderAccountLogin();
-            // viewHome(); BUG
+            viewHome();
         }
     }
 })
@@ -522,53 +532,65 @@ class User {
             console.log('Get users');
         }
     }
-
+    // ==================================================================================
+    // RENDER USER-INFO
+    // ==================================================================================
     static renderUserInfo() {
-        if (localStorage.getItem('accountLogin')) {
-            let accountLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')))
-            clearField(userInfo)
-            userFullname.value = accountLoginInfo.fullName;
-            userphoneNumber.value = accountLoginInfo.phoneNumber;
-            userHouseNumber.value = accountLoginInfo.address.houseNumber;
-            userStreet.value = accountLoginInfo.address.street;
-            userWard.value = accountLoginInfo.address.ward;
-            userDistrict.value = accountLoginInfo.address.district;
-            userCity.value = accountLoginInfo.address.city;
+        if (account) {
+            clearField(userInfo);
+            userFullname.value = account.fullName;
+            userphoneNumber.value = account.phoneNumber;
+            userHouseNumber.value = account.address.houseNumber;
+            userStreet.value = account.address.street;
+            userWard.value = account.address.ward;
+            userDistrict.value = account.address.district;
+            userCity.value = account.address.city;
         }
     }
-
+    // ==================================================================================
+    // EDIT USER-INFO
+    // ==================================================================================
     static editUserInfo() {
+        let users = JSON.parse(localStorage.getItem('users'));
         if (!Validation.checkBlankField(userInfo)) {
-            const currentEditUserIndex = userList.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')))
+            const currentEditUserIndex = users.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')).userId)
             const queryUserInfoInput = document.querySelector(".edit-user__form").querySelectorAll("input");
             for (const userInfoInput of queryUserInfoInput) {
                 const metadata = userInfoInput.id.split("__")[1];
                 if (metadata === "fullName" || metadata === "phoneNumber") {
-                    userList[currentEditUserIndex][metadata] = userInfoInput.value;
+                    users[currentEditUserIndex][metadata] = userInfoInput.value;
                 } else {
-                    userList[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
+                    users[currentEditUserIndex]["address"][metadata] = userInfoInput.value;
                 }
             }
-
-            localStorage.setItem('users', JSON.stringify(userList));
-            alert("Updated information successfully");
+            account = users[currentEditUserIndex];
+            localStorage.setItem('accountLogin', JSON.stringify(account));
+            this.renderUserInfo();
+            localStorage.setItem('users', JSON.stringify(users));
+            alert("Thông tin tài khoản cập nhật thành công");
         }
     }
     // 
     static renderAccountLogin() {
-        if (localStorage.getItem('accountLogin')) {
-            // document.getElementById('login__icon').removeEventListener('click', toLoginPage);
-            // document.getElementById('login__icon__responsive').removeEventListener('click', toLoginPage);
-            let accountLogin = User.findByUserid(JSON.parse(localStorage.getItem('accountLogin')));
+        const loginIcon = document.getElementById('login__icon');
+        const loginIconResponsive = document.getElementById('login__icon__responsive');
+        account = JSON.parse(localStorage.getItem('accountLogin'));
+        if (account) {
+
+            loginIcon.removeEventListener('click', toLoginPage);
+            loginIconResponsive.removeEventListener('click', toLoginPage);
+
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
-                .innerText = `${accountLogin.username}`;
+                .innerText = `${account.username}`;
             document.getElementsByClassName('navbar__bar')[0]
                 .querySelectorAll('div')[1]
-                .innerText = `${accountLogin.username}`;
+                .innerText = `${account.username}`;
         } else {
-            // document.getElementById('login__icon').addEventListener('click', toLoginPage);
-            // document.getElementById('login__icon__responsive').addEventListener('click', toLoginPage);
+
+            loginIcon.addEventListener('click', toLoginPage);
+            loginIconResponsive.addEventListener('click', toLoginPage);
+
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = "";
@@ -593,5 +615,7 @@ function clearField(field) {
         input.value = '';
     });
 }
-
-User.onload();
+document.addEventListener('DOMContentLoaded', () => {
+    User.renderAccountLogin();
+});
+// User.onload();

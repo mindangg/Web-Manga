@@ -9,7 +9,7 @@
 @font-face{
     src: url(../fonts/Poppins/Poppins-Regular.ttf);
     font-family: Poppins-Regular;
- }
+}
 
 html{
     scroll-behavior: smooth;
@@ -55,7 +55,7 @@ body{
 .slider{
     position: relative;
     top: 123px;
-    width: 1519px;
+    width: 100%;
     height: 560px;
     overflow: hidden;
     margin: 0;
@@ -131,7 +131,7 @@ body{
 .best__slider{
     position: relative;
     top: 185px;
-    max-width: 1519px;
+    max-width: 100%;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px 200px;
@@ -204,7 +204,7 @@ body{
     color: black;
     background-color: var(--green);
     border: none;
-    padding: 14px;  
+    padding: 14px;
     /* opacity: 0; */
     /* display: none; */
 }
@@ -282,13 +282,20 @@ body{
 
 .best__slider__dots li.best__active{
     background-color: var(--green);
-} 
+}
+
+
+
+
+
+
+
 /* book slider */
 
 .book__slider{
     position: relative;
-    top: 144px;
-    max-width: 1519px;
+    top: 50px;
+    max-width: 100%;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px;
@@ -360,7 +367,7 @@ body{
     color: black;
     background-color: var(--green);
     border: none;
-    padding: 14px;  
+    padding: 14px;
     /* opacity: 0; */
     /* display: none; */
 }
@@ -437,7 +444,7 @@ body{
 
 .book__slider__dots li.book__active{
     background-color: var(--green);
-} 
+}
 
 
 
@@ -447,9 +454,17 @@ body{
 }
 
 .banner img{
-    width: 1519px;
+    width: 100%;
     height: 560px;
 }
+
+
+
+
+
+
+
+
 
 .product__page{
     background-color: rgba(0, 0, 0, 0.4);
@@ -641,6 +656,12 @@ body{
     background-color: var(--green-l);
 }
 
+
+
+
+
+
+
 /* login page */
 
 #login{
@@ -727,7 +748,7 @@ body{
 #login a:hover::after{
     width: 0;
 }
- 
+
 #login__forget{
     font-size: 17px;
     margin-top: 30px;
@@ -864,7 +885,7 @@ body{
     animation: drop-in 1s, drop-out 1s 2.5s;
 }
 
- @media screen  and (min-width: 1200px) and (max-width: 1400px){
+@media screen  and (min-width: 1200px) and (max-width: 1400px){
     .slider{
         position: relative;
         top: 123px;
@@ -873,79 +894,7 @@ body{
         overflow: hidden;
         margin: 0;
     }
-    
-    .slider__list{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        display: flex;
-        width: max-content;
-        transition: 1s;
-    }
-    
-    .slider__list img{
-        width: 1519px;
-        height: 100%;
-        object-fit: fill;
-    }
-    
-    .slider__button{
-        position: absolute;
-        top: 42%;
-        left: 5%;
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .slider__button button{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #fff5;
-        color: #fff;
-        border: none;
-        font-weight: bold;
-    }
-    
-    .slider__dots{
-        position: absolute;
-        left: 87%;
-        bottom: 5%;
-        color: #fff;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-    
-    .slider__dots li{
-        list-style: none;
-        width: 10px;
-        height: 10px;
-        background-color: rgba(255, 255, 255, 0.5);
-        margin: 20px 10px;
-        border-radius: 20px;
-        transition: 1s;
-    }
-    
-    .slider__dots li.active{
-        background-color: #fff;
-        width: 29px;
-    }
- }
 
-@media only screen and (max-width: 1366px){
-    .slider{
-        position: relative;
-        top: 123px;
-        width: 1349px;
-        height: 560px;
-        overflow: hidden;
-        margin: 0;
-    }
-    
     .slider__list{
         position: absolute;
         top: 0;
@@ -955,13 +904,13 @@ body{
         width: max-content;
         transition: 1s;
     }
-    
+
     .slider__list img{
         width: 1519px;
         height: 100%;
         object-fit: fill;
     }
-    
+
     .slider__button{
         position: absolute;
         top: 42%;
@@ -970,7 +919,7 @@ body{
         display: flex;
         justify-content: space-between;
     }
-    
+
     .slider__button button{
         width: 50px;
         height: 50px;
@@ -980,7 +929,7 @@ body{
         border: none;
         font-weight: bold;
     }
-    
+
     .slider__dots{
         position: absolute;
         left: 87%;
@@ -991,7 +940,7 @@ body{
         padding: 0;
         display: flex;
     }
-    
+
     .slider__dots li{
         list-style: none;
         width: 10px;
@@ -1001,84 +950,12 @@ body{
         border-radius: 20px;
         transition: 1s;
     }
-    
+
     .slider__dots li.active{
         background-color: #fff;
         width: 29px;
     }
 }
-
-/* @media only screen and (max-width: 1920px){
-    .slider{
-        position: relative;
-        top: 123px;
-        width: 1900px;
-        height: 560px;
-        overflow: hidden;
-        margin: 0;
-    }
-    
-    .slider__list{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        display: flex;
-        width: max-content;
-        transition: 1s;
-    }
-    
-    .slider__list img{
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-    }
-    
-    .slider__button{
-        position: absolute;
-        top: 42%;
-        left: 5%;
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .slider__button button{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #fff5;
-        color: #fff;
-        border: none;
-        font-weight: bold;
-    }
-    
-    .slider__dots{
-        position: absolute;
-        left: 87%;
-        bottom: 5%;
-        color: #fff;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-    
-    .slider__dots li{
-        list-style: none;
-        width: 10px;
-        height: 10px;
-        background-color: rgba(255, 255, 255, 0.5);
-        margin: 20px 10px;
-        border-radius: 20px;
-        transition: 1s;
-    }
-    
-    .slider__dots li.active{
-        background-color: #fff;
-        width: 29px;
-    }
-} */
 
 
 

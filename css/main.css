@@ -49,7 +49,7 @@ body{
 .slider{
     position: relative;
     top: 123px;
-    width: 1519px;
+    width: 100%;
     height: 560px;
     overflow: hidden;
     margin: 0;
@@ -125,7 +125,7 @@ body{
 .best__slider{
     position: relative;
     top: 185px;
-    max-width: 1519px;
+    max-width: 100%;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px 200px;
@@ -289,7 +289,7 @@ body{
 .book__slider{
     position: relative;
     top: 50px;
-    max-width: 1519px;
+    max-width: 100%;
     height: 590px;
     /* background-color: purple; */
     margin: 0 40px;
@@ -445,7 +445,7 @@ body{
 }
 
 .banner img{
-    width: 1519px;
+    width: 100%;
     height: 560px;
 }
 
@@ -964,7 +964,7 @@ body{
     .slider{
         position: relative;
         top: 123px;
-        width: 1519px;
+        width: 1400px;
         height: 560px;
         overflow: hidden;
         margin: 0;
@@ -981,7 +981,7 @@ body{
     }
     
     .slider__list img{
-        width: 1519px;
+        width: 1400px;
         height: 100%;
         object-fit: fill;
     }

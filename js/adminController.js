@@ -282,11 +282,20 @@ function userFilter(){
             case 'Phone number':
                 users = users.filter(user => regex.test(user.phoneNumber));
                 break;
-            case 'Address':
-                users = users.filter(user => {
-                    let userAddress = `${user.address.houseNumber} ${user.address.street}, ${user.address.ward}, ${user.address.district}, ${user.address.city}`;
-                    return regex.test(userAddress);
-                });
+            case 'House number':
+                users = users.filter(user => regex.test(user.address.houseNumber));
+                break;
+            case 'Street':
+                users = users.filter(user => regex.test(user.address.street));
+                break;
+            case 'Ward':
+                users = users.filter(user => regex.test(user.address.ward));
+                break;
+            case 'District':
+                users = users.filter(user => regex.test(user.address.district));
+                break;
+            case 'City':
+                users = users.filter(user => regex.test(user.address.city));
                 break;
         }
     }

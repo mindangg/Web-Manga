@@ -27,15 +27,15 @@ let orderTable = JSON.parse(localStorage.getItem('order')) || [
         orderAddress: {
             houseNumber: "123",
             street: "Main Street",
-            ward: "Ward 1",
-            district: "District 1",
-            city: "City 1",
+            ward: "X.Binh Hung",
+            district: "H.Bình Chanh",
+            city: "TP.HCM",
         }
     },
     {
         orderId: "orderTesting_2",
         userId: "user_1",
-        orderDate: "16/11/2024",
+        orderDate: "16/12/2024",
         orderStatus: "Cancelled",
         orderItems: [
             {
@@ -50,98 +50,164 @@ let orderTable = JSON.parse(localStorage.getItem('order')) || [
                 quantity: 1,
                 price: 300.0,
             },
+            {
+                productId: "manga_3",
+                series: "Item 1",
+                quantity: 2,
+                price: 9.0,
+            },
+            {
+                productId: "manga_4",
+                series: "Item 2",
+                quantity: 1,
+                price: 300.0,
+            },
+            {
+                productId: "manga_5",
+                series: "Item 1",
+                quantity: 2,
+                price: 9.0,
+            },
+            {
+                productId: "manga_6",
+                series: "Item 2",
+                quantity: 1,
+                price: 300.0,
+            },
         ],
         orderPrice: 600.0,
         userFullName: "John Doe",
         userPhoneNumber: "0123456789",
         orderAddress: {
             houseNumber: "123",
-            street: "Main Street",
-            ward: "Ward 1",
-            district: "District 1",
-            city: "City 1",
+            street: "123",
+            ward: "Tan Dinh",
+            district: "1",
+            city: "TPHCM",
         }
     },
 ]
 
+// Payment information field
+const productContainer = document.querySelector(".product__container")
+const cartItemContainer = document.querySelector(".cart-items")
+const orderContainer = document.querySelector(".order");
+const cartSummary = document.querySelector(".cart-summary")
+const orderTableContainer = document.getElementById("order-table__body-content")
+const paymentInfoContainer = document.querySelector(".payment-info__container")
+const paymentInfoSummary = document.querySelector(".payment-info__summary")
+
+// Billing information field
+const billingInfo = document.getElementById("billing-info")
+const billingFullName = document.getElementById("billing-info__fullName")
+const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
+const billingHouseNumber = document.getElementById("billing-info__houseNumber")
+const billingStreet = document.getElementById("billing-info__street")
+const billingWard = document.getElementById("billing-info__ward")
+const billingDistrict = document.getElementById("billing-info__district")
+const billingCity = document.getElementById("billing-info__city")
+
+// Search order table in admin page
+const orderSearchDate = document.getElementById("order-table__search-input--date");
+const orderSearchDistrict = document.getElementById("order-table__search-input--district");
+
 class Cart {
+    // 
+    // ADD TO CART
+    // 
     static addToCart(e) {
+        // Nếu user chưa đăng nhập thì báo cần đăng nhập
         if (!localStorage.getItem('accountLogin')) {
             alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
             return;
         }
 
+        // Khởi tạo biến để lấy sp cho giỏ hàng
         const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
+        // Khởi toại biến để lấy giá trị số lượng từ input
         const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
+        // Khởi tạo biến để lấy giá trị số lượng từ input
         const quantity = quantityInput ? (quantityInput.value) : 1;
+        // Khởi tạo biến để kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
         const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
 
-        // Check if the product is out of stock
+        // Nếu sp có số lượng tồn là 0 thì báo hết hàng
         if (cartItem.stock === 0) {
             alert("Hết hàng");
             return;
         }
-        // Check if the product is existed in productTable
+
+        // Nếu sp không tồn tại thì báo sản phẩm không tồn tại
         if (!cartItem) {
             alert("Sản phẩm này không tồn tại");
             return;
         }
-        // Check if the product is already in the cart
+
+        // Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
         if (alreadyInCart) {
             alert("Sản phẩm đã có trong giỏ hàng");
             return;
         } else {
+            // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào giỏ hàng
             cartTable.push({ ...cartItem, quantity: quantity })
             println(cartTable)
         }
+
+        // Lưu giỏ hàng vào localStorage
         localStorage.setItem('cart', JSON.stringify(cartTable))
         Cart.renderCartPreview(cartTable)
         alert("Thêm vào giỏ hàng thành công");
     }
-
+    //
+    // RENDER CART PREVIEW
+    //
     static renderCartPreview(cartItem) {
+
         cartItemContainer.innerHTML = ""
-        cartItem.forEach(p => {
+
+        cartItem.forEach(item => {
             cartItemContainer.innerHTML += `
             <tr class="cart-item">
                 <td>
-                    <img src="${p.cover1}"
+                    <img src="${item.cover1}"
                         alt="Product Image">
                     <div class="product-info">
-                        <p class="product-title">${p.series}</p>
-                        <p class="product-price">$${p.price}</p>
+                        <p class="product-title">${item.series}</p>
+                        <p class="product-price">$${item.price}</p>
                     </div>
                 </td>
                 <td>
                     <input
                     class="cart__quantity" 
                     type="number" 
-                    value="${p.quantity}" 
+                    value="${item.quantity}" 
                     min="1"
-                    max="${p.stock}"
-                    data-product-id="${p.productId}"
+                    max="${item.stock}"
+                    data-product-id="${item.productId}"
                     >
-                    <button id="${p.productId}"class="remove-button" onclick="Cart.removeFromCart(this)">Remove</button>
+                    <button id="${item.productId}"class="remove-button" onclick="Cart.removeFromCart(this)">Remove</button>
                 </td>
                 <td>
-                    <p>$${p.price * p.quantity}</p>
+                    <p>$${item.price * item.quantity}</p>
                 </td>
             </tr>
         `
         });
 
+        // Tính tổng giá trị của giỏ hàng
         Cart.renderCartSummary()
 
+
         paymentInfoContainer.innerHTML = ""
-        cartItem.forEach(p => {
+        cartItem.forEach(item => {
             paymentInfoContainer.innerHTML += `
                 <div class="payment-info__item">
-                    <img src="${p.cover1}" alt="Item Image">
-                    <div class="quantity-circle">${p.quantity}</div>
+                    <img src="${item.cover1}" alt="Item Image">
+                    <div class="quantity-circle">${item.quantity}</div>
                     <div class="payment-info__item-details">
-                        <p>${p.series}</p>
+                        <p>${item.series}</p>
                     </div>
-                    <div class="payment-info__item-price">$${p.price * p.quantity}</div>
+                    <div class="payment-info__item-price">$${item.price * item.quantity}</div>
                 </div>
             `
         })
@@ -174,12 +240,18 @@ class Cart {
             });
         });
     }
-
+    // ===================================== 
+    // REMOVE FROM CART~
+    // =====================================
     static removeFromCart(e) {
-        console.log(e.id)
+        // println(e.id)
+
+        // xoa sp trong cart neu khac id
         const deleteItemInCart = cartTable.filter(item => item.productId !== e.id)
+        // gan lai list sp con trong cart  
         cartTable = deleteItemInCart
         localStorage.setItem('cart', JSON.stringify(cartTable))
+
         Cart.renderCartPreview(cartTable)
         Cart.renderCartSummary()
     }
@@ -194,7 +266,6 @@ class Cart {
         `
     }
 }
-
 class Order {
     constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
         this.orderId = orderId
@@ -223,7 +294,9 @@ class Order {
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
     }
+    // 
     // Generate ID for new order
+    //
     static generateId = (data) => {
         if (data.length === 0) {
             return 0;
@@ -239,6 +312,8 @@ class Order {
         Order.addToOrder('Pending')
         Cart.renderCartSummary();
     }
+    // 
+    // ADD TO ORDER
     // 
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
@@ -278,7 +353,6 @@ class Order {
         Cart.renderCartPreview(cartTable);
         Order.renderOrderView();
     }
-
     static updateStockForOrder(order, action) {
         console.log("Updating stock for order...")
         console.log("Order:", order);
@@ -344,18 +418,13 @@ class Order {
                         ${o.userId}
                     </td>
                     <td style="text-align: center;">
-                        ${o.orderItems.map(item => `
-                            <p>Series: ${item.series}</p>
-                            Quantity: ${item.quantity}
-                            - Price: $${item.price}
-                            - Total price: $${item.totalPrice}
-                        `).join('')}
+                        ${o.orderDate}
+                    </td>
+                    <td style="text-align: center;">
+                        ${o.orderAddress.houseNumber} ${o.orderAddress.street}, ${o.orderAddress.ward}, ${o.orderAddress.district}, ${o.orderAddress.city} 
                     </td>
                     <td style="text-align: center;">
                         ${o.orderPrice}
-                    </td>
-                    <td style="text-align: center;">
-                        ${o.orderDate}
                     </td>
                     <td style="text-align: center;">
                         <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${o.orderStatus !== "Pending" && o.orderStatus !== "Confirmed" ? "disabled" : ""}>
@@ -365,30 +434,109 @@ class Order {
                             <option value="Cancelled" ${o.orderStatus === "Cancelled" ? "selected" : ""}>Cancelled</option>
                         </select>
                     </td>
+                    <td style="text-align: center;">
+                        <div id="${o.orderId}" style="cursor: pointer" onclick="displayOrderDetail(this)">Click to view order detail</div>
+                    </td>
                 </tr>
             `
         })
     }
-    // 
-    static showDetailOrder(orderId) {
-        const order = orderTable.find(o => o.orderId === orderId);
+    // Render order detail
+    static renderOrderDetail(id) {
+        const orderDetail = document.querySelector(".order-detail");
+        const order = JSON.parse(localStorage.getItem("order")).find(o => o.orderId === id);
+        const user = JSON.parse(localStorage.getItem("users")).find(u => u.userId === order.userId);
 
+        // Nếu order hoặc user không tồn tại, hiển thị thông báo và thoát khỏi hàm
         if (!order) {
             alert("Order not found.");
             return;
         }
+        if (!user) {
+            alert("User not found.");
+            return;
+        }
 
-        
+        // Clear nội dung hiện tại của chi tiết hóa đơn
+        orderDetail.innerHTML = ``
+        // Render lại nội dung chi tiết của hóa đơn
+        orderDetail.innerHTML = `
+            <div>
+                <button class="order-detail__button" onclick="displayOrderDetail()">X</button>
+            </div>
+            <div class="order-detail__summary">
+                <h1>Order Details</h1>
+                <p><strong>Order ID:</strong> ${order.orderId}</p>
+                <p><strong>Order Date:</strong> ${order.orderDate}</p>
+                <p><strong>Status:</strong> ${order.orderStatus} </p>
+            </div>
+
+            <h2>List items</h2>
+            <div class="order-detail__items">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            ${order.orderItems.map(item => `
+                                <tr>
+                                <td>${item.series}</td>
+                                <td>${item.quantity}</td>
+                                <td>$${item.totalPrice}</td>
+                                </tr>
+                            `).join('')}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">
+                                Total:
+                            </td>
+                            <td>$${order.orderPrice}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="order-detail__customer-info">
+                <h2>Customer info</h2>
+                <p><strong>Name:</strong> ${user.username} </p>
+                <p><strong>Email:</strong> ${user.email} </p>
+                <p><strong>Phone:</strong> ${user.phoneNumber} </p>
+            </div>
+        `
+    }
+    //
+    //
+    //
+    static search() {
+        orderSearchDate.addEventListener("input", () => {
+            Order.applyFilters();
+        });
+
+        orderSearchDistrict.addEventListener("keyup", () => {
+            Order.applyFilters();
+        });
     }
     // 
     // 
     // 
     static applyFilters() {
-        let filteredOrder = JSON.parse(localStorage.getItem("orderTable"));
+        let filteredOrder = JSON.parse(localStorage.getItem("order"));
 
-        if (formatDate(orderSearchDate.value) !== "") {
+        if (orderSearchDate.value !== "") {
             filteredOrder = filteredOrder.filter(o => o.orderDate === formatDate(orderSearchDate.value));
         }
+
+        if (orderSearchDistrict.value !== "") {
+            const regex = RegExp(orderSearchDistrict.value, "i");
+            filteredOrder = filteredOrder.filter(item => regex.test(removeDiaritics(item.orderAddress.district)));
+        }
+
+        Order.renderOrderAdmin(filteredOrder);
     }
     // 
     // 
@@ -466,7 +614,9 @@ class Order {
             return "Hủy đơn hàng"
         }
     }
-
+    //
+    //
+    //
     static toggleDetails(e) {
         const details = e.parentElement.nextElementSibling.children[0];
         if (details.style.display === "none") {
@@ -477,7 +627,9 @@ class Order {
             e.textContent = "View Details";
         }
     }
+    //
     // clear form Bill
+    //
     static clearFormBillInfo(e) {
         e.querySelectorAll("input").forEach(input => {
             if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
@@ -500,7 +652,9 @@ class Order {
             document.getElementById(input.id).disabled = true;
         });
     }
+    //
     // toggle order form input address
+    //
     static toggleAddressOrder(e) {
         if (e.value === 'userAddress') {
             Order.renderBillingForm();
@@ -509,5 +663,18 @@ class Order {
             println("dia chi moi")
             Order.clearFormBillInfo(billingInfo)
         }
+    }
+    //
+    //
+    //
+    static onloadFilterOrder() {
+        Order.renderOrderAdmin(orderTable);
+        Order.search();
+        document.addEventListener("DOMContentLoaded", () => {
+            Order.applyFilters()
+        });
+    }
+    static onload() {
+        localStorage.setItem("order", JSON.stringify(orderTable));
     }
 }
