@@ -577,9 +577,6 @@ class User {
         account = JSON.parse(localStorage.getItem('accountLogin'));
         if (account) {
 
-            loginIcon.removeEventListener('click', toLoginPage);
-            loginIconResponsive.removeEventListener('click', toLoginPage);
-
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]
                 .innerText = `${account.username}`;
@@ -587,9 +584,6 @@ class User {
                 .querySelectorAll('div')[1]
                 .innerText = `${account.username}`;
         } else {
-
-            loginIcon.addEventListener('click', toLoginPage);
-            loginIconResponsive.addEventListener('click', toLoginPage);
 
             document.getElementsByClassName('navbar__home')[0]
                 .querySelectorAll('div')[1]

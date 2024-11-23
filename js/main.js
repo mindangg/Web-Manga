@@ -177,6 +177,25 @@ function setURLForPage(page) {
     }
 }
 
+const loginXmark = document.getElementById('login__page--off')
+const signUpXmark = document.getElementById('signup__page--off')
+const userInfoOff = document.getElementById('user-info--off')
+
+loginXmark.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
+signUpXmark.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
+userInfoOff.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
 
 
 

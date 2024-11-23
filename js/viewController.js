@@ -41,7 +41,6 @@ function renderViewIndex(renderProduct) {
 // ==================================================================================
 function renderPagination(renderProduct) {
     let productContainerFooter = document.querySelector('.product-container__footer');
-    println(productContainerFooter)
     productContainerFooter.innerHTML = ""
 
     const productTotalPages = Math.ceil(renderProduct.length / productPerHomePage);

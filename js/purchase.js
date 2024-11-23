@@ -640,7 +640,7 @@ class Order {
         });
     }
     static renderBillingForm() {
-        const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')));
+        const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')).userId);
         billingFullName.value = accoutLoginInfo.fullName;
         billingPhoneNumber.value = accoutLoginInfo.phoneNumber;
         billingHouseNumber.value = accoutLoginInfo.address.houseNumber;
