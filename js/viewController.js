@@ -1,7 +1,6 @@
 // phusomnia
 let productCurrentHomePage = 1;
 let productPerHomePage = 9;
-let prduct
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
@@ -169,12 +168,14 @@ function logoutUser() {
 // ==================================================================================
 // TODO: tìm theo author, price
 function fetchPropertyProduct(url) {
+    const productList = document.querySelector('.product-list')
     if (url.search) {
         const categorySearch = url.searchParams.get('category')
         const authorSearch = url.searchParams.get('author')
         const categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
         const authorOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.author === categorySearch)
         if (categoryOfProduct.length > 0 && categorySearch.length > 0) {
+            renderView(productList)
             renderViewIndex(categoryOfProduct)
         }
     } else {
@@ -204,8 +205,6 @@ function viewHome() {
     renderView(mainPage)
     const bookSlider = document.querySelector('.book__slider')
     bookSlider.style.display = 'inherit'
-    const prouductlist = document.querySelector('.product__list')
-    prouductlist.style.display = 'inherit'
     renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
     window.scrollTo(530, 530);
 }

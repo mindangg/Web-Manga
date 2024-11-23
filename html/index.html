@@ -122,44 +122,6 @@
             <div class="banner">
                 <img src="../img/banner/jjk.jpg">
             </div>
-
-
-            <div class="product__page">
-                <div class="product">
-                    <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                    <div class="product__img">
-                        <img id="product__img1" src="">
-                        <img id="product__img2" src="">
-
-                        <a id="product__view1" onclick="changeProductView(this)"><img src=""></a>
-                        <a id="product__view2" onclick="changeProductView(this)"><img src=""></a>
-                    </div>
-
-                    <div class="product__info">
-                        <h1></h1>
-                        <div class="product__info--rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p>Author: </p>
-                        <h2></h2>
-                        <p></p>
-                        <p>Quantity: </p>
-
-                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity"
-                            value="1"><button id="product__quantityup">+</button><br>
-                        <button id="product__add">Add to cart</button>
-
-                        <p>Availability: </p><br>
-                        <h4>Description</h4>
-                        <p></p><br>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section id="product-list" class="product-list layer" style="display: none;">
@@ -167,7 +129,7 @@
                 <h1>Books</h1>
             </div>
             <div class="product__container">
-                <div id="id_asdasd" class="product__item">
+                <!-- <div id="id_asdasd" class="product__item">
                     <a>
                         <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-primary.jpeg" alt="">
                         <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-back.jpg" alt="">
@@ -176,9 +138,46 @@
                     <p>$ 120</p>
                     <button id="id_asdasd">+ Add to cart</button>
                     <p>Stock: 1</p>
-                </div>
+                </div> -->
             </div>
             <div class="product-container__footer"></div>
+        </section>
+
+        <section class="product__page">
+            <div class="product">
+                <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                <div class="product__img">
+                    <img id="product__img1" src="">
+                    <img id="product__img2" src="">
+
+                    <a id="product__view1" onclick="changeProductView(this)"><img src=""></a>
+                    <a id="product__view2" onclick="changeProductView(this)"><img src=""></a>
+                </div>
+
+                <div class="product__info">
+                    <h1></h1>
+                    <div class="product__info--rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>Author: </p>
+                    <h2></h2>
+                    <p></p>
+                    <p>Quantity: </p>
+
+                    <button id="product__quantitydown">-</button><input type="text" id="product__quantity"
+                        value="1"><button id="product__quantityup">+</button><br>
+                    <button id="product__add">Add to cart</button>
+
+                    <p>Availability: </p><br>
+                    <h4>Description</h4>
+                    <p></p><br>
+                    <p></p>
+                </div>
+            </div>
         </section>
 
         <section id="cart__container" class="layer cart__container" style="display: none;">
@@ -384,7 +383,7 @@
             </div>
         </section>
 
-        <section id="login__page">
+        <section id="login__page" class="layer login__page">
             <div id="login">
                 <h1>Login</h1>
 
@@ -409,7 +408,7 @@
             </div>
         </section>
 
-        <section id="signup__page">
+        <section id="signup__page" class="layer signup__page">
             <div id="signup">
                 <h1>Sign Up</h1>
                 <!--   Username   -->
@@ -469,8 +468,6 @@
     <!--            window.location.href = `${URLToAdmin[0]}/html/admin.html`-->
     <!--        }-->
     <!--    </script>-->
-    <!-- <script src="../js/product.js"></script> -->
-    <!-- <script src="../js/renderView.js"></script> -->
 </body>
 
 </html>
