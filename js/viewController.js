@@ -177,16 +177,51 @@ function logoutUser() {
 function fetchPropertyProduct(url) {
     const productList = document.querySelector('.product-list')
     if (url.search) {
+        // 
         const categorySearch = url.searchParams.get('category')
-        const authorSearch = url.searchParams.get('author')
-        const categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
-        const authorOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.author === categorySearch)
-        if (categoryOfProduct.length > 0 && categorySearch.length > 0) {
+        let categoryOfProduct = []
+        if (categorySearch !== null) {
+            categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p =>
+                removeSpecialChar(p.category) === removeSpecialChar(categorySearch)
+            )
+        }
+        // 
+        const priceSearch = url.searchParams.get('price')
+        let priceOfProduct = []
+        console.log(priceSearch)
+        if (priceSearch !== null) {
+            switch (priceSearch) {
+                case "5":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price < 5)
+                    console.log(priceOfProduct)
+                    break;
+                case "5-7":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 5 && p.price <= 7)
+                    console.log(priceOfProduct)
+                    break;
+                case "7-15":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 15)
+                    console.log(priceOfProduct)
+                    break;
+                case "15":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 15)
+                    break;
+                default:
+                    break;
+            }
+        }
+        // 
+        if (categoryOfProduct.length > 0 && categorySearch !== null) {
             renderView(productList)
             renderViewIndex(categoryOfProduct)
         }
-    } else {
-        renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
+        if (priceOfProduct.length > 0 && priceSearch !== '') {
+            renderView(productList)
+            renderViewIndex(priceOfProduct)
+        }
+        else {
+            renderView(productList)
+        }
     }
 }
 // ==================================================================================
@@ -207,11 +242,18 @@ function renderView(e) {
 // ==================================================================================
 // về trang chủ
 function viewHome() {
-    // setURLForPage('home')
+    //
+    setURLForPage('home')
+    //
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
+    //
     const bookSlider = document.querySelector('.book__slider')
     bookSlider.style.display = 'inherit'
+    //
+    const productList = document.querySelector('.product-list')
+    productList.style.display = 'inherit'
+    //
     renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
     window.scrollTo(530, 530);
 }
@@ -219,8 +261,10 @@ function viewHome() {
 // trang giỏ hàng
 function viewCart() {
     setURLForPage('cart')
+    //
     const cartContainer = document.querySelector('.cart__container')
     renderView(cartContainer)
+    //
     window.scrollTo(5, 5);
 }
 // ==================================================================================
@@ -232,8 +276,10 @@ function viewBill() {
         return
     } else {
         setURLForPage('bill')
+        //
         const billingInfo = document.querySelector('.billing-info')
         renderView(billingInfo)
+        //
         Order.renderBillingForm();
     }
 }
@@ -248,9 +294,12 @@ function viewLogin() {
 // ==================================================================================
 // thông tin người dùng
 function viewUserInfo() {
+    // neu co account thi 
     if (account) {
+        //
         setURLForPage('user-info')
         const userInfo = document.querySelector('.user-info')
+        //
         renderView(userInfo)
         User.renderUserInfo()
     } else {
@@ -263,10 +312,9 @@ function viewUserInfo() {
 // ==================================================================================
 // thực thi các hàm khi load hoặc reload trang
 // ==================================================================================
-document.addEventListener('DOMContentLoaded', () => {
+(() => {
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
-    // defaultBillingSelect.value = "userAddress"
-
+    defaultBillingSelect.value = `userAddress`
     // nếu local storage có admin: admin thì chuyển hướng đến trang admin
     if (localStorage.getItem('admin') === 'admin') {
         window.location.href = `${URLToAdmin[0]}/html/admin.html`
@@ -274,18 +322,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // load các local storage của product, user
     Product.onload();
     User.onload();
-
+    Order.onload();
     // lấy tham số url trang hiện tại để render product 
     fetchPropertyProduct(URLOfWebpage)
-
     // render tài khoản đăng nhập và thông tin người dùng
     User.renderAccountLogin()
     User.renderUserInfo()
-
     // render giỏ hàng, đơn hàng
     Cart.renderCartPreview(cartTable)
     Order.renderOrderView();
-
     // render các trang
     switch (page) {
         case 'home': viewHome(); break;
@@ -295,4 +340,4 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'login': viewLogin(); break;
         default: break;
     }
-})
+})()

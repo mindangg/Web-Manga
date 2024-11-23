@@ -40,7 +40,7 @@ class SpecialHeader extends HTMLElement {
                     <div class="navbar__category">
                         <ul>
                             <li><a href="?category=Shonen">Shounen</a></li>
-                            <li><a href="?category=slice_of_life">Slice Of Life</a></li>
+                            <li><a href="?category=Slice_Of_Life">Slice Of Life</a></li>
                         </ul>
 
                         <ul>
@@ -54,8 +54,8 @@ class SpecialHeader extends HTMLElement {
                         </ul>
 
                         <ul>
-                            <li><a href="">Fantasy</a></li>
-                            <li><a href="">Drama</a></li>
+                            <li><a href="?category=Fantasy">Fantasy</a></li>
+                            <li><a href="?category=Drama">Drama</a></li>
                         </ul>
                     </div>
                 </li>
@@ -88,19 +88,19 @@ class SpecialHeader extends HTMLElement {
                     <a href="#" class="navbar__link">Price</a>
                     <div class="navbar__price">
                         <ul>
-                            <li><a href="">Under $5 Dollars</a></li>
+                            <li><a href="?price=5">Under $5 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">$5 To $7 Dollars</a></li>
+                            <li><a href="?price=5-7">$5 To $7 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">$7 To $15 Dollars</a></li>
+                            <li><a href="?price=7-15">$7 To $15 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="">Over $15 Dollars</a></li>
+                            <li><a href="?price=15">Over $15 Dollars</a></li>
                         </ul>
                     </div>
                 </li>

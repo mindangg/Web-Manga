@@ -46,7 +46,8 @@ dots.forEach((li, key) => {
     })
 })
 
-let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
+
+let sliderProduct = JSON.parse(localStorage.getItem('productTable')) || []
 function showSlider() {
     const bookSliderList = document.querySelector(".book__slider__list")
     bookSliderList.innerHTML = ''
@@ -157,25 +158,6 @@ function book_RemoveSlider() {
     book_dots[book_active + 1].classList.remove("book__active");
 }
 
-// 
-//
-//
-const URLOfWebpage = new URL(window.location)
-const URLOfIndex = window.location.href
-const URLToAdmin = URLOfIndex.split("html")
-const layerOfView = document.querySelectorAll('.layer')
-const page = URLOfWebpage.searchParams.get('page')
-const home = "index.html"
-
-function setURLForPage(page) {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (page === "home") {
-        window.history.replaceState({}, '', home);
-    } else {
-        urlParams.set('page', page);
-        window.history.replaceState({}, '', '?' + urlParams.toString());
-    }
-}
 
 
 
