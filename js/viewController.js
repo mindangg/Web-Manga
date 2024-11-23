@@ -8,7 +8,7 @@ let prduct
 // render sản phẩm ở end-user
 // ==================================================================================
 function renderViewIndex(renderProduct) {
-
+    const productContainer = document.querySelector('.product__container')
     productContainer.innerHTML = ""
 
     let start = (productCurrentHomePage - 1) * productPerHomePage;
@@ -199,11 +199,13 @@ function renderView(e) {
 // ==================================================================================
 // về trang chủ
 function viewHome() {
-    setURLForPage('home')
+    // setURLForPage('home')
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
     const bookSlider = document.querySelector('.book__slider')
     bookSlider.style.display = 'inherit'
+    const prouductlist = document.querySelector('.product__list')
+    prouductlist.style.display = 'inherit'
     renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
     window.scrollTo(530, 530);
 }
@@ -255,7 +257,7 @@ function viewUserInfo() {
 // ==================================================================================
 // thực thi các hàm khi load hoặc reload trang
 // ==================================================================================
-document.addEventListener('DOMContentLoaded',() => {
+document.addEventListener('DOMContentLoaded', () => {
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
     // defaultBillingSelect.value = "userAddress"
 

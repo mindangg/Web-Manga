@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/cart_phusomnia.css">
     <link rel="stylesheet" href="../css/billing.css">
     <link rel="stylesheet" href="../css/category.css">
-<!--    <link rel="stylesheet" href="../css/main_phusomnia.css">-->
+    <!--    <link rel="stylesheet" href="../css/main_phusomnia.css">-->
     <link rel="stylesheet" href="../css/order.css">
     <link rel="stylesheet" href="../css/orderDetail.css">
     <link rel="stylesheet" href="../css/user_info.css">
@@ -22,7 +22,7 @@
 
 <body>
     <special-header id="special-header"></special-header>
-  
+
     <main>
         <section id="main__page" class="layer main__page" style="display: inline;">
             <!-- slider -->
@@ -50,8 +50,9 @@
                 </div>
 
                 <div class="slider__button">
-                    <button id="slider__prev"><</button>
-                    <button id="slider__next">></button>
+                    <button id="slider__prev">
+                        << /button>
+                            <button id="slider__next">></button>
                 </div>
 
                 <ul class="slider__dots">
@@ -65,12 +66,12 @@
 
             <!-- best sellers slider -->
 
-            <div class="best__slider">
+            <!-- <div class="best__slider">
                 <h1>Best Sellers</h1>
                 <div class="best__slider__list">
 
                 </div>
-            
+
                 <div class="best__slider__button">
                     <button id="best__slider__prev">
                         <i class="fa-solid fa-angle-left" id="left__angle"></i>
@@ -89,11 +90,7 @@
                     <li></li>
                     <li></li>
                 </ul>
-            </div>
-
-            <div class="banner">
-                <img src="../img/banner/jjk.jpg">
-            </div>
+            </div> -->
 
             <div class="book__slider">
                 <h1>Books</h1>
@@ -122,41 +119,66 @@
                 </ul>
             </div>
 
-        <div class="product__page">
-            <div class="product">
-                <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-                <div class="product__img">
-                    <img id="product__img1" src="">
-                    <img id="product__img2" src="">
+            <div class="banner">
+                <img src="../img/banner/jjk.jpg">
+            </div>
 
-                    <a id="product__view1" onclick="changeProductView(this)"><img src=""></a>
-                    <a id="product__view2" onclick="changeProductView(this)"><img src=""></a>
-                </div>
-    
-                <div class="product__info">
-                    <h1></h1>
-                    <div class="product__info--rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
+
+            <div class="product__page">
+                <div class="product">
+                    <a id="product__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="">
+                        <img id="product__img2" src="">
+
+                        <a id="product__view1" onclick="changeProductView(this)"><img src=""></a>
+                        <a id="product__view2" onclick="changeProductView(this)"><img src=""></a>
                     </div>
-                    <p>Author: </p>
-                    <h2></h2>
-                    <p></p>
-                    <p>Quantity: </p>
-    
-                    <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
-                    <button id="product__add">Add to cart</button>
-    
-                    <p>Availability: </p><br>
-                    <h4>Description</h4>
-                    <p></p><br>
-                    <p></p>
+
+                    <div class="product__info">
+                        <h1></h1>
+                        <div class="product__info--rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Author: </p>
+                        <h2></h2>
+                        <p></p>
+                        <p>Quantity: </p>
+
+                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity"
+                            value="1"><button id="product__quantityup">+</button><br>
+                        <button id="product__add">Add to cart</button>
+
+                        <p>Availability: </p><br>
+                        <h4>Description</h4>
+                        <p></p><br>
+                        <p></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section id="product-list" class="product-list layer" style="display: none;">
+            <div class="product-list__title">
+                <h1>Books</h1>
+            </div>
+            <div class="product__container">
+                <div id="id_asdasd" class="product__item">
+                    <a>
+                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-primary.jpeg" alt="">
+                        <img src="../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-22-back.jpg" alt="">
+                    </a>
+                    <h4>JJK</h4>
+                    <p>$ 120</p>
+                    <button id="id_asdasd">+ Add to cart</button>
+                    <p>Stock: 1</p>
+                </div>
+            </div>
+            <div class="product-container__footer"></div>
         </section>
 
         <section id="cart__container" class="layer cart__container" style="display: none;">
@@ -165,11 +187,11 @@
                 <!-- Cart Items List -->
                 <table class="cart-table">
                     <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
                     </thead>
                     <tbody class="cart-items">
                     </tbody>
@@ -245,6 +267,7 @@
 
                 <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
             </div>
+            <!-- PAYMENT INFO -->
             <div class="payment-info">
                 <div class="payment-info__container">
                     <!-- <div class="payment-info__item">
@@ -269,6 +292,7 @@
             </div>
         </section>
 
+        <!-- USER INFO -->
         <section id="user-info" class="layer user-info" style="display: none">
             <div class="user-info__navbar">
                 <div></div>
@@ -291,19 +315,19 @@
                         <div class="user-info__input">
                             <label>Full Name</label>
                             <input id="user-info__fullName" class="form-group" type="text" placeholder="Full name"
-                                   value="">
+                                value="">
                             <label class="error" for="user-info__fullName"></label>
                         </div>
                         <div class="user-info__input">
                             <label>Phone Number</label>
                             <input id="user-info__phoneNumber" class="form-group" type="text"
-                                   placeholder="Phone number">
+                                placeholder="Phone number">
                             <label class="error" for="user-info__phoneNumber"></label>
                         </div>
                         <div class="user-info__input">
                             <label>House Number</label>
                             <input id="user-info__houseNumber" class="form-group" type="text"
-                                   placeholder="House Number">
+                                placeholder="House Number">
                             <label class="error" for="user-info__houseNumber"></label>
                         </div>
                         <div class="user-info__input">
@@ -327,7 +351,7 @@
                             <label class="error" for="user-info__city"></label>
                         </div>
                         <button type="button" class="button user-info__save" id="user-info__save"
-                                onclick="User.editUserInfo()">Save user info</button>
+                            onclick="User.editUserInfo()">Save user info</button>
                     </div>
                 </div>
             </div>
@@ -422,29 +446,29 @@
             </div>
         </section>
 
-            <div id="notification"></div>
-            
+        <div id="notification"></div>
+
     </main>
 
 
     <special-footer id="special-footer"></special-footer>
 
     <!-- js -->
+    <script src="../js/Utility/helper.js"></script>
     <script src="../js/validation.js"></script>
-    <script src="../js/user.js"></script>
-    <script src="../js/main_phusomnia.js"></script>
+    <script src="../js/main.js"></script>
     <script src="../js/header_footer.js"></script>
-    <script src="../js/product.js"></script>
-    <script src="../js/viewController.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/product.js"></script>>
     <script src="../js/purchase.js"></script>
-    <script src="../js/helper.js"></script>
-<!--    <script>-->
-<!--        const URLOfIndex = window.location.href-->
-<!--        const URLToAdmin = URLOfIndex.split("html")-->
-<!--        if (localStorage.getItem('admin') === 'admin') {-->
-<!--            window.location.href = `${URLToAdmin[0]}/html/admin.html`-->
-<!--        }-->
-<!--    </script>-->
+    <script src="../js/viewController.js"></script>
+    <!--    <script>-->
+    <!--        const URLOfIndex = window.location.href-->
+    <!--        const URLToAdmin = URLOfIndex.split("html")-->
+    <!--        if (localStorage.getItem('admin') === 'admin') {-->
+    <!--            window.location.href = `${URLToAdmin[0]}/html/admin.html`-->
+    <!--        }-->
+    <!--    </script>-->
     <!-- <script src="../js/product.js"></script> -->
     <!-- <script src="../js/renderView.js"></script> -->
 </body>
