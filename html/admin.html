@@ -480,12 +480,27 @@
 </body>
 <script src="../js/Utility/helper.js"></script>
 <script src="../js/Utility/toggleSideNav.js"></script>
-<script src="../js/validation.js"></script>
 <script src="../js/priceSlider.js"></script>
 <script src="../js/adminController.js"></script>
 <script src="../js/purchase.js"></script>
 <script src="../js/product.js"></script>
 <script>
+    function displayOrderDetail(e) {
+        const orderDetail = document.querySelector('.order-detail__page');
+
+        // Hiển thị hoặc ẩn order detail
+        if (orderDetail.style.display === 'none') {
+            orderDetail.style.display = 'inherit';
+        } else {
+            orderDetail.style.display = 'none';
+        }
+
+        // Nếu truyền tham số e thì render ra chi tiết thanh toán
+        if (e) {
+            Order.renderOrderDetail(e.id);
+        }
+    }
+
     (() => {
         Product.onload()
         Order.onload();
