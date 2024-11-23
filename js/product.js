@@ -1,10 +1,3 @@
-class Validation {
-    static IsNumber(value) {
-        if (value === '') return false;
-        const parsed = Number(value);
-        return !isNaN(parsed);
-    }
-}
 // =======================================================================
 // $$$$$$$\                            $$\                       $$\
 // $$  __$$\                           $$ |                      $$ |
@@ -628,9 +621,10 @@ class Product {
         this.price = price;
         this.description = description
     }
-    //
+    // ========================================================================
     // VALIDATION OF PRODUCT
-    //
+    // ========================================================================
+    // check is blank
     static checkIsBlank() {
         let isBlank = false
         const productInput = productMenuBody.querySelectorAll("input, select");
@@ -644,7 +638,9 @@ class Product {
         }
         return isBlank
     }
-    static checkStock() {
+    // ========================================================================
+    // check is stock
+    static checkIsStock() {
         let isNumber = true
         if (productInputStock.value === "") {
             productInputStock.labels[0].innerText = "This field cannot be empty"
@@ -659,7 +655,9 @@ class Product {
         }
         return isNumber
     }
-    static checkPrice() {
+    // ========================================================================
+    // Check is price
+    static checkIsPrice() {
         let isNumber = true
         if (productInputPrice.value === "") {
             productInputPrice.labels[0].innerText = "This field cannot be empty"
@@ -675,7 +673,28 @@ class Product {
         return isNumber
     }
     // ========================================================================
-    // INSERT
+    // check is image 
+    static checkIsImg() {
+        let isImage = true
+        const file1 = productInputCover1.files[0];
+        const file2 = productInputCover2.files[0];
+        console.log(file1)
+
+        if (!file1 || !file2) {
+            alert("Please select both images.")
+            return isImage = false
+        }
+
+        if (file1.type.startsWith("image/") && file2.type.startsWith("image/")) {
+            console.log("Both files are images.")
+            return isImage
+        } else {
+            alert("Files must be images.")
+            return isImage = false
+        }
+    }
+    // ========================================================================
+    // INSERT PRODUCT
     // ========================================================================
     // dung de insert san pham
     static insert(productId, cover1, cover2, series, category, author, stock, price, description) {
@@ -706,43 +725,49 @@ class Product {
         }
     };
     // ========================================================================
-    // ADD EVENT
+    // ADD PRODUCT
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
-        // function checkValidation() {
-        //     return Product.checkIsBlank() || !Product.checkStock() || !Product.checkPrice()
-        // }
+        if (!Product.checkIsImg()) {
+            return
+        }
+        if (Product.checkIsBlank() ||
+            !Product.checkIsStock() ||
+            !Product.checkIsPrice()) {
+            return
+        } else {
+            handleAdd()
+        }
 
-        // if (checkValidation()) {
-        //     return
-        // }
-        console.log("Adding product...");
-        const lowerStr = Helper.lowerStr(productInputSeries.value)
-        const cover1 = `../img/${lowerStr}/${productInputCover1.value.split("\\")[2]}`
-        const cover2 = `../img/${lowerStr}/${productInputCover2.value.split("\\")[2]}`
+        function handleAdd() {
+            console.log("Adding product...");
+            const lowerStr = Helper.lowerStr(productInputSeries.value)
+            const cover1 = productInputCover1.value.split("\\")[2]
+            const cover2 = productInputCover2.value.split("\\")[2]
 
-        Product.insert(
-            `manga_${Product.generateId(productTable)}`,
-            `../img/${lowerStr}/${cover1}`,
-            `../img/${lowerStr}/${cover2}`,
-            productInputSeries.value,
-            productInputCategory.value,
-            productInputAuthor.value,
-            productInputStock.value,
-            parseFloat(productInputPrice.value),
-            productInputDescription.value
-        )
+            Product.insert(
+                `manga_${Product.generateId(productTable)}`,
+                `../img/books/${lowerStr}/${cover1}`,
+                `../img/books/${lowerStr}/${cover2}`,
+                productInputSeries.value,
+                productInputCategory.value,
+                productInputAuthor.value,
+                productInputStock.value,
+                parseFloat(productInputPrice.value),
+                productInputDescription.value
+            )
 
-        localStorage.setItem("productTable", JSON.stringify(productTable));
-        productTable = JSON.parse(
-            localStorage.getItem("productTable")
-        );
+            localStorage.setItem("productTable", JSON.stringify(productTable));
+            productTable = JSON.parse(
+                localStorage.getItem("productTable")
+            );
 
-        Product.render(productTable);
+            Product.render(productTable);
+        }
     }
     // ========================================================================
-    // RENDER 
+    // RENDER PRODUCT
     // ======================================================================== 
     // dung de render san pham vao bang 
     static render(renderProduct) {
@@ -765,7 +790,7 @@ class Product {
 
         // renderProduct truyen vao co so luong thi render
         if (productList.length > 0) {
-            productList.map((p, index) => {
+            productList.map((p) => {
                 const row = document.createElement("tr");
                 row.id = `${p.productId}`;
                 row.innerHTML += `
@@ -804,7 +829,7 @@ class Product {
         }
     }
     // ========================================================================
-    // RENDER PAGI FOR PRODUCT
+    // RENDER PAGI PRODUCT
     // ========================================================================
     // render phan trang san pham
     static renderPagination(renderProduct) {
@@ -854,7 +879,7 @@ class Product {
         }
     }
     // ========================================================================
-    // EDIT PRODUCT
+    // EDIT EVENT AND HANDLE UPDATE PRODUCT
     // ========================================================================
     // edit san pham
     static edit(e) {
@@ -882,8 +907,6 @@ class Product {
         productBtnSave.style.display = "";
         productBtnCancel.style.display = "";
     }
-    // ========================================================================
-    // UPDATE PRODUCT
     // ========================================================================
     // update san pham
     static update() {
@@ -963,7 +986,7 @@ class Product {
         }
     }
     // ==================================================================================
-    // SEARCH
+    // SEARCH PRODUCT
     // ==================================================================================
     static search() {
         productSearchName.addEventListener("keyup", () => {
@@ -991,7 +1014,7 @@ class Product {
         });
     }
     // ==================================================================================
-    // APPLY FILTER
+    // APPLY FILTER PRODUCT
     // ==================================================================================
     static applyFilters() {
         let filteredProduct = JSON.parse(
@@ -1048,6 +1071,7 @@ class Product {
             Product.applyFilters()
         });
     }
+    // load san pham khi trang load
     static onload() {
         if (JSON.parse(localStorage.getItem('productTable')) === null) {
             localStorage.setItem('productTable', JSON.stringify(productTable));
