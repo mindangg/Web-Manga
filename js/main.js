@@ -1,3 +1,14 @@
+function generateRandomDouble(min, max) {
+    // Generate random double within range and round to two decimal places
+    return Math.round((Math.random() * (max - min) + min) * 100) / 100;
+}
+
+// Loop to generate and log 64 random numbers
+for (let i = 0; i < 64; i++) {
+    console.log(`Random double [${i}]: ${generateRandomDouble(3.00, 20.00)}`);
+}
+
+
 //slider
 let list = document.querySelector(".slider .slider__list");
 let items = document.querySelectorAll(".slider .slider__list .slider__item");
@@ -45,7 +56,7 @@ dots.forEach((li, key) => {
 })
 
 //product
-let productArray = JSON.parse(localStorage.getItem('product')) || [
+var productArray = JSON.parse(localStorage.getItem('product')) || [
     {
         productId: "manga_0",
         series: "Sakamoto Days",
@@ -956,20 +967,17 @@ function searchProductByURL(){
     const urlSearch = new URLSearchParams(urlSearchIndex)
 
     if(urlSearch.get("series")){
-        console.log("1")
         const seriesSearch = urlSearch.get("series")
         renderViewSearchProductByURL(convert(seriesSearch), "Series")
     }
 
     else if(urlSearch.get("category")){
-        console.log("2")
         const categorySearch = urlSearch.get("category")
         renderViewSearchProductByURL(convert(categorySearch), "Category")
     }
 
 
     else if(urlSearch.get("author")){
-        console.log("3")
         const authorSearch = urlSearch.get("author")
         renderViewSearchProductByURL(convert(authorSearch), "Author")
     }
@@ -1109,6 +1117,76 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
     searchPage.innerHTML = ""
     document.querySelector(".search__page__lists h1").innerText = "Search by " + capitalizeAllWords(renderBy) + " : " + capitalizeAllWords(renderProduct) 
     
+    if(renderProduct[0] == "u"){
+        for(let i = 0; i < productArray.length; i++){
+            if(productArray[i].price < 5)
+            searchPage.innerHTML += `
+            <div class="search__page__item">
+                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${productArray[i].img1}" alt="">
+                    <img src="${productArray[i].img2}" alt="">
+                </a>
+                <h4>${productArray[i].name}</h4>
+                <p>$${productArray[i].price}</p>
+                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+            `   
+        }
+        return
+    }
+    else if(renderProduct[0] == "5"){
+        for(let i = 0; i < productArray.length; i++){
+            if(productArray[i].price >= 5 && productArray[i].price <= 10)
+            searchPage.innerHTML += `
+            <div class="search__page__item">
+                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${productArray[i].img1}" alt="">
+                    <img src="${productArray[i].img2}" alt="">
+                </a>
+                <h4>${productArray[i].name}</h4>
+                <p>$${productArray[i].price}</p>
+                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+            `   
+        }
+        return
+    }
+
+    else if(renderProduct[0] == "1"){
+        for(let i = 0; i < productArray.length; i++){
+            if(productArray[i].price >= 10 && productArray[i].price <= 15)
+            searchPage.innerHTML += `
+            <div class="search__page__item">
+                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${productArray[i].img1}" alt="">
+                    <img src="${productArray[i].img2}" alt="">
+                </a>
+                <h4>${productArray[i].name}</h4>
+                <p>$${productArray[i].price}</p>
+                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+            `   
+        }
+        return
+    }
+    else if(renderProduct[0] == "o"){
+        for(let i = 0; i < productArray.length; i++){
+            if(productArray[i].price < 5)
+            searchPage.innerHTML += `
+            <div class="search__page__item">
+                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${productArray[i].img1}" alt="">
+                    <img src="${productArray[i].img2}" alt="">
+                </a>
+                <h4>${productArray[i].name}</h4>
+                <p>$${productArray[i].price}</p>
+                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+            `   
+        }
+        return
+    }
+    
     for(let i = 0; i < productArray.length; i++){
         if(renderProduct == productArray[i].series.toLowerCase() || 
             renderProduct == productArray[i].category.toLowerCase() ||
@@ -1131,7 +1209,7 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
 showSlider()
 
 function showSlider(){
-    for (let i = 0; i < productArray.length; i += 5) {
+    for (let i = 0; i < productArray.length; i += 8) {
         document.querySelector(".best__slider__list").innerHTML += `
         <div class="best__slider__item">
             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
