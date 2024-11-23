@@ -12,11 +12,10 @@
 //  INITIALIZE PPRODUCT
 // ========================================================================
 // Product variable
-var productIdIndex = 0;
-var currentEditIndex;
-var productCurrentPage = 1;
-var productPerPage = 5;
-var productIndex = productCurrentPage;
+let productIdIndex = 0;
+let currentEditIndex;
+let productCurrentPage = 1;
+let productPerPage = 5;
 
 // Product property
 const productBtnAdd = document.getElementById("product-menu__button--add");
@@ -929,8 +928,6 @@ class Product {
             localStorage.getItem("productTable")
         );
 
-        Product.render(productTable);
-        Product.applyFilters()
         Helper.clearForm(productMenuBody);
 
         productRenderTable.style.display = "";
@@ -971,8 +968,6 @@ class Product {
         Product.applyFilters()
 
         console.log("Delete product from table succesfully ✓");
-
-        Product.applyFilters();
     }
     // ==================================================================================
     // CANCEL BUTTON
