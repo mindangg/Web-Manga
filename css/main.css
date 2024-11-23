@@ -889,7 +889,7 @@ body{
     .slider{
         position: relative;
         top: 123px;
-        width: 1519px;
+        width: 1400px;
         height: 560px;
         overflow: hidden;
         margin: 0;
@@ -906,7 +906,7 @@ body{
     }
     
     .slider__list img{
-        width: 1519px;
+        width: 1400px;
         height: 100%;
         object-fit: fill;
     }

@@ -194,8 +194,8 @@ class SpecialHeader extends HTMLElement {
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
                     </div>
                     <br>
-                    <h2>Your cart is empty</h2>
-                    <button class="shopping__btn">Continue shopping</button>
+                    <h2></h2>
+                    <button class="shopping__btn" id="checkout">Checkout</button>
                 </div>
             </div>
         </div> -->
