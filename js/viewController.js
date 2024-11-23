@@ -7,6 +7,7 @@ let productPerHomePage = 9;
 // render sản phẩm ở end-user
 // ==================================================================================
 function renderViewIndex(renderProduct) {
+    const productContainer = document.querySelector('.product__container')
     productContainer.innerHTML = ""
 
     let start = (productCurrentHomePage - 1) * productPerHomePage;
@@ -174,12 +175,14 @@ function logoutUser() {
 // ==================================================================================
 // TODO: tìm theo author, price
 function fetchPropertyProduct(url) {
+    const productList = document.querySelector('.product-list')
     if (url.search) {
         const categorySearch = url.searchParams.get('category')
         const authorSearch = url.searchParams.get('author')
         const categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
         const authorOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.author === categorySearch)
         if (categoryOfProduct.length > 0 && categorySearch.length > 0) {
+            renderView(productList)
             renderViewIndex(categoryOfProduct)
         }
     } else {
@@ -204,7 +207,7 @@ function renderView(e) {
 // ==================================================================================
 // về trang chủ
 function viewHome() {
-    setURLForPage('home')
+    // setURLForPage('home')
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
     const bookSlider = document.querySelector('.book__slider')
@@ -260,7 +263,7 @@ function viewUserInfo() {
 // ==================================================================================
 // thực thi các hàm khi load hoặc reload trang
 // ==================================================================================
-document.addEventListener('DOMContentLoaded',() => {
+document.addEventListener('DOMContentLoaded', () => {
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
     // defaultBillingSelect.value = "userAddress"
 

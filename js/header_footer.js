@@ -186,7 +186,7 @@ class SpecialHeader extends HTMLElement {
         </div>
 
         <!-- shopping cart -->
-        <div class="shopping__popup">
+        <!-- <div class="shopping__popup">
             <div class="shopping__container">
                 <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 <div class="shopping">
@@ -198,7 +198,7 @@ class SpecialHeader extends HTMLElement {
                     <button class="shopping__btn" id="checkout">Checkout</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </header>
     `
     }
@@ -300,17 +300,17 @@ document.getElementById("search__close").addEventListener("click", function () {
     }, 390);
 })
 
-document.getElementById("shopping__icon").addEventListener("click", function () {
-    document.querySelector(".shopping__popup").style.display = "flex";
-    document.querySelector(".shopping__container").style.animationName = "rightToLeft"
-})
+// document.getElementById("shopping__icon").addEventListener("click", function () {
+//     document.querySelector(".shopping__popup").style.display = "flex";
+//     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
+// })
 
-document.getElementById("shopping__close").addEventListener("click", function () {
-    document.querySelector(".shopping__container").style.animationName = "leftToRight"
-    setTimeout(function () {
-        document.querySelector(".shopping__popup").style.display = "none";
-    }, 390);
-})
+// document.getElementById("shopping__close").addEventListener("click", function () {
+//     document.querySelector(".shopping__container").style.animationName = "leftToRight"
+//     setTimeout(function () {
+//         document.querySelector(".shopping__popup").style.display = "none";
+//     }, 390);
+// })
 
 //responsive
 document.getElementById("navbar__bar__icon").addEventListener("click", function () {
