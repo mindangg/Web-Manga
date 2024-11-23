@@ -477,7 +477,7 @@ class Order {
         // Render lại nội dung chi tiết của hóa đơn
         orderDetail.innerHTML = `
             <div>
-                <button class="order-detail__button" onclick="displayOrderDetail()">X</button>
+                <button class="order-detail__button" onclick="Order.displayOrderDetail()">X</button>
             </div>
             <div class="order-detail__summary">
                 <h1>Order Details</h1>
