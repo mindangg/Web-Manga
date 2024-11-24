@@ -798,7 +798,7 @@ class Product {
                         ${p.productId}
                     </td>
                     <td style="width: 50px; height: 50px; text-align: center;">
-                        <img src="${p.cover1}" alt="product-cover" style="width: 100px; height: 100px;">
+                        <img src="${p.cover1}" alt="product-cover" id="product-img">
                     </td>
                     <td style="text-align: center;">
                         ${p.series}
