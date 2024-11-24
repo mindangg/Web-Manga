@@ -209,8 +209,8 @@ function searchProduct(){
                 searchPage.innerHTML += `
                 <div class="search__page__item">
                     <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                        <img src="${productArray[i].img1}" alt="">
-                        <img src="${productArray[i].img2}" alt="">
+                        <img src="${productArray[i].cover1}" alt="">
+                        <img src="${productArray[i].cover2}" alt="">
                     </a>
                     <h4>${productArray[i].name}</h4>
                     <p>$${productArray[i].price}</p>
@@ -233,8 +233,8 @@ function searchProduct(){
                         searchPage.innerHTML += `
                         <div class="search__page__item">
                             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                                <img src="${productArray[i].img1}" alt="">
-                                <img src="${productArray[i].img2}" alt="">
+                                <img src="${productArray[i].cover1}" alt="">
+                                <img src="${productArray[i].cover2}" alt="">
                             </a>
                             <h4>${productArray[i].name}</h4>
                             <p>$${productArray[i].price}</p>
@@ -250,8 +250,8 @@ function searchProduct(){
                         searchPage.innerHTML += `
                         <div class="search__page__item">
                             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                                <img src="${productArray[i].img1}" alt="">
-                                <img src="${productArray[i].img2}" alt="">
+                                <img src="${productArray[i].cover1}" alt="">
+                                <img src="${productArray[i].cover2}" alt="">
                             </a>
                             <h4>${productArray[i].name}</h4>
                             <p>$${productArray[i].price}</p>
@@ -270,8 +270,8 @@ function searchProduct(){
                     searchPage.innerHTML += `
                     <div class="search__page__item">
                         <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                            <img src="${productArray[i].img1}" alt="">
-                            <img src="${productArray[i].img2}" alt="">
+                            <img src="${productArray[i].cover1}" alt="">
+                            <img src="${productArray[i].cover2}" alt="">
                         </a>
                         <h4>${productArray[i].name}</h4>
                         <p>$${productArray[i].price}</p>
@@ -319,8 +319,8 @@ function renderViewSearchProduct(renderProduct, renderBy){
         searchPage.innerHTML += `
         <div class="search__page__item">
             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                <img src="${productArray[i].img1}" alt="">
-                <img src="${productArray[i].img2}" alt="">
+                <img src="${productArray[i].cover1}" alt="">
+                <img src="${productArray[i].cover2}" alt="">
             </a>
             <h4>${productArray[i].name}</h4>
             <p>$${productArray[i].price}</p>
@@ -344,8 +344,8 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
             searchPage.innerHTML += `
             <div class="search__page__item">
                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].img1}" alt="">
-                    <img src="${productArray[i].img2}" alt="">
+                    <img src="${productArray[i].cover1}" alt="">
+                    <img src="${productArray[i].cover2}" alt="">
                 </a>
                 <h4>${productArray[i].name}</h4>
                 <p>$${productArray[i].price}</p>
@@ -361,8 +361,8 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
             searchPage.innerHTML += `
             <div class="search__page__item">
                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].img1}" alt="">
-                    <img src="${productArray[i].img2}" alt="">
+                    <img src="${productArray[i].cover1}" alt="">
+                    <img src="${productArray[i].cover2}" alt="">
                 </a>
                 <h4>${productArray[i].name}</h4>
                 <p>$${productArray[i].price}</p>
@@ -379,8 +379,8 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
             searchPage.innerHTML += `
             <div class="search__page__item">
                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].img1}" alt="">
-                    <img src="${productArray[i].img2}" alt="">
+                    <img src="${productArray[i].cover1}" alt="">
+                    <img src="${productArray[i].cover2}" alt="">
                 </a>
                 <h4>${productArray[i].name}</h4>
                 <p>$${productArray[i].price}</p>
@@ -396,8 +396,8 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
             searchPage.innerHTML += `
             <div class="search__page__item">
                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].img1}" alt="">
-                    <img src="${productArray[i].img2}" alt="">
+                    <img src="${productArray[i].cover1}" alt="">
+                    <img src="${productArray[i].cover2}" alt="">
                 </a>
                 <h4>${productArray[i].name}</h4>
                 <p>$${productArray[i].price}</p>
@@ -416,8 +416,8 @@ function renderViewSearchProductByURL(renderProduct, renderBy){
         searchPage.innerHTML += `
         <div class="search__page__item">
             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                <img src="${productArray[i].img1}" alt="">
-                <img src="${productArray[i].img2}" alt="">
+                <img src="${productArray[i].cover1}" alt="">
+                <img src="${productArray[i].cover2}" alt="">
             </a>
             <h4>${productArray[i].name}</h4>
             <p>$${productArray[i].price}</p>
