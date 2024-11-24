@@ -88,19 +88,19 @@ class SpecialHeader extends HTMLElement{
                     <a class="navbar__link">Price</a>
                     <div class="navbar__price">
                         <ul>
-                            <li><a href="?price=under-5-dollars">Under $5 Dollars</a></li>
+                            <li><a href="?price=under-7-dollars">Under $7 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?price=5-to-10-dollars">$5 To $10 Dollars</a></li>
+                            <li><a href="?price=7-to-12-dollars">$7 To $12 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?price=10-to-15-dollars">$10 To $15 Dollars</a></li>
+                            <li><a href="?price=12-to-17-dollars">$12 To $17 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?price=over-15-dollars">Over $15 Dollars</a></li>
+                            <li><a href="?price=over-17-dollars">Over $17 Dollars</a></li>
                         </ul>
                     </div>
                 </li>
@@ -185,34 +185,34 @@ class SpecialHeader extends HTMLElement{
         
                     <ul class="navbar__responsive--category__drops">
                         <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="">Shounen</a></li>
-                        <li><a href="">Seinen</a></li>
-                        <li><a href="">Rom Com</a></li>
-                        <li><a href="">Action</a></li>
-                        <li><a href="">Family</a></li>
-                        <li><a href="">Comedy</a></li>
-                        <li><a href="">Fantasy</a></li>
-                        <li><a href="">Dark Fantasy</a></li>
+                        <li><a href="?category=shounen">Shounen</a></li>
+                        <li><a href="?category=seinen">Seinen</a></li>
+                        <li><a href="?category=rom-com">Rom Com</a></li>
+                        <li><a href="?category=action">Action</a></li>
+                        <li><a href="?category=family">Family</a></li>
+                        <li><a href="?categorycomedy">Comedy</a></li>
+                        <li><a href="?category=fantasy">Fantasy</a></li>
+                        <li><a href="?category=dark-fantasy">Dark Fantasy</a></li>
                     </ul>
     
                     <ul class="navbar__responsive--author__drops">
                         <li id="navbar__responsive--author__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="">Yusuke Murata</a></li>
-                        <li><a href="">Shinichi Fukuda</a></li>
-                        <li><a href="">Hajime Komoto</a></li>
-                        <li><a href="">Yuki Tabata</a></li>   
-                        <li><a href="">Sui Ishida</a></li>
-                        <li><a href="">Gege Akutami</a></li>    
-                        <li><a href="">Yuto Suzuki</a></li>
-                        <li><a href="">Tatsuya Endo</a></li>
+                        <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
+                        <li><a href="?author=shinichi-fukada">Shinichi Fukuda</a></li>
+                        <li><a href="?author=hajime-komoto">Hajime Komoto</a></li>
+                        <li><a href="?author=yuki-tabata">Yuki Tabata</a></li>   
+                        <li><a href="?author=sui-ishida">Sui Ishida</a></li>
+                        <li><a href="?author=gege-akutami">Gege Akutami</a></li>    
+                        <li><a href="?author=yuto-suzuki">Yuto Suzuki</a></li>
+                        <li><a href="?author=tatsuya-endo">Tatsuya Endo</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--price__drops">
                         <li id="navbar__responsive--price__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="">Under $5 Dollars</a></li>
-                        <li><a href="">$5 To $10 Dollars</a></li>
-                        <li><a href="">$10 To $15 Dollars</a></li>
-                        <li><a href="">Over $15 Dollars</a></li>
+                        <li><a href="?price=under-7-dollars">Under $7 Dollars</a></li>
+                        <li><a href="?price=7-to-12-dollars">$7 To $12 Dollars</a></li>
+                        <li><a href="?price=12-to-17-dollars">$12 To $17 Dollars</a></li>
+                        <li><a href="?price=over-17-dollars">Over $17 Dollars</a></li>
                     </ul>
                 </div>
             </div>    
