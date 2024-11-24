@@ -435,7 +435,7 @@ class Order {
                         </select>
                     </td>
                     <td style="text-align: center;">
-                        <div id="${o.orderId}" style="cursor: pointer" onclick="displayOrderDetail(this)">Click to view order detail</div>
+                        <div id="${o.orderId}" class="admin__oderview" onclick="displayOrderDetail(this)">Click to view order detail</div>
                     </td>
                 </tr>
             `
