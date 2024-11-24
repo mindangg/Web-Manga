@@ -105,10 +105,10 @@
     visibility: hidden;
 }
 
-.navbar__link--series:hover .navbar__series,
-.navbar__link--category:hover .navbar__category,
-.navbar__link--author:hover .navbar__author,
-.navbar__link--price:hover .navbar__price
+.navbar__link--series:hover div,
+.navbar__link--category:hover div,
+.navbar__link--author:hover div,
+.navbar__link--price:hover div
 {
     opacity: 1;
     visibility: visible;
@@ -183,7 +183,8 @@
     animation: rightToLeft 0.5s ease;  
 }
 
-.searchbox{
+.searchbox
+{
     width: 100%;
     height: 60px;
     padding: 30px;
@@ -213,10 +214,65 @@
     transition: transform 0.3s;
 }
 
-.searchbox i:hover{
+/* filter */
+
+.searchbox i:hover,
+#filter i:hover,
+.filter__container i:hover
+{
     cursor: pointer;
     transform: translateY(-5px);
 }
+
+#filter i{
+    position: absolute;
+    right: 36px;
+    top: 95px;
+    transition: transform 0.3s;
+}
+
+.filter__container{
+    position: relative;
+    top: 70px;
+    padding: 20px;
+    display: none;
+}
+
+.filter__container select{
+    margin-right: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    padding-left: 10px;
+    width: 210px;
+}
+
+.filter__container option{
+    background: var(--black);
+}
+
+.filter__container input{
+    width: 95px;
+    height: 30px;
+    margin-right: 10px;
+    background: transparent;
+    border: none;
+    border: 1px solid var(--gray);
+    padding-left: 10px;
+    color: white;
+}
+
+.filter__container span{
+    margin-right: 10px;
+    height: 30px;
+}
+
+.filter__container i{
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+
 
 /* shopping cart */
 
@@ -911,8 +967,6 @@ hr{
     {
         margin: 30px;
     }
-    
-
     
     .search,
     .shopping__container
