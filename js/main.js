@@ -49,19 +49,35 @@ dots.forEach((li, key) => {
 
 let sliderProduct = JSON.parse(localStorage.getItem('productTable')) || []
 function showSlider() {
+    const bestSliderList = document.querySelector(".best__slider__list")
+    bestSliderList.innerHTML = ''
+    for (let i = 0; i < sliderProduct.length; i++) {
+        bestSliderList.innerHTML += `
+            <div class="book__slider__item">
+                <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${sliderProduct[i].cover1}" alt="">
+                    <img src="${sliderProduct[i].cover2}" alt="">
+                </a>
+                <h4>${sliderProduct[i].series}</h4>
+                <p>$${sliderProduct[i].price}</p>
+                <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+        `
+    }
+
     const bookSliderList = document.querySelector(".book__slider__list")
     bookSliderList.innerHTML = ''
-    for (var i = 0; i < sliderProduct.length; ++i) {
+    for (let i = 0; i < sliderProduct.length; i++) {
         bookSliderList.innerHTML += `
-        <div class="book__slider__item">
-            <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
-                <img src="${sliderProduct[i].cover1}" alt="">
-                <img src="${sliderProduct[i].cover2}" alt="">
-            </a>
-            <h4>${sliderProduct[i].series}</h4>
-            <p>$${sliderProduct[i].price}</p>
-            <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-        </div>
+            <div class="book__slider__item">
+                <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
+                    <img src="${sliderProduct[i].cover1}" alt="">
+                    <img src="${sliderProduct[i].cover2}" alt="">
+                </a>
+                <h4>${sliderProduct[i].series}</h4>
+                <p>$${sliderProduct[i].price}</p>
+                <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
         `
     }
 }
@@ -102,13 +118,18 @@ function showProductInfo(e) {
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                 </div>
+                <p>Price: ${p.price}$</p>
                 <p>Author:</p>
                 <h2>${p.author}</h2>
                 <p>${p.category}</p>
-                <p>Stock: ${p.stock}</p>
+                <p>Quantity: </p>
+
+                <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+                <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
+
+                <p>Availability: ${p.stock}</p><br>
                 <h4>Description</h4>
-                <p>${p.description}</p><br>
-                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
+                <p>${p.description}</p>
             </div>
         </div>
     `
@@ -158,6 +179,46 @@ function book_AddSlider() {
 
 function book_RemoveSlider() {
     book_dots[book_active + 1].classList.remove("book__active");
+}
+// ==================================================================================
+// BEST SLIDER
+// ==================================================================================
+let best_list = document.querySelector(".best__slider .best__slider__list");
+let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
+let best_dots = document.querySelectorAll(".best__slider .best__slider__dots li");
+let best_next = document.getElementById("best__slider__next");
+let best_prev = document.getElementById("best__slider__prev");
+
+let best_active = 0;
+let best_lengthItems = best_items.length - 4;
+
+best_next.onclick = function () {
+    if (best_active + 1 <= best_lengthItems) {
+        best_active++;
+        best_ReloadSlider();
+        best_AddSlider();
+    }
+}
+
+best_prev.onclick = function () {
+    if (best_active - 1 >= 0) {
+        best_active--;
+        best_ReloadSlider();
+        best_RemoveSlider();
+    }
+}
+
+function best_ReloadSlider() {
+    let best_checkLeft = best_items[best_active].offsetLeft;
+    best_list.style.left = -best_checkLeft + "px";
+}
+
+function best_AddSlider() {
+    best_dots[best_active].classList.add("best__active");
+}
+
+function best_RemoveSlider() {
+    best_dots[best_active + 1].classList.remove("best__active");
 }
 
 

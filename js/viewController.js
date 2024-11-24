@@ -4,8 +4,8 @@ let productPerHomePage = 9;
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
+// @viewController
 // render sản phẩm ở end-user
-// ==================================================================================
 function renderViewIndex(renderProduct) {
     const productContainer = document.querySelector('.product__container')
     productContainer.innerHTML = ""
@@ -37,8 +37,8 @@ function renderViewIndex(renderProduct) {
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
+// @viewController
 // render phân trang sản phẩm ở end-user
-// ==================================================================================
 function renderPagination(renderProduct) {
     let productContainerFooter = document.querySelector('.product-container__footer');
     productContainerFooter.innerHTML = ""
@@ -149,7 +149,8 @@ function renderPagination(renderProduct) {
 // ==================================================================================
 // TOGGLE USER INFO 
 // ==================================================================================
-// xem thông tin user
+// @viewController
+// toggle to view order or user info
 function toggleUserInfo(e) {
     const userInfo = document.querySelector('.user-info__container')
     const orderHistory = document.querySelector('.order__history')
@@ -164,7 +165,8 @@ function toggleUserInfo(e) {
     }
 }
 // ==================================================================================
-// thoát tài khoản
+// @viewController 
+// logout account 
 function logoutUser() {
     localStorage.removeItem('accountLogin')
     User.renderAccountLogin()
@@ -172,50 +174,6 @@ function logoutUser() {
     window.location.reload()
 }
 // ==================================================================================
-// TODO: tìm theo author, price
-function fetchPropertyProduct(url) {
-    const productList = document.querySelector('.product-list')
-    if (url.search) {
-        // 
-        const categorySearch = url.searchParams.get('category')
-        let categoryOfProduct = []
-        if (categorySearch !== null) {
-            categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p =>
-                removeSpecialChar(p.category) === removeSpecialChar(categorySearch)
-            )
-        }
-        // 
-        const priceSearch = url.searchParams.get('price')
-        let priceOfProduct = []
-        console.log(priceSearch)
-        if (priceSearch !== null) {
-            switch (priceSearch) {
-                case "under-7-dollars":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price < 7)
-                    console.log(priceOfProduct)
-                    break;
-                case "7-to-12-dollars":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 12)
-                    console.log(priceOfProduct)
-                    break;
-                case "7-15":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 15)
-                    console.log(priceOfProduct)
-                    break;
-                default:
-                    break;
-            }
-        }
-        // 
-        console.log(categoryOfProduct)
-        if (categorySearch !== null) {
-            renderViewIndex(categoryOfProduct)
-        }
-        if (priceSearch !== null) {
-            renderViewIndex(priceOfProduct)
-        }
-    }
-}
 // ==================================================================================
 // RENDER VIEW OF PAGE
 // ==================================================================================
@@ -302,7 +260,7 @@ function viewFilter() {
 
     const productList = document.querySelector('.product-list')
     renderView(productList)
-
+    //@handleURL
     fetchPropertyProduct(URLcurrent)
 }
 // 
