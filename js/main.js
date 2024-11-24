@@ -965,10 +965,12 @@ function searchProductByURL(){
         renderViewSearchProductByURL(convert(categorySearch), "Category")
     }
 
+
     else if(urlSearch.get("author")){
         const authorSearch = urlSearch.get("author")
         renderViewSearchProductByURL(convert(authorSearch), "Author")
     }
+
 
     else if(urlSearch.get("price")){
         console.log("4")
