@@ -47,21 +47,58 @@ dots.forEach((li, key) => {
 })
 
 function showSlider() {
-    let sliderProduct = JSON.parse(localStorage.getItem('productTable'));
+    let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
     const bookSliderList = document.querySelector(".book__slider__list")
     bookSliderList.innerHTML = ''
     for (var i = 0; i < sliderProduct.length; ++i) {
         bookSliderList.innerHTML += `
-    <div class="book__slider__item">
-        <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
-            <img src="${sliderProduct[i].cover1}" alt="">
-            <img src="${sliderProduct[i].cover2}" alt="">
-        </a>
-        <h4>${sliderProduct[i].series}</h4>
-        <p>$${sliderProduct[i].price}</p>
-        <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-    </div>
-    `
+        <div class="book__slider__item">
+            <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
+                <img src="${sliderProduct[i].cover1}" alt="">
+                <img src="${sliderProduct[i].cover2}" alt="">
+            </a>
+            <h4>${sliderProduct[i].series}</h4>
+            <p>$${sliderProduct[i].price}</p>
+            <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+        </div>
+        `
+    }
+    let book_list = document.querySelector(".book__slider .book__slider__list");
+    let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
+    let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
+    let book_next = document.getElementById("book__slider__next");
+    let book_prev = document.getElementById("book__slider__prev");
+
+    let book_active = 0;
+    let book_lengthItems = book_items.length - 4;
+
+    book_next.onclick = function () {
+        if (book_active + 1 <= book_lengthItems) {
+            book_active++;
+            book_ReloadSlider();
+            book_AddSlider();
+        }
+    }
+
+    book_prev.onclick = function () {
+        if (book_active - 1 >= 0) {
+            book_active--;
+            book_ReloadSlider();
+            book_RemoveSlider();
+        }
+    }
+
+    function book_ReloadSlider() {
+        let book_checkLeft = book_items[book_active].offsetLeft;
+        book_list.style.left = -book_checkLeft + "px";
+    }
+
+    function book_AddSlider() {
+        book_dots[book_active].classList.add("book__active");
+    }
+
+    function book_RemoveSlider() {
+        book_dots[book_active + 1].classList.remove("book__active");
     }
 }
 
@@ -118,27 +155,6 @@ function closeProduct() {
 // ==================================================================================
 // BOOK SLIDER
 // ==================================================================================
-let book_list = document.querySelector(".book__slider .book__slider__list");
-let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
-let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
-let book_next = document.getElementById("book__slider__next");
-let book_prev = document.getElementById("book__slider__prev");
-
-let book_active = 0;
-let book_lengthItems = book_items.length - 4;
-
-function book_ReloadSlider() {
-    let book_checkLeft = book_items[book_active].offsetLeft;
-    book_list.style.left = -book_checkLeft + "px";
-}
-
-function book_AddSlider() {
-    book_dots[book_active].classList.add("book__active");
-}
-
-function book_RemoveSlider() {
-    book_dots[book_active + 1].classList.remove("book__active");
-}
 
 // 
 //
@@ -179,22 +195,7 @@ userInfoOff.addEventListener('click', () => {
     viewHome()
 })
 
-book_next.onclick = () => {
-    console.log('hi')
-    if (book_active + 1 <= book_lengthItems) {
-        book_active++;
-        book_ReloadSlider();
-        book_AddSlider();
-    }
-}
-book_prev.onclick = () => {
-    console.log('hi')
-    if (book_active - 1 >= 0) {
-        book_active--;
-        book_ReloadSlider();
-        book_RemoveSlider();
-    }
-}
+
 
 
 
