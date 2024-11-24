@@ -135,3 +135,36 @@ body {
     margin-left: 200px;
     display: none;
 }
+
+/*Reponsive*/
+@media (min-width:750px) and (max-width:1130px){
+    .sidenav {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        overflow-x:unset;
+    }
+    .sidenav div {
+        width: 15%;
+        height: 100%;
+    }
+    .page{
+        margin-left: 5px;
+    }
+    
+}
+@media (max-width:750px){
+    .sidenav {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        overflow-x:unset;
+    }
+    .sidenav div {
+        width: 15%;
+        height: 100%;
+    }
+    .page{
+        margin-left: 5px;
+    }
+}

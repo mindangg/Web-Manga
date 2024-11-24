@@ -10,6 +10,7 @@ class SpecialHeader extends HTMLElement {
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
+                <li class="navbar__link--product"><a href="#all-product__page" class="navbar__link" onclick="renderProductPage()">Product</a></li>
                 <li class="navbar__link--series">
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
@@ -329,6 +330,9 @@ customElements.define(`special-footer`, SpecialFooter);
 
 //navigation between pages
 
+
+const loginPage = document.querySelector('.login__page')
+const signUpPage = document.querySelector('.signup__page')
 const toLoginPage = () => {
     document.getElementById("main__page").style.display = "none";
     document.querySelector(".slider").style.display = "none";
@@ -342,13 +346,13 @@ document.getElementById("login__icon__responsive").addEventListener("click", toL
 
 
 document.getElementById("login__signup--nav").addEventListener("click", function () {
-    document.getElementById("login__page").style.display = "none";
-    document.getElementById("signup__page").style.display = "inline";
+    setURLForPage('signup')
+    renderView(signUpPage);
 })
 
 document.getElementById("signup__login--nav").addEventListener("click", function () {
-    document.getElementById("signup__page").style.display = "none";
-    document.getElementById("login__page").style.display = "inline";
+    setURLForPage('login')
+    renderView(loginPage);
 })
 
 // search, shopping cart, filter popup

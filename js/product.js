@@ -105,8 +105,8 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         series: "Sakamoto Days",
         author: "Suzuki Yuto",
         category: "Action",
-        cover1: "../img/books/sakamoto days/sakamoto-days-volume-15-primary.jpeg",
-        cover2: "../img/books/sakamoto days/sakamoto-days-volume-15-back.jpeg",
+        cover1: "../img/books/sakamoto days/sakamoto-days-manga-volume-15-primary.jpg",
+        cover2: "../img/books/sakamoto days/sakamoto-days-manga-volume-15-back.jpg",
         name: "Sakamoto Days - Volume 15",
         price: 9.99,
         stock: 120,
@@ -176,8 +176,8 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         series: "Jujutsu Kaisen",
         author: "Gege Akutami",
         category: "Dark Fantasy",
-        cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-23-primary.jpeg",
-        cover2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-23-back.jpeg",
+        cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-23-primary.jpeg",
+        cover2: "../img/books/jujutsu kaisen/jujutsu-kaisen-manga-volume-23-back.jpeg",
         name: "Jujutsu Kaisen - Volume 23",
         price: 9.59,
         stock: 90,
@@ -197,7 +197,413 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         stock: 100,
         description: "Spy x Family manga volume 3 features story and art by Tatsuya Endo." +
             " Twilight has overcome many challenges in putting together the Forger family, but now all his hard work might come undone when Yor’s younger brother Yuri pops in for a surprise visit! Can Twilight outsmart Yuri when he finds out Yuri is actually a mortal enemy of his intelligence agency—an Ostanian Secret Service officer?"
-    }
+    },
+
+    {
+        productId: "manga_11",
+        series: "Spy X Family",
+        author: "Tatsuya Endo",
+        category: "Family",
+        cover1: "../img/books/spy x family/spy-x-family-volume-1-primary.jpg",
+        cover2: "../img/books/spy x family/spy-x-family-volume-1-back.jpg",
+        name: "Spy X Family - Volume 01",
+        price: 7.99,
+        stock: 100,
+        description: "Spy x Family manga volume 1 features story and art by Tatsuya Endo." +
+            " Twilight has overcome many challenges in putting together the Forger family, but now all his hard work might come undone when Yor’s younger brother Yuri pops in for a surprise visit! Can Twilight outsmart Yuri when he finds out Yuri is actually a mortal enemy of his intelligence agency—an Ostanian Secret Service officer?"
+    },
+
+    {
+        productId: "manga_12",
+        series: "Spy X Family",
+        author: "Tatsuya Endo",
+        category: "Family",
+        cover1: "../img/books/spy x family/spy-x-family-volume-2-primary.jpg",
+        cover2: "../img/books/spy x family/spy-x-family-volume-2-back.jpg",
+        name: "Spy X Family - Volume 02",
+        price: 7.99,
+        stock: 100,
+        description: "Spy x Family manga volume 2 features story and art by Tatsuya Endo." +
+            " Twilight must infiltrate the prestigious Eden Academy to get close to his target Donovan Desmond, but does his daughter Anya even have the academic prowess to get in to the school? But perhaps the truly impossible mission is making sure Anya becomes a school scholar and befriends Donovan’s arrogant son, Damian!"
+    },
+
+    {
+        productId: "manga_13",
+        series: "Spy X Family",
+        author: "Tatsuya Endo",
+        category: "Family",
+        cover1: "../img/books/spy x family/spy-x-family-volume-4-primary.jpg",
+        cover2: "../img/books/spy x family/spy-x-family-volume-4-back.jpg",
+        name: "Spy X Family - Volume 04",
+        price: 7.99,
+        stock: 100,
+        description: "Spy x Family manga volume 4 features story and art by Tatsuya Endo." +
+            " The Forgers look into adding a dog to their family, but this is no easy task—especially when Twilight has to simultaneously foil an assassination plot against a foreign minister! The perpetrators plan to use specially trained dogs for the attack, but Twilight gets some unexpected help to stop these terrorists."
+    },
+
+    {
+        productId: "manga_14",
+        series: "Spy X Family",
+        author: "Tatsuya Endo",
+        category: "Family",
+        cover1: "../img/books/spy x family/spy-x-family-volume-6-primary.jpg",
+        cover2: "../img/books/spy x family/spy-x-family-volume-6-back.jpg",
+        name: "Spy X Family - Volume 06",
+        price: 7.99,
+        stock: 100,
+        description: "Spy x Family manga volume 6 features story and art by Tatsuya Endo." +
+            " Twilight and Nightfall enter an underground tennis tournament, hoping for an opportunity to obtain an intelligence document that threatens to bring the world to the brink of war! But will their mission be compromised by Nightfall’s secret crush on Twilight?!"
+    },
+
+    {
+        productId: "manga_15",
+        series: "My Dress Up Darling",
+        author: "Fukuda Shinichi",
+        category: "Rom-Com",
+        cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg",
+        cover2: "../img/books/my dress up darling/my-dress-up-darling-volume-7-back.jpg",
+        name: "My Dress Up Darling - Volume 07",
+        price: 9.99,
+        stock: 150,
+        description: "My Dress-Up Darling manga volume 7 features story and art by Shinichi Fukuda." +
+            " Marin's bestie and Wakana's classmate Nowa might seem a little flaky, but the girl has some serious instinct when love is in the air! When she tosses out a bombshell at karaoke by flatly asking Marin and Wakana if they're an item, it sends the two running!"
+    },
+
+    {
+        productId: "manga_16",
+        series: "My Dress Up Darling",
+        author: "Fukuda Shinichi",
+        category: "Rom-Com",
+        cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg",
+        cover2: "../img/books/my dress up darling/my-dress-up-darling-volume-1-back.jpg",
+        name: "My Dress Up Darling - Volume 01",
+        price: 9.99,
+        stock: 150,
+        description: "My Dress-Up Darling manga volume 1 features story and art by Shinichi Fukuda." +
+            " Traumatized by a childhood incident with a friend who took exception to his love of traditional dolls, doll-artisan hopeful Wakana Gojou passes his days as a loner, finding solace in the home ec room at his high school."
+    },
+
+    {
+        productId: "manga_17",
+        series: "My Dress Up Darling",
+        author: "Fukuda Shinichi",
+        category: "Rom-Com",
+        cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-3-primary.jpg",
+        cover2: "../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg",
+        name: "My Dress Up Darling - Volume 03",
+        price: 9.99,
+        stock: 150,
+        description: "My Dress-Up Darling manga volume 3 features story and art by Shinichi Fukuda." +
+            " Wakana and Marin make it through their very first cosplay event, and not long after, Marin’s heart undergoes a change…?! But that’s not going to stop her cosplaying! To research their next project, the duo decide to watch the anime it’s based on…but on screening night, they wind up alone together…?! And with JuJu, another gorgeous cosplayer, dropping by Wakana’s house…it seems like a love triangle is abrew!"
+    },
+
+    {
+        productId: "manga_18",
+        series: "My Dress Up Darling",
+        author: "Fukuda Shinichi",
+        category: "Rom-Com",
+        cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg",
+        cover2: "../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg",
+        name: "My Dress Up Darling - Volume 06",
+        price: 9.99,
+        stock: 150,
+        description: "My Dress-Up Darling manga volume 6 features story and art by Shinichi Fukuda." +
+            " And that seems to be one of cosplay’s superpowers, as Wakana and Marin discover at an Ikebukuro event. There, they meet crossplayer Amane and hear their cosplay origin story, which gives Marin the push she needs to decide on her next costume! Unfortunately for Wakana, getting the new outfit ready is going to be anything but easy…"
+    },
+
+    {
+        productId: "manga_19",
+        series: "My Dress Up Darling",
+        author: "Fukuda Shinichi",
+        category: "Rom-Com",
+        cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-9-primary.jpg",
+        cover2: "../img/books/my dress up darling/my-dress-up-darling-volume-6-back.jpg",
+        name: "My Dress Up Darling - Volume 09",
+        price: 9.99,
+        stock: 150,
+        description: "My Dress-Up Darling manga volume 9 features story and art by Shinichi Fukuda." +
+            " To get the swanky DSLR camera of her dreams, Marin picks up more part-time work! And once she’s scraped up the cash to buy her shiny new gadget, she attends a cosplay event...this time, as a photographer!"
+    },
+
+    {
+        productId: "manga_20",
+        series: "Black Clover",
+        author: "Yuki Tabata",
+        category: "Fantasy",
+        cover1: "../img/books/black clover/black-clover-volume-23-primary.jpg",
+        cover2: "../img/books/black clover/black-clover-volume-23-back.jpg",
+        name: "Black Clover - Volume 23",
+        price: 9.99,
+        stock: 150,
+        description: "Black Clover manga volume 23 features story and art by Yuki Tabata." +
+            " With the devil finally defeated, the Magic Knights are working hard to rebuild the damage done to the Clover Kingdom. Unfortunately for Asta, all the blame is being pinned on him and he’s set to be executed. He’s in the most trouble he’s ever been in, but you never count out a Black Bull!"
+    },
+
+    {
+        productId: "manga_21",
+        series: "Black Clover",
+        author: "Yuki Tabata",
+        category: "Fantasy",
+        cover1: "../img/books/black clover/black-clover-volume-7-primary.jpg",
+        cover2: "../img/books/black clover/black-clover-volume-7-back.jpg",
+        name: "Black Clover - Volume 07",
+        price: 9.99,
+        stock: 150,
+        description: "Black Clover manga volume 7 features story and art by Yuki Tabata." +
+            " After the battle with the Eye of the Midnight Sun, the Wizard King suspects that there might be a traitor among the Magic Knights. But who is it, and how can Asta help expose the crooked knight?"
+    },
+
+    {
+        productId: "manga_22",
+        series: "Black Clover",
+        author: "Yuki Tabata",
+        category: "Fantasy",
+        cover1: "../img/books/black clover/black-clover-volume-24-primary.jpg",
+        cover2: "../img/books/black clover/black-clover-volume-24-back.jpg",
+        name: "Black Clover - Volume 24",
+        price: 9.99,
+        stock: 150,
+        description: "Black Clover manga volume 24 features story and art by Yuki Tabata." +
+            " After six months of training in the Heart Kingdom, Asta and his fellow magic knights are ready to show off their improvements. Will Asta’s muscles be enough when the devil-powered Spade Kingdom begins their invasion, or will he need some new tricks?"
+    },
+
+    {
+        productId: "manga_23",
+        series: "Black Clover",
+        author: "Yuki Tabata",
+        category: "Fantasy",
+        cover1: "../img/books/black clover/black-clover-volume-25-primary.jpg",
+        cover2: "../img/books/black clover/black-clover-volume-7-back.jpg",
+        name: "Black Clover - Volume 25",
+        price: 7.99,
+        stock: 150,
+        description: "Black Clover manga volume 25 features story and art by Yuki Tabata." +
+            " The Spade Kingdom’s Dark Triad has launched an all-out attack on the Heart Kingdom and the Black Bulls. While Asta and company have gotten stronger, can they stand up to these new devil-possessed mages? This might be the perfect time for Yami to save the day!"
+    },
+
+    {
+        productId: "manga_24",
+        series: "Black Clover",
+        author: "Yuki Tabata",
+        category: "Fantasy",
+        cover1: "../img/books/black clover/black-clover-volume-32-primary.jpg",
+        cover2: "../img/books/black clover/black-clover-volume-32-back.jpg",
+        name: "Black Clover - Volume 32",
+        price: 9.99,
+        stock: 150,
+        description: "Black Clover manga volume 32 features story and art by Yuki Tabata." +
+            " To save Yami, the Black Bulls storm their way into enemy territory. And with a powered-up Asta joining the fight, the battle may be going their way. But when the most powerful devil in the underworld finally makes his appeareance, the entire world may be on the verge of destruction."
+    },
+
+    {
+        productId: "manga_25",
+        series: "Tokyo Ghoul",
+        author: "Sui Ishida",
+        category: "Seinen",
+        cover1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-14-primary.jpg",
+        cover2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-14-back.jpg",
+        name: "Tokyo Ghoul - Volume 14",
+        price: 7.99,
+        stock: 150,
+        description: "Tokyo Ghoul Volume 14 features story and art by Sui Ishida." +
+            " As Kaneki and the fiercest fighter in the CCG, Arima, finally face off, several investigators launch an assault on Yoshimura, unaware of the danger that awaits them. The massive battle takes a turn for the worse when the One-Eyed Owl appears, leaving the fate of Kaneki and the CCG hanging in the balance."
+    },
+
+    {
+        productId: "manga_26",
+        series: "Tokyo Ghoul",
+        author: "Sui Ishida",
+        category: "Seinen",
+        cover1: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-primary.jpg",
+        cover2: "../img/books/tokyo ghoul/tokyo-ghoul-graphic-novel-2-back.jpg",
+        name: "Tokyo Ghoul - Volume 02",
+        price: 7.99,
+        stock: 150,
+        description: "Tokyo Ghoul Volume 02 features story and art by Sui Ishida." +
+            " Unable to discard his humanity but equally unable to suppress his Ghoul hunger, Ken finds salvation in the kindness of friendly Ghouls who teach him how to pass as human and eat flesh humanely."
+    },
+
+    {
+        productId: "manga_27",
+        series: "Tokyo Ghoul",
+        author: "Sui Ishida",
+        category: "Seinen",
+        cover1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-5-primary.jpg",
+        cover2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-5-back.jpg",
+        name: "Tokyo Ghoul - Volume 05",
+        price: 7.99,
+        stock: 150,
+        description: "Tokyo Ghoul Volume 05 features story and art by Sui Ishida." +
+            " Kaneki, Nishio, and Touka struggle to work together to rescue their human friend Kimi while Ghoul Investigator deaths skyrocket in Wards 9 through 12. When reinforcements are called in on both sides, the stakes are suddenly higher than ever in volume 5 of Tokyo Ghoul!"
+    },
+
+    {
+        productId: "manga_28",
+        series: "Tokyo Ghoul",
+        author: "Sui Ishida",
+        category: "Seinen",
+        cover1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-9-primary.jpg",
+        cover2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-9-back.jpg",
+        name: "Tokyo Ghoul - Volume 09",
+        price: 10.39,
+        stock: 150,
+        description: "Tokyo Ghoul Volume 09 features story and art by Sui Ishida." +
+            " Ghouls live among us, the same as normal people in every way—except their craving for human flesh. Ken Kaneki is an ordinary college student until a violent encounter turns him into the first half-human half-ghoul hybrid. Trapped between two worlds, he must survive Ghoul turf wars, learn more about Ghoul society and master his new powers."
+    },
+
+    {
+        productId: "manga_29",
+        series: "Tokyo Ghoul",
+        author: "Sui Ishida",
+        category: "Seinen",
+        cover1: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-11-primary.jpg",
+        cover2: "../img/books/tokyo ghoul/tokyo-ghoul-manga-volume-11-back.jpg",
+        name: "Tokyo Ghoul - Volume 11",
+        price: 10.39,
+        stock: 150,
+        description: "Tokyo Ghoul Volume 11 features story and art by Sui Ishida." +
+            " Amid clashes between Ghouls and the Commission of Counter Ghoul investigators at Doctor Kano’s underground facility, Kaneki finds himself locked in battle with Special Class Ghoul investigator Yukinori Shinohara. When the battle subsides, the CCG discovers shocking evidence that leads them closer to discovering the truth behind Kano’s sinister plans."
+    },
+
+    {
+        productId: "manga_30",
+        series: "One Punch Man",
+        author: "Yusuke Murata",
+        category: "Shounen",
+        cover1: "../img/books/one punch man/one-punch-man-volume-26-primary.jpg",
+        cover2: "../img/books/one punch man/one-punch-man-volume-26-back.jpg",
+        name: "One Punch Man - Volume 26",
+        price: 7.99,
+        stock: 150,
+        description: "One-Punch Man manga volume 26 features story by ONE and art by Yusuke Murata." +
+            " As the fight against the Monster Association big shots heats up, Class-S heroes find themselves locked in a desperate struggle, but Tornado is closing in on Gyoro-Gyoro’s main body!"
+    },
+
+    {
+        productId: "manga_31",
+        series: "One Punch Man",
+        author: "Yusuke Murata",
+        category: "Shounen",
+        cover1: "../img/books/one punch man/one-punch-man-volume-18-primary.jpg",
+        cover2: "../img/books/one punch man/one-punch-man-volume-18-back.jpg",
+        name: "One Punch Man - Volume 18",
+        price: 7.99,
+        stock: 150,
+        description: "One-Punch Man manga volume 18 features story by ONE and art by Yusuke Murata." +
+            " Garo has just left the Monster Association’s hideout when he crosses paths with Saitama, who’s in quite a pinch, but Saitama still doesn't know Garo is the Hero Hunter. Later, King the Ripper can no longer hold back his murderous urges and confronts Garo himself!"
+    },
+
+    {
+        productId: "manga_32",
+        series: "One Punch Man",
+        author: "Yusuke Murata",
+        category: "Shounen",
+        cover1: "../img/books/one punch man/one-punch-man-manga-volume-9-primary.jpg",
+        cover2: "../img/books/one punch man/one-punch-man-manga-volume-9-back.jpg",
+        name: "One Punch Man - Volume 09",
+        price: 7.99,
+        stock: 150,
+        description: "One-Punch Man manga volume 9 features story by ONE and art by Yusuke Murata." +
+            " Garo, a man who admires monsters, attacks the Hero Association! But after pulverizing the heroes there, he just leaves. What the heck does this guy want?! Meanwhile, Class-B, Rank-1 Miss Blizzard visits Saitama at his apartment. Since he’s just a low-ranking hero, she thinks she can make him one of her subordinates, but as always, Saitama has other plans!"
+    },
+
+    {
+        productId: "manga_33",
+        series: "One Punch Man",
+        author: "Yusuke Murata",
+        category: "Shounen",
+        cover1: "../img/books/one punch man/one-punch-man-volume-27-primary.jpg",
+        cover2: "../img/books/one punch man/one-punch-man-volume-27-back.jpg",
+        name: "One Punch Man - Volume 27",
+        price: 7.99,
+        stock: 150,
+        description: "One-Punch Man manga volume 27 features story by ONE and art by Yusuke Murata." +
+            " Psychos intends to fuse with Orochi, the Monster King, which would give them immense power against Tornado. Superalloy confronts Garo and experiences fear of his opponent’s strength… Meanwhile, Saitama gets caught up in a cave-in in the underground labyrinth!"
+    },
+
+    {
+        productId: "manga_34",
+        series: "One Punch Man",
+        author: "Yusuke Murata",
+        category: "Shounen",
+        cover1: "../img/books/one punch man/one-punch-man-manga-volume-28-primary.jpg",
+        cover2: "../img/books/one punch man/one-punch-man-manga-volume-28-back.jpg",
+        name: "One Punch Man - Volume 28",
+        price: 7.99,
+        stock: 150,
+        description: "One-Punch Man manga volume 28 features story by ONE and art by Yusuke Murata." +
+            " Psychos and Tornado’s psychic battle rages on! With Genos’s help, Tornado succeeds in rescuing the scattered heroes from their fight against the monsters, allowing her to unleash a devastating attack that warps the city… And although the outlook appears grim, a group of S-class heroes finds the inspiration to turn the tide of battle!"
+    },
+
+    {
+        productId: "manga_35",
+        series: "Mashle: Magic And Muscles",
+        author: "Komoto Hajime",
+        category: "Comedy",
+        cover1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-primary.jpeg",
+        cover2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-17-back.jpeg",
+        name: "Mashle: Magic And Muscles - Volume 17",
+        price: 9.59,
+        stock: 150,
+        description: "Mashle: Magic and Muscles manga volume 17 features story and art by Hajime Komoto." +
+            " Innocent Zero’s youngest child, Domina, steps in to put a stop to his father’s pursuit of Mash. Using the reprieve afforded them, Mash’s friends race against the clock in hopes of getting him to Meliadoul."
+    },
+
+    {
+        productId: "manga_36",
+        series: "Mashle: Magic And Muscles",
+        author: "Komoto Hajime",
+        category: "Comedy",
+        cover1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-primary.jpeg",
+        cover2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-16-back.jpeg",
+        name: "Mashle: Magic And Muscles - Volume 16",
+        price: 9.59,
+        stock: 150,
+        description: "Mashle: Magic and Muscles manga volume 16 features story and art by Hajime Komoto." +
+            " Mash shows off the hard-won results of his strenuous training against his greatest and final obstacle before confronting Innocent Zero—Doom! Now that he knows the extent of his body’s capabilities and how to control them, Mash’s strength has grown to an unimaginable level!"
+    },
+
+    {
+        productId: "manga_37",
+        series: "Mashle: Magic And Muscles",
+        author: "Komoto Hajime",
+        category: "Comedy",
+        cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-3-primary.jpg",
+        cover2: "../img/books/mashle/mashle-magic-and-muscles-volume-3-back.jpg",
+        name: "Mashle: Magic And Muscles - Volume 03",
+        price: 9.59,
+        stock: 150,
+        description: "Mashle: Magic and Muscles manga volume 3 features story and art by Hajime Komoto." +
+            " Lang’s vicious hunt for coins is in full swing! To stop them from monopolizing the chance to earn a Divine Visionary position, Mash teams up with his Adler compatriots. Afterwards, the Sixth and Seventh Fangs of the Magia Lupus swoop in to attack Mash while he’s cleaning the owl huts."
+    },
+
+    {
+        productId: "manga_38",
+        series: "Mashle: Magic And Muscles",
+        author: "Komoto Hajime",
+        category: "Comedy",
+        cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-15-primary.jpg",
+        cover2: "../img/books/mashle/mashle-magic-and-muscles-volume-15-back.jpg",
+        name: "Mashle: Magic And Muscles - Volume 15",
+        price: 9.59,
+        stock: 150,
+        description: "Mashle: Magic and Muscles manga volume 15 features story and art by Hajime Komoto." +
+            " Orter, Rayne, and the others join forces to try and take down Innocent Zero’s eldest son, Doom. But Doom overwhelms them all, and according to him, he’s still holding back. With Doom unaffected by their attacks, the situation seems desperate. That is, until their ace in the hole arrives. Will humanity’s greatest creation be the light it needs in its darkest hour?"
+    },
+
+    {
+        productId: "manga_39",
+        series: "Mashle: Magic And Muscles",
+        author: "Komoto Hajime",
+        category: "Comedy",
+        cover1: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-primary.jpg",
+        cover2: "../img/books/mashle/mashle-magic-and-muscles-manga-volume-18-back.jpg",
+        name: "Mashle: Magic And Muscles - Volume 18",
+        price: 9.59,
+        stock: 150,
+        description: "Mashle: Magic and Muscles manga volume 18 features story and art by Hajime Komoto." +
+            " Innocent Zero has exceeded the limits of human existence and become a god! Humanity has no choice but to bow down before his awe-inspiring divinity. Except for Mash, whose muscles have unlocked an unimaginable power to give Innocent Zero a flick to the forehead he won’t soon forget!"
+    },
 ]
 
 // ========================================================================
@@ -394,7 +800,7 @@ class Product {
                         ${p.productId}
                     </td>
                     <td style="width: 50px; height: 50px; text-align: center;">
-                        <img src="${p.cover1}" alt="product-cover" style="width: 100px; height: 100px;">
+                        <img src="${p.cover1}" alt="product-cover" id="product-img">
                     </td>
                     <td style="text-align: center;">
                         ${p.series}
@@ -672,3 +1078,5 @@ class Product {
         localStorage.setItem('productTable', JSON.stringify(productTable));
     }
 }
+
+
