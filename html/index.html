@@ -50,9 +50,8 @@
                 </div>
 
                 <div class="slider__button">
-                    <button id="slider__prev">
-                        << /button>
-                            <button id="slider__next">></button>
+                    <button id="slider__prev"> < </button>
+                    <button id="slider__next"> > </button>
                 </div>
 
                 <ul class="slider__dots">
@@ -121,6 +120,16 @@
 
             <div class="banner">
                 <img src="../img/banner/jjk.jpg">
+            </div>
+        </section>
+
+        <section id="all-product__page" class="layer all-product__page">
+            <div id="all-product__page--title">Product</div>
+            <div id="all-product__page--container">
+
+            </div>
+            <div id="all-product__pagination">
+
             </div>
         </section>
 
@@ -324,6 +333,7 @@
 
         <!-- USER INFO -->
         <section id="user-info" class="layer user-info" style="display: none">
+            <i id="user-info--off" class="fa-solid fa-xmark" style="color:white; position: absolute; left: 95%; top: 30%; font-size: 20px; cursor: pointer"></i>
             <div class="user-info__navbar">
                 <div></div>
                 <div style="display: flex; gap: 60px">
@@ -415,6 +425,7 @@
         </section>
 
         <section id="login__page" class="layer login__page">
+            <i id="login__page--off" class="fa-solid fa-xmark" style="color:white; position: absolute; left: 95%; top: 17%; font-size: 20px; cursor: pointer"></i>
             <div id="login">
                 <h1>Login</h1>
 
@@ -426,20 +437,16 @@
                     <input type="password" id="login__input--password" placeholder="Password" required value="">
                     <label for="login__input--password"></label>
                 </div>
-
-                <div id="login__forget">
-                    <a>Forget your password?</a>
-                </div>
-
                 <button type="submit" id="login__btn">Login</button>
 
                 <div id="login__signup">
-                    <a href="#" id="login__signup--nav">Sign Up</a>
+                    <a id="login__signup--nav">Sign Up</a>
                 </div>
             </div>
         </section>
 
         <section id="signup__page" class="layer signup__page">
+            <i id="signup__page--off" class="fa-solid fa-xmark" style="color:white; position: absolute; left: 95%; top: 17%; font-size: 20px; cursor: pointer"></i>
             <div id="signup">
                 <h1>Sign Up</h1>
                 <!--   Username   -->
@@ -471,7 +478,7 @@
                 <button type="submit" id="signup__btn">Create account</button>
 
                 <div id="signup__login">
-                    <a href="#" id="signup__login--nav">Already has account?</a>
+                    <a id="signup__login--nav">Already has account?</a>
                 </div>
             </div>
         </section>

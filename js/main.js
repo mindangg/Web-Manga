@@ -46,8 +46,8 @@ dots.forEach((li, key) => {
     })
 })
 
-let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
 function showSlider() {
+    let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
     const bookSliderList = document.querySelector(".book__slider__list")
     bookSliderList.innerHTML = ''
     for (var i = 0; i < sliderProduct.length; ++i) {
@@ -63,8 +63,44 @@ function showSlider() {
         </div>
         `
     }
+    let book_list = document.querySelector(".book__slider .book__slider__list");
+    let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
+    let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
+    let book_next = document.getElementById("book__slider__next");
+    let book_prev = document.getElementById("book__slider__prev");
+
+    let book_active = 0;
+    let book_lengthItems = book_items.length - 4;
+
+    book_next.onclick = function () {
+        if (book_active + 1 <= book_lengthItems) {
+            book_active++;
+            book_ReloadSlider();
+            book_AddSlider();
+        }
+    }
+
+    book_prev.onclick = function () {
+        if (book_active - 1 >= 0) {
+            book_active--;
+            book_ReloadSlider();
+            book_RemoveSlider();
+        }
+    }
+
+    function book_ReloadSlider() {
+        let book_checkLeft = book_items[book_active].offsetLeft;
+        book_list.style.left = -book_checkLeft + "px";
+    }
+
+    function book_AddSlider() {
+        book_dots[book_active].classList.add("book__active");
+    }
+
+    function book_RemoveSlider() {
+        book_dots[book_active + 1].classList.remove("book__active");
+    }
 }
-showSlider()
 
 function showProductInfo(e) {
     const productInfo = document.querySelector('.product__page')
@@ -119,43 +155,6 @@ function closeProduct() {
 // ==================================================================================
 // BOOK SLIDER
 // ==================================================================================
-let book_list = document.querySelector(".book__slider .book__slider__list");
-let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
-let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
-let book_next = document.getElementById("book__slider__next");
-let book_prev = document.getElementById("book__slider__prev");
-
-let book_active = 0;
-let book_lengthItems = book_items.length - 4;
-
-book_next.onclick = function () {
-    if (book_active + 1 <= book_lengthItems) {
-        book_active++;
-        book_ReloadSlider();
-        book_AddSlider();
-    }
-}
-
-book_prev.onclick = function () {
-    if (book_active - 1 >= 0) {
-        book_active--;
-        book_ReloadSlider();
-        book_RemoveSlider();
-    }
-}
-
-function book_ReloadSlider() {
-    let book_checkLeft = book_items[book_active].offsetLeft;
-    book_list.style.left = -book_checkLeft + "px";
-}
-
-function book_AddSlider() {
-    book_dots[book_active].classList.add("book__active");
-}
-
-function book_RemoveSlider() {
-    book_dots[book_active + 1].classList.remove("book__active");
-}
 
 // 
 //
@@ -177,6 +176,24 @@ function setURLForPage(page) {
     }
 }
 
+const loginXmark = document.getElementById('login__page--off')
+const signUpXmark = document.getElementById('signup__page--off')
+const userInfoOff = document.getElementById('user-info--off')
+
+loginXmark.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
+signUpXmark.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
+userInfoOff.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
 
 
 
