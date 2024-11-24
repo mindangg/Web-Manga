@@ -1,0 +1,33 @@
+div.order-detail {
+    margin-top: 144px;
+    z-index: 3;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: max-content;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #dfdfdf;
+}
+
+.order-detail h1 , 
+.order-detail.h2 {
+    color: #333;
+}
+
+.order-detail__summary, 
+.order-detail__items, 
+.order-detail__customer-info {
+    margin-bottom: 20px;
+}
+
+.order-detail__items table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-detail__items th, 
+.order-detail__items td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
