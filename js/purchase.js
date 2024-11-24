@@ -112,59 +112,53 @@ const orderSearchDate = document.getElementById("order-table__search-input--date
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
 
 class Cart {
-    // 
+    // ==================================================================================
     // ADD TO CART
-    // 
+    // ==================================================================================
     static addToCart(e) {
-        // Nếu user chưa đăng nhập thì báo cần đăng nhập
+        // If user is not logged in, alert and return
         if (!localStorage.getItem('accountLogin')) {
             alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
             return;
         }
 
-        // Khởi tạo biến để lấy sp cho giỏ hàng
         const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
-        // Khởi toại biến để lấy giá trị số lượng từ input
         const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
-        // Khởi tạo biến để lấy giá trị số lượng từ input
         const quantity = quantityInput ? (quantityInput.value) : 1;
-        // Khởi tạo biến để kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
         const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
 
-        // Nếu sp có số lượng tồn là 0 thì báo hết hàng
+        // If product is out of stock, alert and return
         if (cartItem.stock === 0) {
             alert("Hết hàng");
             return;
         }
 
-        // Nếu sp không tồn tại thì báo sản phẩm không tồn tại
+        // If there is not product in cart table, alert and return
         if (!cartItem) {
             alert("Sản phẩm này không tồn tại");
             return;
         }
 
-        // Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
+        // If product is already in cart, alert and return
         if (alreadyInCart) {
             alert("Sản phẩm đã có trong giỏ hàng");
             return;
-        } else {
-            // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào giỏ hàng
-            cartTable.push({ ...cartItem, quantity: quantity })
-            println(cartTable)
         }
 
-        // Lưu giỏ hàng vào localStorage
+        // Push product to cart table
+        cartTable.push({ ...cartItem, quantity: quantity })
+        println(cartTable)
+
+        // Set cart table to local storage
         localStorage.setItem('cart', JSON.stringify(cartTable))
         Cart.renderCartPreview(cartTable)
         alert("Thêm vào giỏ hàng thành công");
     }
-    //
+    // ==================================================================================
     // RENDER CART PREVIEW
-    //
+    // ==================================================================================
     static renderCartPreview(cartItem) {
-
         cartItemContainer.innerHTML = ""
-
         cartItem.forEach(item => {
             cartItemContainer.innerHTML += `
             <tr class="cart-item">
@@ -193,11 +187,8 @@ class Cart {
             </tr>
         `
         });
-
-        // Tính tổng giá trị của giỏ hàng
+        // render cart summary
         Cart.renderCartSummary()
-
-
         paymentInfoContainer.innerHTML = ""
         cartItem.forEach(item => {
             paymentInfoContainer.innerHTML += `
@@ -211,7 +202,6 @@ class Cart {
                 </div>
             `
         })
-
         paymentInfoSummary.innerHTML = ""
         paymentInfoSummary.innerHTML = `
             <div class="subtotal">
@@ -393,32 +383,35 @@ class Order {
     }
     // 
     static renderOrderView() {
+        // If there is no account login, return
+        if (!localStorage.getItem('accountLogin')) {
+            return
+        }
+        // Get order of user from localStorage
         const orderOfUser = orderTable.filter(o => o.userId === JSON.parse(localStorage.getItem('accountLogin')).userId);
-
-        if (orderOfUser) {
-            orderContainer.innerHTML = ""
-            orderOfUser.forEach(o => {
-                orderContainer.innerHTML += `
-                    <hr>
-                    <div style="display: flex;">
-                        <div>
-                            <div class="order__id">Order ID: ${o.orderId}</div>
-                            <div class="order__date">Date: ${o.orderDate}</div>
-                            <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
-                            <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
-                        </div>
-                        <div style="margin-left: 100px;">
-                            <div class="order__items__details" style="display: none">
-                                ${o.orderItems.map(item => `
-                                    <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
-                                `).join('')}
-                                <div class="order__price">Order Price: $${o.orderPrice}</div>
-                            </div>
+        // Render order
+        orderContainer.innerHTML = ""
+        orderOfUser.forEach(o => {
+            orderContainer.innerHTML += `
+                <hr>
+                <div style="display: flex;">
+                    <div>
+                        <div class="order__id">Order ID: ${o.orderId}</div>
+                        <div class="order__date">Date: ${o.orderDate}</div>
+                        <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
+                        <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <div class="order__items__details" style="display: none">
+                            ${o.orderItems.map(item => `
+                                <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
+                            `).join('')}
+                            <div class="order__price">Order Price: $${o.orderPrice}</div>
                         </div>
                     </div>
-                `
-            })
-        }
+                </div>
+            `
+        })
     }
     // 
     static renderOrderAdmin(renderOrder) {

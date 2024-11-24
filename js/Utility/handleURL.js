@@ -1,13 +1,15 @@
 // ================================================================================== 
-// handle URL
+// HANDLE URL
 // ==================================================================================
 const URLOfWebpage = new URL(window.location)
-const URLOfIndex = window.location.href
-const URLToAdmin = URLOfIndex.split("html")
+console.log(URLOfWebpage)
+// GET ALL LAYER ELEMENT`
 const layerOfView = document.querySelectorAll('.layer')
+// URL FOR PAGE
 const page = URLOfWebpage.searchParams.get('page')
 const home = "index.html"
 
+// SET URL FOR PAGE
 function setURLForPage(page) {
     const urlParams = new URLSearchParams(window.location.search);
     if (page === "home") {
