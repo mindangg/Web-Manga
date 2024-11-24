@@ -10,6 +10,7 @@ class SpecialHeader extends HTMLElement {
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
+                <li class="navbar__link--product"><a href="#all-product__page" class="navbar__link" onclick="renderProductPage()">Product</a></li>
                 <li class="navbar__link--series">
                     <a href="#" class="navbar__link">Series</a>
                     <div class="navbar__series">
