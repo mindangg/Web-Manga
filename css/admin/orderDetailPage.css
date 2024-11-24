@@ -55,4 +55,37 @@
     padding: 10px;
     text-align: center;
 }
+@media (max-width: 600px) {
+    .button {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  
+    .input {
+      width: 30px; /* Adjust input width for smaller screens */
+    }
+  }
+  
+  /*Reponsive--hbao*/
+  .admin__oderview{
+    color: black;
+    cursor: pointer;
+  }
+  .admin__oderview:hover {
+    color: green;
+    cursor: pointer;
+    text-decoration: underline green;
+  }
+  
+  @media (min-width:750px) and (max-width:1130px){
+    .order-table__search-input{
+        margin-top: 10px;
+    }
+  }
+  
+  @media (max-width:750px){
+    .order-table__search-input{
+        margin-top: 10px;
+    }
+  }
 
