@@ -243,9 +243,9 @@ class SpecialHeader extends HTMLElement{
                     </select>
 
                     <span style="color:white">Price</span>
-                    <input type="text" placeholder="Min" id="filter__min">
+                    <input type="text" placeholder="Min" id="filter__min" value="">
                     <span style="color:white">to</span>
-                    <input type="text" placeholder="Max" id="filter__max">
+                    <input type="text" placeholder="Max" id="filter__max" value="">
                     <a style="color:white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
                 </div>
             </div>

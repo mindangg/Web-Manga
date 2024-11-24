@@ -214,6 +214,8 @@
     transition: transform 0.3s;
 }
 
+/* filter */
+
 .searchbox i:hover,
 #filter i:hover,
 .filter__container i:hover
@@ -227,11 +229,6 @@
     right: 36px;
     top: 95px;
     transition: transform 0.3s;
-}
-
-#filter i:hover{
-    cursor: pointer;
-    transform: translateY(-5px);
 }
 
 .filter__container{
