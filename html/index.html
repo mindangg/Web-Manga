@@ -254,6 +254,37 @@
                         <label class="error" for="billing-info__city"></label>
                     </div>
                 </div>
+            <div class="transfer-form">
+                <h2>Payment</h2>
+                <select id="selectPaymentOrder" onchange="Order.togglePaymentOrder(this)">
+                    <option value="cashPayment" selected>Payment in cash upon receipt</option>
+                    <option value="transferPayment">Payment by bank transfer</option>
+                </select>
+                <div id="paymentByCard" style="display: none;">
+                    <select id="selectBankOrder">
+                        <option value="userAddress" selected>Agribank</option>
+                        <option value="newAddress">ACB</option>
+                        <option value="newAddress">Vietcombank</option>
+                        <option value="newAddress">Vietinbank</option>
+                        <option value="newAddress">Techcombank</option>
+                        <option value="newAddress">BIDV</option>
+                        <option value="newAddress">MB</option>
+                        <option value="newAddress">VPBank</option>
+                        <option value="newAddress">TPBank</option>
+                        <option value="newAddress">VIB</option>
+                    </select>
+                    <div class="billing-info__input">
+                        <label>Card Number</label>
+                        <input id="billing-info__cardnumber" type="text" placeholder="Card Number" class="form-group">
+                        <label class="error" for="billing-info__cardnumber"></label>
+                    </div>
+                    <div class="billing-info__input">
+                        <label>Name On Card</label>
+                        <input id="billing-info__nameoncard" type="text" placeholder="Name On Card" class="form-group">
+                        <label class="error" for="billing-info__nameoncard"></label>
+                    </div>
+                </div>
+            
 
                 <!-- <label for="paymentMethod">Payment Method</label>
                         <div style="overflow: hidden;">

@@ -630,15 +630,15 @@ class Order {
     //
     // clear form Bill
     //
-    static clearFormBillInfo(e) {
-        e.querySelectorAll("input").forEach(input => {
-            if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
-                document.getElementById(input.id).value = "";
+        static clearFormBillInfo(e) {
+            e.querySelectorAll("input").forEach(input => {
+                if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
+                    document.getElementById(input.id).value = "";
+                    document.getElementById(input.id).disabled = false;
+                }
                 document.getElementById(input.id).disabled = false;
-            }
-            document.getElementById(input.id).disabled = false;
-        });
-    }
+            });
+        }
     static renderBillingForm() {
         const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')));
         billingFullName.value = accoutLoginInfo.fullName;
@@ -676,5 +676,16 @@ class Order {
     }
     static onload() {
         localStorage.setItem("order", JSON.stringify(orderTable));
+    }
+
+    //Payment:hbao
+    static togglePaymentOrder (selectElement) {
+        const paymentByCardDiv = document.getElementById("paymentByCard");
+        
+        if (selectElement.value === "transferPayment") {
+            paymentByCardDiv.style.display = "block"; // Hiển thị các input
+        } else {
+            paymentByCardDiv.style.display = "none"; // Ẩn các input
+        }
     }
 }
