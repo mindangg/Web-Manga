@@ -29,10 +29,10 @@ function renderViewIndex(renderProduct) {
                 </div>
             `
         });
-        renderPagination(renderProduct);
     } else {
-        alert("Chưa có sản phẩm !!!")
+        console.error("Chưa có sản phẩm !!!")
     }
+    renderPagination(renderProduct);
 }
 // ==================================================================================
 // RENDER HOME PAGE 
@@ -41,7 +41,6 @@ function renderViewIndex(renderProduct) {
 // ==================================================================================
 function renderPagination(renderProduct) {
     let productContainerFooter = document.querySelector('.product-container__footer');
-    println(productContainerFooter)
     productContainerFooter.innerHTML = ""
 
     const productTotalPages = Math.ceil(renderProduct.length / productPerHomePage);
@@ -191,36 +190,29 @@ function fetchPropertyProduct(url) {
         console.log(priceSearch)
         if (priceSearch !== null) {
             switch (priceSearch) {
-                case "5":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price < 5)
+                case "under-7-dollars":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price < 7)
                     console.log(priceOfProduct)
                     break;
-                case "5-7":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 5 && p.price <= 7)
+                case "7-to-12-dollars":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 12)
                     console.log(priceOfProduct)
                     break;
                 case "7-15":
                     priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 15)
                     console.log(priceOfProduct)
                     break;
-                case "15":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 15)
-                    break;
                 default:
                     break;
             }
         }
         // 
-        if (categoryOfProduct.length > 0 && categorySearch !== null) {
-            renderView(productList)
+        console.log(categoryOfProduct)
+        if (categorySearch !== null) {
             renderViewIndex(categoryOfProduct)
         }
-        if (priceOfProduct.length > 0 && priceSearch !== '') {
-            renderView(productList)
+        if (priceSearch !== null) {
             renderViewIndex(priceOfProduct)
-        }
-        else {
-            renderView(productList)
         }
     }
 }
@@ -248,20 +240,17 @@ function viewHome() {
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
     //
-    const bookSlider = document.querySelector('.book__slider')
-    bookSlider.style.display = 'inherit'
+    // const bookSlider = document.querySelector('.book__slider')
+    // bookSlider.style.display = 'inherit'
     //
-    const productList = document.querySelector('.product-list')
-    productList.style.display = 'inherit'
-    //
-    renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
     window.scrollTo(530, 530);
 }
 // ==================================================================================
 // trang giỏ hàng
 function viewCart() {
+    // 
     setURLForPage('cart')
-    //
+    // 
     const cartContainer = document.querySelector('.cart__container')
     renderView(cartContainer)
     //
@@ -307,6 +296,22 @@ function viewUserInfo() {
         viewLogin();
     }
 }
+//
+function viewFilter() {
+    const URLcurrent = new URL(window.location)
+
+    const productList = document.querySelector('.product-list')
+    renderView(productList)
+
+    fetchPropertyProduct(URLcurrent)
+}
+// 
+function viewSearch() {
+    const productList = document.querySelector('.product-list')
+    renderView(productList)
+
+    handleSearchProduct()
+}
 // ==================================================================================
 // IIFE
 // ==================================================================================
@@ -324,7 +329,7 @@ function viewUserInfo() {
     User.onload();
     Order.onload();
     // lấy tham số url trang hiện tại để render product 
-    fetchPropertyProduct(URLOfWebpage)
+    // fetchPropertyProduct(URLOfWebpage)
     // render tài khoản đăng nhập và thông tin người dùng
     User.renderAccountLogin()
     User.renderUserInfo()
@@ -338,6 +343,8 @@ function viewUserInfo() {
         case 'bill': viewBill(); break;
         case 'user-info': viewUserInfo(); break;
         case 'login': viewLogin(); break;
+        case 'filter': viewFilter(); break;
+        case 'search': viewSearch(); break;
         default: break;
     }
 })()

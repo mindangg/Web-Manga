@@ -66,7 +66,9 @@ function showSlider() {
     }
 }
 showSlider()
-
+// ==================================================================================
+// SHOW PRODUCT INFO (DETAIL)
+// ==================================================================================
 function showProductInfo(e) {
     const productInfo = document.querySelector('.product__page')
     productInfo.style.display = 'inline'
@@ -157,8 +159,6 @@ function book_AddSlider() {
 function book_RemoveSlider() {
     book_dots[book_active + 1].classList.remove("book__active");
 }
-
-
 
 
 
