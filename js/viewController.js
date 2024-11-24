@@ -348,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // load các local storage của product, user
     Product.onload();
     User.onload();
+    showSlider();
 
     // lấy tham số url trang hiện tại để render product 
     fetchPropertyProduct(URLOfWebpage)

@@ -46,25 +46,24 @@ dots.forEach((li, key) => {
     })
 })
 
-let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
 function showSlider() {
+    let sliderProduct = JSON.parse(localStorage.getItem('productTable'));
     const bookSliderList = document.querySelector(".book__slider__list")
     bookSliderList.innerHTML = ''
     for (var i = 0; i < sliderProduct.length; ++i) {
         bookSliderList.innerHTML += `
-        <div class="book__slider__item">
-            <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
-                <img src="${sliderProduct[i].cover1}" alt="">
-                <img src="${sliderProduct[i].cover2}" alt="">
-            </a>
-            <h4>${sliderProduct[i].series}</h4>
-            <p>$${sliderProduct[i].price}</p>
-            <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-        </div>
-        `
+    <div class="book__slider__item">
+        <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
+            <img src="${sliderProduct[i].cover1}" alt="">
+            <img src="${sliderProduct[i].cover2}" alt="">
+        </a>
+        <h4>${sliderProduct[i].series}</h4>
+        <p>$${sliderProduct[i].price}</p>
+        <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+    </div>
+    `
     }
 }
-showSlider()
 
 function showProductInfo(e) {
     const productInfo = document.querySelector('.product__page')
@@ -128,22 +127,6 @@ let book_prev = document.getElementById("book__slider__prev");
 let book_active = 0;
 let book_lengthItems = book_items.length - 4;
 
-book_next.onclick = function () {
-    if (book_active + 1 <= book_lengthItems) {
-        book_active++;
-        book_ReloadSlider();
-        book_AddSlider();
-    }
-}
-
-book_prev.onclick = function () {
-    if (book_active - 1 >= 0) {
-        book_active--;
-        book_ReloadSlider();
-        book_RemoveSlider();
-    }
-}
-
 function book_ReloadSlider() {
     let book_checkLeft = book_items[book_active].offsetLeft;
     book_list.style.left = -book_checkLeft + "px";
@@ -196,7 +179,22 @@ userInfoOff.addEventListener('click', () => {
     viewHome()
 })
 
-
+book_next.onclick = () => {
+    console.log('hi')
+    if (book_active + 1 <= book_lengthItems) {
+        book_active++;
+        book_ReloadSlider();
+        book_AddSlider();
+    }
+}
+book_prev.onclick = () => {
+    console.log('hi')
+    if (book_active - 1 >= 0) {
+        book_active--;
+        book_ReloadSlider();
+        book_RemoveSlider();
+    }
+}
 
 
 
