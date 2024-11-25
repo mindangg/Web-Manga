@@ -32,7 +32,7 @@
 }
 
 .navbar__logo img{
-    width: 70px;
+    width: 85px;
     height: 70px;
     object-fit: cover;
     margin: 0 40px;
@@ -386,7 +386,7 @@ footer{
 }
 
 .footer__container img{
-    width: 70px;
+    width: 85px;
     height: 70px;
     object-fit: cover;
     margin-left: 10px; 
@@ -521,7 +521,7 @@ hr{
     }
     
     .navbar__logo img{
-        width: 70px;
+        width: 85px;
         height: 70px;
         margin: 0 10px;
         margin-left: 60px;
@@ -581,7 +581,7 @@ hr{
     }
     
     .navbar__logo img{
-        width: 70px;
+        width: 85px;
         height: 70px;
         object-fit: cover;
         margin: 0 40px;
@@ -678,7 +678,7 @@ hr{
     }
 
     .navbar__logo img {
-        width: 70px;
+        width: 85px;
         height: 70px;
         object-fit: cover;
         /* justify-content: center; */
@@ -906,7 +906,7 @@ hr{
     }
     
     .navbar__logo img{
-        width: 70px;
+        width: 85px;
         height: 70px;
         object-fit: cover;
         margin: 0 40px;

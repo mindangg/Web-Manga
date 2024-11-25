@@ -15,23 +15,23 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
                         <ul>
-                            <li><a href="?series=sakamoto-days">Sakamoto Days</a></li>
-                            <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
+                            <li><a onclick="setURLForNavSearch('sakamoto-days')">Sakamoto Days</a></li>
+                            <li><a onclick="setURLForNavSearch('my-dress-up-darling')">My Dress Up Darling</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?series=black-clover">Black Clover</a></li>
-                            <li><a href="?series=tokyo-ghoul">Tokyo Ghoul</a></li>
+                            <li><a onclick="setURLForNavSearch('black-clover')">Black Clover</a></li>
+                            <li><a onclick="setURLForNavSearch('tokyo-ghoul')">Tokyo Ghoul</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?series=jujutsu-kaisen">Jujutsu Kaisen</a></li>
-                            <li><a href="?series=mashle-magic-and-muscles">Mashle: Magic And Muscles</a></li>
+                            <li><a onclick="setURLForNavSearch('jujutsu-kaisen')">Jujutsu Kaisen</a></li>
+                            <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles')">Mashle: Magic And Muscles</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?series=one-punch-man">One Punch Man</a></li>
-                            <li><a href="?series=spy-x-family">Spy X Family</a></li>
+                            <li><a onclick="setURLForNavSearch('one-punch-man')">One Punch Man</a></li>
+                            <li><a onclick="setURLForNavSearch('spy-x-family')">Spy X Family</a></li>
                         </ul>
                     </div>
                 </li>
@@ -40,23 +40,23 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Category</a>
                     <div class="navbar__category">
                         <ul>
-                            <li><a onclick="setURLForNavSearch('shounen')">Shounen</a></li>
-                            <li><a onclick="setURLForNavSearch('seinen')">Seinen</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'shounen')">Shounen</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'seinen')">Seinen</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('rom-com')">Rom Com</a></li>
-                            <li><a onclick="setURLForNavSearch('action')">Action</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'rom-com')">Rom Com</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'action')">Action</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('family')">Family</a></li>
-                            <li><a onclick="setURLForNavSearch('comedy')">Comedy</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'family')">Family</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'comedy')">Comedy</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('fantasy')">Fantasy</a></li>
-                            <li><a onclick="setURLForNavSearch('dark-fantasy')">Dark Fantasy</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'fantasy')">Fantasy</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'dark-fantasy')">Dark Fantasy</a></li>
                         </ul>
                     </div>
                 </li>
@@ -65,23 +65,23 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
-                            <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
-                            <li><a href="?author=shinichi-fukuda">Shinichi Fukuda</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'yusuke-murata')">Yusuke Murata</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'shinichi-fukuda')">Shinichi Fukuda</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?author=hajime-komoto">Hajime Komoto</a></li>
-                            <li><a href="?author=yuki-tabata">Yuki Tabata</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'hajime-komoto')">Hajime Komoto</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'yuki-tabata')">Yuki Tabata</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?author=sui-ishida">Sui Ishida</a></li>
-                            <li><a href="?author=gege-akutami">Gege Akutami</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'sui-ishida')">Sui Ishida</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'gege-akutami')">Gege Akutami</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?author=yuto-suzuki">Yuto Suzuki</a></li>
-                            <li><a href="?author=tatsuya-endo">Tatsuya Endo</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'yuto-suzuki')">Yuto Suzuki</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'tatsuya-endo')">Tatsuya Endo</a></li>
                         </ul>
                     </div>
                 </li>
@@ -89,19 +89,19 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Price</a>
                     <div class="navbar__price">
                         <ul>
-                            <li><a onclick="setURLForNavSearch('','under-7-dollars')">Under $7 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','under-7-dollars')">Under $7 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('','7-to-12-dollars')">$7 To $12 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','7-to-12-dollars')">$7 To $12 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('','12-to-17-dollars')">$12 To $17 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','12-to-17-dollars')">$12 To $17 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('','over-17-dollars')">Over $17 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','over-17-dollars')">Over $17 Dollars</a></li>
                         </ul>
                     </div>
                 </li>

@@ -22,11 +22,20 @@ function setURLForPage(page) {
 // ==================================================================================
 // SET URL FOR NAVBAR SEARCH
 // ==================================================================================
-function setURLForNavSearch(category = "", price = "") {
+function setURLForNavSearch(series = "", category = "", author = "", price = "") {
     let URLNavSearch
+    if (series !== "") {
+        URLNavSearch = `page=filter&series=${series}`
+    }
+
     if (category !== "") {
         URLNavSearch = `page=filter&category=${category}`
     }
+
+    if (author !== "") {
+        URLNavSearch = `page=filter&author=${author}`
+    }
+
     if (price !== "") {
         URLNavSearch = `page=filter&price=${price}`
     }
@@ -55,6 +64,16 @@ function setURLForSearch(series = "", category = "", priceMin = "", priceMax = "
 // ==================================================================================
 function fetchPropertyProduct(url) {
     if (url.search) {
+        // get series from URL 
+        const seriesSearch = url.searchParams.get('series')
+        let seriesOfProduct = []
+        // filter product with series
+        if (seriesSearch !== null) {
+            seriesOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p =>
+                removeSpecialChar(p.series) === removeSpecialChar(seriesSearch)
+            )
+        }
+        
         // get category from URL 
         const categorySearch = url.searchParams.get('category')
         let categoryOfProduct = []
@@ -64,6 +83,17 @@ function fetchPropertyProduct(url) {
                 removeSpecialChar(p.category) === removeSpecialChar(categorySearch)
             )
         }
+
+        // get author from URL 
+        const authorSearch = url.searchParams.get('author')
+        let authorOfProduct = []
+        // filter product with author
+        if (authorSearch !== null) {
+            authorOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p =>
+                removeSpecialChar(p.author) === removeSpecialChar(authorSearch)
+            )
+        }
+
         // get price from URL
         const priceSearch = url.searchParams.get('price')
         let priceOfProduct = []
@@ -78,8 +108,12 @@ function fetchPropertyProduct(url) {
                     priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 12)
                     console.log(priceOfProduct)
                     break;
-                case "7-15":
-                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 7 && p.price <= 15)
+                case "12-to-17-dollars":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price >= 12 && p.price <= 17)
+                    console.log(priceOfProduct)
+                    break;
+                case "over-17-dollars":
+                    priceOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.price > 17)
                     console.log(priceOfProduct)
                     break;
                 default:
@@ -87,11 +121,24 @@ function fetchPropertyProduct(url) {
             }
         }
 
+        if (seriesSearch !== null) {
+            // @viewController
+            renderProductPage(seriesOfProduct)
+            window.scroll
+        }
+
         if (categorySearch !== null) {
             // @viewController
             renderProductPage(categoryOfProduct)
             window.scroll
         }
+
+        if (authorSearch !== null) {
+            // @viewController
+            renderProductPage(authorOfProduct)
+            window.scroll
+        }
+
         if (priceSearch !== null) {
             // @viewController
             renderProductPage(priceOfProduct)
