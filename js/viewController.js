@@ -243,6 +243,7 @@ function toggleUserInfo(e) {
 // logout account 
 function logoutUser() {
     localStorage.removeItem('accountLogin')
+    localStorage.removeItem('cart')
     User.renderAccountLogin()
     viewHome()
     window.location.reload()
