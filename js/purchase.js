@@ -267,7 +267,7 @@ class Cart {
     }
 }
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
@@ -276,10 +276,10 @@ class Order {
         this.orderPrice = orderPrice
         this.userFullName = userFullName
         this.userPhoneNumber = userPhoneNumber
-        this.orderAddrress = orderAddrress
+        this.orderAddress = orderAddress
     }
     // Insert new order  
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress) {
         const newOrder = new Order(
             orderId,
             userId,
@@ -289,7 +289,7 @@ class Order {
             orderPrice,
             userFullName,
             userPhoneNumber,
-            orderAddrress
+            orderAddress
         )
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
@@ -323,7 +323,7 @@ class Order {
         console.log(orderTable)
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
-            localStorage.getItem('accountLogin'),
+            JSON.parse(localStorage.getItem('accountLogin')).userId,
             new Date().toISOString().split('T')[0].split('-').reverse().join('/'),
             status,
             cartTable.map(item => ({

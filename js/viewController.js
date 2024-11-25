@@ -92,13 +92,9 @@ const totalProductPerPage = 8;
 let allProductPageIndex = 1;
 
 const renderProductPage = () => {
-    document.querySelector('.book__slider').style.display = 'none';
-    document.querySelector('.banner').style.display = 'none';
-    allProductPage.style.display = 'block';
-
     const productPagination = document.getElementById('all-product__pagination');
     let productTable = JSON.parse(localStorage.getItem('productTable'));
-    const totalProductPage = productTable.length / totalProductPerPage;
+    const totalProductPage = Math.ceil(productTable.length / totalProductPerPage);
 
     if (totalProductPage > 1) {
         productPagination.innerHTML = `
@@ -281,7 +277,7 @@ function renderView(e) {
 // ==================================================================================
 // về trang chủ
 function viewHome() {
-    // setURLForPage('home')
+    setURLForPage('home')
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
     const bookSlider = document.querySelector('.book__slider')
@@ -301,14 +297,19 @@ function viewCart() {
 // trang thanh toán
 function viewBill() {
     const emptyCart = cartTable.length === 0
-    if (emptyCart) {
-        alert('Your cart is empty')
-        return
+    if (account) {
+        if (emptyCart) {
+            alert('Your cart is empty')
+            return false;
+        } else {
+            setURLForPage('bill')
+            const billingInfo = document.querySelector('.billing-info')
+            renderView(billingInfo)
+            Order.renderBillingForm();
+        }
     } else {
-        setURLForPage('bill')
-        const billingInfo = document.querySelector('.billing-info')
-        renderView(billingInfo)
-        Order.renderBillingForm();
+        setURLForPage('login')
+        viewLogin();
     }
 }
 // ==================================================================================
@@ -333,11 +334,26 @@ function viewUserInfo() {
     }
 }
 // ==================================================================================
+// trang san pham
+function viewAllProduct(){
+    setURLForPage('all-product');
+    const allProductPage = document.querySelector('.all-product__page');
+    renderView(allProductPage);
+
+    document.querySelector('.main__page').style.display = 'inherit';
+    document.querySelector('.slider').style.display = 'inherit';
+    document.querySelector('.best__slider').style.display = 'inherit';
+    document.querySelector('.banner').style.display = 'none';
+    document.querySelector('.book__slider').style.display = 'none';
+    renderProductPage();
+    window.scrollTo(0, 1400);
+}
+// ==================================================================================
 // IIFE
 // ==================================================================================
 // thực thi các hàm khi load hoặc reload trang
 // ==================================================================================
-document.addEventListener('DOMContentLoaded', () => {
+(() => {
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
     // defaultBillingSelect.value = "userAddress"
 
@@ -368,6 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'bill': viewBill(); break;
         case 'user-info': viewUserInfo(); break;
         case 'login': viewLogin(); break;
+        case 'all-product': viewAllProduct(); break;
         default: break;
     }
-})
+})()

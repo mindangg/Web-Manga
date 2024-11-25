@@ -5,484 +5,506 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/orderDetail.css" />
-    <link rel="stylesheet" href="../css/admin.css" />
-    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/validation/error.css" />
+    <link rel="stylesheet" href="../css/admin/orderDetailPage.css" />
+    <link rel="stylesheet" href="../css/admin/adminPage.css" />
+    <link rel="stylesheet" href="../css/admin/productPage.css" />
+    <link rel="stylesheet" href="../css/admin/userPage.css" />
 </head>
 
 <body>
-    <div class="admin">
-        <div class="admin__header">
-            <div class="topnav">
-                <div class="topnav__title">WEBTOON</div>
+<div class="admin">
+    <div class="admin__header">
+        <div class="topnav">
+            <div class="topnav__title">WEBTOON</div>
 
-                
+            <div class="topnav__toggle">
+                <span id="navToggle" style="font-size: 30px; cursor: pointer" onclick="toggleNav()">&#9776;</span>
+            </div>
 
-                <div class="setting">
-                    <div class="setting__btn">
-                        <button onclick="myFunction()">
-                            <i class="icon fa fa-user"></i>
-                        </button>
-                        <div id="dropdown" class="dropdown__content">
-                            <a href="/">Ghi chép (Logs)</a>
-                            <a href="index.html" onclick="logOutAdmin()">Đăng xuất (Logout)</a>
-                        </div>
+            <div class="setting">
+                <div class="setting__btn">
+                    <button onclick="myFunction()">
+                        <i class="icon fa fa-user"></i>
+                    </button>
+                    <div id="dropdown" class="dropdown__content">
+                        <a href="/">Ghi chép (Logs)</a>
+                        <a href="index.html" onclick="logOutAdmin()">Đăng xuất (Logout)</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="admin__body" style="display: flex; flex-direction: row">
-            <div id="sidenav" class="sidenav" >
-                <div id="static">Statistic</div>
-                <div id="product" onclick="togglePage(this)">Product</div>
-                <div id="user" onclick="togglePage(this)">User</div>
-                <div id="order" onclick="togglePage(this)">Order</div>
-            </div>
+    <div class="admin__body" style="display: flex; flex-direction: row">
+        <div id="sidenav" class="sidenav" style="display: flex; flex-direction: column">
+            <div id="static">Statistic</div>
+            <div id="product" onclick="togglePage(this)">Product</div>
+            <div id="user" onclick="togglePage(this)">User</div>
+            <div id="order" onclick="togglePage(this)">Order</div>
+        </div>
 
 
-            <!-- PRODUCT PAGE -->
-            <div id="product-page" class="product-page page" style="display: initial;">
-                <!-- TABLE PRODUCT -->
-                <div id="product-table" class="product table">
-                    <!-- Menu Header -->
-                    <header class="product table__header">
-                        <p class="product table__title">Product</p>
-                    </header>
+        <!-- PRODUCT PAGE -->
+        <div id="product-page" class="product-page page" style="display: initial;">
+            <!-- TABLE PRODUCT -->
+            <div id="product-table" class="product table">
+                <!-- Menu Header -->
+                <header class="product table__header">
+                    <p class="product table__title">Product</p>
+                </header>
 
-                    <!-- Menu Body -->
-                    <div class="product table__search">
-                        <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">Search by series:</div>
-                            <input type="text" class="product-table__search-input"
-                                id="product-table__search-input--name" />
+                <!-- Menu Body -->
+                <div class="product table__search">
+                    <div style="display: flex; flex-direction: row">
+                        <div class="product table__search-label">Search by series:</div>
+                        <input type="text" class="product-table__search-input"
+                               id="product-table__search-input--name" />
+                    </div>
+                    <div style="display: flex; flex-direction: row">
+                        <div class="product table__search-label">
+                            Search by category:
                         </div>
-                        <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">
-                                Search by category:
-                            </div>
-                            <select class="product table__search-input" id="product-table__search-input--category"
+                        <select class="product table__search-input" id="product-table__search-input--category"
                                 aria-label="Product Tags">
-                                <option value="">--Choose a tag--</option>
-                                <option value="Rom Com">Rom Com</option>
-                                <option value="Brain Rot">Brain Rot</option>
-                                <option value="Shonen">Shonen</option>
-                                <option value="Seinen">Seinen</option>
-                            </select>
-                        </div>
-                        <div style="display: flex; flex-direction: row">
-                            <div class="product table__search-label">Search by price:</div>
-                            <div class="range" style="display: flex">
-                                <div style="margin: 10px 0 0 2px;">
-                                    <div class="range-slider">
-                                        <span class="range-selected" style="left: 0%; right: 0%;"></span>
-                                    </div>
-                                    <div class="range-input">
-                                        <input type="range" class="min" min="0" max="1000" value="0" step="10">
-                                        <input type="range" class="max" min="0" max="1000" value="1000" step="10">
-                                    </div>
+                            <option value="">--Choose a tag--</option>
+                            <option value="Shounen">Shounen</option>
+                            <option value="Rom Com">Rom Com</option>
+                            <option value="Family">Family</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Slice Of Slice">Slice Of Slice</option>
+                            <option value="Action">Action</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Dark Fantasy">Dark Fantasy</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: row">
+                        <div class="product table__search-label">Search by price:</div>
+                        <div class="range" style="display: flex">
+                            <div style="margin: 10px 0 0 2px;">
+                                <div class="range-slider">
+                                    <span class="range-selected" style="left: 0%; right: 0%;"></span>
                                 </div>
-                                <div class="range-price">
-                                    <label for="min">Min</label>
-                                    <input type="text" id="product-table__search-price--min" value="0">
-                                    <label for="max">Max</label>
-                                    <input type="text" name="product-table__search-price--max" value="1000
+                                <div class="range-input">
+                                    <input type="range" class="min" min="0" max="1000" value="0" step="10">
+                                    <input type="range" class="max" min="0" max="1000" value="1000" step="10">
+                                </div>
+                            </div>
+                            <div class="range-price">
+                                <label for="min">Min</label>
+                                <input type="text" id="product-table__search-price--min" value="0">
+                                <label for="max">Max</label>
+                                <input type="text" name="product-table__search-price--max" value="1000
                                     ">
-                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="product table__body">
-                        <table class="product table__container" style="width: 100%">
-                            <thead class="product table__head">
-                                <tr class="product table__row">
-                                    <th class="product table__cell product-table__cell--id">
-                                        Id
-                                    </th>
-                                    <th class="product table__cell product-table__cell cover">
-                                        Cover
-                                    </th>
-                                    <th class="product table__cell product-table__cell title">
-                                        Series
-                                    </th>
-                                    <th class="product table__cell product-table__cell tags">
-                                        Category
-                                    </th>
-                                    <th class="product table__cell product-table__cell stock">
-                                        Stock
-                                    </th>
-                                    <th class="product table__cell product-table__cell price">
-                                        Price
-                                    </th>
-                                    <th class="product table__cell product-table__cell edit">
-                                        Edit
-                                    </th>
-                                    <th class="product table__cell product-table__cel delete">
-                                        Delete
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="product-table__body-content" class="product table__body-content">
-                                <!-- Product rows will be displayed here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Menu Footer -->
-                    <div class="product-table__footer" id="product-table__footer">
-                        <!-- Pagination or additional controls can go here -->
-                    </div>
                 </div>
 
-                <div class="product-menu">
-                    <div class="product-menu__header">
-                        <div class="product-menu__title">Sản phẩm (Product)</div>
+                <div class="product table__body">
+                    <table class="product table__container" style="width: 100%">
+                        <thead class="product table__head">
+                        <tr class="product table__row">
+                            <th class="product table__cell product-table__cell--id">
+                                Id
+                            </th>
+                            <th class="product table__cell product-table__cell cover">
+                                Cover
+                            </th>
+                            <th class="product table__cell product-table__cell title">
+                                Series
+                            </th>
+                            <th class="product table__cell product-table__cell tags">
+                                Category
+                            </th>
+                            <th class="product table__cell product-table__cell stock">
+                                Stock
+                            </th>
+                            <th class="product table__cell product-table__cell price">
+                                Price
+                            </th>
+                            <th class="product table__cell product-table__cell edit">
+                                Edit
+                            </th>
+                            <th class="product table__cell product-table__cel delete">
+                                Delete
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="product-table__body-content" class="product table__body-content">
+                        <!-- Product rows will be displayed here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Menu Footer -->
+                <div class="product-table__footer" id="product-table__footer">
+                    <!-- Pagination or additional controls can go here -->
+                </div>
+            </div>
+
+            <div class="product-menu">
+                <div class="product-menu__header">
+                    <div class="product-menu__title">Sản phẩm (Product)</div>
+                </div>
+
+                <div id="product-menu__body" class="product-menu__body">
+                    <div class="product-menu__content">
+                        <label>Cover primary:</label>
+                        <input class="product-menu__input" id="product-menu__input--cover1" type="file"
+                               aria-label="Product Image" /><br />
+                        <label class="error" for="product-menu__input--cover1"></label>
                     </div>
 
-                    <div id="product-menu__body" class="product-menu__body">
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--cover1">Cover primary:</label>
-                            <input class="product-menu__input" id="product-menu__input--cover1" type="file"
-                                aria-label="Product Image" /><br />
-                        </div>
+                    <div class="product-menu__content">
+                        <label>Cover back:</label>
+                        <input class="product-menu__input" id="product-menu__input--cover2" type="file"
+                               aria-label="Product Image" /><br />
+                        <label class="error" for="product-menu__input--cover2"></label>
+                    </div>
 
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--cover2">Cover back:</label>
-                            <input class="product-menu__input" id="product-menu__input--cover2" type="file"
-                                aria-label="Product Image" /><br />
-                        </div>
+                    <div class="product-menu__content">
+                        <label>Series:</label>
+                        <input class="product-menu__input" id="product-menu__input--series" type="text"
+                               placeholder="Title" aria-label="Product Title" /><br />
+                        <label class="error" for="product-menu__input--series"></label>
+                    </div>
 
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--series">Series:</label>
-                            <input class="product-menu__input" id="product-menu__input--series" type="text"
-                                placeholder="Title" aria-label="Product Title" /><br />
-                        </div>
-
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--category">Category:</label>
-                            <select class="product-menu__select" id="product-menu__input--category"
+                    <div class="product-menu__content">
+                        <label>Category:</label>
+                        <select class="product-menu__select" id="product-menu__input--category"
                                 aria-label="Product Tags">
-                                <option value="">--Choose a tag--</option>
-                                <option value="Rom Com">Rom Com</option>
-                                <option value="Brain Rot">Brain Rot</option>
-                                <option value="Shonen">Shonen</option>
-                            </select><br />
-                        </div>
-
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--author">Author:</label>
-                            <input class="product-menu__input" id="product-menu__input--author" type="text"
-                                placeholder="Author" aria-label="Product Author" /><br />
-                        </div>
-
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--stock">Stock:</label>
-                            <input class="product-menu__input" id="product-menu__input--stock" type="text"
-                                placeholder="Stock" aria-label="Product Stock" /><br />
-                        </div>
-
-                        <div class="product-menu__content">
-                            <label class="product-menu__label" for="product-menu__input--price">Price:</label>
-                            <input class="product-menu__input" id="product-menu__input--price" type="text"
-                                placeholder="Price" aria-label="Product Price" /><br />
-                        </div>
-
-                        <div class="product-menu__content">
-                            <label class="product-menu__label"
-                                for="product-menu__input--description">Description:</label>
-                            <input class="product-menu__input" id="product-menu__input--description" type="text"
-                                placeholder="Description" aria-label="Product Description" /><br />
-                        </div>
+                            <option value="">--Choose a tag--</option>
+                            <option value="Shounen">Shounen</option>
+                            <option value="Rom Com">Rom Com</option>
+                            <option value="Family">Family</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Slice Of Life">Slice Of Life</option>
+                            <option value="Action">Action</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Dark Fantasy">Dark Fantasy</option>
+                        </select>
+                        <label class="error" for="product-menu__input--category"></label>
+                        <br />
                     </div>
 
-                    <div class="product-menu__footer">
-                        <!-- <button class="product-menu__button product-menu__button--close" id="product-menu__button--close"
-                            type="button" onclick="closeTask()">
-                            Close
-                        </button> -->
-                        <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
+                    <div class="product-menu__content">
+                        <label>Author:</label>
+                        <input class="product-menu__input" id="product-menu__input--author" type="text"
+                               placeholder="Author" aria-label="Product Author" /><br />
+                        <label class="error" for="product-menu__input--author"></label>
+                    </div>
+
+                    <div class="product-menu__content">
+                        <label>Stock:</label>
+                        <input class="product-menu__input" id="product-menu__input--stock" type="text"
+                               placeholder="Stock" aria-label="Product Stock" />
+                        <label class="error" for="product-menu__input--stock"></label>
+                    </div>
+
+                    <div class="product-menu__content">
+                        <label>Price:</label>
+                        <input class="product-menu__input" id="product-menu__input--price" type="text"
+                               placeholder="Price" aria-label="Product Price" /><br />
+                        <label class="error" for="product-menu__input--price"></label>
+                    </div>
+
+                    <div class="product-menu__content">
+                        <label>Description:</label>
+                        <input class="product-menu__input" id="product-menu__input--description" type="text"
+                               placeholder="Description" aria-label="Product Description" /><br />
+                        <label class="error" for="product-menu__input--description"></label>
+                    </div>
+                </div>
+
+                <div class="product-menu__footer">
+                    <button class="product-menu__button product-menu__button--add" id="product-menu__button--add"
                             type="button" onclick="Product.add()">
-                            Save (Add Mode)
-                        </button>
-                        <button class="product-menu__button product-menu__button--save" id="product-menu__button--save"
+                        Save (Add Mode)
+                    </button>
+                    <button class="product-menu__button product-menu__button--save" id="product-menu__button--save"
                             style="display: none" type="button" onclick="Product.update()">
-                            Save (Save Mode)
-                        </button>
-                        <button class="product-menu__button product-menu__button--cancel" style="display: none"
+                        Save (Save Mode)
+                    </button>
+                    <button class="product-menu__button product-menu__button--cancel" style="display: none"
                             id="product-menu__button--cancel" type="button" onclick="Product.cancel()">
-                            Cancel
-                        </button>
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="user-page" class="user-page page" style="display: none">
+            <!-- TABLE USER -->
+            <div class="user table">
+                <!-- Menu Header -->
+                <header class="user table__header">
+                    <p class="user table__title">User</p>
+                </header>
+
+                <!-- Menu Body -->
+                <div class="user table__search" id="user__search--container">
+                    <div id="user__search" style="display: flex; flex-direction: row">
+                        <div class="user search-label">Search by:</div>
+                        <select id="select-search-field" onchange="searchUser()">
+                            <option value="User ID">User ID</option>
+                            <option value="Full name">Full name</option>
+                            <option value="Username">Username</option>
+                            <option value="Password">Password</option>
+                            <option value="Email">Email</option>
+                            <option value="Phone number">Phone number</option>
+                            <option value="House number">House number</option>
+                            <option value="Street">Street</option>
+                            <option value="Ward">Ward</option>
+                            <option value="District">District</option>
+                            <option value="City">City</option>
+                        </select>
+                        <input type="text" class="user user__search--input" id="user__search--input"
+                               placeholder="User ID" />
+                    </div>
+                    <div id="user__filter" style="display: flex; flex-direction: row">
+                        <div class="user search-label">Filter by:</div>
+                        <select id="select-filter-field" onchange="searchUser()">
+                            <option value="0">--Choose--</option>
+                            <option value="1">Enable</option>
+                            <option value="2">Disable</option>
+                        </select>
+                    </div>
+                    <div id="user__sort" style="display: flex; flex-direction: row">
+                        <div class="user search-label">Sort by:</div>
+                        <select id="select-sort-field" onchange="searchUser()">
+                            <option value="0">--Choose--</option>
+                            <option value="1">A-Z &uarr;</option>
+                            <option value="2">A-Z &darr;</option>
+                        </select>
+                    </div>
+                    <button id="user__addbtn" onclick="addUser()">Add user</button>
+                </div>
+
+                <div class="user table__body">
+                    <table class="user table__container" style="width: 100%">
+                        <thead class="user table__head">
+                        <tr class="user table__row">
+                            <th class="user table__cell user-table__cell userId">
+                                UserId
+                            </th>
+                            <th class="user table__cell user-table__cell fullName">
+                                Full name
+                            </th>
+                            <th class="user table__cell user-table__cell username">
+                                Username
+                            </th>
+                            <th class="user table__cell user-table__cell password">
+                                Password
+                            </th>
+                            <th class="user table__cell user-table__cell email">
+                                Email
+                            </th>
+                            <th class="user table__cell user-table__cell phoneNumber">
+                                Phone number
+                            </th>
+                            <th class="user table__cell user-table__cell createDate">
+                                Date create
+                            </th>
+                            <th class="user table__cell user-table__cell address">
+                                Address
+                            </th>
+                            <th class="user table__cell user-table__cell status">
+                                Status
+                            </th>
+                            <th class="user table__cell user-table__cell editbtn">
+                                Edit
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="user-table__body-content" class="user table__body-content">
+                        <!-- Product rows will be displayed here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Menu Footer -->
+                <div class="user-table__footer" id="user-table__footer">
+                    <!-- Pagination or additional controls can go here -->
+                </div>
+            </div>
+            <div id="user__edit-menu--container">
+                <div id="user__edit-menu">
+                    <div id="user__edit-menu--userId">User ID</div>
+                    <div class="user edit-component" style="margin-top: 15px">
+                        <input type="text" id="user__edit-menu--fullName" placeholder="Full name" value="">
+
+                        <input type="text" id="user__edit-menu--username" placeholder="Username" value="">
+
+                        <input type="text" id="user__edit-menu--password" placeholder="Password" value="">
+                    </div>
+                    <div class="user edit-component">
+                        <input type="text" id="user__edit-menu--email" placeholder="Email" value="">
+
+                        <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone number" value="">
+
+                        <input type="date" id="user__edit-menu--createDate" placeholder="Create date">
+                    </div>
+                    <div class="user edit-component user-address">
+                        <div class="address-component label">
+                            <label id="user__edit-menu--address-label">Address:</label>
+                        </div>
+                        <div class="address-component first">
+                            <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number"
+                                   value="">
+                            <input type="text" id="user__edit-menu--street" placeholder="Street" value="">
+                        </div>
+                        <div class="address-component second">
+                            <input type="text" id="user__edit-menu--ward" placeholder="Ward" value="">
+                            <input type="text" id="user__edit-menu--district" placeholder="District" value="">
+                            <input type="text" id="user__edit-menu--city" placeholder="City" value="">
+                        </div>
+                    </div>
+                    <div id="user__edit-menu--error"></div>
+                    <div class="user edit-component user-buttons">
+                        <button id="user__edit-menu--save">Save</button>
+                        <button id="user__edit-menu--cancel">Cancel</button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id="user-page" class="user-page page" style="display: none">
-                <!-- TABLE USER -->
-                <div class="user table">
-                    <!-- Menu Header -->
-                    <header class="user table__header">
-                        <p class="user table__title">User</p>
-                    </header>
+        <!-- ORDER PAGE -->
+        <div id="order-page" class="order-page page">
+            <!-- TABLE PRODUCT -->
+            <div class="order table">
+                <!-- Menu Header -->
+                <header class="order table__header">
+                    <p class="order table__title">Order</p>
+                </header>
 
-                    <!-- Menu Body -->
-                    <div class="user table__search" id="user__search--container">
-                        <div id="user__search" style="display: flex; flex-direction: row">
-                            <div class="user search-label">Search by:</div>
-                            <select id="select-search-field" onchange="searchUser()">
-                                <option value="User ID">User ID</option>
-                                <option value="Full name">Full name</option>
-                                <option value="Username">Username</option>
-                                <option value="Password">Password</option>
-                                <option value="Email">Email</option>
-                                <option value="Phone number">Phone number</option>
-                                <option value="Address">Address</option>
-                            </select>
-                            <input type="text" class="user user__search--input" id="user__search--input" placeholder="User ID"/>
-                        </div>
-                        <div id="user__filter" style="display: flex; flex-direction: row">
-                            <div class="user search-label">Filter by:</div>
-                            <select id="select-filter-field" onchange="searchUser()">
-                                <option value="0">--Choose--</option>
-                                <option value="1">Enable</option>
-                                <option value="2">Disable</option>
-                            </select>
-                        </div>
-                        <div id="user__sort" style="display: flex; flex-direction: row">
-                            <div class="user search-label">Sort by:</div>
-                            <select id="select-sort-field" onchange="searchUser()">
-                                <option value="0">--Choose--</option>
-                                <option value="1">A-Z &uarr;</option>
-                                <option value="2">A-Z &darr;</option>
-                            </select>
-                        </div>
-                        <button id="user__addbtn" onclick="addUser()">Add user</button>
+                <!-- Menu Body -->
+                <div class="order table__search">
+                    <div style="display: flex; flex-direction: row">
+                        <div class="order table__search-label">Search by date:</div>
+                        <input type="date" class="order-table__search-input" id="order-table__search-input--date" />
                     </div>
-
-                    <div class="user table__body">
-                        <table class="user table__container" style="width: 100%">
-                            <thead class="user table__head">
-                                <tr class="user table__row">
-                                    <th class="user table__cell user-table__cell userId">
-                                        UserId
-                                    </th>
-                                    <th class="user table__cell user-table__cell fullName">
-                                        Full name
-                                    </th>
-                                    <th class="user table__cell user-table__cell username">
-                                        Username
-                                    </th>
-                                    <th class="user table__cell user-table__cell password">
-                                        Password
-                                    </th>
-                                    <th class="user table__cell user-table__cell email">
-                                        Email
-                                    </th>
-                                    <th class="user table__cell user-table__cell phoneNumber">
-                                        Phone number
-                                    </th>
-                                    <th class="user table__cell user-table__cell createDate">
-                                        Date create
-                                    </th>
-                                    <th class="user table__cell user-table__cell address">
-                                        Address
-                                    </th>
-                                    <th class="user table__cell user-table__cell status">
-                                        Status
-                                    </th>
-                                    <th class="user table__cell user-table__cell editbtn">
-                                        Edit
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="user-table__body-content" class="user table__body-content">
-                                <!-- Product rows will be displayed here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Menu Footer -->
-                    <div class="user-table__footer" id="user-table__footer">
-                        <!-- Pagination or additional controls can go here -->
+                    <div style="display: flex; flex-direction: row">
+                        <div class="order table__search-label">Search by district:</div>
+                        <input type="text" class="order-table__search-input"
+                               id="order-table__search-input--district" />
                     </div>
                 </div>
-                <div id="user__edit-menu--container">
-                    <div id="user__edit-menu">
-                        <div id="user__edit-menu--userId">User ID</div>
-                        <div class="user edit-component" style="margin-top: 15px">
-                            <input type="text" id="user__edit-menu--fullName" placeholder="Full name" value="">
 
-                            <input type="text" id="user__edit-menu--username" placeholder="Username" value="">
+                <div class="order table__body">
+                    <table class="order table__container" style="width: 100%">
+                        <thead class="order table__head">
+                        <tr class="order table__row">
+                            <th class="order table__cell order-table__cell orderid">
+                                OrderID
+                            </th>
+                            <th class="order table__cell order-table__cell userid">
+                                UserID
+                            </th>
+                            <th class="order table__cell order-table__cell datecreate">
+                                Date create
+                            </th>
+                            <th class="order table__cell order-table__cell datecreate">
+                                Address
+                            </th>
+                            <th class="order table__cell order-table__cell price">
+                                Order price
+                            </th>
+                            <th class="order table__cell order-table__cell status">
+                                Status
+                            </th>
+                            <th class="order table__cell order-table__cell itemlist">
+                                List items
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="order-table__body-content" class="product table__body-content">
+                        <!-- Product rows will be displayed here -->
+                        </tbody>
+                    </table>
+                </div>
 
-                            <input type="text" id="user__edit-menu--password" placeholder="Password" value="">
-                        </div>
-                        <div class="user edit-component">
-                            <input type="text" id="user__edit-menu--email" placeholder="Email" value="">
-
-                            <input type="text" id="user__edit-menu--phoneNumber" placeholder="Phone number" value="">
-
-                            <input type="date" id="user__edit-menu--createDate" placeholder="Create date">
-                        </div>
-                        <div class="user edit-component user-address">
-                            <div class="address-component label">
-                                <label id="user__edit-menu--address-label">Address:</label>
-                            </div>
-                            <div class="address-component first">
-                                <input type="text" id="user__edit-menu--houseNumber" placeholder="House Number" value="">
-                                <input type="text" id="user__edit-menu--street" placeholder="Street" value="">
-                            </div>
-                            <div class="address-component second">
-                                <input type="text" id="user__edit-menu--ward" placeholder="Ward" value="">
-                                <input type="text" id="user__edit-menu--district" placeholder="District" value="">
-                                <input type="text" id="user__edit-menu--city" placeholder="City" value="">
-                            </div>
-                        </div>
-                        <div id="user__edit-menu--error"></div>
-                        <div class="user edit-component user-buttons">
-                            <button id="user__edit-menu--save">Save</button>
-                            <button id="user__edit-menu--cancel">Cancel</button>
-                        </div>
-                    </div>
+                <!-- Menu Footer -->
+                <div class="order-table__footer" id="order-table__footer">
+                    <!-- Pagination or additional controls can go here -->
                 </div>
             </div>
 
-            <!-- ORDER PAGE -->
-            <div id="order-page" class="order-page page">
-                <!-- TABLE PRODUCT -->
-                <div class="order table">
-                    <!-- Menu Header -->
-                    <header class="order table__header">
-                        <p class="order table__title">Order</p>
-                    </header>
-
-                    <!-- Menu Body -->
-                    <div class="order table__search">
-                        <div style="display: flex; flex-direction: row">
-                            <div class="order table__search-label">Search by date:</div>
-                            <input type="date" class="order-table__search-input" id="order-table__search-input--date" />
-                        </div>
-                        <div style="display: flex; flex-direction: row">
-                            <div class="order table__search-label">Search by address:</div>
-                            <input type="text" class="order-table__search-input"
-                                id="order-table__search-input--district" />
-                        </div>
+            <div class="order-detail__page">
+                <div class="order-detail">
+                    <div>
+                        <button class="order-detail__button" onclick="Order.displayOrderDetail()">X</button>
+                    </div>
+                    <div class="order-detail__summary">
+                        <h1>Order Details</h1>
+                        <p><strong>Order ID:</strong> #123456</p>
+                        <p><strong>Order Date:</strong> November 16, 2024</p>
+                        <p><strong>Status:</strong>Completed</p>
                     </div>
 
-                    <div class="order table__body">
-                        <table class="order table__container" style="width: 100%">
-                            <thead class="order table__head">
-                                <tr class="order table__row">
-                                    <th class="order table__cell order-table__cell orderid">
-                                        OrderID
-                                    </th>
-                                    <th class="order table__cell order-table__cell userid">
-                                        UserID
-                                    </th>
-                                    <th class="order table__cell order-table__cell itemlist">
-                                        Item list
-                                    </th>
-                                    <th class="order table__cell order-table__cell price">
-                                        Price
-                                    </th>
-                                    <th class="order table__cell order-table__cell datecreate">
-                                        Date Create
-                                    </th>
-                                    <th class="order table__cell order-table__cell datecreate">
-                                        Address
-                                    </th>
-                                    <th class="order table__cell order-table__cell status">
-                                        Status
-                                    </th>
-                                </tr>
+                    <div class="order-detail__items">
+                        <h2>List items</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
                             </thead>
-                            <tbody id="order-table__body-content" class="product table__body-content">
-                                <!-- Product rows will be displayed here -->
+                            <tbody>
+                            <tr>
+                                <td>I've Somehow Gotten Stronger When I Improved My Farm-Related Skills</td>
+                                <td>1</td>
+                                <td>$3.00</td>
+                            </tr>
+                            <tr>
+                                <td>I've Somehow Gotten Stronger When I Improved My Farm-Related Skil</td>
+                                <td>2</td>
+                                <td>$5.00</td>
+                            </tr>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">
+                                    Total:
+                                </td>
+                                <td>$13.00</td>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
 
-                    <!-- Menu Footer -->
-                    <div class="order-table__footer" id="order-table__footer">
-                        <!-- Pagination or additional controls can go here -->
+                    <div class="order-detail__customer-info">
+                        <h2>Customer info</h2>
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Email:</strong> johndoe@example.com</p>
+                        <p><strong>Phone:</strong> +1234567890</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="order-detail" style="display: none;">
-        <div class="order-detail__summary">
-            <h1>Order Details</h1>
-            <p><strong>Order ID:</strong> #123456</p>
-            <p><strong>Order Date:</strong> November 16, 2024</p>
-            <p><strong>Status:</strong> Completed</p>
-        </div>
-
-        <div class="order-detail__items">
-            <h2>Items</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Webtoon A - Chapter 1</td>
-                        <td>1</td>
-                        <td>$3.00</td>
-                    </tr>
-                    <tr>
-                        <td>Webtoon B - Chapter 5</td>
-                        <td>2</td>
-                        <td>$5.00</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">Total:</td>
-                        <td>$13.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <div class="order-detail__customer-info">
-            <h2>Customer Info</h2>
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Email:</strong> johndoe@example.com</p>
-            <p><strong>Phone:</strong> +1234567890</p>
-        </div>
-    </div>
+</div>
 </body>
-<script src="../js//helper.js"></script>
-<script src="../js/toggleSideNav.js"></script>
-<script src="../js/priceSlider.js"></script>
+<!-- UTILITY -->
+<script src="../js/Utility/helper.js"></script>
+<script src="../js/Utility/toggleSideNav.js"></script>
+<script src="../js/Utility/validation.js"></script>
+<script src="../js/Utility/priceSlider.js"></script>
+<!-- CONTROLLER -->
 <script src="../js/adminController.js"></script>
+<!-- DEPS -->
 <script src="../js/purchase.js"></script>
 <script src="../js/product.js"></script>
 <script>
-    function formatDate(date) {
-        const splitDate = date.split('-');
-        const formattedDate = `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
-        return formattedDate;
-    }
-
-    const orderTableContainer = document.getElementById('order-table__body-content');
-
-    // Search order
-    const orderSearchDate = document.getElementById('order-table__search-input--date');
-    println(formatDate(orderSearchDate.value));
-</script>
-<script>
     (() => {
         Product.onload()
-        Product.onloadFilterViewAdmin();
-        if (orderTable.length > 0) {
-            Order.renderOrderAdmin(orderTable);
-        }
+        Order.onload();
+        Product.onloadFilterProduct();
+        Order.onloadFilterOrder()
     })()
 </script>
 
