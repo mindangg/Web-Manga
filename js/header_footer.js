@@ -5,7 +5,7 @@ class SpecialHeader extends HTMLElement {
         <nav class="navbar">
             <!-- logo -->
             <div class="navbar__logo" onclick="viewHome()" style="cursor: pointer;">
-                <a id="logo__icon"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+                <a id="logo__icon"><img src="../img/OnlyManga.png" alt="website logo"></a>
             </div>
             <!-- links -->
             <ul class="navbar__links">
@@ -279,7 +279,7 @@ class SpecialFooter extends HTMLElement {
                 <footer class="footer">
         <div class="footer__container">
             <div class="footer__content">
-                <a><img src="../img/WEBTOON_Logo.png"></a>
+                <a><img src="../img/OnlyManga.png"></a>
                 <p>Address: 340 Đ. Hoang Van Thu, Ward 4, Tan Binh, Ho Chi Minh</p>
                 <p>Web programming and its application</p>
             </div>

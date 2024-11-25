@@ -316,10 +316,10 @@ function searchProduct(){
     searchPage.innerHTML = ""
     if(document.getElementById("filter").className == ""){
         for(let i = 0; i < productArray.length; i++){
-            if(((productArray[i].name.toLowerCase().search(productSearch) != -1) ||
-                (productArray[i].series.toLowerCase().search(productSearch) != -1) ||
-                (productArray[i].category.toLowerCase().search(productSearch) != -1) ||
-                (productArray[i].author.toLowerCase().search(productSearch) != -1)) && 
+            if(((productArray[i].name.toLowerCase().search(productSearch) !== -1) ||
+                (productArray[i].series.toLowerCase().search(productSearch) !== -1) ||
+                (productArray[i].category.toLowerCase().search(productSearch) !== -1) ||
+                (productArray[i].author.toLowerCase().search(productSearch) !== -1)) &&
                 productSearch != ''){
                 searchPage.innerHTML += `
                 <div class="search__page__item">
