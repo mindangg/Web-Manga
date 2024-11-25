@@ -63,6 +63,7 @@ class SpecialHeader extends HTMLElement {
 
                 <li class="navbar__link--author">
                     <a class="navbar__link">Author</a>
+                    <a class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
                             <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>

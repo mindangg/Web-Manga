@@ -66,6 +66,7 @@ function showSlider() {
     }
 
     const bookSliderList = document.querySelector(".book__slider__list")
+    bestSliderList.innerHTML = ''
     bookSliderList.innerHTML = ''
     for (let i = 0; i < sliderProduct.length; i++) {
         bookSliderList.innerHTML += `
@@ -99,15 +100,15 @@ function showProductInfo(e) {
 
     let p = findProductById
     productInfo.innerHTML = `
-        <div class="product">
-            <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
-            <div class="product__img">
-                <img id="product__img1" src="${p.cover1}">
-                <img id="product__img2" src="${p.cover2}">
+                    <div class="product">
+                    <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                    <div class="product__img">
+                        <img id="product__img1" src="${p.cover1}">
+                        <img id="product__img2" src="${p.cover2}">
 
-                <a id="product__view1" onclick="changeProductView(this)"><img src="${p.cover1}"></a>
-                <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
-            </div>
+                        <a id="product__view1" onclick="changeProductView(this)"><img src="${p.cover1}"></a>
+                        <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
+                    </div>
 
             <div class="product__info">
                 <h1>${p.series}</h1>
@@ -134,6 +135,14 @@ function showProductInfo(e) {
         </div>
     `
 }
+
+function changeProductView(e) {
+    if (e.id == "product__view1")
+        document.getElementById("product__img1").style.opacity = 1;
+    else
+        document.getElementById("product__img1").style.opacity = 0;
+}
+
 function closeProduct() {
     document.querySelector(".product").style.animationName = "bottomUp"
     setTimeout(function () {

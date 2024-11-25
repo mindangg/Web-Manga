@@ -298,9 +298,12 @@ class Order {
     // handle logic of payment
     static handlePayNow() {
         console.log("Handling pay now...")
-        Validation.checkBlankField(billingInfo)
-        Order.addToOrder('Pending')
-        Cart.renderCartSummary();
+        if (Validation.checkBlankField(billingInfo) === false) {
+            Order.addToOrder('Pending')
+            Cart.renderCartSummary();
+        } else {
+            alert('Failed to create order');
+        }
     }
     // 
     // ADD TO ORDER
