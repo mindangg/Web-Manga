@@ -73,7 +73,7 @@ function fetchPropertyProduct(url) {
                 removeSpecialChar(p.series) === removeSpecialChar(seriesSearch)
             )
         }
-        
+
         // get category from URL 
         const categorySearch = url.searchParams.get('category')
         let categoryOfProduct = []
