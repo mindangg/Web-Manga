@@ -87,75 +87,75 @@ function renderPagination(renderProduct) {
 // RENDER ALL PRODUCT PAGE
 // ==================================================================================
 
-const allProductPage = document.getElementById('all-product__page');
-const totalProductPerPage = 8;
-let allProductPageIndex = 1;
+// const allProductPage = document.getElementById('all-product__page');
+// const totalProductPerPage = 8;
+// let allProductPageIndex = 1;
 
-const renderProductPage = () => {
-    document.querySelector('.book__slider').style.display = 'none';
-    document.querySelector('.banner').style.display = 'none';
-    allProductPage.style.display = 'block';
+// const renderProductPage = () => {
+//     document.querySelector('.book__slider').style.display = 'none';
+//     document.querySelector('.banner').style.display = 'none';
+//     allProductPage.style.display = 'block';
 
-    const productPagination = document.getElementById('all-product__pagination');
-    let productTable = JSON.parse(localStorage.getItem('productTable'));
-    const totalProductPage = productTable.length / totalProductPerPage;
+//     const productPagination = document.getElementById('all-product__pagination');
+//     let productTable = JSON.parse(localStorage.getItem('productTable'));
+//     const totalProductPage = productTable.length / totalProductPerPage;
 
-    if (totalProductPage > 1) {
-        productPagination.innerHTML = `
-            <button id="all-product__pagination--prev">
-                    <i class="fa-solid fa-angle-left" id="left__angle"></i>
-                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
-                </button>
-                <input type="text" disabled value="${allProductPageIndex}"> / ${totalProductPage}
-                <button id="all-product__pagination--next" style="margin-left: 15px">
-                    <i class="fa-solid fa-angle-right" id="right__angle"></i>
-                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
-            </button>
-        `
-    }
-    renderProduct(productTable);
+//     if (totalProductPage > 1) {
+//         productPagination.innerHTML = `
+//             <button id="all-product__pagination--prev">
+//                     <i class="fa-solid fa-angle-left" id="left__angle"></i>
+//                     <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+//                 </button>
+//                 <input type="text" disabled value="${allProductPageIndex}"> / ${totalProductPage}
+//                 <button id="all-product__pagination--next" style="margin-left: 15px">
+//                     <i class="fa-solid fa-angle-right" id="right__angle"></i>
+//                     <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+//             </button>
+//         `
+//     }
+//     renderProduct(productTable);
 
-    const productPaginationPrev = document.getElementById('all-product__pagination--prev');
-    const productPaginationNext = document.getElementById('all-product__pagination--next');
-    const pageNumber = productPagination.getElementsByTagName('input')[0];
-    productPaginationPrev.addEventListener('click', () => {
-        if (allProductPageIndex > 1){
-            allProductPageIndex--;
-            pageNumber.value = allProductPageIndex;
-            renderProduct(productTable);
-        }
-    })
+//     const productPaginationPrev = document.getElementById('all-product__pagination--prev');
+//     const productPaginationNext = document.getElementById('all-product__pagination--next');
+//     const pageNumber = productPagination.getElementsByTagName('input')[0];
+//     productPaginationPrev.addEventListener('click', () => {
+//         if (allProductPageIndex > 1){
+//             allProductPageIndex--;
+//             pageNumber.value = allProductPageIndex;
+//             renderProduct(productTable);
+//         }
+//     })
 
-    productPaginationNext.addEventListener('click', () => {
-        if (allProductPageIndex < totalProductPage){
-            allProductPageIndex++;
-            pageNumber.value = allProductPageIndex;
-            renderProduct(productTable);
-        }
-    })
-}
+//     productPaginationNext.addEventListener('click', () => {
+//         if (allProductPageIndex < totalProductPage){
+//             allProductPageIndex++;
+//             pageNumber.value = allProductPageIndex;
+//             renderProduct(productTable);
+//         }
+//     })
+// }
 
-const renderProduct = (productTable) => {
-    const productPageContainer = document.getElementById('all-product__page--container');
-    let start = (allProductPageIndex - 1) * totalProductPerPage
-    let end = start + totalProductPerPage
-    let curProductArray = productTable.slice(start, end);
+// const renderProduct = (productTable) => {
+//     const productPageContainer = document.getElementById('all-product__page--container');
+//     let start = (allProductPageIndex - 1) * totalProductPerPage
+//     let end = start + totalProductPerPage
+//     let curProductArray = productTable.slice(start, end);
 
-    productPageContainer.innerHTML = ``;
-    curProductArray.forEach(p => {
-        productPageContainer.innerHTML += `
-            <div id="${p.productId}" class="book__slider__item">
-                <a id=${p.productId} onclick="showProductInfo(this)">
-                    <img src="${p.cover1}" alt="">
-                    <img src="${p.cover2}" alt="">
-                </a>
-                <h4>${p.series}</h4>
-                <p>$${p.price}</p>
-                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-        `
-    })
-}
+//     productPageContainer.innerHTML = ``;
+//     curProductArray.forEach(p => {
+//         productPageContainer.innerHTML += `
+//             <div id="${p.productId}" class="book__slider__item">
+//                 <a id=${p.productId} onclick="showProductInfo(this)">
+//                     <img src="${p.cover1}" alt="">
+//                     <img src="${p.cover2}" alt="">
+//                 </a>
+//                 <h4>${p.series}</h4>
+//                 <p>$${p.price}</p>
+//                 <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
+//             </div>
+//         `
+//     })
+// }
 
 // ==================================================================================
 // RENDER PRODUCT DETAIL

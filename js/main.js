@@ -61,7 +61,7 @@ function showSlider() {
             </a>
             <h4>${sliderProduct[i].name}</h4>
             <p>$${sliderProduct[i].price}</p>
-            <button id="${sliderProduct[i].id}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
         </div>
         `
         bookSliderList.innerHTML += `
@@ -160,6 +160,121 @@ function convert(e){
     return (e.replaceAll("-", " ")).toLowerCase()
 }
 
+const allProductPage = document.getElementById('all-product__page');
+const totalProductPerPage = 8;
+let allProductPageIndex = 1;
+
+const renderProductPage = (renderProduct, renderBy) => {
+    document.querySelector('.best__slider').style.display = 'none';
+    document.querySelector('.book__slider').style.display = 'none';
+    document.querySelector('.banner').style.display = 'none';
+    allProductPage.style.display = 'block';
+
+    const productPagination = document.getElementById('all-product__pagination');
+    let productTable = JSON.parse(localStorage.getItem('productTable'));
+
+    //let productArray = JSON.parse(localStorage.getItem('productTable'))
+    //document.getElementById("main__page").style.display = "none"
+    //document.getElementById("search__page").style.display = "inline"
+    //let searchPage = document.querySelector(".search__page__list");
+    //searchPage.innerHTML = ""
+    //document.querySelector(".search__page__lists h1").innerText = "Search by " + capitalizeAllWords(renderBy) + " : " + capitalizeAllWords(renderProduct) 
+    
+    let productDisplay
+
+    if(renderProduct[0] == "u"){
+        for(let i = 0; i < productTable.length; i++){
+            if(productTable[i].price <7 )
+                productDisplay += productArray[i]
+        }
+    }
+    else if(renderProduct[0] == "7"){
+        for(let i = 0; i < productTable.length; i++){
+            if(productTable[i].price >= 7 && productArray[i].price <= 12)
+                productDisplay += productArray[i]  
+        }
+    }
+
+    else if(renderProduct[0] == "1"){
+        for(let i = 0; i < productTable.length; i++){
+            if(productTable[i].price >= 12 && productArray[i].price <= 17)
+                productDisplay += productArray[i] 
+        }
+    }
+    else if(renderProduct[0] == "o"){
+        for(let i = 0; i < productTable.length; i++){
+            if(productTable[i].price > 17)
+                productDisplay += productArray[i]
+        }
+    }
+    
+    for(let i = 0; i < productTable.length; i++){
+        if(renderProduct == productTable[i].series.toLowerCase() || 
+            renderProduct == productTable[i].category.toLowerCase() ||
+            renderProduct == productTable[i].author.toLowerCase()
+        )
+            productDisplay += productTable[i]
+    }
+
+    const totalProductPage = productDisplay.length / totalProductPerPage;
+
+    if (totalProductPage > 1) {
+        productPagination.innerHTML = `
+            <button id="all-product__pagination--prev">
+                    <i class="fa-solid fa-angle-left" id="left__angle"></i>
+                    <i class="fa-solid fa-arrow-left" id="left__arrow"></i>
+                </button>
+                <input type="text" disabled value="${allProductPageIndex}"> / ${totalProductPage}
+                <button id="all-product__pagination--next" style="margin-left: 15px">
+                    <i class="fa-solid fa-angle-right" id="right__angle"></i>
+                    <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
+            </button>
+        `
+    }
+    renderProduct(productTable);
+
+    const productPaginationPrev = document.getElementById('all-product__pagination--prev');
+    const productPaginationNext = document.getElementById('all-product__pagination--next');
+    const pageNumber = productPagination.getElementsByTagName('input')[0];
+    productPaginationPrev.addEventListener('click', () => {
+        if (allProductPageIndex > 1){
+            allProductPageIndex--;
+            pageNumber.value = allProductPageIndex;
+            renderProduct(productTable);
+        }
+    })
+
+    productPaginationNext.addEventListener('click', () => {
+        if (allProductPageIndex < totalProductPage){
+            allProductPageIndex++;
+            pageNumber.value = allProductPageIndex;
+            renderProduct(productTable);
+        }
+    })
+}
+
+const renderProduct = (productTable) => {
+    const productPageContainer = document.getElementById('all-product__page--container');
+    let start = (allProductPageIndex - 1) * totalProductPerPage
+    let end = start + totalProductPerPage
+    let curProductArray = productTable.slice(start, end);
+
+    productPageContainer.innerHTML = ``;
+    curProductArray.forEach(p => {
+        productPageContainer.innerHTML += `
+            <div id="${p.productId}" class="book__slider__item">
+                <a id=${p.productId} onclick="showProductInfo(this)">
+                    <img src="${p.cover1}" alt="">
+                    <img src="${p.cover2}" alt="">
+                </a>
+                <h4>${p.series}</h4>
+                <p>$${p.price}</p>
+                <button id=${p.productId} onclick="Cart.addToCart(this)">+ Add to cart</button>
+            </div>
+        `
+    })
+}
+
 function searchProductByURL(){
     const urlSearchIndex = window.location.search
     console.log(urlSearchIndex)
@@ -168,25 +283,25 @@ function searchProductByURL(){
 
     if(urlSearch.get("series")){
         const seriesSearch = urlSearch.get("series")
-        renderViewSearchProductByURL(convert(seriesSearch), "Series")
+        renderProductPage(convert(seriesSearch), "Series")
     }
 
     else if(urlSearch.get("category")){
         const categorySearch = urlSearch.get("category")
-        renderViewSearchProductByURL(convert(categorySearch), "Category")
+        renderProductPage(convert(categorySearch), "Category")
     }
 
 
     else if(urlSearch.get("author")){
         const authorSearch = urlSearch.get("author")
-        renderViewSearchProductByURL(convert(authorSearch), "Author")
+        renderProductPage(convert(authorSearch), "Author")
     }
 
 
     else if(urlSearch.get("price")){
         console.log("4")
         const priceSearch = urlSearch.get("price")
-        renderViewSearchProductByURL(convert(priceSearch), "Price")
+        renderProductPage(convert(priceSearch), "Price")
     }
 }
 
