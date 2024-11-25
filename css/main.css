@@ -426,7 +426,7 @@ body{
 /* search slider */
 
 .search__page__lists{
-    display: none;
+    /*display: none;*/
     position: relative;
     top: 130px;
     /* width: 100%; */
