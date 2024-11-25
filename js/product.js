@@ -181,8 +181,8 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         series: "Jujutsu Kaisen",
         author: "Gege Akutami",
         category: "Dark Fantasy",
-        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-primary.jpg",
-        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-back.jpg",
+        cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-primary.jpg",
+        cover2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-back.jpg",
         name: "Jujutsu Kaisen - Volume 11",
         price: 19.99,
         stock: 90,
@@ -194,8 +194,8 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         series: "Jujutsu Kaisen",
         author: "Gege Akutami",
         category: "Dark Fantasy",
-        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg",
-        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-back.jpg",
+        cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg",
+        cover2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-back.jpg",
         name: "Jujutsu Kaisen - Volume 14",
         price: 4.22,
         stock: 90,
@@ -1117,7 +1117,7 @@ class Product {
                 <button class="button button__product__prev-pagi" 
                 id="button__product__prev-pagi"> << </button>
 
-                <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 2%;"> / ${productTotalPages}
+                <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 3%;"> / ${productTotalPages}
                 
                 <button class="button button__product__next-pagi" 
                 id="button__next-pagi"> >> </button>

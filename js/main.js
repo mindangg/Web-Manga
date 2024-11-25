@@ -59,9 +59,9 @@ function showSlider() {
                 <img src="${sliderProduct[i].cover1}" alt="">
                 <img src="${sliderProduct[i].cover2}" alt="">
             </a>
-            <h4>${sliderProduct[i].name}</h4>
+            <h4>${sliderProduct[i].series}</h4>
             <p>$${sliderProduct[i].price}</p>
-            <button id="${sliderProduct[i].id}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
         </div>
         `
         bookSliderList.innerHTML += `
@@ -470,8 +470,7 @@ function showProductInfo(e) {
                         <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
 
                         <p>Availability: ${p.stock}</p><br>
-                        <h4>Description</h4>
-                        <p>Description: </p><br>
+                        <h4>Description:</h4><br>
                         <p>${p.description}</p>
                     </div>
                 </div>

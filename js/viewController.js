@@ -91,9 +91,8 @@ const allProductPage = document.getElementById('all-product__page');
 const totalProductPerPage = 8;
 let allProductPageIndex = 1;
 
-const renderProductPage = () => {
+const renderProductPage = (productTable) => {
     const productPagination = document.getElementById('all-product__pagination');
-    let productTable = JSON.parse(localStorage.getItem('productTable'));
     const totalProductPage = Math.ceil(productTable.length / totalProductPerPage);
 
     if (totalProductPage > 1) {
@@ -238,6 +237,7 @@ function toggleUserInfo(e) {
 // thoát tài khoản
 function logoutUser() {
     localStorage.removeItem('accountLogin')
+    localStorage.removeItem('cart')
     User.renderAccountLogin()
     viewHome()
     window.location.reload()
@@ -345,7 +345,8 @@ function viewAllProduct(){
     document.querySelector('.best__slider').style.display = 'inherit';
     document.querySelector('.banner').style.display = 'none';
     document.querySelector('.book__slider').style.display = 'none';
-    renderProductPage();
+    let productTable = JSON.parse(localStorage.getItem('productTable'));
+    renderProductPage(productTable);
     window.scrollTo(0, 1400);
 }
 // ==================================================================================
@@ -383,7 +384,6 @@ function viewAllProduct(){
         case 'cart': viewCart(); break;
         case 'bill': viewBill(); break;
         case 'user-info': viewUserInfo(); break;
-        case 'login': viewLogin(); break;
         case 'all-product': viewAllProduct(); break;
         default: break;
     }
