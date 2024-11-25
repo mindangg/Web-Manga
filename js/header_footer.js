@@ -10,7 +10,7 @@ class SpecialHeader extends HTMLElement {
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
-                <li class="navbar__link--product"><a href="#all-product__page" class="navbar__link" onclick="renderProductPage()">Product</a></li>
+                <li class="navbar__link--product"><a onclick="viewAllProduct()" class="navbar__link" onclick="renderProductPage()">Product</a></li>
                 <li class="navbar__link--series">
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
@@ -63,7 +63,6 @@ class SpecialHeader extends HTMLElement {
 
                 <li class="navbar__link--author">
                     <a class="navbar__link">Author</a>
-                    <a class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
                             <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
@@ -113,7 +112,7 @@ class SpecialHeader extends HTMLElement {
             <div class="navbar__home" id="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
-                    <a href="#" id="login__icon">
+                    <a id="login__icon" onclick="viewUserInfo()">
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>

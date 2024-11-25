@@ -51,10 +51,10 @@ function handleSearchProduct() {
     let searchBoxProduct = JSON.parse(localStorage.getItem("productTable"));
     // if 
     if (!searchProuductURL.search) {
-        const productList = document.querySelector('.product-list')
+        const productList = document.querySelector('.all-product__page')
         renderView(productList)
 
-        renderViewIndex(searchBoxProduct)
+        renderProductPage(searchBoxProduct)
         return
     }
 
@@ -77,9 +77,9 @@ function handleSearchProduct() {
         searchBoxProduct = searchBoxProduct.filter((item) => item.price <= filterPriceMax)
     }
 
-    const productList = document.querySelector('.product-list')
+    const productList = document.querySelector('.all-product__page')
     renderView(productList)
 
     // @viewController
-    renderViewIndex(searchBoxProduct)
+    renderProductPage(searchBoxProduct)
 }

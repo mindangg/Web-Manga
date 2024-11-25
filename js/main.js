@@ -45,44 +45,120 @@ dots.forEach((li, key) => {
         ReloadSlider();
     })
 })
-
-
-let sliderProduct = JSON.parse(localStorage.getItem('productTable')) || []
+// ==================================================================================
+// SHOW SLIDER 
+// ==================================================================================
 function showSlider() {
+    let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
     const bestSliderList = document.querySelector(".best__slider__list")
-    bestSliderList.innerHTML = ''
-    for (let i = 0; i < sliderProduct.length; i++) {
-        bestSliderList.innerHTML += `
-            <div class="book__slider__item">
-                <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${sliderProduct[i].cover1}" alt="">
-                    <img src="${sliderProduct[i].cover2}" alt="">
-                </a>
-                <h4>${sliderProduct[i].series}</h4>
-                <p>$${sliderProduct[i].price}</p>
-                <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-        `
-    }
-
     const bookSliderList = document.querySelector(".book__slider__list")
     bestSliderList.innerHTML = ''
     bookSliderList.innerHTML = ''
-    for (let i = 0; i < sliderProduct.length; i++) {
+    for (var i = 0; i < sliderProduct.length; i += 8) {
+        bestSliderList.innerHTML += `
+        <div class="best__slider__item">
+            <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
+                <img src="${sliderProduct[i].cover1}" alt="">
+                <img src="${sliderProduct[i].cover2}" alt="">
+            </a>
+            <h4>${sliderProduct[i].series}</h4>
+            <p>$${sliderProduct[i].price}</p>
+            <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+        </div>
+        `
         bookSliderList.innerHTML += `
-            <div class="book__slider__item">
-                <a id="${sliderProduct[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${sliderProduct[i].cover1}" alt="">
-                    <img src="${sliderProduct[i].cover2}" alt="">
-                </a>
-                <h4>${sliderProduct[i].series}</h4>
-                <p>$${sliderProduct[i].price}</p>
-                <button id="${sliderProduct[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
+        <div class="book__slider__item">
+            <a id="${sliderProduct[i + 1].productId}" onclick="showProductInfo(this)">
+                <img src="${sliderProduct[i + 1].cover1}" alt="">
+                <img src="${sliderProduct[i + 1].cover2}" alt="">
+            </a>
+            <h4>${sliderProduct[i + 1].series}</h4>
+            <p>$${sliderProduct[i + 1].price}</p>
+            <button id="${sliderProduct[i + 1].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+        </div>
         `
     }
+    // 
+    // BEST
+    // 
+    let best_list = document.querySelector(".best__slider .best__slider__list");
+    let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
+    let best_dots = document.querySelectorAll(".best__slider .best__slider__dots li");
+    let best_next = document.getElementById("best__slider__next");
+    let best_prev = document.getElementById("best__slider__prev");
+
+    let best_active = 0;
+    let best_lengthItems = best_items.length - 4;
+
+    best_next.onclick = function () {
+        if (best_active + 1 <= best_lengthItems) {
+            best_active++;
+            best_ReloadSlider();
+            best_AddSlider();
+        }
+    }
+
+    best_prev.onclick = function () {
+        if (best_active - 1 >= 0) {
+            best_active--;
+            best_ReloadSlider();
+            best_RemoveSlider();
+        }
+    }
+
+    function best_ReloadSlider() {
+        let best_checkLeft = best_items[best_active].offsetLeft;
+        best_list.style.left = -best_checkLeft + "px";
+    }
+
+    function best_AddSlider() {
+        best_dots[best_active].classList.add("best__active");
+    }
+
+    function best_RemoveSlider() {
+        best_dots[best_active + 1].classList.remove("best__active");
+    }
+    // ==================================================================================
+    // BOOK SLIDER
+    // ==================================================================================
+    let book_list = document.querySelector(".book__slider .book__slider__list");
+    let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
+    let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
+    let book_next = document.getElementById("book__slider__next");
+    let book_prev = document.getElementById("book__slider__prev");
+
+    let book_active = 0;
+    let book_lengthItems = book_items.length - 4;
+
+    book_next.onclick = function () {
+        if (book_active + 1 <= book_lengthItems) {
+            book_active++;
+            book_ReloadSlider();
+            book_AddSlider();
+        }
+    }
+
+    book_prev.onclick = function () {
+        if (book_active - 1 >= 0) {
+            book_active--;
+            book_ReloadSlider();
+            book_RemoveSlider();
+        }
+    }
+
+    function book_ReloadSlider() {
+        let book_checkLeft = book_items[book_active].offsetLeft;
+        book_list.style.left = -book_checkLeft + "px";
+    }
+
+    function book_AddSlider() {
+        book_dots[book_active].classList.add("book__active");
+    }
+
+    function book_RemoveSlider() {
+        book_dots[book_active + 1].classList.remove("book__active");
+    }
 }
-showSlider()
 // ==================================================================================
 // SHOW PRODUCT INFO (DETAIL)
 // ==================================================================================
@@ -129,7 +205,7 @@ function showProductInfo(e) {
                 <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
 
                 <p>Availability: ${p.stock}</p><br>
-                <h4>Description</h4>
+                <h4>Description: </h4><br>
                 <p>${p.description}</p>
             </div>
         </div>
@@ -149,87 +225,6 @@ function closeProduct() {
         document.querySelector(".product__page").style.display = "none"
     }, 365)
 }
-// ==================================================================================
-// BOOK SLIDER
-// ==================================================================================
-let book_list = document.querySelector(".book__slider .book__slider__list");
-let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
-let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
-let book_next = document.getElementById("book__slider__next");
-let book_prev = document.getElementById("book__slider__prev");
-
-let book_active = 0;
-let book_lengthItems = book_items.length - 4;
-
-book_next.onclick = function () {
-    if (book_active + 1 <= book_lengthItems) {
-        book_active++;
-        book_ReloadSlider();
-        book_AddSlider();
-    }
-}
-
-book_prev.onclick = function () {
-    if (book_active - 1 >= 0) {
-        book_active--;
-        book_ReloadSlider();
-        book_RemoveSlider();
-    }
-}
-
-function book_ReloadSlider() {
-    let book_checkLeft = book_items[book_active].offsetLeft;
-    book_list.style.left = -book_checkLeft + "px";
-}
-
-function book_AddSlider() {
-    book_dots[book_active].classList.add("book__active");
-}
-
-function book_RemoveSlider() {
-    book_dots[book_active + 1].classList.remove("book__active");
-}
-// ==================================================================================
-// BEST SLIDER
-// ==================================================================================
-let best_list = document.querySelector(".best__slider .best__slider__list");
-let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
-let best_dots = document.querySelectorAll(".best__slider .best__slider__dots li");
-let best_next = document.getElementById("best__slider__next");
-let best_prev = document.getElementById("best__slider__prev");
-
-let best_active = 0;
-let best_lengthItems = best_items.length - 4;
-
-best_next.onclick = function () {
-    if (best_active + 1 <= best_lengthItems) {
-        best_active++;
-        best_ReloadSlider();
-        best_AddSlider();
-    }
-}
-
-best_prev.onclick = function () {
-    if (best_active - 1 >= 0) {
-        best_active--;
-        best_ReloadSlider();
-        best_RemoveSlider();
-    }
-}
-
-function best_ReloadSlider() {
-    let best_checkLeft = best_items[best_active].offsetLeft;
-    best_list.style.left = -best_checkLeft + "px";
-}
-
-function best_AddSlider() {
-    best_dots[best_active].classList.add("best__active");
-}
-
-function best_RemoveSlider() {
-    best_dots[best_active + 1].classList.remove("best__active");
-}
-
 
 
 

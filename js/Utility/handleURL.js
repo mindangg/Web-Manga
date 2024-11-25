@@ -89,11 +89,31 @@ function fetchPropertyProduct(url) {
 
         if (categorySearch !== null) {
             // @viewController
-            renderViewIndex(categoryOfProduct)
+            renderProductPage(categoryOfProduct)
+            window.scroll
         }
         if (priceSearch !== null) {
             // @viewController
-            renderViewIndex(priceOfProduct)
+            renderProductPage(priceOfProduct)
         }
     }
 }
+//
+const loginXmark = document.getElementById('login__page--off')
+const signUpXmark = document.getElementById('signup__page--off')
+const userInfoOff = document.getElementById('user-info--off')
+
+loginXmark.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
+signUpXmark.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})
+
+userInfoOff.addEventListener('click', () => {
+    setURLForPage('home')
+    viewHome()
+})

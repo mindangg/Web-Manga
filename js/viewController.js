@@ -91,14 +91,13 @@ const allProductPage = document.getElementById('all-product__page');
 const totalProductPerPage = 8;
 let allProductPageIndex = 1;
 
-const renderProductPage = () => {
+const renderProductPage = (productTable) => {
     document.querySelector('.book__slider').style.display = 'none';
     document.querySelector('.banner').style.display = 'none';
     allProductPage.style.display = 'block';
 
     const productPagination = document.getElementById('all-product__pagination');
-    let productTable = JSON.parse(localStorage.getItem('productTable'));
-    const totalProductPage = productTable.length / totalProductPerPage;
+    const totalProductPage = Math.ceil(productTable.length / totalProductPerPage);
 
     if (totalProductPage > 1) {
         productPagination.innerHTML = `
@@ -346,6 +345,22 @@ function viewSearch() {
     handleSearchProduct()
 }
 // ==================================================================================
+//
+function viewAllProduct() {
+    setURLForPage('all-product');
+    const allProductPage = document.querySelector('.all-product__page');
+    renderView(allProductPage);
+
+    document.querySelector('.main__page').style.display = 'inherit';
+    document.querySelector('.slider').style.display = 'inherit';
+    document.querySelector('.best__slider').style.display = 'inherit';
+    document.querySelector('.banner').style.display = 'none';
+    document.querySelector('.book__slider').style.display = 'none';
+    let productTable = JSON.parse(localStorage.getItem("productTable"))
+    renderProductPage(productTable);
+    window.scrollTo(0, 1400);
+}
+// ==================================================================================
 // IIFE
 // ==================================================================================
 // thực thi các hàm khi load hoặc reload trang
@@ -361,6 +376,7 @@ function viewSearch() {
     Product.onload();
     User.onload();
     Order.onload();
+    showSlider()
     // lấy tham số url trang hiện tại để render product 
     // fetchPropertyProduct(URLOfWebpage)
     // render tài khoản đăng nhập và thông tin người dùng
@@ -378,6 +394,7 @@ function viewSearch() {
         case 'login': viewLogin(); break;
         case 'filter': viewFilter(); break;
         case 'search': viewSearch(); break;
+        case 'all-product': viewAllProduct(); break;
         default: break;
     }
 })()
