@@ -27,3 +27,8 @@ function formatDate(date) {
 function removeDiaritics(str) {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 }
+
+// Bỏ các ký tự đặc biệt 
+function removeSpecialChar(str) {
+    return str.replace(/[^a-zA-Z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+}
