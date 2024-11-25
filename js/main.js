@@ -298,68 +298,6 @@ function renderProductPageByURL(productFindByURL) {
 
 }
 
-
-// function renderProductPageByURL(productFindByURL){
-//     let productTable = JSON.parse(localStorage.getItem('productTable'));
-//     let productDisplay1
-
-//     if(productDisplay1 = productTable.filter(p => {
-//         return p.series.toLowerCase() === productFindByURL;
-//         })){
-//         renderProductPage(productDisplay1)
-//         return
-//     }
-
-//     let productDisplay2
-
-//     if(productDisplay2 = productTable.filter(p => {
-//         return p.category.toLowerCase() === productFindByURL;
-//         })){
-//         renderProductPage(productDisplay2)
-//         return
-//     }
-
-//     let productDisplay3
-
-    // if(productDisplay3 = productTable.filter(p => {
-    //     return p.author.toLowerCase() === productFindByURL;
-    //     })){
-    //     renderProductPage(productDisplay3)
-    //     return
-    // }
-
-    // else if(productDisplay = productTable.filter(p => {
-    //     return p.author.toLowerCase() === productFindByURL;
-    //     })){
-    //     renderProductPage(productDisplay)
-    //     return
-    // }
-
-    // if(productFindByURL.toLowerCase().includes("under")){
-    //     productDisplay = productTable.filter(p => {
-    //     return p.price < 7;
-    //     })
-    // }   
-
-    // else if(productFindByURL.toLowerCase().includes("7 to 12")){
-    //     productDisplay = productTable.filter(p => {
-    //     return p.price >= 7 && p.price <= 12;
-    //         })
-    // }
-
-    // else if(productFindByURL.toLowerCase().includes("12 to 17")){
-    //     productDisplay = productTable.filter(p => {
-    //     return p.price > 12 && p.price <= 17;
-    //         })
-    // }
-
-    // else if(productFindByURL.toLowerCase().includes("over")){
-    //     productDisplay = productTable.filter(p => {
-    //     return p.price > 17;
-    //     })
-    // } 
-// }
-
 function searchProductByURL(){
     const urlSearchIndex = window.location.search
     console.log(urlSearchIndex)
@@ -368,20 +306,17 @@ function searchProductByURL(){
 
     if(urlSearch.get("series")){
         const seriesSearch = urlSearch.get("series")
-        //renderViewSearchProductByURL(convert(seriesSearch), "Series")
         renderProductPageByURL(convert(seriesSearch))
     }
 
     else if(urlSearch.get("category")){
         const categorySearch = urlSearch.get("category")
-        //renderViewSearchProductByURL(convert(categorySearch), "Category")
         renderProductPageByURL(convert(categorySearch))
     }
 
 
     else if(urlSearch.get("author")){
         const authorSearch = urlSearch.get("author")
-        //renderViewSearchProductByURL(convert(authorSearch), "Author")
         renderProductPageByURL(convert(authorSearch))
     }
 
@@ -389,19 +324,11 @@ function searchProductByURL(){
     else if(urlSearch.get("price")){
         console.log("4")
         const priceSearch = urlSearch.get("price")
-        //renderViewSearchProductByURL(convert(priceSearch), "Price")
         renderProductPageByURL(convert(priceSearch))
     }
 }
 
 searchProductByURL()
-
-
-
-
-
-
-
 
 function searchProduct(){
     productSearch = search__input.value.toLowerCase()
@@ -540,103 +467,6 @@ function renderViewSearchProduct(renderProduct, renderBy){
         `   
     }
 }
-
-// function renderViewSearchProductByURL(renderProduct, renderBy){
-//     let productArray = JSON.parse(localStorage.getItem('productTable'))
-//     document.getElementById("main__page").style.display = "none"
-//     document.getElementById("search__page").style.display = "inline"
-//     let searchPage = document.querySelector(".search__page__list");
-//     searchPage.innerHTML = ""
-//     document.querySelector(".search__page__lists h1").innerText = "Search by " + capitalizeAllWords(renderBy) + " : " + capitalizeAllWords(renderProduct) 
-    
-//     if(renderProduct[0] == "u"){
-//         for(let i = 0; i < productArray.length; i++){
-//             if(productArray[i].price <7 )
-//             searchPage.innerHTML += `
-//             <div class="search__page__item">
-//                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-//                     <img src="${productArray[i].cover1}" alt="">
-//                     <img src="${productArray[i].cover2}" alt="">
-//                 </a>
-//                 <h4>${productArray[i].name}</h4>
-//                 <p>$${productArray[i].price}</p>
-//                 <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-//             </div>
-//             `   
-//         }
-//         return
-//     }
-//     else if(renderProduct[0] == "7"){
-//         for(let i = 0; i < productArray.length; i++){
-//             if(productArray[i].price >= 7 && productArray[i].price <= 12)
-//             searchPage.innerHTML += `
-//             <div class="search__page__item">
-//                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-//                     <img src="${productArray[i].cover1}" alt="">
-//                     <img src="${productArray[i].cover2}" alt="">
-//                 </a>
-//                 <h4>${productArray[i].name}</h4>
-//                 <p>$${productArray[i].price}</p>
-//                 <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-//             </div>
-//             `   
-//         }
-//         return
-//     }
-
-//     else if(renderProduct[0] == "1"){
-//         for(let i = 0; i < productArray.length; i++){
-//             if(productArray[i].price >= 12 && productArray[i].price <= 17)
-//             searchPage.innerHTML += `
-//             <div class="search__page__item">
-//                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-//                     <img src="${productArray[i].cover1}" alt="">
-//                     <img src="${productArray[i].cover2}" alt="">
-//                 </a>
-//                 <h4>${productArray[i].name}</h4>
-//                 <p>$${productArray[i].price}</p>
-//                 <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-//             </div>
-//             `   
-//         }
-//         return
-//     }
-//     else if(renderProduct[0] == "o"){
-//         for(let i = 0; i < productArray.length; i++){
-//             if(productArray[i].price > 17)
-//             searchPage.innerHTML += `
-//             <div class="search__page__item">
-//                 <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-//                     <img src="${productArray[i].cover1}" alt="">
-//                     <img src="${productArray[i].cover2}" alt="">
-//                 </a>
-//                 <h4>${productArray[i].name}</h4>
-//                 <p>$${productArray[i].price}</p>
-//                 <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-//             </div>
-//             `   
-//         }
-//         return
-//     }
-    
-//     for(let i = 0; i < productArray.length; i++){
-//         if(renderProduct == productArray[i].series.toLowerCase() || 
-//             renderProduct == productArray[i].category.toLowerCase() ||
-//             renderProduct == productArray[i].author.toLowerCase()
-//         )
-//         searchPage.innerHTML += `
-//         <div class="search__page__item">
-//             <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-//                 <img src="${productArray[i].cover1}" alt="">
-//                 <img src="${productArray[i].cover2}" alt="">
-//             </a>
-//             <h4>${productArray[i].name}</h4>
-//             <p>$${productArray[i].price}</p>
-//             <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-//         </div>
-//         `   
-//     }
-// }
 
 function showProductInfo(e) {
     const productInfo = document.querySelector('.product__page')
