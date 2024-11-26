@@ -282,12 +282,17 @@ function viewHome() {
 // trang giỏ hàng
 function viewCart() {
     // 
-    setURLForPage('cart')
-    // 
-    const cartContainer = document.querySelector('.cart__container')
-    renderView(cartContainer)
-    //
-    window.scrollTo(5, 5);
+    if(cartTable.length == 0)
+        viewEmptyCart()
+    else{
+        setURLForPage('cart')
+        // 
+        const cartContainer = document.querySelector('.cart__container')
+        renderView(cartContainer)
+        //
+        window.scrollTo(5, 5);
+    }
+
 }
 // ==================================================================================
 // trang thanh toán
