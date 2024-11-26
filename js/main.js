@@ -205,7 +205,7 @@ function showProductInfo(e) {
                 <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
 
                 <p>Availability: ${p.stock}</p><br>
-                <h4>Description: </h4><br>
+                <h3>Description: </h3><br>
                 <p>${p.description}</p>
             </div>
         </div>

@@ -265,16 +265,36 @@
                     </div>
                 </div>
 
-                <!-- <label for="paymentMethod">Payment Method</label>
+                <label for="paymentMethod">Payment Method</label>
                         <div style="overflow: hidden;">
-                            <select id="paymentMethod" required>
-                                <option value="creditCard">Credit Card</option>
-                                <option value="paypal">PayPal</option>
-                                <option value="bankTransfer">Bank Transfer</option>
+                            <select id="paymentMethod" onclick="displayPaymentChoice()">
+                                <option value="none">None</option>
+                                <option value="internetBanking">Internet Banking</option>
+                                <option value="momoBanking">Momo Banking</option>
                             </select>
+
+                            <img id="bankQR" src="../img/QR.jpg" style="width: 200px; display: none;">
+
+                            <img id="momoQR" src="../img/QR2.png" style="width: 200px; display: none;">
+                        </div>
+
+                        <!-- <div id="cardInfo" style="display: none; overflow: hidden;">
+                            <select id="bankSelect">
+                                <option value="none">None</option>
+                                <option value="vcb">Vietcombank</option>
+                                <option value="mb">MB</option>
+                                <option value="tech">Techcombank</option>
+                                <option value="bidv">BIDV</option>
+                            </select>
+                            <input id="bankSeries" type="text" placeholder="Enter your card series">
                         </div> -->
 
-                <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
+                        <!-- <div id="bankInfo" style="display: none; overflow: hidden;">
+                            <img src="../img/QR.jpg" style=" width: 200px;">
+                            <button id="QRButton">Has Transfered</button>
+                        </div> -->
+
+                <button class="pay-now-button" type="button" onclick="handlePaymentMethod()">Pay Now</button>
             </div>
             <!-- PAYMENT INFO -->
             <div class="payment-info">
