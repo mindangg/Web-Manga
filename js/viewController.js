@@ -92,13 +92,14 @@ const totalProductPerPage = 8;
 let allProductPageIndex = 1;
 
 const renderProductPage = (productTable) => {
-    document.querySelector('.book__slider').style.display = 'none';
-    document.querySelector('.banner').style.display = 'none';
-    allProductPage.style.display = 'block';
+    // document.querySelector('.book__slider').style.display = 'none';
+    // document.querySelector('.banner').style.display = 'none';
+    // allProductPage.style.display = 'block';
 
     const productPagination = document.getElementById('all-product__pagination');
     const totalProductPage = Math.ceil(productTable.length / totalProductPerPage);
 
+    productPagination.innerHTML = ""
     if (totalProductPage > 1) {
         productPagination.innerHTML = `
             <button id="all-product__pagination--prev">
@@ -111,27 +112,28 @@ const renderProductPage = (productTable) => {
                     <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
             </button>
         `
+
+        const productPaginationPrev = document.getElementById('all-product__pagination--prev');
+        const productPaginationNext = document.getElementById('all-product__pagination--next');
+        const pageNumber = productPagination.getElementsByTagName('input')[0];
+        productPaginationPrev.addEventListener('click', () => {
+            if (allProductPageIndex > 1) {
+                allProductPageIndex--;
+                pageNumber.value = allProductPageIndex;
+                renderProduct(productTable);
+            }
+        })
+
+        productPaginationNext.addEventListener('click', () => {
+            if (allProductPageIndex < totalProductPage) {
+                allProductPageIndex++;
+                pageNumber.value = allProductPageIndex;
+                renderProduct(productTable);
+            }
+        })
     }
+
     renderProduct(productTable);
-
-    const productPaginationPrev = document.getElementById('all-product__pagination--prev');
-    const productPaginationNext = document.getElementById('all-product__pagination--next');
-    const pageNumber = productPagination.getElementsByTagName('input')[0];
-    productPaginationPrev.addEventListener('click', () => {
-        if (allProductPageIndex > 1) {
-            allProductPageIndex--;
-            pageNumber.value = allProductPageIndex;
-            renderProduct(productTable);
-        }
-    })
-
-    productPaginationNext.addEventListener('click', () => {
-        if (allProductPageIndex < totalProductPage) {
-            allProductPageIndex++;
-            pageNumber.value = allProductPageIndex;
-            renderProduct(productTable);
-        }
-    })
 }
 
 const renderProduct = (productTable) => {
@@ -282,9 +284,9 @@ function viewHome() {
 // trang giỏ hàng
 function viewCart() {
     // 
-    if(cartTable.length == 0)
+    if (cartTable.length == 0)
         viewEmptyCart()
-    else{
+    else {
         setURLForPage('cart')
         // 
         const cartContainer = document.querySelector('.cart__container')
@@ -338,14 +340,14 @@ function viewUserInfo() {
 function viewFilter() {
     const URLcurrent = new URL(window.location)
 
-    const productList = document.querySelector('.product-list')
+    const productList = document.querySelector('.all-product__page')
     renderView(productList)
     //@handleURL
     fetchPropertyProduct(URLcurrent)
 }
 // 
 function viewSearch() {
-    const productList = document.querySelector('.product-list')
+    const productList = document.querySelector('.all-product__page')
     renderView(productList)
 
     handleSearchProduct()
@@ -354,14 +356,9 @@ function viewSearch() {
 //
 function viewAllProduct() {
     setURLForPage('all-product');
-    const allProductPage = document.querySelector('.all-product__page');
+    const allProductPage = document.querySelector('.all-product__page')
     renderView(allProductPage);
 
-    document.querySelector('.main__page').style.display = 'inherit';
-    document.querySelector('.slider').style.display = 'inherit';
-    document.querySelector('.best__slider').style.display = 'inherit';
-    document.querySelector('.banner').style.display = 'none';
-    document.querySelector('.book__slider').style.display = 'none';
     let productTable = JSON.parse(localStorage.getItem("productTable"))
     renderProductPage(productTable);
     window.scrollTo(0, 1400);
