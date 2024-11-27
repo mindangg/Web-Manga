@@ -116,6 +116,15 @@
     cursor: not-allowed;
 }
 
+#cardInfo{
+    background: red;
+    z-index: 10;
+}
+
+
+
+
+
 /*  */
 /* Cart container */
 .payment-info {

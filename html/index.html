@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="../css/cart_phusomnia.css">
     <link rel="stylesheet" href="../css/billing.css">
     <link rel="stylesheet" href="../css/category.css">
+    <link rel="stylesheet" href="../css/searchbox.css">
     <!--    <link rel="stylesheet" href="../css/main_phusomnia.css">-->
     <link rel="stylesheet" href="../css/order.css">
-<!--    <link rel="stylesheet" href="../css/orderDetail.css">-->
     <link rel="stylesheet" href="../css/user_info.css">
-    <link rel="icon" type="image/png" href="../img/WEBTOON_Logo.png">
+    <link rel="icon" type="image/png" href="../img/OnlyManga.png">
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/758055a090.js" crossorigin="anonymous"></script>
 </head>
@@ -298,16 +298,36 @@
                     </div>
             
 
-                <!-- <label for="paymentMethod">Payment Method</label>
+                <label for="paymentMethod">Payment Method</label>
                         <div style="overflow: hidden;">
-                            <select id="paymentMethod" required>
-                                <option value="creditCard">Credit Card</option>
-                                <option value="paypal">PayPal</option>
-                                <option value="bankTransfer">Bank Transfer</option>
+                            <select id="paymentMethod" onclick="displayPaymentChoice()">
+                                <option value="none">None</option>
+                                <option value="internetBanking">Internet Banking</option>
+                                <option value="momoBanking">Momo Banking</option>
                             </select>
+
+                            <img id="bankQR" src="../img/QR.jpg" style="width: 200px; display: none;">
+
+                            <img id="momoQR" src="../img/QR2.png" style="width: 200px; display: none;">
+                        </div>
+
+                        <!-- <div id="cardInfo" style="display: none; overflow: hidden;">
+                            <select id="bankSelect">
+                                <option value="none">None</option>
+                                <option value="vcb">Vietcombank</option>
+                                <option value="mb">MB</option>
+                                <option value="tech">Techcombank</option>
+                                <option value="bidv">BIDV</option>
+                            </select>
+                            <input id="bankSeries" type="text" placeholder="Enter your card series">
                         </div> -->
 
-                <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
+                        <!-- <div id="bankInfo" style="display: none; overflow: hidden;">
+                            <img src="../img/QR.jpg" style=" width: 200px;">
+                            <button id="QRButton">Has Transfered</button>
+                        </div> -->
+
+                <button class="pay-now-button" type="button" onclick="handlePaymentMethod()">Pay Now</button>
             </div>
             <!-- PAYMENT INFO -->
             <div class="payment-info">
@@ -486,7 +506,7 @@
             </div>
         </section>
 
-        <section id="search__page">
+        <!-- <section id="search__page">
             <div class="search__page__lists">
                 <h1></h1>
                 
@@ -494,31 +514,26 @@
 
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <div id="notification"></div>
 
     </main>
 
-
     <special-footer id="special-footer"></special-footer>
 
     <!-- js -->
     <script src="../js/Utility/helper.js"></script>
-    <script src="../js/validation.js"></script>
+    <script src="../js/Utility/handleURL.js"></script>
+    <script src="../js/Utility/validation.js"></script>
+
     <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
     <script src="../js/header_footer.js"></script>
     <script src="../js/user.js"></script>
     <script src="../js/product.js"></script>>
     <script src="../js/purchase.js"></script>
     <script src="../js/viewController.js"></script>
-    <!--    <script>-->
-    <!--        const URLOfIndex = window.location.href-->
-    <!--        const URLToAdmin = URLOfIndex.split("html")-->
-    <!--        if (localStorage.getItem('admin') === 'admin') {-->
-    <!--            window.location.href = `${URLToAdmin[0]}/html/admin.html`-->
-    <!--        }-->
-    <!--    </script>-->
 </body>
 
 </html>

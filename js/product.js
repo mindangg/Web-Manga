@@ -181,8 +181,8 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         series: "Jujutsu Kaisen",
         author: "Gege Akutami",
         category: "Dark Fantasy",
-        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-primary.jpg",
-        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-back.jpg",
+        cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-primary.jpg",
+        cover2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-back.jpg",
         name: "Jujutsu Kaisen - Volume 11",
         price: 19.99,
         stock: 90,
@@ -194,8 +194,8 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         series: "Jujutsu Kaisen",
         author: "Gege Akutami",
         category: "Dark Fantasy",
-        img1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg",
-        img2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-back.jpg",
+        cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg",
+        cover2: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-back.jpg",
         name: "Jujutsu Kaisen - Volume 14",
         price: 4.22,
         stock: 90,
@@ -733,7 +733,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
         stock: 150,
         description: "In an underground labyrinth, Puri-Puri Prisoner encounters Garo, who is now stronger than ever! Meanwhile, Saitama teams up with the hero Flash while both are lost underground."
     },
-    
+
     {
         productId: "manga_53",
         series: "One Punch Man",
@@ -1001,16 +1001,18 @@ class Product {
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
-        if (!Product.checkIsImg()) {
-            return
-        }
-        if (Product.checkIsBlank() ||
-            !Product.checkIsStock() ||
-            !Product.checkIsPrice()) {
-            return
-        } else {
-            handleAdd()
-        }
+        // if (!Product.checkIsImg()) {
+        //     return
+        // }
+        // if (Product.checkIsBlank() ||
+        //     !Product.checkIsStock() ||
+        //     !Product.checkIsPrice()) {
+        //     return
+        // } else {
+        //     handleAdd()
+        // }
+
+        handleAdd();
 
         function handleAdd() {
             console.log("Adding product...");
@@ -1345,13 +1347,7 @@ class Product {
     }
     // load san pham khi trang load
     static onload() {
-        if (JSON.parse(localStorage.getItem('productTable')) === null) {
-            localStorage.setItem('productTable', JSON.stringify(productTable));
-            console.log('Set products');
-        } else {
-            productTable = JSON.parse(localStorage.getItem('productTable'));
-            console.log('Get products');
-        }
+        localStorage.setItem('productTable', JSON.stringify(productTable));
     }
 }
 

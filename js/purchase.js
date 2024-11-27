@@ -130,60 +130,87 @@ const paymentNameoncard=document.getElementById("billing-info__nameoncard")
 const orderSearchDate = document.getElementById("order-table__search-input--date");
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
 
+function displayPaymentChoice(){
+    if(document.getElementById("paymentMethod").value == "none"){
+        document.getElementById("bankQR").style.display = "none"
+        document.getElementById("momoQR").style.display = "none"
+    }
+
+    else if(document.getElementById("paymentMethod").value == "internetBanking"){
+        document.getElementById("bankQR").style.display = "inline"
+        document.getElementById("momoQR").style.display = "none"
+    }
+
+    else if(document.getElementById("paymentMethod").value == "momoBanking"){
+        document.getElementById("momoQR").style.display = "inline"
+        document.getElementById("bankQR").style.display = "none"
+    }
+}
+
+function handlePaymentMethod(){
+    if(document.getElementById("paymentMethod").value == "none"){
+        showNotification("Choose payment method")
+        document.getElementById("paymentMethod").focus()
+    }
+
+    else{
+        Order.handlePayNow()
+    }
+}
+
 class Cart {
-    // 
+    // ==================================================================================
     // ADD TO CART
-    // 
+    // ==================================================================================
     static addToCart(e) {
-        // Nếu user chưa đăng nhập thì báo cần đăng nhập
+        // If user is not logged in, alert and return
         if (!localStorage.getItem('accountLogin')) {
-            alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
+            showNotification("Please log in to add products to cart")
+            //alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
             return;
         }
 
-        // Khởi tạo biến để lấy sp cho giỏ hàng
         const cartItem = JSON.parse(localStorage.getItem('productTable')).find(item => item.productId === `${e.id}`)
-        // Khởi toại biến để lấy giá trị số lượng từ input
         const quantityInput = document.querySelector(`input[data-product-id="${e.id}"]`);
-        // Khởi tạo biến để lấy giá trị số lượng từ input
         const quantity = quantityInput ? (quantityInput.value) : 1;
-        // Khởi tạo biến để kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
         const alreadyInCart = cartTable.find(item => item.productId === `${e.id}`);
 
-        // Nếu sp có số lượng tồn là 0 thì báo hết hàng
+        // If product is out of stock, alert and return
         if (cartItem.stock === 0) {
-            alert("Hết hàng");
+            showNotification("Out of stock")
+            //alert("Hết hàng");
             return;
         }
 
-        // Nếu sp không tồn tại thì báo sản phẩm không tồn tại
+        // If there is not product in cart table, alert and return
         if (!cartItem) {
-            alert("Sản phẩm này không tồn tại");
+            showNotification("This product does not exist")
+            //alert("Sản phẩm này không tồn tại");
             return;
         }
 
-        // Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
+        // If product is already in cart, alert and return
         if (alreadyInCart) {
-            alert("Sản phẩm đã có trong giỏ hàng");
+            showNotification("The product is already in the cart")
+            //alert("Sản phẩm đã có trong giỏ hàng");
             return;
-        } else {
-            // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào giỏ hàng
-            cartTable.push({ ...cartItem, quantity: quantity })
-            println(cartTable)
         }
 
-        // Lưu giỏ hàng vào localStorage
+        // Push product to cart table
+        cartTable.push({ ...cartItem, quantity: quantity })
+        println(cartTable)
+
+        // Set cart table to local storage
         localStorage.setItem('cart', JSON.stringify(cartTable))
         Cart.renderCartPreview(cartTable)
-        alert("Thêm vào giỏ hàng thành công");
+        showNotification("Added to cart successfully")
+        //alert("Thêm vào giỏ hàng thành công");
     }
-    //
+    // ==================================================================================
     // RENDER CART PREVIEW
-    //
+    // ==================================================================================
     static renderCartPreview(cartItem) {
-
         cartItemContainer.innerHTML = ""
-
         cartItem.forEach(item => {
             cartItemContainer.innerHTML += `
             <tr class="cart-item">
@@ -212,11 +239,8 @@ class Cart {
             </tr>
         `
         });
-
-        // Tính tổng giá trị của giỏ hàng
+        // render cart summary
         Cart.renderCartSummary()
-
-
         paymentInfoContainer.innerHTML = ""
         cartItem.forEach(item => {
             paymentInfoContainer.innerHTML += `
@@ -230,7 +254,6 @@ class Cart {
                 </div>
             `
         })
-
         paymentInfoSummary.innerHTML = ""
         paymentInfoSummary.innerHTML = `
             <div class="subtotal">
@@ -286,7 +309,7 @@ class Cart {
     }
 }
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress,paymentDetails) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
@@ -305,7 +328,7 @@ class Order {
         }
     }
     // Insert new order  
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress,paymentDetails) {
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
         const newOrder = new Order(
             orderId,
             userId,
@@ -334,6 +357,7 @@ class Order {
         }
     };
     // handle logic of payment
+
     static handlePayNow() {
         console.log("Handling pay now...")
         if (Validation.checkBlankField(billingInfo) === false) {
@@ -402,7 +426,8 @@ class Order {
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
-        alert("Đặt hàng thành công!")
+        showNotification("Order successful")
+        //alert("Đặt hàng thành công!")
 
         cartTable = [];
         localStorage.setItem("cart", JSON.stringify(cartTable));
@@ -431,36 +456,53 @@ class Order {
             fetchPropertyProduct(URLOfWebpage);
         }
     }
+    //
+    static displayOrderDetail(e) {
+        const orderDetail = document.querySelector('.order-detail__page');
+
+        // Hiển thị hoặc ẩn order detail
+        if (orderDetail.style.display === 'none') {
+            orderDetail.style.display = 'inherit';
+        } else {
+            orderDetail.style.display = 'none';
+        }
+
+        // Nếu truyền tham số e thì render ra chi tiết thanh toán
+        if (e) {
+            Order.renderOrderDetail(e.id);
+        }
+    }
     // 
     static renderOrderView() {
-        const orderOfUser = orderTable.filter(o => o.userId === localStorage.getItem('accountLogin'));
-        println(orderOfUser)
-
-        if (orderOfUser) {
-            orderContainer.innerHTML = ""
-
-            orderOfUser.forEach(o => {
-                orderContainer.innerHTML += `
-                    <hr>
-                    <div style="display: flex;">
-                        <div>
-                            <div class="order__id">Order ID: ${o.orderId}</div>
-                            <div class="order__date">Date: ${o.orderDate}</div>
-                            <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
-                            <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
-                        </div>
-                        <div style="margin-left: 100px;">
-                            <div class="order__items__details" style="display: none">
-                                ${o.orderItems.map(item => `
-                                    <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
-                                `).join('')}
-                                <div class="order__price">Order Price: $${o.orderPrice}</div>
-                            </div>
+        // If there is no account login, return
+        if (!localStorage.getItem('accountLogin')) {
+            return
+        }
+        // Get order of user from localStorage
+        const orderOfUser = orderTable.filter(o => o.userId === JSON.parse(localStorage.getItem('accountLogin')).userId);
+        // Render order
+        orderContainer.innerHTML = ""
+        orderOfUser.forEach(o => {
+            orderContainer.innerHTML += `
+                <hr>
+                <div style="display: flex;">
+                    <div>
+                        <div class="order__id">Order ID: ${o.orderId}</div>
+                        <div class="order__date">Date: ${o.orderDate}</div>
+                        <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
+                        <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <div class="order__items__details" style="display: none">
+                            ${o.orderItems.map(item => `
+                                <div style="white-space: pre;">${item.series} - ${item.quantity} - $${item.totalPrice}</div>
+                            `).join('')}
+                            <div class="order__price">Order Price: $${o.orderPrice}</div>
                         </div>
                     </div>
-                `
-            })
-        }
+                </div>
+            `
+        })
     }
     // 
     static renderOrderAdmin(renderOrder) {
@@ -492,7 +534,7 @@ class Order {
                         </select>
                     </td>
                     <td style="text-align: center;">
-                        <div id="${o.orderId}" class="admin__oderview" onclick="displayOrderDetail(this)">Click to view order detail</div>
+                        <div id="${o.orderId}" style="cursor: pointer" onclick="Order.displayOrderDetail(this)">Click to view order detail</div>
                     </td>
                 </tr>
             `
@@ -519,7 +561,7 @@ class Order {
         // Render lại nội dung chi tiết của hóa đơn
         orderDetail.innerHTML = `
             <div>
-                <button class="order-detail__button" onclick="displayOrderDetail()">X</button>
+                <button class="order-detail__button" onclick="Order.displayOrderDetail()">X</button>
             </div>
             <div class="order-detail__summary">
                 <h1>Order Details</h1>
@@ -706,7 +748,7 @@ class Order {
             });
         }
     static renderBillingForm() {
-        const accoutLoginInfo = userList.find(u => u.userId === JSON.parse(localStorage.getItem('accountLogin')).userId);
+        const accoutLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
         billingFullName.value = accoutLoginInfo.fullName;
         billingPhoneNumber.value = accoutLoginInfo.phoneNumber;
         billingHouseNumber.value = accoutLoginInfo.address.houseNumber;
@@ -723,6 +765,7 @@ class Order {
     //
     static toggleAddressOrder(e) {
         if (e.value === 'userAddress') {
+            console.log("Render billing form")
             Order.renderBillingForm();
         }
         if (e.value === 'newAddress') {
