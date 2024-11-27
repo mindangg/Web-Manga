@@ -15,23 +15,23 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
                         <ul>
-                            <li><a onclick="setURLForNavSearch('sakamoto-days', '', '', '')">Sakamoto Days</a></li>
-                            <li><a onclick="setURLForNavSearch('my-dress-up-darling', '', '', '')">My Dress Up Darling</a></li>
+                            <li><a onclick="setURLForNavSearch('sakamoto-days')">Sakamoto Days</a></li>
+                            <li><a onclick="setURLForNavSearch('my-dress-up-darling')">My Dress Up Darling</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('black-clover', '', '', '')">Black Clover</a></li>
-                            <li><a onclick="setURLForNavSearch('tokyo-ghoul', '', '', '')">Tokyo Ghoul</a></li>
+                            <li><a onclick="setURLForNavSearch('black-clover')">Black Clover</a></li>
+                            <li><a onclick="setURLForNavSearch('tokyo-ghoul')">Tokyo Ghoul</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('jujutsu-kaisen', '', '', '')">Jujutsu Kaisen</a></li>
-                            <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles', '', '', '')">Mashle: Magic And Muscles</a></li>
+                            <li><a onclick="setURLForNavSearch('jujutsu-kaisen')">Jujutsu Kaisen</a></li>
+                            <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles')">Mashle: Magic And Muscles</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('one-punch-man', '', '', '')">One Punch Man</a></li>
-                            <li><a onclick="setURLForNavSearch('spy-x-family', '', '', '')">Spy X Family</a></li>
+                            <li><a onclick="setURLForNavSearch('one-punch-man')">One Punch Man</a></li>
+                            <li><a onclick="setURLForNavSearch('spy-x-family')">Spy X Family</a></li>
                         </ul>
                     </div>
                 </li>
@@ -139,6 +139,9 @@ class SpecialHeader extends HTMLElement {
                         <li class="navbar__responsive--home">
                             <a href="index.html" class="navbar__responsive__link">Home</a>
                         </li>
+                        <li class="navbar__responsive--product">
+                            <a onclick="viewAllProduct()" class="navbar__responsive__link">Product</a>
+                        </li>
                         <li class="navbar__responsive--series">
                             <a class="navbar__responsive__link">Series</a>
                             <button id="navbar__responsive--series__button">
@@ -174,46 +177,46 @@ class SpecialHeader extends HTMLElement {
 
                     <ul class="navbar__responsive--series__drops">
                         <li id="navbar__responsive--series__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?series=sakamoto-days">Sakamoto Days</a></li>
-                        <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
-                        <li><a href="?series=black-clover">Black Clover</a></li>
-                        <li><a href="?series=tokyo-ghoul">Tokyo Ghoul</a></li>
-                        <li><a href="?series=jujutsu-kaisen">Jujutsu Kaisen</a></li>
-                        <li><a href="?series=mashle-magic-and-muscles">Mashle: Magic And Muscles</a></li>
-                        <li><a href="?series=one-punch-man">One Punch Man</a></li>
-                        <li><a href="?series=spy-x-family">Spy X Family</a></li>
+                        <li><a onclick="setURLForNavSearch('sakamoto-days')">Sakamoto Days</a></li>
+                        <li><a onclick="setURLForNavSearch('my-dress-up-darling')">My Dress Up Darling</a></li>
+                        <li><a onclick="setURLForNavSearch('black-clover')">Black Clover</a></li>
+                        <li><a onclick="setURLForNavSearch('tokyo-ghoul')">Tokyo Ghoul</a></li>
+                        <li><a onclick="setURLForNavSearch('jujutsu-kaisen')">Jujutsu Kaisen</a></li>
+                        <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles')">Mashle: Magic And Muscles</a></li>
+                        <li><a onclick="setURLForNavSearch('one-punch-man')">One Punch Man</a></li>
+                        <li><a onclick="setURLForNavSearch('spy-x-family')">Spy X Family</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--category__drops">
                         <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a onclick="setURLForNavSearch('shounen')">Shounen</a></li>
-                        <li><a onclick="setURLForNavSearch('seinen')">Seinen</a></li>
-                        <li><a href="?category=rom-com">Rom Com</a></li>
-                        <li><a href="?category=action">Action</a></li>
-                        <li><a href="?category=family">Family</a></li>
-                        <li><a href="?categorycomedy">Comedy</a></li>
-                        <li><a href="?category=fantasy">Fantasy</a></li>
-                        <li><a href="?category=dark-fantasy">Dark Fantasy</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'shounen')">Shounen</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'seinen')">Seinen</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'rom-com')">Rom Com</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'action')">Action</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'family')">Family</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'comedy')">Comedy</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'fantasy')">Fantasy</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'dark-fantasy')">Dark Fantasy</a></li>
                     </ul>
     
                     <ul class="navbar__responsive--author__drops">
                         <li id="navbar__responsive--author__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
-                        <li><a href="?author=shinichi-fukada">Shinichi Fukuda</a></li>
-                        <li><a href="?author=hajime-komoto">Hajime Komoto</a></li>
-                        <li><a href="?author=yuki-tabata">Yuki Tabata</a></li>   
-                        <li><a href="?author=sui-ishida">Sui Ishida</a></li>
-                        <li><a href="?author=gege-akutami">Gege Akutami</a></li>    
-                        <li><a href="?author=yuto-suzuki">Yuto Suzuki</a></li>
-                        <li><a href="?author=tatsuya-endo">Tatsuya Endo</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'yusuke-murata')">Yusuke Murata</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'shinichi-fukuda')">Shinichi Fukuda</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'hajime-komoto')">Hajime Komoto</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'yuki-tabata')">Yuki Tabata</a></li>   
+                        <li><a onclick="setURLForNavSearch('', '', 'sui-ishida')">Sui Ishida</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'gege-akutami')">Gege Akutami</a></li>    
+                        <li><a onclick="setURLForNavSearch('', '', 'yuto-suzuki')">Yuto Suzuki</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'tatsuya-endo')">Tatsuya Endo</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--price__drops">
                         <li id="navbar__responsive--price__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?price=under-7-dollars">Under $7 Dollars</a></li>
-                        <li><a href="?price=7-to-12-dollars">$7 To $12 Dollars</a></li>
-                        <li><a href="?price=12-to-17-dollars">$12 To $17 Dollars</a></li>
-                        <li><a href="?price=over-17-dollars">Over $17 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', 'under-7-dollars')">Under $7 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', '7-to-12-dollars')">$7 To $12 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', '12-to-17-dollars')">$12 To $17 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', 'over-17-dollars')">Over $17 Dollars</a></li>
                     </ul>
                 </div>
             </div>    
@@ -247,7 +250,7 @@ class SpecialHeader extends HTMLElement {
                     <input type="text" placeholder="Min" id="filter__min" onkeypress="return event.charCode>=48 && event.charCode<=57">
                     <span style="color:white">to</span>
                     <input type="text" placeholder="Max" id="filter__max" onkeypress="return event.charCode>=48 && event.charCode<=57">
-                    <a style="color: white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    <a style="color:white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
                 </div>
             </div>
         </div>
@@ -359,11 +362,11 @@ document.getElementById("search__icon").addEventListener("click", function () {
 })
 
 function closeSearch() {
-    if (document.getElementById("filter").className === "filter__active") {
+    if (document.getElementById("filter").className == "filter__active") {
         document.getElementById("filter").classList.remove("filter__active")
         document.querySelector(".filter__container").style.display = "none"
-        // document.getElementById("filter__min").value = ""
-        // document.getElementById("filter__max").value = ""
+        document.getElementById("filter__min").value = ""
+        document.getElementById("filter__max").value = ""
     }
 
     document.querySelector(".search").style.animationName = "leftToRight"
@@ -385,7 +388,7 @@ function closeEmptyCart(){
 }
 
 function showFilter() {
-    if (document.getElementById("filter").className === "") {
+    if (document.getElementById("filter").className == "") {
         document.getElementById("filter").classList.add("filter__active")
         document.querySelector(".filter__container").style.display = "inline"
     }

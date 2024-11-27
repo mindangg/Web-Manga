@@ -282,7 +282,7 @@ function viewHome() {
 // trang giỏ hàng
 function viewCart() {
     // 
-    if(cartTable.length == 0)
+    if(cartTable.length === 0)
         viewEmptyCart()
     else{
         setURLForPage('cart')

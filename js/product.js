@@ -1220,6 +1220,9 @@ class Product {
     static delete(e) {
         console.log("-> Delete product...");
 
+        const confirmToDelete = confirm("Are you sure you want to delete this product?");
+        if (!confirmToDelete) return
+
         const deleteProductRow = e.parentElement.parentElement;
 
         const start = (productCurrentPage - 1) * productPerPage

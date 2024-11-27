@@ -142,6 +142,7 @@ function fetchPropertyProduct(url) {
         if (priceSearch !== null) {
             // @viewController
             renderProductPage(priceOfProduct)
+            window.scroll
         }
     }
 }
