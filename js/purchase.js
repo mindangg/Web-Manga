@@ -215,7 +215,7 @@ class Cart {
                     <button id="${item.productId}"class="remove-button" onclick="Cart.removeFromCart(this)">Remove</button>
                 </td>
                 <td>
-                    <p>$${item.price * item.quantity}</p>
+                    <p>$${(item.price * item.quantity).toFixed(2)}</p>
                 </td>
             </tr>
         `
@@ -239,11 +239,11 @@ class Cart {
         paymentInfoSummary.innerHTML = `
             <div class="subtotal">
                 <span>Subtotal • ${cartTable.length} items</span>
-                <span>$${cartTable.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+                <span>$${(cartTable.reduce((total, item) => total + item.price * item.quantity, 0)).toFixed(2)}</span>
             </div>
             <div class="total">
                 <span>Total</span>
-                <span class="order-price">$${cartTable.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+                <span class="order-price">$${(cartTable.reduce((total, item) => total + item.price * item.quantity, 0)).toFixed(2)}</span>
             </div>
         `
 
@@ -358,9 +358,9 @@ class Order {
                 author: item.author,
                 quantity: item.quantity,
                 price: item.price,
-                totalPrice: item.price * item.quantity
+                totalPrice: (item.price * item.quantity).toFixed(2)
             })),
-            cartTable.reduce((total, item) => total + item.price * item.quantity, 0),
+            (cartTable.reduce((total, item) => total + item.price * item.quantity, 0)).toFixed(2),
             billingFullName.value,
             billingPhoneNumber.value,
             {
@@ -473,11 +473,11 @@ class Order {
                         ${o.orderPrice}
                     </td>
                     <td style="text-align: center;">
-                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${o.orderStatus !== "Pending" && o.orderStatus !== "Confirmed" ? "disabled" : ""}>
-                            <option value="Pending" ${o.orderStatus === "Pending" ? "selected" : ""}>Pending</option>
-                            <option value="Completed" ${o.orderStatus === "Completed" ? "selected" : ""}>Completed</option>
-                            <option value="Confirmed" ${o.orderStatus === "Confirmed" ? "selected" : ""}>Confirmed</option>
+                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${(o.orderStatus === "Completed" || o.orderStatus === "Cancelled")? "disabled" : ""}>
                             <option value="Cancelled" ${o.orderStatus === "Cancelled" ? "selected" : ""}>Cancelled</option>
+                            <option value="Pending" ${o.orderStatus === "Pending" ? "selected" : ""}>Pending</option>
+                            <option value="Confirmed" ${o.orderStatus === "Confirmed" ? "selected" : ""}>Confirmed</option>
+                            <option value="Completed" ${o.orderStatus === "Completed" ? "selected" : ""}>Completed</option>
                         </select>
                     </td>
                     <td style="text-align: center;">
@@ -597,7 +597,6 @@ class Order {
             return;
         }
 
-        selectElement.disabled = true;
         if (newStatus === "Cancelled" && order.status !== "Cancelled") {
             const confirmCancel = confirm("Bạn muốn hủy đơn hàng này không ?");
             if (!confirmCancel) {
@@ -605,10 +604,10 @@ class Order {
                 selectElement.value = "Pending";
                 return;
             }
-
             Order.updateStockForOrder(order, "increase");
 
             order.orderStatus = "Cancelled";
+            selectElement.disabled = true;
             console.log(order.orderStatus);
             localStorage.setItem("order", JSON.stringify(orderTable));
 
@@ -618,7 +617,7 @@ class Order {
         if (newStatus === "Completed" && order.orderStatus !== "Completed") {
             order.orderStatus = "Completed";
             localStorage.setItem("order", JSON.stringify(orderTable));
-
+            selectElement.disabled = true;
             Order.renderOrderAdmin(orderTable);
             alert("Đơn hàng đã được giao");
         }
