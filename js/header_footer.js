@@ -5,7 +5,7 @@ class SpecialHeader extends HTMLElement {
         <nav class="navbar">
             <!-- logo -->
             <div class="navbar__logo">
-                <a onclick="viewHome()"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+                <a onclick="viewHome()"><img src="../img/OnlyManga.jpg" alt="website logo"></a>
             </div>
             <!-- links -->
             <ul class="navbar__links">
