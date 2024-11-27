@@ -361,7 +361,7 @@ function viewAllProduct() {
 
     let productTable = JSON.parse(localStorage.getItem("productTable"))
     renderProductPage(productTable);
-    window.scrollTo(0, 1400);
+    window.scrollTo(0, 20);
 }
 // ==================================================================================
 // IIFE
