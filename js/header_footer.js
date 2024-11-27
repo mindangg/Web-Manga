@@ -255,14 +255,14 @@ class SpecialHeader extends HTMLElement {
         <!-- shopping cart -->
         <div class="shopping__popup">
             <div class="shopping__container">
-                <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+                <a id="shopping__close" onclick="closeEmptyCart()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 <div class="shopping">
                     <div class="shopping__icon">
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
                     </div>
                     <br>
                     <h2>Your cart is empty</h2>
-                    <button class="shopping__btn">Continue shopping</button>
+                    <button class="shopping__btn" onclick="closeEmptyCart()">Continue shopping</button>
                 </div>
             </div>
         </div>
@@ -372,17 +372,17 @@ function closeSearch() {
     }, 390);
 }
 
-// document.getElementById("shopping__icon").addEventListener("click", function () {
-//     document.querySelector(".shopping__popup").style.display = "flex";
-//     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
-// })
+function viewEmptyCart(){
+    document.querySelector(".shopping__popup").style.display = "flex";
+    document.querySelector(".shopping__container").style.animationName = "rightToLeft"
+}
 
-// document.getElementById("shopping__close").addEventListener("click", function () {
-//     document.querySelector(".shopping__container").style.animationName = "leftToRight"
-//     setTimeout(function () {
-//         document.querySelector(".shopping__popup").style.display = "none";
-//     }, 390);
-// })
+function closeEmptyCart(){
+    document.querySelector(".shopping__container").style.animationName = "leftToRight"
+    setTimeout(function () {
+        document.querySelector(".shopping__popup").style.display = "none";
+    }, 390);
+}
 
 function showFilter() {
     if (document.getElementById("filter").className == "") {
