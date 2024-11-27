@@ -10,28 +10,28 @@ class SpecialHeader extends HTMLElement {
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
-                <li class="navbar__link--product"><a onclick="viewAllProduct()" class="navbar__link" onclick="renderProductPage()">Product</a></li>
+                <li class="navbar__link--product"><a onclick="viewAllProduct()" class="navbar__link">Product</a></li>
                 <li class="navbar__link--series">
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
                         <ul>
-                            <li><a onclick="setURLForNavSearch('sakamoto-days')">Sakamoto Days</a></li>
-                            <li><a onclick="setURLForNavSearch('my-dress-up-darling')">My Dress Up Darling</a></li>
+                            <li><a onclick="setURLForNavSearch('sakamoto-days', '', '', '')">Sakamoto Days</a></li>
+                            <li><a onclick="setURLForNavSearch('my-dress-up-darling', '', '', '')">My Dress Up Darling</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('black-clover')">Black Clover</a></li>
-                            <li><a onclick="setURLForNavSearch('tokyo-ghoul')">Tokyo Ghoul</a></li>
+                            <li><a onclick="setURLForNavSearch('black-clover', '', '', '')">Black Clover</a></li>
+                            <li><a onclick="setURLForNavSearch('tokyo-ghoul', '', '', '')">Tokyo Ghoul</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('jujutsu-kaisen')">Jujutsu Kaisen</a></li>
-                            <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles')">Mashle: Magic And Muscles</a></li>
+                            <li><a onclick="setURLForNavSearch('jujutsu-kaisen', '', '', '')">Jujutsu Kaisen</a></li>
+                            <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles', '', '', '')">Mashle: Magic And Muscles</a></li>
                         </ul>
 
                         <ul>
-                            <li><a onclick="setURLForNavSearch('one-punch-man')">One Punch Man</a></li>
-                            <li><a onclick="setURLForNavSearch('spy-x-family')">Spy X Family</a></li>
+                            <li><a onclick="setURLForNavSearch('one-punch-man', '', '', '')">One Punch Man</a></li>
+                            <li><a onclick="setURLForNavSearch('spy-x-family', '', '', '')">Spy X Family</a></li>
                         </ul>
                     </div>
                 </li>
@@ -247,7 +247,7 @@ class SpecialHeader extends HTMLElement {
                     <input type="text" placeholder="Min" id="filter__min" onkeypress="return event.charCode>=48 && event.charCode<=57">
                     <span style="color:white">to</span>
                     <input type="text" placeholder="Max" id="filter__max" onkeypress="return event.charCode>=48 && event.charCode<=57">
-                    <a style="color:white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    <a style="color: white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
                 </div>
             </div>
         </div>
@@ -359,11 +359,11 @@ document.getElementById("search__icon").addEventListener("click", function () {
 })
 
 function closeSearch() {
-    if (document.getElementById("filter").className == "filter__active") {
+    if (document.getElementById("filter").className === "filter__active") {
         document.getElementById("filter").classList.remove("filter__active")
         document.querySelector(".filter__container").style.display = "none"
-        document.getElementById("filter__min").value = ""
-        document.getElementById("filter__max").value = ""
+        // document.getElementById("filter__min").value = ""
+        // document.getElementById("filter__max").value = ""
     }
 
     document.querySelector(".search").style.animationName = "leftToRight"
@@ -385,7 +385,7 @@ function closeEmptyCart(){
 }
 
 function showFilter() {
-    if (document.getElementById("filter").className == "") {
+    if (document.getElementById("filter").className === "") {
         document.getElementById("filter").classList.add("filter__active")
         document.querySelector(".filter__container").style.display = "inline"
     }

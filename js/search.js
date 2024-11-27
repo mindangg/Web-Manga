@@ -3,10 +3,10 @@
 // ==================================================================================
 // 
 document.addEventListener("DOMContentLoaded", () => {
-    var search__input = document.getElementById("search__input")
+    let search__input = document.getElementById("search__input")
     //var filter__series = document.getElementById("filter__series")
     search__input.addEventListener("keydown", (e) => {
-        if (e.key == "Enter") {
+        if (e.key === "Enter") {
             searchProduct()
         }
     })
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==================================================================================
 function searchProduct() {
     handleURLsearch()
+    closeSearch();
 }
 // ==================================================================================
 // HANDLE URL SEARCH
@@ -42,44 +43,58 @@ function handleURLsearch() {
 // @search
 function handleSearchProduct() {
     // get value of filter from URL
-    const searchProuductURL = new URL(window.location)
-    const filterSeries = searchProuductURL.searchParams.get('series')
-    const filterCategory = searchProuductURL.searchParams.get('category')
-    const filterPriceMin = searchProuductURL.searchParams.get('priceMin')
-    const filterPriceMax = searchProuductURL.searchParams.get('priceMax')
+    const searchProductURL = new URL(window.location)
+    const filterSeries = searchProductURL.searchParams.get('series')
+    const filterCategory = searchProductURL.searchParams.get('category')
+    const filterPriceMin = searchProductURL.searchParams.get('priceMin')
+    const filterPriceMax = searchProductURL.searchParams.get('priceMax')
+    const allProduct = searchProductURL.searchParams.get('search')
 
+    console.log(searchProductURL, filterSeries, filterCategory, filterPriceMin, filterPriceMax, allProduct)
+    const searchBox = document.querySelector('.search__popup');
+    const selectFilter = searchBox.querySelector('select')
+    selectFilter.value = ''
+    clearField(searchBox);
+    const productList = document.querySelector('.all-product__page')
     let searchBoxProduct = JSON.parse(localStorage.getItem("productTable"));
-    // if 
-    if (!searchProuductURL.search) {
-        const productList = document.querySelector('.all-product__page')
+    // if
+    if (!searchProductURL.search || allProduct === 'all') {
         renderView(productList)
 
         renderProductPage(searchBoxProduct)
         return
     }
+    console.log(searchBoxProduct)
 
     // if 
     if (filterSeries !== "") {
+        console.log(1)
         const regex = new RegExp(filterSeries, "i");
         searchBoxProduct = searchBoxProduct.filter((item) => regex.test(item.series))
     }
+    console.log(searchBoxProduct)
     if (filterCategory !== "") {
+        console.log(2)
         searchBoxProduct = searchBoxProduct.filter((item) =>
             removeSpecialChar(item.category) === removeSpecialChar(filterCategory))
     }
+    console.log(searchBoxProduct)
     if (filterPriceMin !== "" && filterPriceMax !== "") {
+        console.log(3)
         searchBoxProduct = searchBoxProduct.filter((item) => filterPriceMin <= item.price <= filterPriceMax)
     }
+    console.log(searchBoxProduct)
     if (filterPriceMin !== "") {
+        console.log(4)
         searchBoxProduct = searchBoxProduct.filter((item) => item.price >= filterPriceMin)
     }
+    console.log(searchBoxProduct)
     if (filterPriceMax !== "") {
+        console.log(5)
         searchBoxProduct = searchBoxProduct.filter((item) => item.price <= filterPriceMax)
     }
-
-    const productList = document.querySelector('.all-product__page')
+    console.log(searchBoxProduct)
     renderView(productList)
-
     // @viewController
     renderProductPage(searchBoxProduct)
 }

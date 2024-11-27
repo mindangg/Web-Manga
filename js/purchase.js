@@ -630,6 +630,7 @@ class Order {
             alert("Đơn hàng đã được xử lý");
             selectElement.disabled = false;
         }
+        localStorage.setItem("order", JSON.stringify(orderTable));
     }
     //  
     static getStatus(status) {

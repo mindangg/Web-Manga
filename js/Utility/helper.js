@@ -19,8 +19,7 @@ class Helper {
 // format date dd/mm/yyyy
 function formatDate(date) {
     const splitDate = date.split('-');
-    const formattedDate = `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
-    return formattedDate;
+    return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
 }
 
 // Bỏ dấu trong ký tự tiếng việt

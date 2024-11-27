@@ -48,7 +48,7 @@ function setURLForNavSearch(series = "", category = "", author = "", price = "")
 function setURLForSearch(series = "", category = "", priceMin = "", priceMax = "") {
     let URLSearch = ""
     if (series === "" && category === "" && priceMin === "" && priceMax === "") {
-        URLSearch = "page=search&search=default"
+        URLSearch = "page=search&search=all"
     } else {
         URLSearch += `page=search&series=${series}&category=${category}&priceMin=${priceMin}&priceMax=${priceMax}`
     }

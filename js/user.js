@@ -612,4 +612,3 @@ function clearField(field) {
 document.addEventListener('DOMContentLoaded', () => {
     User.renderAccountLogin();
 });
-// User.onload();
