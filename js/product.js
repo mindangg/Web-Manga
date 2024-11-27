@@ -1218,9 +1218,11 @@ class Product {
     // ========================================================================
     // delete san pham
     static delete(e) {
-        if(confirm("Bạn muốn xóa sản phẩm không?")) {
         console.log("-> Delete product...");
-        
+
+        const confirmToDelete = confirm("Are you sure you want to delete this product?");
+        if (!confirmToDelete) return
+
         const deleteProductRow = e.parentElement.parentElement;
 
         const start = (productCurrentPage - 1) * productPerPage
@@ -1243,10 +1245,6 @@ class Product {
         Product.applyFilters()
 
         console.log("Delete product from table succesfully ✓");
-    }
-    else {
-        console.log("tiếp tục...");
-    }
     }
     // ==================================================================================
     // CANCEL BUTTON
