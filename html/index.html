@@ -221,79 +221,81 @@
         </section>
 
         <section id="billing-info" class="layer billing-info" style="display: none;">
-            <div class="billing-form">
-                <h2>Billing Information</h2>
-                <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
-                    <option value="userAddress" selected>Địa chỉ và thông tin của người dùng</option>
-                    <option value="newAddress">Địa chỉ và thông tin mới</option>
-                </select>
-                <label>Full Name</label>
-                <div class="billing-info__input">
-                    <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
-                    <label class="error" for="billing-info__fullName"></label>
-                </div>
-                <div class="billing-info__input">
-                    <label>Phone Number</label>
-                    <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
-                    <label class="error" for="billing-info__phoneNumber"></label>
-                </div>
-                <div id="newAddress">
-                    <div class="billing-info__input">
-                        <label>House Number</label>
-                        <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
-                        <label class="error" for="billing-info__houseNumber" class="form-group"></label>
-                    </div>
-                    <div class="billing-info__input">
-                        <label>House Number</label>
-                        <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
-                        <label class="error" for="billing-info__street"></label>
-                    </div>
-                    <div>
-                        <label>Ward</label>
-                        <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
-                        <label class="error" for="billing-info__ward"></label>
-                    </div>
-                    <div>
-                        <label>District</label>
-                        <input id="billing-info__district" type="text" placeholder="District" class="form-group">
-                        <label class="error" for="billing-info__district"></label>
-                    </div>
-                    <div>
-                        <label>City</label>
-                        <input id="billing-info__city" type="text" placeholder="City" class="form-group">
-                        <label class="error" for="billing-info__city"></label>
-                    </div>
-                </div>
-            <div class="transfer-form">
-                <h2>Payment</h2>
-                <select id="selectPaymentOrder" onchange="Order.togglePaymentOrder(this)">
-                    <option value="cashPayment" selected>Payment in cash upon receipt</option>
-                    <option value="transferPayment">Payment by bank transfer</option>
-                </select>
-                <div id="paymentByCard" style="display: none;">
-                    <select id="selectBankOrder">
-                        <option value="userAddress" selected>Agribank</option>
-                        <option value="newAddress">ACB</option>
-                        <option value="newAddress">Vietcombank</option>
-                        <option value="newAddress">Vietinbank</option>
-                        <option value="newAddress">Techcombank</option>
-                        <option value="newAddress">BIDV</option>
-                        <option value="newAddress">MB</option>
-                        <option value="newAddress">VPBank</option>
-                        <option value="newAddress">TPBank</option>
-                        <option value="newAddress">VIB</option>
+            <div class="billing-form-full">
+                <div class="billing-form">
+                    <h2>Billing Information</h2>
+                    <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
+                        <option value="userAddress" selected>Địa chỉ và thông tin của người dùng</option>
+                        <option value="newAddress">Địa chỉ và thông tin mới</option>
                     </select>
+                    <label>Full Name</label>
                     <div class="billing-info__input">
-                        <label>Card Number</label>
-                        <input id="billing-info__cardnumber" type="text" placeholder="Card Number" class="form-group">
-                        <label class="error" for="billing-info__cardnumber"></label>
+                        <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
+                        <label class="error" for="billing-info__fullName"></label>
                     </div>
                     <div class="billing-info__input">
-                        <label>Name On Card</label>
-                        <input id="billing-info__nameoncard" type="text" placeholder="Name On Card" class="form-group">
-                        <label class="error" for="billing-info__nameoncard"></label>
+                        <label>Phone Number</label>
+                        <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
+                        <label class="error" for="billing-info__phoneNumber"></label>
+                    </div>
+                    <div id="newAddress">
+                        <div class="billing-info__input">
+                            <label>House Number</label>
+                            <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
+                            <label class="error" for="billing-info__houseNumber" class="form-group"></label>
+                        </div>
+                        <div class="billing-info__input">
+                            <label>House Number</label>
+                            <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
+                            <label class="error" for="billing-info__street"></label>
+                        </div>
+                        <div>
+                            <label>Ward</label>
+                            <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
+                            <label class="error" for="billing-info__ward"></label>
+                        </div>
+                        <div>
+                            <label>District</label>
+                            <input id="billing-info__district" type="text" placeholder="District" class="form-group">
+                            <label class="error" for="billing-info__district"></label>
+                        </div>
+                        <div>
+                            <label>City</label>
+                            <input id="billing-info__city" type="text" placeholder="City" class="form-group">
+                            <label class="error" for="billing-info__city"></label>
+                        </div>
                     </div>
                 </div>
+                <div class="transfer-form">
+                    <h2>Payment</h2>
+                    <select id="selectPaymentOrder" onchange="Order.togglePaymentOrder(this)">
+                        <option value="cashPayment" selected>Payment in cash upon receipt</option>
+                        <option value="transferPayment">Payment by bank transfer</option>
+                    </select>
+                    <div id="paymentByCard" style="display: none;">
+                        <select id="selectBankOrder">
+                            <option value="bank" selected>Agribank</option>
+                            <option value="bank">ACB</option>
+                            <option value="bank">Vietcombank</option>
+                            <option value="bank">Vietinbank</option>
+                            <option value="bank">Techcombank</option>
+                            <option value="bank">BIDV</option>
+                            <option value="bank">MB</option>
+                            <option value="bank">VPBank</option>
+                            <option value="bank">TPBank</option>
+                            <option value="bank">VIB</option>
+                        </select>
+                        <div class="billing-info__input">
+                            <label>Card Number</label>
+                            <input id="billing-info__cardnumber" type="text" placeholder="Card Number" class="form-group">
+                            <label class="error" for="billing-info__cardnumber"></label>
+                        </div>
+                        <div class="billing-info__input">
+                            <label>Name On Card</label>
+                            <input id="billing-info__nameoncard" type="text" placeholder="Name On Card" class="form-group">
+                            <label class="error" for="billing-info__nameoncard"></label>
+                        </div>
+                    </div>
             
 
                 <!-- <label for="paymentMethod">Payment Method</label>

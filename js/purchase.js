@@ -30,7 +30,13 @@ let orderTable = JSON.parse(localStorage.getItem('order')) || [
             ward: "X.Binh Hung",
             district: "H.Bình Chanh",
             city: "TP.HCM",
-        }
+        },
+        paymentDetails: {
+            method: "Payment by cash.",
+            bank: '',
+            cardNumber: '',
+            cardName: ''
+        },
     },
     {
         orderId: "orderTesting_2",
@@ -84,7 +90,14 @@ let orderTable = JSON.parse(localStorage.getItem('order')) || [
             ward: "Tan Dinh",
             district: "1",
             city: "TPHCM",
-        }
+        },
+        paymentMethod: "transferPayment",
+        paymentDetails: {
+            method: "Payment by transfer.",
+            bank: "Agribank",
+            cardNumber: "12345",
+            cardName: "Huybao"
+        },
     },
 ]
 
@@ -106,6 +119,12 @@ const billingStreet = document.getElementById("billing-info__street")
 const billingWard = document.getElementById("billing-info__ward")
 const billingDistrict = document.getElementById("billing-info__district")
 const billingCity = document.getElementById("billing-info__city")
+// Payment infotmation field
+const billingPayment = document.getElementById("selectPaymentOrder")
+const paymentBank =document.getElementById("selectBankOrder")
+const paymentCardNumber=document.getElementById("billing-info__cardnumber")
+const paymentNameoncard=document.getElementById("billing-info__nameoncard")
+
 
 // Search order table in admin page
 const orderSearchDate = document.getElementById("order-table__search-input--date");
@@ -267,7 +286,7 @@ class Cart {
     }
 }
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress,paymentDetails) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
@@ -277,9 +296,16 @@ class Order {
         this.userFullName = userFullName
         this.userPhoneNumber = userPhoneNumber
         this.orderAddrress = orderAddrress
+        //hbao them 
+        this.paymentDetails = {
+            paymentMethod: '',
+            bank: '',
+            cardNumber: '',
+            cardName: ''
+        }
     }
     // Insert new order  
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress,paymentDetails) {
         const newOrder = new Order(
             orderId,
             userId,
@@ -289,7 +315,9 @@ class Order {
             orderPrice,
             userFullName,
             userPhoneNumber,
-            orderAddrress
+            orderAddrress,
+            //hbao them
+            paymentDetails  
         )
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
@@ -321,9 +349,34 @@ class Order {
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
         console.log(orderTable)
+        const paymentMethod = document.getElementById('selectPaymentOrder').value; 
+        let paymentDetails = null;
+
+        if (paymentMethod === "transferPayment") {
+            const paymentBank = document.getElementById('selectBankOrder').value;
+            const cardNumber = document.getElementById('billing-info__cardnumber').value;
+            const cardName = document.getElementById('billing-info__nameoncard').value;
+
+            paymentDetails = {
+                method: "Payment by transfer.",
+                bank: paymentBank,
+                cardNumber: cardNumber,
+                cardName: cardName
+            };
+        } else if (paymentMethod === "cashPayment") {
+            // Nếu thanh toán bằng tiền mặt, không có thêm thông tin
+            paymentDetails = { 
+                method: "Payment by cash.",
+                bank: '',
+                cardNumber: '',
+                cardName: ''
+            };
+        }
+        // !!!
+      
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
-            localStorage.getItem('accountLogin'),
+            JSON.parse(localStorage.getItem('accountLogin')).userId,
             new Date().toISOString().split('T')[0].split('-').reverse().join('/'),
             status,
             cartTable.map(item => ({
@@ -344,7 +397,8 @@ class Order {
                 ward: billingWard.value,
                 district: billingDistrict.value,
                 city: billingCity.value,
-            }
+            },   
+            paymentDetails
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
@@ -509,6 +563,15 @@ class Order {
                 <p><strong>Name:</strong> ${user.username} </p>
                 <p><strong>Email:</strong> ${user.email} </p>
                 <p><strong>Phone:</strong> ${user.phoneNumber} </p>
+            </div>
+            <div class="order-detail__payment-info">
+                <h2>Payment Details</h2>
+                <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
+                ${order.paymentMethod === "transferPayment" ? `
+                    <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
+                    <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
+                    <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
+                ` : ""}
             </div>
         `
     }
