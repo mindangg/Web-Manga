@@ -123,7 +123,7 @@ class SpecialHeader extends HTMLElement {
             <div class="navbar__bar" id="navbar__bar">
                 <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
                 <div style="display: flex">
-                    <a href="#" id="login__icon__responsive">
+                    <a id="login__icon__responsive" onclick="viewUserInfo()">
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>
@@ -331,29 +331,29 @@ customElements.define(`special-footer`, SpecialFooter);
 //navigation between pages
 
 
-const loginPage = document.querySelector('.login__page')
-const signUpPage = document.querySelector('.signup__page')
-const toLoginPage = () => {
-    document.getElementById("main__page").style.display = "none";
-    document.querySelector(".slider").style.display = "none";
-    document.getElementById("login__page").style.display = "inline";
-    document.getElementById("signup__page").style.display = "none";
-}
+// const loginPage = document.querySelector('.login__page')
+// const signUpPage = document.querySelector('.signup__page')
+// const toLoginPage = () => {
+//     document.getElementById("main__page").style.display = "none";
+//     document.querySelector(".slider").style.display = "none";
+//     document.getElementById("login__page").style.display = "inline";
+//     document.getElementById("signup__page").style.display = "none";
+// }
 
-document.getElementById("login__icon").addEventListener("click", toLoginPage);
+// document.getElementById("login__icon").addEventListener("click", toLoginPage);
 
-document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
+// document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
 
 
-document.getElementById("login__signup--nav").addEventListener("click", function () {
-    setURLForPage('signup')
-    renderView(signUpPage);
-})
+// document.getElementById("login__signup--nav").addEventListener("click", function () {
+//     setURLForPage('signup')
+//     renderView(signUpPage);
+// })
 
-document.getElementById("signup__login--nav").addEventListener("click", function () {
-    setURLForPage('login')
-    renderView(loginPage);
-})
+// document.getElementById("signup__login--nav").addEventListener("click", function () {
+//     setURLForPage('login')
+//     renderView(loginPage);
+// })
 
 // search, shopping cart, filter popup
 
@@ -376,12 +376,12 @@ function closeSearch() {
     }, 390);
 }
 
-function viewEmptyCart(){
+function viewEmptyCart() {
     document.querySelector(".shopping__popup").style.display = "flex";
     document.querySelector(".shopping__container").style.animationName = "rightToLeft"
 }
 
-function closeEmptyCart(){
+function closeEmptyCart() {
     document.querySelector(".shopping__container").style.animationName = "leftToRight"
     setTimeout(function () {
         document.querySelector(".shopping__popup").style.display = "none";
