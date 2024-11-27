@@ -45,7 +45,9 @@ dots.forEach((li, key) => {
         ReloadSlider();
     })
 })
-
+// ==================================================================================
+// SHOW SLIDER 
+// ==================================================================================
 function showSlider() {
     let sliderProduct = JSON.parse(localStorage.getItem('productTable'))
     const bestSliderList = document.querySelector(".best__slider__list")
@@ -66,18 +68,19 @@ function showSlider() {
         `
         bookSliderList.innerHTML += `
         <div class="book__slider__item">
-            <a id="${sliderProduct[i+1].productId}" onclick="showProductInfo(this)">
-                <img src="${sliderProduct[i+1].cover1}" alt="">
-                <img src="${sliderProduct[i+1].cover2}" alt="">
+            <a id="${sliderProduct[i + 1].productId}" onclick="showProductInfo(this)">
+                <img src="${sliderProduct[i + 1].cover1}" alt="">
+                <img src="${sliderProduct[i + 1].cover2}" alt="">
             </a>
-            <h4>${sliderProduct[i+1].series}</h4>
-            <p>$${sliderProduct[i+1].price}</p>
-            <button id="${sliderProduct[i+1].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
+            <h4>${sliderProduct[i + 1].series}</h4>
+            <p>$${sliderProduct[i + 1].price}</p>
+            <button id="${sliderProduct[i + 1].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
         </div>
         `
     }
-    //best slider
-
+    // 
+    // BEST
+    // 
     let best_list = document.querySelector(".best__slider .best__slider__list");
     let best_items = document.querySelectorAll(".best__slider .best__slider__list .best__slider__item");
     let best_dots = document.querySelectorAll(".best__slider .best__slider__dots li");
@@ -115,7 +118,9 @@ function showSlider() {
     function best_RemoveSlider() {
         best_dots[best_active + 1].classList.remove("best__active");
     }
-
+    // ==================================================================================
+    // BOOK SLIDER
+    // ==================================================================================
     let book_list = document.querySelector(".book__slider .book__slider__list");
     let book_items = document.querySelectorAll(".book__slider .book__slider__list .book__slider__item");
     let book_dots = document.querySelectorAll(".book__slider .book__slider__dots li");
@@ -154,279 +159,9 @@ function showSlider() {
         book_dots[book_active + 1].classList.remove("book__active");
     }
 }
-
-//search
-function convert(e){
-    return (e.replaceAll("-", " ")).toLowerCase()
-}
-
-function searchProductByURL(){
-    const urlSearchIndex = window.location.search
-    console.log(urlSearchIndex)
-
-    const urlSearch = new URLSearchParams(urlSearchIndex)
-
-    if(urlSearch.get("series")){
-        const seriesSearch = urlSearch.get("series")
-        renderViewSearchProductByURL(convert(seriesSearch), "Series")
-    }
-
-    else if(urlSearch.get("category")){
-        const categorySearch = urlSearch.get("category")
-        renderViewSearchProductByURL(convert(categorySearch), "Category")
-    }
-
-
-    else if(urlSearch.get("author")){
-        const authorSearch = urlSearch.get("author")
-        renderViewSearchProductByURL(convert(authorSearch), "Author")
-    }
-
-
-    else if(urlSearch.get("price")){
-        console.log("4")
-        const priceSearch = urlSearch.get("price")
-        renderViewSearchProductByURL(convert(priceSearch), "Price")
-    }
-}
-
-searchProductByURL()
-
-function searchProduct(){
-    productSearch = search__input.value.toLowerCase()
-    let productArray = JSON.parse(localStorage.getItem('productTable'))
-    document.getElementById("main__page").style.display = "none"
-    document.getElementById("search__page").style.display = "inline"
-    let searchPage = document.querySelector(".search__page__list");
-    searchPage.innerHTML = ""
-    if(document.getElementById("filter").className == ""){
-        for(let i = 0; i < productArray.length; i++){
-            if(((productArray[i].name.toLowerCase().search(productSearch) !== -1) ||
-                (productArray[i].series.toLowerCase().search(productSearch) !== -1) ||
-                (productArray[i].category.toLowerCase().search(productSearch) !== -1) ||
-                (productArray[i].author.toLowerCase().search(productSearch) !== -1)) &&
-                productSearch != ''){
-                searchPage.innerHTML += `
-                <div class="search__page__item">
-                    <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                        <img src="${productArray[i].cover1}" alt="">
-                        <img src="${productArray[i].cover2}" alt="">
-                    </a>
-                    <h4>${productArray[i].name}</h4>
-                    <p>$${productArray[i].price}</p>
-                    <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-                </div>
-                ` 
-            }
-        }
-    }
-
-    else{
-        let filter__series = document.getElementById("filter__series")
-        let filter__min = document.getElementById("filter__min").value
-        let filter__max = document.getElementById("filter__max").value
-
-        if(filter__series.value == "all"){
-            if(filter__max == "" && filter__min =="")
-                for(let i = 0; i<productArray.length; i++){
-                    if (productArray[i].series.toLowerCase().search(productSearch) != -1){
-                        searchPage.innerHTML += `
-                        <div class="search__page__item">
-                            <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                                <img src="${productArray[i].cover1}" alt="">
-                                <img src="${productArray[i].cover2}" alt="">
-                            </a>
-                            <h4>${productArray[i].name}</h4>
-                            <p>$${productArray[i].price}</p>
-                            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-                        </div>
-                        ` 
-                    }
-                }
-
-            else
-                for(let i = 0; i<productArray.length; i++){
-                    if (productArray[i].series.toLowerCase().search(productSearch) != -1 && productArray[i].price >= filter__min && productArray[i].price <= filter__max){
-                        searchPage.innerHTML += `
-                        <div class="search__page__item">
-                            <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                                <img src="${productArray[i].cover1}" alt="">
-                                <img src="${productArray[i].cover2}" alt="">
-                            </a>
-                            <h4>${productArray[i].name}</h4>
-                            <p>$${productArray[i].price}</p>
-                            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-                        </div>
-                        ` 
-                    }
-                }
-		}
-
-		else{
-            productSearchFilter = convert(filter__series.value)
-            console.log(productSearchFilter)
-			for(let i = 0; i < productArray.length; i++){
-				if (productArray[i].series.toLowerCase().search(productSearchFilter) != -1 && productArray[i].price >= filter__min && productArray[i].price <= filter__max){
-                    searchPage.innerHTML += `
-                    <div class="search__page__item">
-                        <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                            <img src="${productArray[i].cover1}" alt="">
-                            <img src="${productArray[i].cover2}" alt="">
-                        </a>
-                        <h4>${productArray[i].name}</h4>
-                        <p>$${productArray[i].price}</p>
-                        <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-                    </div>
-                    ` 
-				}
-			}
-		}
-    }
-    search__input.value = ""
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-    var search__input = document.getElementById("search__input")
-    //var filter__series = document.getElementById("filter__series")
-    search__input.addEventListener("keydown", (e) =>{
-        if(e.key == "Enter"){
-            console.log("Hi")
-            searchProduct()
-        }
-    })
-})
-
-function capitalizeAllWords(str){
-    return str
-        .split(" ")
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-}
-
-function renderViewSearchProduct(renderProduct, renderBy){
-    let productArray = JSON.parse(localStorage.getItem('productTable'))
-    document.getElementById("main__page").style.display = "none"
-    document.getElementById("search__page").style.display = "inline"
-    let searchPage = document.querySelector(".search__page__list");
-    searchPage.innerHTML = ""
-    document.querySelector(".search__page__lists h1").innerText = "Search by " + capitalizeAllWords(renderBy) + " : " + capitalizeAllWords(renderProduct) 
-    
-    for(let i = 0; i < productArray.length; i++){
-        if(renderProduct == productArray[i].series.toLowerCase() || 
-            renderProduct == productArray[i].category.toLowerCase() ||
-            renderProduct == productArray[i].author.toLowerCase()
-        )
-        searchPage.innerHTML += `
-        <div class="search__page__item">
-            <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                <img src="${productArray[i].cover1}" alt="">
-                <img src="${productArray[i].cover2}" alt="">
-            </a>
-            <h4>${productArray[i].name}</h4>
-            <p>$${productArray[i].price}</p>
-            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-        </div>
-        `   
-    }
-}
-
-function renderViewSearchProductByURL(renderProduct, renderBy){
-    let productArray = JSON.parse(localStorage.getItem('productTable'))
-    document.getElementById("main__page").style.display = "none"
-    document.getElementById("search__page").style.display = "inline"
-    let searchPage = document.querySelector(".search__page__list");
-    searchPage.innerHTML = ""
-    document.querySelector(".search__page__lists h1").innerText = "Search by " + capitalizeAllWords(renderBy) + " : " + capitalizeAllWords(renderProduct) 
-    
-    if(renderProduct[0] == "u"){
-        for(let i = 0; i < productArray.length; i++){
-            if(productArray[i].price <7 )
-            searchPage.innerHTML += `
-            <div class="search__page__item">
-                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].cover1}" alt="">
-                    <img src="${productArray[i].cover2}" alt="">
-                </a>
-                <h4>${productArray[i].name}</h4>
-                <p>$${productArray[i].price}</p>
-                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-            `   
-        }
-        return
-    }
-    else if(renderProduct[0] == "7"){
-        for(let i = 0; i < productArray.length; i++){
-            if(productArray[i].price >= 7 && productArray[i].price <= 12)
-            searchPage.innerHTML += `
-            <div class="search__page__item">
-                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].cover1}" alt="">
-                    <img src="${productArray[i].cover2}" alt="">
-                </a>
-                <h4>${productArray[i].name}</h4>
-                <p>$${productArray[i].price}</p>
-                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-            `   
-        }
-        return
-    }
-
-    else if(renderProduct[0] == "1"){
-        for(let i = 0; i < productArray.length; i++){
-            if(productArray[i].price >= 12 && productArray[i].price <= 17)
-            searchPage.innerHTML += `
-            <div class="search__page__item">
-                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].cover1}" alt="">
-                    <img src="${productArray[i].cover2}" alt="">
-                </a>
-                <h4>${productArray[i].name}</h4>
-                <p>$${productArray[i].price}</p>
-                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-            `   
-        }
-        return
-    }
-    else if(renderProduct[0] == "o"){
-        for(let i = 0; i < productArray.length; i++){
-            if(productArray[i].price > 17)
-            searchPage.innerHTML += `
-            <div class="search__page__item">
-                <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                    <img src="${productArray[i].cover1}" alt="">
-                    <img src="${productArray[i].cover2}" alt="">
-                </a>
-                <h4>${productArray[i].name}</h4>
-                <p>$${productArray[i].price}</p>
-                <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-            </div>
-            `   
-        }
-        return
-    }
-    
-    for(let i = 0; i < productArray.length; i++){
-        if(renderProduct == productArray[i].series.toLowerCase() || 
-            renderProduct == productArray[i].category.toLowerCase() ||
-            renderProduct == productArray[i].author.toLowerCase()
-        )
-        searchPage.innerHTML += `
-        <div class="search__page__item">
-            <a id="${productArray[i].productId}" onclick="showProductInfo(this)">
-                <img src="${productArray[i].cover1}" alt="">
-                <img src="${productArray[i].cover2}" alt="">
-            </a>
-            <h4>${productArray[i].name}</h4>
-            <p>$${productArray[i].price}</p>
-            <button id="${productArray[i].productId}" onclick="Cart.addToCart(this)">+ Add to cart</button>
-        </div>
-        `   
-    }
-}
-
+// ==================================================================================
+// SHOW PRODUCT INFO (DETAIL)
+// ==================================================================================
 function showProductInfo(e) {
     const productInfo = document.querySelector('.product__page')
     productInfo.style.display = 'inline'
@@ -451,29 +186,29 @@ function showProductInfo(e) {
                         <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
                     </div>
 
-                    <div class="product__info">
-                        <h1>${p.name}</h1>
-                        <div class="product__info--rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p>Price: ${p.price}$</p>
-                        <p>Author:</p>
-                        <h2>${p.author}</h2>
-                        <p>${p.category}</p>
-                        <p>Quantity: </p>
-
-                        <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
-                        <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
-
-                        <p>Availability: ${p.stock}</p><br>
-                        <h4>Description:</h4><br>
-                        <p>${p.description}</p>
-                    </div>
+            <div class="product__info">
+                <h1>${p.series}</h1>
+                <div class="product__info--rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
+                <p>Price: ${p.price}$</p>
+                <p>Author:</p>
+                <h2>${p.author}</h2>
+                <p>${p.category}</p>
+                <p>Quantity: </p>
+
+                <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+                <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
+
+                <p>Availability: ${p.stock}</p><br>
+                <h4>Description: </h4><br>
+                <p>${p.description}</p>
+            </div>
+        </div>
     `
 }
 
@@ -490,49 +225,6 @@ function closeProduct() {
         document.querySelector(".product__page").style.display = "none"
     }, 365)
 }
-// ==================================================================================
-// BOOK SLIDER
-// ==================================================================================
-
-// 
-//
-//
-const URLOfWebpage = new URL(window.location)
-const URLOfIndex = window.location.href
-const URLToAdmin = URLOfIndex.split("html")
-const layerOfView = document.querySelectorAll('.layer')
-const page = URLOfWebpage.searchParams.get('page')
-const home = "index.html"
-
-function setURLForPage(page) {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (page === "home") {
-        window.history.replaceState({}, '', home);
-    } else {
-        urlParams.set('page', page);
-        window.history.replaceState({}, '', '?' + urlParams.toString());
-    }
-}
-
-const loginXmark = document.getElementById('login__page--off')
-const signUpXmark = document.getElementById('signup__page--off')
-const userInfoOff = document.getElementById('user-info--off')
-
-loginXmark.addEventListener('click', () => {
-    setURLForPage('home')
-    viewHome()
-})
-
-signUpXmark.addEventListener('click', () => {
-    setURLForPage('home')
-    viewHome()
-})
-
-userInfoOff.addEventListener('click', () => {
-    setURLForPage('home')
-    viewHome()
-})
-
 
 
 

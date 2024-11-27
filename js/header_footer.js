@@ -1,37 +1,37 @@
 class SpecialHeader extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-                <header>
+    <header>
         <nav class="navbar">
             <!-- logo -->
-            <div class="navbar__logo" onclick="viewHome()" style="cursor: pointer;">
-                <a id="logo__icon"><img src="../img/OnlyManga.png" alt="website logo"></a>
+            <div class="navbar__logo">
+                <a onclick="viewHome()"><img src="../img/OnlyManga.png" alt="website logo"></a>
             </div>
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
-                <li class="navbar__link--product"><a class="navbar__link" onclick="viewAllProduct()">Product</a></li>
+                <li class="navbar__link--product"><a onclick="viewAllProduct()" class="navbar__link" onclick="renderProductPage()">Product</a></li>
                 <li class="navbar__link--series">
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
                         <ul>
-                            <li><a href="?series=sakamoto-days">Sakamoto Days</a></li>
-                            <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
+                            <li><a onclick="setURLForNavSearch('sakamoto-days')">Sakamoto Days</a></li>
+                            <li><a onclick="setURLForNavSearch('my-dress-up-darling')">My Dress Up Darling</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?series=black-clover">Black Clover</a></li>
-                            <li><a href="?series=tokyo-ghoul">Tokyo Ghoul</a></li>
+                            <li><a onclick="setURLForNavSearch('black-clover')">Black Clover</a></li>
+                            <li><a onclick="setURLForNavSearch('tokyo-ghoul')">Tokyo Ghoul</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?series=jujutsu-kaisen">Jujutsu Kaisen</a></li>
-                            <li><a href="?series=mashle-magic-and-muscles">Mashle: Magic And Muscles</a></li>
+                            <li><a onclick="setURLForNavSearch('jujutsu-kaisen')">Jujutsu Kaisen</a></li>
+                            <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles')">Mashle: Magic And Muscles</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?series=one-punch-man">One Punch Man</a></li>
-                            <li><a href="?series=spy-x-family">Spy X Family</a></li>
+                            <li><a onclick="setURLForNavSearch('one-punch-man')">One Punch Man</a></li>
+                            <li><a onclick="setURLForNavSearch('spy-x-family')">Spy X Family</a></li>
                         </ul>
                     </div>
                 </li>
@@ -40,23 +40,23 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Category</a>
                     <div class="navbar__category">
                         <ul>
-                            <li><a href="?category=shounen">Shounen</a></li>
-                            <li><a href="?category=seinen">Seinen</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'shounen')">Shounen</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'seinen')">Seinen</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?category=rom-com">Rom Com</a></li>
-                            <li><a href="?category=action">Action</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'rom-com')">Rom Com</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'action')">Action</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?category=family">Family</a></li>
-                            <li><a href="?category=comedy">Comedy</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'family')">Family</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'comedy')">Comedy</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?category=fantasy">Fantasy</a></li>
-                            <li><a href="?category=dark-fantasy">Dark Fantasy</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'fantasy')">Fantasy</a></li>
+                            <li><a onclick="setURLForNavSearch('', 'dark-fantasy')">Dark Fantasy</a></li>
                         </ul>
                     </div>
                 </li>
@@ -65,23 +65,23 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Author</a>
                     <div class="navbar__author">
                         <ul>
-                            <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
-                            <li><a href="?author=shinichi-fukuda">Shinichi Fukuda</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'yusuke-murata')">Yusuke Murata</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'shinichi-fukuda')">Shinichi Fukuda</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?author=hajime-komoto">Hajime Komoto</a></li>
-                            <li><a href="?author=yuki-tabata">Yuki Tabata</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'hajime-komoto')">Hajime Komoto</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'yuki-tabata')">Yuki Tabata</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?author=sui-ishida">Sui Ishida</a></li>
-                            <li><a href="?author=gege-akutami">Gege Akutami</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'sui-ishida')">Sui Ishida</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'gege-akutami')">Gege Akutami</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?author=yuto-suzuki">Yuto Suzuki</a></li>
-                            <li><a href="?author=tatsuya-endo">Tatsuya Endo</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'yuto-suzuki')">Yuto Suzuki</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', 'tatsuya-endo')">Tatsuya Endo</a></li>
                         </ul>
                     </div>
                 </li>
@@ -89,19 +89,19 @@ class SpecialHeader extends HTMLElement {
                     <a class="navbar__link">Price</a>
                     <div class="navbar__price">
                         <ul>
-                            <li><a href="?price=under-7-dollars">Under $7 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','under-7-dollars')">Under $7 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?price=7-to-12-dollars">$7 To $12 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','7-to-12-dollars')">$7 To $12 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?price=12-to-17-dollars">$12 To $17 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','12-to-17-dollars')">$12 To $17 Dollars</a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="?price=over-17-dollars">Over $17 Dollars</a></li>
+                            <li><a onclick="setURLForNavSearch('', '', '','over-17-dollars')">Over $17 Dollars</a></li>
                         </ul>
                     </div>
                 </li>
@@ -109,7 +109,7 @@ class SpecialHeader extends HTMLElement {
             </ul>
 
             <!-- nav bar icons -->
-            <div class="navbar__home" style="display: flex">
+            <div class="navbar__home" id="navbar__home" style="display: flex">
                 <a id="search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div style="display: flex">
                     <a id="login__icon" onclick="viewUserInfo()">
@@ -117,20 +117,20 @@ class SpecialHeader extends HTMLElement {
                     </a>
                     <div></div>
                 </div>
-                <a id="shopping__icon" "><i class="fa-solid fa-cart-shopping" onclick="viewCart()"></i></a>
+                <a id="shopping__icon" onclick="viewCart()"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
 
             <div class="navbar__bar" id="navbar__bar">
                 <a id="navbar__bar__icon"><i class="fa-solid fa-bars"></i></a>
                 <div style="display: flex">
-                    <a href="#" id="login__icon__responsive" onclick="viewUserInfo()">
+                    <a href="#" id="login__icon__responsive">
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <div></div>
                 </div>
             </div>
 
-<div class="navbar__responsive__popup">
+             <div class="navbar__responsive__popup">
                 <div class="navbar__responsive">
                     <div class="navbar__responsive__close">
                         <a id="navbar__responsive__close__button"><i class="fa-solid fa-xmark"></i></a>
@@ -186,8 +186,8 @@ class SpecialHeader extends HTMLElement {
         
                     <ul class="navbar__responsive--category__drops">
                         <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?category=shounen">Shounen</a></li>
-                        <li><a href="?category=seinen">Seinen</a></li>
+                        <li><a onclick="setURLForNavSearch('shounen')">Shounen</a></li>
+                        <li><a onclick="setURLForNavSearch('seinen')">Seinen</a></li>
                         <li><a href="?category=rom-com">Rom Com</a></li>
                         <li><a href="?category=action">Action</a></li>
                         <li><a href="?category=family">Family</a></li>
@@ -231,29 +231,29 @@ class SpecialHeader extends HTMLElement {
                 <a id="filter" onclick="showFilter()"><i class="fa-solid fa-filter" style="color:white"></i></a>
 
                 <div class="filter__container">
-                    <select id="filter__series">
-                        <option value="all">All</option>
-                        <option value="sakamoto-days">Sakamoto Days</option>
-                        <option value="my-dress-up-darling">My Dress Up Darling</option>
-                        <option value="black-clover">Black Clover</option>
-                        <option value="tokyo-ghoul">Tokyo Ghoul</option>
-                        <option value="jujutsu-kaisen">Jujutsu Kaisen</option>
-                        <option value="mashle-magic-and-muscles">Mashle: Magic And Muscles</option>
-                        <option value="one-punch-man">One Punch Man</option>
-                        <option value="spy-x-family">Spy X Family</option>
+                    <select id="filter__category">
+                        <option value="">All</option>
+                        <option value="shounen">Shounen</option>
+                        <option value="seinen">Seinen</option>
+                        <option value="rom-com">Rom Com</option>
+                        <option value="action">Action</option>
+                        <option value="family">Family</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="dark-fantasy">Dark Fantasy</option>
                     </select>
 
                     <span style="color:white">Price</span>
-                    <input type="text" placeholder="Min" id="filter__min" value="">
+                    <input type="text" placeholder="Min" id="filter__min" onkeypress="return event.charCode>=48 && event.charCode<=57">
                     <span style="color:white">to</span>
-                    <input type="text" placeholder="Max" id="filter__max" value="">
+                    <input type="text" placeholder="Max" id="filter__max" onkeypress="return event.charCode>=48 && event.charCode<=57">
                     <a style="color:white" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass-dollar"></i></a>
                 </div>
             </div>
         </div>
 
         <!-- shopping cart -->
-        <!-- <div class="shopping__popup">
+        <div class="shopping__popup">
             <div class="shopping__container">
                 <a id="shopping__close"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
                 <div class="shopping">
@@ -261,12 +261,12 @@ class SpecialHeader extends HTMLElement {
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
                     </div>
                     <br>
-                    <h2></h2>
-                    <button class="shopping__btn" id="checkout">Checkout</button>
+                    <h2>Your cart is empty</h2>
+                    <button class="shopping__btn">Continue shopping</button>
                 </div>
             </div>
-        </div> -->
-    </header>
+        </div>
+    </header>   
     `
     }
 }
@@ -328,12 +328,18 @@ class SpecialFooter extends HTMLElement {
 
 customElements.define(`special-footer`, SpecialFooter);
 
-
 //navigation between pages
 
 
 const loginPage = document.querySelector('.login__page')
 const signUpPage = document.querySelector('.signup__page')
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("login__icon").addEventListener("click", viewUserInfo);
+
+    document.getElementById("login__icon__responsive").addEventListener("click", viewUserInfo);
+})
+
 
 document.getElementById("login__signup--nav").addEventListener("click", function () {
     setURLForPage('signup')
@@ -345,20 +351,26 @@ document.getElementById("signup__login--nav").addEventListener("click", function
     renderView(loginPage);
 })
 
-// search and shopping cart popup
+// search, shopping cart, filter popup
 
 document.getElementById("search__icon").addEventListener("click", function () {
     document.querySelector(".search__popup").style.display = "flex";
     document.querySelector(".search").style.animationName = "rightToLeft"
-    console.log("DM Trong Duy")
 })
 
-document.getElementById("search__close").addEventListener("click", function () {
+function closeSearch() {
+    if (document.getElementById("filter").className == "filter__active") {
+        document.getElementById("filter").classList.remove("filter__active")
+        document.querySelector(".filter__container").style.display = "none"
+        document.getElementById("filter__min").value = ""
+        document.getElementById("filter__max").value = ""
+    }
+
     document.querySelector(".search").style.animationName = "leftToRight"
     setTimeout(function () {
         document.querySelector(".search__popup").style.display = "none";
     }, 390);
-})
+}
 
 // document.getElementById("shopping__icon").addEventListener("click", function () {
 //     document.querySelector(".shopping__popup").style.display = "flex";
@@ -372,17 +384,17 @@ document.getElementById("search__close").addEventListener("click", function () {
 //     }, 390);
 // })
 
-function showFilter(){
-    if(document.getElementById("filter").className == ""){
-		document.getElementById("filter").classList.add("filter__active")
-		document.querySelector(".filter__container").style.display = "inline"
-	}
+function showFilter() {
+    if (document.getElementById("filter").className == "") {
+        document.getElementById("filter").classList.add("filter__active")
+        document.querySelector(".filter__container").style.display = "inline"
+    }
 
-    else{
+    else {
         document.getElementById("filter").classList.remove("filter__active")
-		document.querySelector(".filter__container").style.display = "none"
-        document.getElementById("filter__min").value=""
-		document.getElementById("filter__max").value=""
+        document.querySelector(".filter__container").style.display = "none"
+        document.getElementById("filter__min").value = ""
+        document.getElementById("filter__max").value = ""
     }
 }
 

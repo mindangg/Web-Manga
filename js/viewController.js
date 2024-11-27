@@ -4,8 +4,8 @@ let productPerHomePage = 9;
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
+// @viewController
 // render sản phẩm ở end-user
-// ==================================================================================
 function renderViewIndex(renderProduct) {
     const productContainer = document.querySelector('.product__container')
     productContainer.innerHTML = ""
@@ -29,16 +29,16 @@ function renderViewIndex(renderProduct) {
                 </div>
             `
         });
-        renderPagination(renderProduct);
     } else {
-        alert("Chưa có sản phẩm !!!")
+        console.error("Chưa có sản phẩm !!!")
     }
+    renderPagination(renderProduct);
 }
 // ==================================================================================
 // RENDER HOME PAGE 
 // ==================================================================================
+// @viewController
 // render phân trang sản phẩm ở end-user
-// ==================================================================================
 function renderPagination(renderProduct) {
     let productContainerFooter = document.querySelector('.product-container__footer');
     productContainerFooter.innerHTML = ""
@@ -92,6 +92,10 @@ const totalProductPerPage = 8;
 let allProductPageIndex = 1;
 
 const renderProductPage = (productTable) => {
+    document.querySelector('.book__slider').style.display = 'none';
+    document.querySelector('.banner').style.display = 'none';
+    allProductPage.style.display = 'block';
+
     const productPagination = document.getElementById('all-product__pagination');
     const totalProductPage = Math.ceil(productTable.length / totalProductPerPage);
 
@@ -114,7 +118,7 @@ const renderProductPage = (productTable) => {
     const productPaginationNext = document.getElementById('all-product__pagination--next');
     const pageNumber = productPagination.getElementsByTagName('input')[0];
     productPaginationPrev.addEventListener('click', () => {
-        if (allProductPageIndex > 1){
+        if (allProductPageIndex > 1) {
             allProductPageIndex--;
             pageNumber.value = allProductPageIndex;
             renderProduct(productTable);
@@ -122,7 +126,7 @@ const renderProductPage = (productTable) => {
     })
 
     productPaginationNext.addEventListener('click', () => {
-        if (allProductPageIndex < totalProductPage){
+        if (allProductPageIndex < totalProductPage) {
             allProductPageIndex++;
             pageNumber.value = allProductPageIndex;
             renderProduct(productTable);
@@ -219,7 +223,8 @@ const renderProduct = (productTable) => {
 // ==================================================================================
 // TOGGLE USER INFO 
 // ==================================================================================
-// xem thông tin user
+// @viewController
+// toggle to view order or user info
 function toggleUserInfo(e) {
     const userInfo = document.querySelector('.user-info__container')
     const orderHistory = document.querySelector('.order__history')
@@ -234,7 +239,8 @@ function toggleUserInfo(e) {
     }
 }
 // ==================================================================================
-// thoát tài khoản
+// @viewController 
+// logout account 
 function logoutUser() {
     localStorage.removeItem('accountLogin')
     localStorage.removeItem('cart')
@@ -243,22 +249,6 @@ function logoutUser() {
     window.location.reload()
 }
 // ==================================================================================
-// TODO: tìm theo author, price
-function fetchPropertyProduct(url) {
-    const productList = document.querySelector('.product-list')
-    if (url.search) {
-        const categorySearch = url.searchParams.get('category')
-        const authorSearch = url.searchParams.get('author')
-        const categoryOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.category === categorySearch)
-        const authorOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p => p.author === categorySearch)
-        if (categoryOfProduct.length > 0 && categorySearch.length > 0) {
-            renderView(productList)
-            renderViewIndex(categoryOfProduct)
-        }
-    } else {
-        renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
-    }
-}
 // ==================================================================================
 // RENDER VIEW OF PAGE
 // ==================================================================================
@@ -277,39 +267,42 @@ function renderView(e) {
 // ==================================================================================
 // về trang chủ
 function viewHome() {
+    //
     setURLForPage('home')
+    //
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
-    const bookSlider = document.querySelector('.book__slider')
-    bookSlider.style.display = 'inherit'
-    renderViewIndex(JSON.parse(localStorage.getItem('productTable')))
+    //
+    // const bookSlider = document.querySelector('.book__slider')
+    // bookSlider.style.display = 'inherit'
+    //
     window.scrollTo(530, 530);
 }
 // ==================================================================================
 // trang giỏ hàng
 function viewCart() {
+    // 
     setURLForPage('cart')
+    // 
     const cartContainer = document.querySelector('.cart__container')
     renderView(cartContainer)
+    //
     window.scrollTo(5, 5);
 }
 // ==================================================================================
 // trang thanh toán
 function viewBill() {
     const emptyCart = cartTable.length === 0
-    if (account) {
-        if (emptyCart) {
-            alert('Your cart is empty')
-            return false;
-        } else {
-            setURLForPage('bill')
-            const billingInfo = document.querySelector('.billing-info')
-            renderView(billingInfo)
-            Order.renderBillingForm();
-        }
+    if (emptyCart) {
+        alert('Your cart is empty')
+        return
     } else {
-        setURLForPage('login')
-        viewLogin();
+        setURLForPage('bill')
+        //
+        const billingInfo = document.querySelector('.billing-info')
+        renderView(billingInfo)
+        //
+        Order.renderBillingForm();
     }
 }
 // ==================================================================================
@@ -317,25 +310,44 @@ function viewBill() {
 function viewLogin() {
     const signupPage = document.querySelector('.login__page')
     renderView(signupPage)
-    // mặc định scroll bar ở x: 30, y: 30
-    window.scrollTo(30, 30)
+    window.scrollTo(0, -30)
 }
 // ==================================================================================
 // thông tin người dùng
 function viewUserInfo() {
+    // neu co account thi 
     if (account) {
+        //
         setURLForPage('user-info')
         const userInfo = document.querySelector('.user-info')
+        //
         renderView(userInfo)
+        window.scrollTo(0, 30)
         User.renderUserInfo()
     } else {
         setURLForPage('login')
         viewLogin();
     }
 }
+//
+function viewFilter() {
+    const URLcurrent = new URL(window.location)
+
+    const productList = document.querySelector('.product-list')
+    renderView(productList)
+    //@handleURL
+    fetchPropertyProduct(URLcurrent)
+}
+// 
+function viewSearch() {
+    const productList = document.querySelector('.product-list')
+    renderView(productList)
+
+    handleSearchProduct()
+}
 // ==================================================================================
-// trang san pham
-function viewAllProduct(){
+//
+function viewAllProduct() {
     setURLForPage('all-product');
     const allProductPage = document.querySelector('.all-product__page');
     renderView(allProductPage);
@@ -345,7 +357,7 @@ function viewAllProduct(){
     document.querySelector('.best__slider').style.display = 'inherit';
     document.querySelector('.banner').style.display = 'none';
     document.querySelector('.book__slider').style.display = 'none';
-    let productTable = JSON.parse(localStorage.getItem('productTable'));
+    let productTable = JSON.parse(localStorage.getItem("productTable"))
     renderProductPage(productTable);
     window.scrollTo(0, 1400);
 }
@@ -356,8 +368,7 @@ function viewAllProduct(){
 // ==================================================================================
 (() => {
     const defaultBillingSelect = document.getElementById('selectAddressOrder')
-    // defaultBillingSelect.value = "userAddress"
-
+    defaultBillingSelect.value = `userAddress`
     // nếu local storage có admin: admin thì chuyển hướng đến trang admin
     if (localStorage.getItem('admin') === 'admin') {
         window.location.href = `${URLToAdmin[0]}/html/admin.html`
@@ -365,25 +376,25 @@ function viewAllProduct(){
     // load các local storage của product, user
     Product.onload();
     User.onload();
-    showSlider();
-
+    Order.onload();
+    showSlider()
     // lấy tham số url trang hiện tại để render product 
-    fetchPropertyProduct(URLOfWebpage)
-
+    // fetchPropertyProduct(URLOfWebpage)
     // render tài khoản đăng nhập và thông tin người dùng
     User.renderAccountLogin()
     User.renderUserInfo()
-
     // render giỏ hàng, đơn hàng
     Cart.renderCartPreview(cartTable)
     Order.renderOrderView();
-
     // render các trang
     switch (page) {
         case 'home': viewHome(); break;
         case 'cart': viewCart(); break;
         case 'bill': viewBill(); break;
         case 'user-info': viewUserInfo(); break;
+        case 'login': viewLogin(); break;
+        case 'filter': viewFilter(); break;
+        case 'search': viewSearch(); break;
         case 'all-product': viewAllProduct(); break;
         default: break;
     }
