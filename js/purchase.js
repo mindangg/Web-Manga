@@ -98,7 +98,7 @@ const paymentInfoContainer = document.querySelector(".payment-info__container")
 const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
 // Billing information field
-const billingInfo = document.getElementById("billing-info")
+const billingInfo = document.getElementById("billing-form")
 const billingFullName = document.getElementById("billing-info__fullName")
 const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
 const billingHouseNumber = document.getElementById("billing-info__houseNumber")
@@ -106,38 +106,40 @@ const billingStreet = document.getElementById("billing-info__street")
 const billingWard = document.getElementById("billing-info__ward")
 const billingDistrict = document.getElementById("billing-info__district")
 const billingCity = document.getElementById("billing-info__city")
+// Payment infotmation field
+const billingPayment = document.getElementById("selectPaymentOrder")
 
 // Search order table in admin page
 const orderSearchDate = document.getElementById("order-table__search-input--date");
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
 
-function displayPaymentChoice(){
-    if(document.getElementById("paymentMethod").value == "none"){
-        document.getElementById("bankQR").style.display = "none"
-        document.getElementById("momoQR").style.display = "none"
-    }
+// function displayPaymentChoice(){
+//     if(document.getElementById("paymentMethod").value == "none"){
+//         document.getElementById("bankQR").style.display = "none"
+//         document.getElementById("momoQR").style.display = "none"
+//     }
 
-    else if(document.getElementById("paymentMethod").value == "internetBanking"){
-        document.getElementById("bankQR").style.display = "inline"
-        document.getElementById("momoQR").style.display = "none"
-    }
+//     else if(document.getElementById("paymentMethod").value == "internetBanking"){
+//         document.getElementById("bankQR").style.display = "inline"
+//         document.getElementById("momoQR").style.display = "none"
+//     }
 
-    else if(document.getElementById("paymentMethod").value == "momoBanking"){
-        document.getElementById("momoQR").style.display = "inline"
-        document.getElementById("bankQR").style.display = "none"
-    }
-}
+//     else if(document.getElementById("paymentMethod").value == "momoBanking"){
+//         document.getElementById("momoQR").style.display = "inline"
+//         document.getElementById("bankQR").style.display = "none"
+//     }
+// }
 
-function handlePaymentMethod(){
-    if(document.getElementById("paymentMethod").value == "none"){
-        showNotification("Choose payment method")
-        document.getElementById("paymentMethod").focus()
-    }
+// function handlePaymentMethod(){
+//     if(document.getElementById("paymentMethod").value == "none"){
+//         showNotification("Choose payment method")
+//         document.getElementById("paymentMethod").focus()
+//     }
 
-    else{
-        Order.handlePayNow()
-    }
-}
+//     else{
+//         Order.handlePayNow()
+//     }
+// }
 
 class Cart {
     // ==================================================================================
@@ -231,7 +233,7 @@ class Cart {
                     <div class="payment-info__item-details">
                         <p>${item.series}</p>
                     </div>
-                    <div class="payment-info__item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                    <div class="payment-info__item-price">$${item.price * item.quantity}</div>
                 </div>
             `
         })
@@ -332,11 +334,21 @@ class Order {
 
     static handlePayNow() {
         console.log("Handling pay now...")
-        if (Validation.checkBlankField(billingInfo) === false) {
-            Order.addToOrder('Pending')
-            Cart.renderCartSummary();
-        } else {
-            alert('Failed to create order');
+        if(billingPayment.value==="cashPayment" || billingPayment.value==="QRCode"){
+            if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
+                Order.addToOrder('Pending')
+                Cart.renderCartSummary();
+            } else {
+                alert('Failed to create order');
+            }
+        }
+        if(billingPayment.value==="creditCard"){
+            if (Validation.checkBlankField(billingInfo) === false && Validation.checkBlankField(document.getElementById("Payment-form"))=== false) {
+                Order.addToOrder('Pending')
+                Cart.renderCartSummary();
+            } else {
+                alert('Failed to create order');
+            }
         }
     }
     // 
@@ -345,6 +357,35 @@ class Order {
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
         console.log(orderTable)
+        let paymentDetails = {
+            method: "Cash On Delivery",
+            bank: '',
+            cardNumber: '',
+            cardName: ''
+        };
+
+        if (billingPayment.value === "creditCard") {
+            const paymentBank = document.getElementById('selectBankOrder').value;
+            const cardNumber = document.getElementById('billing-info__cardnumber').value;
+            const cardName = document.getElementById('billing-info__nameoncard').value;
+
+            paymentDetails = {
+                method: "Credit Card",
+                bank: paymentBank,
+                cardNumber: cardNumber,
+                cardName: cardName
+            };
+        }
+
+        if (billingPayment.value === "QRCode") {
+            paymentDetails = {
+                method: "QR Code",
+                bank: "",
+                cardNumber: "",
+                cardName: ""
+            };
+        }
+
 
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
@@ -369,7 +410,8 @@ class Order {
                 ward: billingWard.value,
                 district: billingDistrict.value,
                 city: billingCity.value,
-            }
+            },
+            paymentDetails
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
@@ -553,6 +595,15 @@ class Order {
                 <p><strong>Email:</strong> ${user.email} </p>
                 <p><strong>Phone:</strong> ${user.phoneNumber} </p>
             </div>
+            <div class="order-detail__payment-info">
+                <h2>Payment Details</h2>
+                <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
+                ${order.paymentMethod === "transferPayment" ? `
+                    <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
+                    <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
+                    <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
+                ` : ""}
+            </div>
         `
     }
     //
@@ -676,15 +727,15 @@ class Order {
     //
     // clear form Bill
     //
-    static clearFormBillInfo(e) {
-        e.querySelectorAll("input").forEach(input => {
-            if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
-                document.getElementById(input.id).value = "";
+        static clearFormBillInfo(e) {
+            e.querySelectorAll("input").forEach(input => {
+                if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
+                    document.getElementById(input.id).value = "";
+                    document.getElementById(input.id).disabled = false;
+                }
                 document.getElementById(input.id).disabled = false;
-            }
-            document.getElementById(input.id).disabled = false;
-        });
-    }
+            });
+        }
     static renderBillingForm() {
         const accoutLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
         billingFullName.value = accoutLoginInfo.fullName;
@@ -724,4 +775,42 @@ class Order {
     static onload() {
         localStorage.setItem("order", JSON.stringify(orderTable));
     }
+
+    //Payment:hbao
+    static togglePaymentOrder (selectElement) {
+        const paymentByCreditCard = document.getElementById("paymentByCard");
+        const paymentByQRCode=document.getElementById("paymentByQR");
+
+        if (selectElement.value === "creditCard") {
+            paymentByCreditCard.style.display = "block";
+            paymentByQRCode.style.display="none";
+        }
+        else if(selectElement.value === "QRCode"){
+            paymentByCreditCard.style.display="none";
+            paymentByQRCode.style.display="block";
+        }
+        else{
+            paymentByCreditCard.style.display="none";
+            paymentByQRCode.style.display="none";
+        }
+    }
+    // static toggleAddressOrder(e) {
+    //     if (e.value === 'userAddress') {
+    //         console.log("Render billing form")
+    //         Order.renderBillingForm();
+    //     }
+    //     if (e.value === 'newAddress') {
+    //         println("dia chi moi")
+    //         Order.clearFormBillInfo(billingInfo)
+    //     }
+    // }
 }
+// function  handlePayNow() {
+//     console.log("Handling pay now...")
+//     if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
+//         Order.addToOrder('Pending')
+//         Cart.renderCartSummary();
+//     } else {
+//         alert('Failed to create order');
+//     }
+// }

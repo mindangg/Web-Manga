@@ -221,104 +221,143 @@
         </section>
 
         <section id="billing-info" class="layer billing-info" style="display: none;">
-            <div class="billing-form">
-                <h2>Billing Information</h2>
-                <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
-                    <option value="userAddress" selected>Account's information</option>
-                    <option value="newAddress">New information</option>
-                </select>
-                <label>Full Name</label>
-                <div class="billing-info__input">
-                    <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
-                    <label class="error" for="billing-info__fullName"></label>
-                </div>
-                <div class="billing-info__input">
-                    <label>Phone Number</label>
-                    <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
-                    <label class="error" for="billing-info__phoneNumber"></label>
-                </div>
-                <div id="newAddress">
-                    <div class="billing-info__input">
-                        <label>House Number</label>
-                        <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
-                        <label class="error" for="billing-info__houseNumber" class="form-group"></label>
-                    </div>
-                    <div class="billing-info__input">
-                        <label>Street</label>
-                        <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
-                        <label class="error" for="billing-info__street"></label>
-                    </div>
-                    <div>
-                        <label>Ward</label>
-                        <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
-                        <label class="error" for="billing-info__ward"></label>
-                    </div>
-                    <div>
-                        <label>District</label>
-                        <input id="billing-info__district" type="text" placeholder="District" class="form-group">
-                        <label class="error" for="billing-info__district"></label>
-                    </div>
-                    <div>
-                        <label>City</label>
-                        <input id="billing-info__city" type="text" placeholder="City" class="form-group">
-                        <label class="error" for="billing-info__city"></label>
-                    </div>
-                </div>
-
-                <label for="paymentMethod">Payment Method</label>
-                        <div style="overflow: hidden;">
-                            <select id="paymentMethod" onclick="displayPaymentChoice()">
-                                <option value="none">None</option>
-                                <option value="internetBanking">Internet Banking</option>
-                                <option value="momoBanking">Momo Banking</option>
-                            </select>
-
-                            <img id="bankQR" src="../img/QR.jpg" style="width: 200px; display: none;">
-
-                            <img id="momoQR" src="../img/QR2.png" style="width: 200px; display: none;">
+            
+                <div style="margin-right: 20px;">
+                    <div class="billing-form" id="billing-form">
+                        <h2>Billing Information</h2>
+                        <select id="selectAddressOrder" onchange="Order.toggleAddressOrder(this)">
+                            <option value="userAddress" selected>Địa chỉ và thông tin của người dùng</option>
+                            <option value="newAddress">Địa chỉ và thông tin mới</option>
+                        </select>
+                        <label>Full Name</label>
+                        <div class="billing-info__input">
+                            <input id="billing-info__fullName" type="text" placeholder="Full Name" class="form-group">
+                            <label class="error" for="billing-info__fullName"></label>
                         </div>
-
-                        <!-- <div id="cardInfo" style="display: none; overflow: hidden;">
-                            <select id="bankSelect">
-                                <option value="none">None</option>
-                                <option value="vcb">Vietcombank</option>
-                                <option value="mb">MB</option>
-                                <option value="tech">Techcombank</option>
-                                <option value="bidv">BIDV</option>
+                        <div class="billing-info__input">
+                            <label>Phone Number</label>
+                            <input id="billing-info__phoneNumber" type="text" placeholder="Phone Number" class="form-group">
+                            <label class="error" for="billing-info__phoneNumber"></label>
+                        </div>
+                        <div id="newAddress">
+                            <div class="billing-info__input">
+                                <label>House Number</label>
+                                <input id="billing-info__houseNumber" type="text" placeholder="House Number" class="form-group">
+                                <label class="error" for="billing-info__houseNumber" class="form-group"></label>
+                            </div>
+                            <div class="billing-info__input">
+                                <label>Street</label>
+                                <input id="billing-info__street" type="text" placeholder="Street" class="form-group">
+                                <label class="error" for="billing-info__street"></label>
+                            </div>
+                            <div>
+                                <label>Ward</label>
+                                <input id="billing-info__ward" type="text" placeholder="Ward" class="form-group">
+                                <label class="error" for="billing-info__ward"></label>
+                            </div>
+                            <div>
+                                <label>District</label>
+                                <input id="billing-info__district" type="text" placeholder="District" class="form-group">
+                                <label class="error" for="billing-info__district"></label>
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <input id="billing-info__city" type="text" placeholder="City" class="form-group">
+                                <label class="error" for="billing-info__city"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Payment-form">
+                        <h2>Payment</h2>
+                        <select id="selectPaymentOrder" onchange="Order.togglePaymentOrder(this)">
+                            <option value="cashPayment" selected>Cash On Delivery</option>
+                            <option value="creditCard">Credit card</option>
+                            <option value="QRCode">QR Code</option>
+                        </select>
+                        <div id="paymentByCard" style="display: none;">
+                            <select id="selectBankOrder">
+                                <option value="Agribank" selected>Agribank</option>
+                                <option value="ACB">ACB</option>
+                                <option value="Vietcombank">Vietcombank</option>
+                                <option value="Vietinbank">Vietinbank</option>
+                                <option value="Techcombank">Techcombank</option>
+                                <option value="BIDV">BIDV</option>
+                                <option value="bank">MB</option>
+                                <option value="MB">VPBank</option>
+                                <option value="TPBank">TPBank</option>
+                                <option value="VIB">VIB</option>
                             </select>
-                            <input id="bankSeries" type="text" placeholder="Enter your card series">
-                        </div> -->
-
-                        <!-- <div id="bankInfo" style="display: none; overflow: hidden;">
+                            <div class="billing-info__input">
+                                <label>Card Number</label>
+                                <input id="billing-info__cardnumber" type="text" placeholder="Card Number" class="form-group">
+                                <label class="error" for="billing-info__cardnumber"></label>
+                            </div>
+                            <div class="billing-info__input">
+                                <label>Name On Card</label>
+                                <input id="billing-info__nameoncard" type="text" placeholder="Name On Card" class="form-group">
+                                <label class="error" for="billing-info__nameoncard"></label>
+                            </div>
+                        </div>
+                        <div id="paymentByQR">
                             <img src="../img/QR.jpg" style=" width: 200px;">
-                            <button id="QRButton">Has Transfered</button>
-                        </div> -->
-
-                <button class="pay-now-button" type="button" onclick="handlePaymentMethod()">Pay Now</button>
-            </div>
-            <!-- PAYMENT INFO -->
-            <div class="payment-info">
-                <div class="payment-info__container">
-                    <!-- <div class="payment-info__item">
-                                <img src="https://via.placeholder.com/50" alt="Item Image">
-                                <div class="quantity-circle">1</div>
-                                <div class="payment-info__item-details">
-                                    <p>LORE OLYMPUS - GODDESS OF SPRING SATIN SHORTS</p>
-                                </div>
-                                <div class="payment-info__item-price">$40.00</div>
-                            </div> -->
-                </div>
-                <div class="payment-info__summary">
-                    <!-- <div class="subtotal">
-                            <span>Subtotal • 4 items</span>
-                            <span>$149.99</span>
                         </div>
-                        <div class="total">
-                            <span>Total</span>
-                            <span class="order-price">$149.99 USD</span>
-                        </div> -->
+                
+    
+                    <!-- <label for="paymentMethod">Payment Method</label>
+                            <div style="overflow: hidden;">
+                                <select id="paymentMethod" onclick="displayPaymentChoice()">
+                                    <option value="none">None</option>
+                                    <option value="internetBanking">Internet Banking</option>
+                                    <option value="momoBanking">Momo Banking</option>
+                                </select>
+    
+                                <img id="bankQR" src="../img/QR.jpg" style="width: 200px; display: none;">
+    
+                                <img id="momoQR" src="../img/QR2.png" style="width: 200px; display: none;">
+                            </div> -->
+    
+                             <!-- <div id="cardInfo" style="display: none; overflow: hidden;">
+                                <select id="bankSelect">
+                                    <option value="none">None</option>
+                                    <option value="vcb">Vietcombank</option>
+                                    <option value="mb">MB</option>
+                                    <option value="tech">Techcombank</option>
+                                    <option value="bidv">BIDV</option>
+                                </select>
+                                <input id="bankSeries" type="text" placeholder="Enter your card series">
+                            </div>  -->
+    
+                             <!-- <div id="bankInfo" style="display: none; overflow: hidden;">
+                                <img src="../img/QR.jpg" style=" width: 200px;">
+                                <button id="QRButton">Has Transfered</button>
+                            </div> -->
+    
+                    <button class="pay-now-button" type="button" onclick="Order.handlePayNow()">Pay Now</button>
                 </div>
-            </div>
+                </div>
+                <!-- PAYMENT INFO -->
+                <div class="payment-info">
+                    <div class="payment-info__container">
+                        <!-- <div class="payment-info__item">
+                                    <img src="https://via.placeholder.com/50" alt="Item Image">
+                                    <div class="quantity-circle">1</div>
+                                    <div class="payment-info__item-details">
+                                        <p>LORE OLYMPUS - GODDESS OF SPRING SATIN SHORTS</p>
+                                    </div>
+                                    <div class="payment-info__item-price">$40.00</div>
+                                </div> -->
+                    </div>
+                    <div class="payment-info__summary">
+                        <!-- <div class="subtotal">
+                                <span>Subtotal • 4 items</span>
+                                <span>$149.99</span>
+                            </div>
+                            <div class="total">
+                                <span>Total</span>
+                                <span class="order-price">$149.99 USD</span>
+                            </div> -->
+                    </div>
+                </div>
         </section>
 
         <!-- USER INFO -->
