@@ -1,0 +1,43 @@
+.statistic.table__header {
+    margin-top: 55px;
+}
+
+.statistic.table__title {
+    font-size: 24px;
+}
+
+.statistic.search-label {
+    color: black;
+    background-color: #007bff;
+    padding: 5px 10px 5px 10px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 40px;
+    text-align: center;
+    align-content: center;
+}
+
+#statistic__search--container {
+    display: flex;
+    justify-content: left;
+}
+
+.search-component {
+    display: flex;
+    margin-right: 70px;
+}
+
+.search-component input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 31px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.statistic.selection {
+    border-radius: 5px;
+    height: 31px;
+    padding: 5px 10px 5px 10px;
+}

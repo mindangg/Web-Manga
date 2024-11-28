@@ -1,92 +1,92 @@
 let cartTable = JSON.parse(localStorage.getItem('cart')) || []
-let orderTable = JSON.parse(localStorage.getItem('order')) || [
-    {
-        orderId: "orderTesting_1",
-        userId: "user_1",
-        orderDate: "16/11/2024",
-        orderStatus: "Cancelled",
-        orderItems: [
-            {
-                productId: "manga_1",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-                totalPrice: 18.0,
-            },
-            {
-                productId: "manga_2",
-                series: "Item 2",
-                quantity: 3,
-                price: 10.0,
-                totalPrice: 300.0,
-            },
-        ],
-        orderPrice: 600.0,
-        userFullName: "John Doe",
-        userPhoneNumber: "0123456789",
-        orderAddress: {
-            houseNumber: "123",
-            street: "Main Street",
-            ward: "X.Binh Hung",
-            district: "H.Bình Chanh",
-            city: "TP.HCM",
-        }
-    },
-    {
-        orderId: "orderTesting_2",
-        userId: "user_1",
-        orderDate: "16/12/2024",
-        orderStatus: "Cancelled",
-        orderItems: [
-            {
-                productId: "manga_1",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_2",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-            {
-                productId: "manga_3",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_4",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-            {
-                productId: "manga_5",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_6",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-        ],
-        orderPrice: 600.0,
-        userFullName: "John Doe",
-        userPhoneNumber: "0123456789",
-        orderAddress: {
-            houseNumber: "123",
-            street: "123",
-            ward: "Tan Dinh",
-            district: "1",
-            city: "TPHCM",
-        }
-    },
-]
+let orderTable = JSON.parse(localStorage.getItem('order')) || []
+//     {
+//         orderId: "orderTesting_1",
+//         userId: "user_1",
+//         orderDate: "16/11/2024",
+//         orderStatus: "Cancelled",
+//         orderItems: [
+//             {
+//                 productId: "manga_1",
+//                 series: "Item 1",
+//                 quantity: 2,
+//                 price: 9.0,
+//                 totalPrice: 18.0,
+//             },
+//             {
+//                 productId: "manga_2",
+//                 series: "Item 2",
+//                 quantity: 3,
+//                 price: 10.0,
+//                 totalPrice: 300.0,
+//             },
+//         ],
+//         orderPrice: 600.0,
+//         userFullName: "John Doe",
+//         userPhoneNumber: "0123456789",
+//         orderAddress: {
+//             houseNumber: "123",
+//             street: "Main Street",
+//             ward: "X.Binh Hung",
+//             district: "H.Bình Chanh",
+//             city: "TP.HCM",
+//         }
+//     },
+//     {
+//         orderId: "orderTesting_2",
+//         userId: "user_1",
+//         orderDate: "16/12/2024",
+//         orderStatus: "Cancelled",
+//         orderItems: [
+//             {
+//                 productId: "manga_1",
+//                 series: "Item 1",
+//                 quantity: 2,
+//                 price: 9.0,
+//             },
+//             {
+//                 productId: "manga_2",
+//                 series: "Item 2",
+//                 quantity: 1,
+//                 price: 300.0,
+//             },
+//             {
+//                 productId: "manga_3",
+//                 series: "Item 1",
+//                 quantity: 2,
+//                 price: 9.0,
+//             },
+//             {
+//                 productId: "manga_4",
+//                 series: "Item 2",
+//                 quantity: 1,
+//                 price: 300.0,
+//             },
+//             {
+//                 productId: "manga_5",
+//                 series: "Item 1",
+//                 quantity: 2,
+//                 price: 9.0,
+//             },
+//             {
+//                 productId: "manga_6",
+//                 series: "Item 2",
+//                 quantity: 1,
+//                 price: 300.0,
+//             },
+//         ],
+//         orderPrice: 600.0,
+//         userFullName: "John Doe",
+//         userPhoneNumber: "0123456789",
+//         orderAddress: {
+//             houseNumber: "123",
+//             street: "123",
+//             ward: "Tan Dinh",
+//             district: "1",
+//             city: "TPHCM",
+//         }
+//     },
+// ]
 
 // Payment information field
 const productContainer = document.querySelector(".product__container")
@@ -231,7 +231,7 @@ class Cart {
                     <div class="payment-info__item-details">
                         <p>${item.series}</p>
                     </div>
-                    <div class="payment-info__item-price">$${item.price * item.quantity}</div>
+                    <div class="payment-info__item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
             `
         })

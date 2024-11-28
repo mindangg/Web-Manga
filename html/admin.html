@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/admin/adminPage.css" />
     <link rel="stylesheet" href="../css/admin/productPage.css" />
     <link rel="stylesheet" href="../css/admin/userPage.css" />
+    <link rel="stylesheet" href="../css/admin/statisticPage.css">
 </head>
 
 <body>
@@ -38,15 +39,56 @@
 
         <div class="admin__body" style="display: flex; flex-direction: row">
             <div id="sidenav" class="sidenav" style="display: flex; flex-direction: column">
-                <div id="static">Statistic</div>
+                <div id="statistic" onclick="togglePage(this)">Statistic</div>
                 <div id="product" onclick="togglePage(this)">Product</div>
                 <div id="user" onclick="togglePage(this)">User</div>
                 <div id="order" onclick="togglePage(this)">Order</div>
             </div>
 
+            <!-- STATISTIC -->
+
+            <div id="statistic-page" class="statistic-page page" style="display: none">
+                <div class="statistic-menu">
+                    <header class="statistic table__header">
+                        <p class="statistic table__title">Statistic</p>
+                    </header>
+                    <div class="statistic table__search" id="statistic__search--container">
+                        <div class="search-component">
+                            <div class="statistic search-label">From: </div>
+                            <input id="statistic__date-start" class="statistic date" type="date">
+                        </div>
+                        <div class="search-component">
+                            <div class="statistic search-label">To: </div>
+                            <input id="statistic__date-end" class="statistic date" type="date">
+                        </div>
+                        <div class="search-component">
+                            <div class="statistic search-label" style="width: 80px">Statistic by: </div>
+                            <select id="statistic-selection" class="statistic selection" onchange="handleStatisticSelection(this.value)">
+                                <option value="user">User</option>
+                                <option value="product">Product</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="statistic table__body">
+                        <table class="statistic table__container" style="width: 100%">
+                            <thead class="statistic table__head">
+
+                            </thead>
+                            <tbody id="statistic-table__body-content" class="statistic table__body-content">
+                            <!-- Product rows will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Menu Footer -->
+                    <div class="statistic table__footer" id="statictis-table__footer">
+                        <!-- Pagination or additional controls can go here -->
+                    </div>
+                </div>
+            </div>
 
             <!-- PRODUCT PAGE -->
-            <div id="product-page" class="product-page page" style="display: initial;">
+            <div id="product-page" class="product-page page" style="display: initial">
                 <!-- TABLE PRODUCT -->
                 <div id="product-table" class="product table">
                     <!-- Menu Header -->
@@ -146,7 +188,7 @@
 
                 <div class="product-menu">
                     <div class="product-menu__header">
-                        <div class="product-menu__title">Sản phẩm (Product)</div>
+                        <div class="product-menu__title">Product</div>
                     </div>
 
                     <div id="product-menu__body" class="product-menu__body">
@@ -499,6 +541,7 @@
 <!-- DEPS -->
 <script src="../js/purchase.js"></script>
 <script src="../js/product.js"></script>
+<script src="../js/statistic.js"></script>
 <script>
     (() => {
         Product.onload()
