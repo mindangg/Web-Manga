@@ -89,7 +89,7 @@ function renderPagination(renderProduct) {
 
 const allProductPage = document.getElementById('all-product__page');
 const totalProductPerPage = 8;
-let allProductPageIndex = 1;
+let allProductPageIndex
 
 const renderProductPage = (productTable) => {
     document.querySelector('.book__slider').style.display = 'none';
@@ -98,8 +98,9 @@ const renderProductPage = (productTable) => {
 
     const productPagination = document.getElementById('all-product__pagination');
     const totalProductPage = Math.ceil(productTable.length / totalProductPerPage);
-
-    if (totalProductPage > 1) {
+    productPagination.innerHTML = ``;
+    allProductPageIndex = 1;
+    if (totalProductPage >= 1) {
         productPagination.innerHTML = `
             <button id="all-product__pagination--prev">
                     <i class="fa-solid fa-angle-left" id="left__angle"></i>
@@ -111,27 +112,26 @@ const renderProductPage = (productTable) => {
                     <i class="fa-solid fa-arrow-right" id="right__arrow"></i>
             </button>
         `
+        const productPaginationPrev = document.getElementById('all-product__pagination--prev');
+        const productPaginationNext = document.getElementById('all-product__pagination--next');
+        const pageNumber = productPagination.getElementsByTagName('input')[0];
+        productPaginationPrev.addEventListener('click', () => {
+            if (allProductPageIndex > 1) {
+                allProductPageIndex--;
+                pageNumber.value = allProductPageIndex.toString();
+                renderProduct(productTable);
+            }
+        })
+
+        productPaginationNext.addEventListener('click', () => {
+            if (allProductPageIndex < totalProductPage) {
+                allProductPageIndex++;
+                pageNumber.value = allProductPageIndex.toString();
+                renderProduct(productTable);
+            }
+        })
     }
     renderProduct(productTable);
-
-    const productPaginationPrev = document.getElementById('all-product__pagination--prev');
-    const productPaginationNext = document.getElementById('all-product__pagination--next');
-    const pageNumber = productPagination.getElementsByTagName('input')[0];
-    productPaginationPrev.addEventListener('click', () => {
-        if (allProductPageIndex > 1) {
-            allProductPageIndex--;
-            pageNumber.value = allProductPageIndex;
-            renderProduct(productTable);
-        }
-    })
-
-    productPaginationNext.addEventListener('click', () => {
-        if (allProductPageIndex < totalProductPage) {
-            allProductPageIndex++;
-            pageNumber.value = allProductPageIndex;
-            renderProduct(productTable);
-        }
-    })
 }
 
 const renderProduct = (productTable) => {
@@ -282,7 +282,7 @@ function viewHome() {
 // trang giỏ hàng
 function viewCart() {
     // 
-    if(cartTable.length == 0)
+    if(cartTable.length === 0)
         viewEmptyCart()
     else{
         setURLForPage('cart')
@@ -315,8 +315,7 @@ function viewBill() {
 function viewLogin() {
     const signupPage = document.querySelector('.login__page')
     renderView(signupPage)
-    // mặc định scroll bar ở x: 30, y: 30
-    window.scrollTo(30, 30)
+    window.scrollTo(0, -30)
 }
 // ==================================================================================
 // thông tin người dùng
@@ -328,6 +327,7 @@ function viewUserInfo() {
         const userInfo = document.querySelector('.user-info')
         //
         renderView(userInfo)
+        window.scrollTo(0, 30)
         User.renderUserInfo()
     } else {
         setURLForPage('login')
@@ -338,16 +338,16 @@ function viewUserInfo() {
 function viewFilter() {
     const URLcurrent = new URL(window.location)
 
-    const productList = document.querySelector('.product-list')
+    const productList = document.querySelector('.all-product__page')
     renderView(productList)
     //@handleURL
     fetchPropertyProduct(URLcurrent)
 }
 // 
 function viewSearch() {
-    const productList = document.querySelector('.product-list')
+    const productList = document.querySelector('.all-product__page')
     renderView(productList)
-
+    allProductPageIndex = 1;
     handleSearchProduct()
 }
 // ==================================================================================

@@ -5,12 +5,12 @@ class SpecialHeader extends HTMLElement {
         <nav class="navbar">
             <!-- logo -->
             <div class="navbar__logo">
-                <a onclick="viewHome()"><img src="../img/WEBTOON_Logo.png" alt="website logo"></a>
+                <a onclick="viewHome()"><img src="../img/OnlyManga.png" alt="website logo"></a>
             </div>
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
-                <li class="navbar__link--product"><a onclick="viewAllProduct()" class="navbar__link" onclick="renderProductPage()">Product</a></li>
+                <li class="navbar__link--product"><a onclick="viewAllProduct()" class="navbar__link">Product</a></li>
                 <li class="navbar__link--series">
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
@@ -139,6 +139,9 @@ class SpecialHeader extends HTMLElement {
                         <li class="navbar__responsive--home">
                             <a href="index.html" class="navbar__responsive__link">Home</a>
                         </li>
+                        <li class="navbar__responsive--product">
+                            <a onclick="viewAllProduct()" class="navbar__responsive__link">Product</a>
+                        </li>
                         <li class="navbar__responsive--series">
                             <a class="navbar__responsive__link">Series</a>
                             <button id="navbar__responsive--series__button">
@@ -174,46 +177,46 @@ class SpecialHeader extends HTMLElement {
 
                     <ul class="navbar__responsive--series__drops">
                         <li id="navbar__responsive--series__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?series=sakamoto-days">Sakamoto Days</a></li>
-                        <li><a href="?series=my-dress-up-darling">My Dress Up Darling</a></li>
-                        <li><a href="?series=black-clover">Black Clover</a></li>
-                        <li><a href="?series=tokyo-ghoul">Tokyo Ghoul</a></li>
-                        <li><a href="?series=jujutsu-kaisen">Jujutsu Kaisen</a></li>
-                        <li><a href="?series=mashle-magic-and-muscles">Mashle: Magic And Muscles</a></li>
-                        <li><a href="?series=one-punch-man">One Punch Man</a></li>
-                        <li><a href="?series=spy-x-family">Spy X Family</a></li>
+                        <li><a onclick="setURLForNavSearch('sakamoto-days')">Sakamoto Days</a></li>
+                        <li><a onclick="setURLForNavSearch('my-dress-up-darling')">My Dress Up Darling</a></li>
+                        <li><a onclick="setURLForNavSearch('black-clover')">Black Clover</a></li>
+                        <li><a onclick="setURLForNavSearch('tokyo-ghoul')">Tokyo Ghoul</a></li>
+                        <li><a onclick="setURLForNavSearch('jujutsu-kaisen')">Jujutsu Kaisen</a></li>
+                        <li><a onclick="setURLForNavSearch('mashle-magic-and-muscles')">Mashle: Magic And Muscles</a></li>
+                        <li><a onclick="setURLForNavSearch('one-punch-man')">One Punch Man</a></li>
+                        <li><a onclick="setURLForNavSearch('spy-x-family')">Spy X Family</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--category__drops">
                         <li id="navbar__responsive--category__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a onclick="setURLForNavSearch('shounen')">Shounen</a></li>
-                        <li><a onclick="setURLForNavSearch('seinen')">Seinen</a></li>
-                        <li><a href="?category=rom-com">Rom Com</a></li>
-                        <li><a href="?category=action">Action</a></li>
-                        <li><a href="?category=family">Family</a></li>
-                        <li><a href="?categorycomedy">Comedy</a></li>
-                        <li><a href="?category=fantasy">Fantasy</a></li>
-                        <li><a href="?category=dark-fantasy">Dark Fantasy</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'shounen')">Shounen</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'seinen')">Seinen</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'rom-com')">Rom Com</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'action')">Action</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'family')">Family</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'comedy')">Comedy</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'fantasy')">Fantasy</a></li>
+                        <li><a onclick="setURLForNavSearch('', 'dark-fantasy')">Dark Fantasy</a></li>
                     </ul>
     
                     <ul class="navbar__responsive--author__drops">
                         <li id="navbar__responsive--author__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?author=yusuke-murata">Yusuke Murata</a></li>
-                        <li><a href="?author=shinichi-fukada">Shinichi Fukuda</a></li>
-                        <li><a href="?author=hajime-komoto">Hajime Komoto</a></li>
-                        <li><a href="?author=yuki-tabata">Yuki Tabata</a></li>   
-                        <li><a href="?author=sui-ishida">Sui Ishida</a></li>
-                        <li><a href="?author=gege-akutami">Gege Akutami</a></li>    
-                        <li><a href="?author=yuto-suzuki">Yuto Suzuki</a></li>
-                        <li><a href="?author=tatsuya-endo">Tatsuya Endo</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'yusuke-murata')">Yusuke Murata</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'shinichi-fukuda')">Shinichi Fukuda</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'hajime-komoto')">Hajime Komoto</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'yuki-tabata')">Yuki Tabata</a></li>   
+                        <li><a onclick="setURLForNavSearch('', '', 'sui-ishida')">Sui Ishida</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'gege-akutami')">Gege Akutami</a></li>    
+                        <li><a onclick="setURLForNavSearch('', '', 'yuto-suzuki')">Yuto Suzuki</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', 'tatsuya-endo')">Tatsuya Endo</a></li>
                     </ul>
         
                     <ul class="navbar__responsive--price__drops">
                         <li id="navbar__responsive--price__back"><a><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li><a href="?price=under-7-dollars">Under $7 Dollars</a></li>
-                        <li><a href="?price=7-to-12-dollars">$7 To $12 Dollars</a></li>
-                        <li><a href="?price=12-to-17-dollars">$12 To $17 Dollars</a></li>
-                        <li><a href="?price=over-17-dollars">Over $17 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', 'under-7-dollars')">Under $7 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', '7-to-12-dollars')">$7 To $12 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', '12-to-17-dollars')">$12 To $17 Dollars</a></li>
+                        <li><a onclick="setURLForNavSearch('', '', '', 'over-17-dollars')">Over $17 Dollars</a></li>
                     </ul>
                 </div>
             </div>    
@@ -333,16 +336,12 @@ customElements.define(`special-footer`, SpecialFooter);
 
 const loginPage = document.querySelector('.login__page')
 const signUpPage = document.querySelector('.signup__page')
-const toLoginPage = () => {
-    document.getElementById("main__page").style.display = "none";
-    document.querySelector(".slider").style.display = "none";
-    document.getElementById("login__page").style.display = "inline";
-    document.getElementById("signup__page").style.display = "none";
-}
 
-document.getElementById("login__icon").addEventListener("click", toLoginPage);
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("login__icon").addEventListener("click", viewUserInfo);
 
-document.getElementById("login__icon__responsive").addEventListener("click", toLoginPage);
+    document.getElementById("login__icon__responsive").addEventListener("click", viewUserInfo);
+})
 
 
 document.getElementById("login__signup--nav").addEventListener("click", function () {

@@ -1119,7 +1119,7 @@ class Product {
                 <button class="button button__product__prev-pagi" 
                 id="button__product__prev-pagi"> << </button>
 
-                <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 2%;"> / ${productTotalPages}
+                <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 3%;"> / ${productTotalPages}
                 
                 <button class="button button__product__next-pagi" 
                 id="button__next-pagi"> >> </button>
@@ -1219,6 +1219,9 @@ class Product {
     // delete san pham
     static delete(e) {
         console.log("-> Delete product...");
+
+        const confirmToDelete = confirm("Are you sure you want to delete this product?");
+        if (!confirmToDelete) return
 
         const deleteProductRow = e.parentElement.parentElement;
 

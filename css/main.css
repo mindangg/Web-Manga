@@ -521,7 +521,7 @@ body{
 #all-product__page{
     display: none;
     background-color: #1a1a1a;
-    height: 850px;
+    height: 1000px;
     width: 100%;
     margin-top: 125px;
     text-align: center;
@@ -532,19 +532,19 @@ body{
 
 #all-product__page--title{
     color: white;
-    font-size: 30px;
+    font-size: 36px;
     margin-bottom: 15px;
 }
 
 #all-product__page--container{
     background-color: rgba(0, 0, 0, 0.4);
     height: calc(100% - 90px);
-    width: 85%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 15px 20px 50px 20px;
-    margin: auto auto auto auto;
+    margin: auto;
 }
 
 #all-product__page--container img {
@@ -562,9 +562,9 @@ body{
 
 #all-product__page--container .book__slider__item button {
     width: 37%;
-    height: 13%;
-    top: 74%;
-    left: 59%;
+    height: 12%;
+    top: 75%;
+    left: 60%;
     font-size: 80%;
     padding: 2%;
     text-align: center;
@@ -572,7 +572,7 @@ body{
 }
 
 #all-product__page--container .book__slider__item p {
-    top: 102%;
+    top: 100%;
 }
 
 #all-product__pagination {
@@ -629,8 +629,44 @@ body{
     display: inline;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen  and (min-width: 901px) and (max-width: 1200px){
+    #all-product__page{
+        height: 1300px;
+    }
 
+    #all-product__page--container{
+        padding: 15px 10px 50px 10px;
+    }
+
+    #all-product__page--container .book__slider__item {
+        height: calc(30% - 30px);
+        width: calc(30% - 20px);
+    }
+}
+
+@media screen  and (min-width: 620px) and (max-width: 900px){
+    #all-product__page{
+        height: 1600px;
+    }
+
+    #all-product__page--container{
+        padding: 15px 20px 100px 20px;
+    }
+
+    #all-product__page--container .book__slider__item {
+        height: calc(25% - 30px);
+        width: calc(50% - 30px);
+    }
+
+    #all-product__page--title{
+        color: white;
+        font-size: 30px;
+        margin-top: 42px;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen  and (max-width: 620px) {
     #all-product__page{
         height: 1600px;
     }
@@ -644,6 +680,22 @@ body{
         width: calc(50% - 30px);
     }
 }
+
+/* @media screen and (max-width: 1000px) {
+
+    #all-product__page{
+        height: 1600px;
+    }
+
+    #all-product__page--container{
+        padding: 15px 20px 100px 20px;
+    }
+
+    #all-product__page--container .book__slider__item {
+        height: calc(25% - 30px);
+        width: calc(50% - 30px);
+    }
+} */
 
 
 .product__page{
