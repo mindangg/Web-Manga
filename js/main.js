@@ -199,9 +199,7 @@ function showProductInfo(e) {
                 <p>Author:</p>
                 <h2>${p.author}</h2>
                 <p>${p.category}</p>
-                <p>Quantity: </p>
-
-                <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+                <p>Quantity: </p><br>
                 <button id="${p.productId}" onclick="Cart.addToCart(this)">Add to cart</button>
 
                 <p>Availability: ${p.stock}</p><br>

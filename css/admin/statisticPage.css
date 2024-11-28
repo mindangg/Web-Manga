@@ -41,3 +41,23 @@
     height: 31px;
     padding: 5px 10px 5px 10px;
 }
+
+.statistic.table__body {
+    height: 450px;
+}
+
+#statistic-table__footer {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#statistic__apply-btn {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    width: 80px;
+    height: 32px;
+}

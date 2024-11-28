@@ -63,10 +63,15 @@
                         </div>
                         <div class="search-component">
                             <div class="statistic search-label" style="width: 80px">Statistic by: </div>
-                            <select id="statistic-selection" class="statistic selection" onchange="handleStatisticSelection(this.value)">
+                            <select id="statistic-selection" class="statistic selection">
                                 <option value="user">User</option>
                                 <option value="product">Product</option>
                             </select>
+                        </div>
+                        <div class="search-component">
+                            <button id="statistic__apply-btn" onclick="handleStatisticSelection()">
+                                Apply
+                            </button>
                         </div>
                     </div>
 
@@ -81,7 +86,7 @@
                         </table>
                     </div>
                     <!-- Menu Footer -->
-                    <div class="statistic table__footer" id="statictis-table__footer">
+                    <div class="statistic table__footer" id="statistic-table__footer">
                         <!-- Pagination or additional controls can go here -->
                     </div>
                 </div>
