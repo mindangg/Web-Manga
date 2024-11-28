@@ -111,7 +111,7 @@ const paymentInfoContainer = document.querySelector(".payment-info__container")
 const paymentInfoSummary = document.querySelector(".payment-info__summary")
 
 // Billing information field
-const billingInfo = document.getElementById("billing-info")
+const billingInfo = document.getElementById("billing-form")
 const billingFullName = document.getElementById("billing-info__fullName")
 const billingPhoneNumber = document.getElementById("billing-info__phoneNumber")
 const billingHouseNumber = document.getElementById("billing-info__houseNumber")
@@ -121,42 +121,38 @@ const billingDistrict = document.getElementById("billing-info__district")
 const billingCity = document.getElementById("billing-info__city")
 // Payment infotmation field
 const billingPayment = document.getElementById("selectPaymentOrder")
-const paymentBank =document.getElementById("selectBankOrder")
-const paymentCardNumber=document.getElementById("billing-info__cardnumber")
-const paymentNameoncard=document.getElementById("billing-info__nameoncard")
-
 
 // Search order table in admin page
 const orderSearchDate = document.getElementById("order-table__search-input--date");
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
 
-function displayPaymentChoice(){
-    if(document.getElementById("paymentMethod").value == "none"){
-        document.getElementById("bankQR").style.display = "none"
-        document.getElementById("momoQR").style.display = "none"
-    }
+// function displayPaymentChoice(){
+//     if(document.getElementById("paymentMethod").value == "none"){
+//         document.getElementById("bankQR").style.display = "none"
+//         document.getElementById("momoQR").style.display = "none"
+//     }
 
-    else if(document.getElementById("paymentMethod").value == "internetBanking"){
-        document.getElementById("bankQR").style.display = "inline"
-        document.getElementById("momoQR").style.display = "none"
-    }
+//     else if(document.getElementById("paymentMethod").value == "internetBanking"){
+//         document.getElementById("bankQR").style.display = "inline"
+//         document.getElementById("momoQR").style.display = "none"
+//     }
 
-    else if(document.getElementById("paymentMethod").value == "momoBanking"){
-        document.getElementById("momoQR").style.display = "inline"
-        document.getElementById("bankQR").style.display = "none"
-    }
-}
+//     else if(document.getElementById("paymentMethod").value == "momoBanking"){
+//         document.getElementById("momoQR").style.display = "inline"
+//         document.getElementById("bankQR").style.display = "none"
+//     }
+// }
 
-function handlePaymentMethod(){
-    if(document.getElementById("paymentMethod").value == "none"){
-        showNotification("Choose payment method")
-        document.getElementById("paymentMethod").focus()
-    }
+// function handlePaymentMethod(){
+//     if(document.getElementById("paymentMethod").value == "none"){
+//         showNotification("Choose payment method")
+//         document.getElementById("paymentMethod").focus()
+//     }
 
-    else{
-        Order.handlePayNow()
-    }
-}
+//     else{
+//         Order.handlePayNow()
+//     }
+// }
 
 class Cart {
     // ==================================================================================
@@ -309,7 +305,7 @@ class Cart {
     }
 }
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress,paymentDetails) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
@@ -318,17 +314,12 @@ class Order {
         this.orderPrice = orderPrice
         this.userFullName = userFullName
         this.userPhoneNumber = userPhoneNumber
-        this.orderAddrress = orderAddrress
+        this.orderAddress = orderAddress
         //hbao them 
-        this.paymentDetails = {
-            paymentMethod: '',
-            bank: '',
-            cardNumber: '',
-            cardName: ''
-        }
+        this.paymentDetails = paymentDetails
     }
     // Insert new order  
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddrress) {
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress,paymentDetails ) {
         const newOrder = new Order(
             orderId,
             userId,
@@ -338,7 +329,7 @@ class Order {
             orderPrice,
             userFullName,
             userPhoneNumber,
-            orderAddrress,
+            orderAddress,
             //hbao them
             paymentDetails  
         )
@@ -360,11 +351,21 @@ class Order {
 
     static handlePayNow() {
         console.log("Handling pay now...")
-        if (Validation.checkBlankField(billingInfo) === false) {
-            Order.addToOrder('Pending')
-            Cart.renderCartSummary();
-        } else {
-            alert('Failed to create order');
+        if(billingPayment.value==="cashPayment" || billingPayment.value==="QRCode"){
+            if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
+                Order.addToOrder('Pending')
+                Cart.renderCartSummary();
+            } else {
+                alert('Failed to create order');
+            }
+        }
+        if(billingPayment.value==="creditCard"){
+            if (Validation.checkBlankField(billingInfo) === false && Validation.checkBlankField(document.getElementById("Payment-form"))=== false) {
+                Order.addToOrder('Pending')
+                Cart.renderCartSummary();
+            } else {
+                alert('Failed to create order');
+            }
         }
     }
     // 
@@ -373,30 +374,35 @@ class Order {
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
         console.log(orderTable)
-        const paymentMethod = document.getElementById('selectPaymentOrder').value; 
-        let paymentDetails = null;
+        let paymentDetails = { 
+            method: "Cash On Delivery",
+            bank: '',
+            cardNumber: '',
+            cardName: ''
+        };
 
-        if (paymentMethod === "transferPayment") {
+        if (billingPayment.value === "creditCard") {
             const paymentBank = document.getElementById('selectBankOrder').value;
             const cardNumber = document.getElementById('billing-info__cardnumber').value;
             const cardName = document.getElementById('billing-info__nameoncard').value;
 
             paymentDetails = {
-                method: "Payment by transfer.",
+                method: "Credit Card",
                 bank: paymentBank,
                 cardNumber: cardNumber,
                 cardName: cardName
             };
-        } else if (paymentMethod === "cashPayment") {
-            // Nếu thanh toán bằng tiền mặt, không có thêm thông tin
-            paymentDetails = { 
-                method: "Payment by cash.",
-                bank: '',
-                cardNumber: '',
-                cardName: ''
+        } 
+
+        if (billingPayment.value === "QRCode") {
+            paymentDetails = {
+                method: "QR Code",
+                bank: "",
+                cardNumber: "",
+                cardName: ""
             };
-        }
-        // !!!
+        } 
+        
       
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
@@ -422,7 +428,7 @@ class Order {
                 district: billingDistrict.value,
                 city: billingCity.value,
             },   
-            paymentDetails
+            paymentDetails 
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
@@ -756,7 +762,7 @@ class Order {
         billingWard.value = accoutLoginInfo.address.ward;
         billingDistrict.value = accoutLoginInfo.address.district;
         billingCity.value = accoutLoginInfo.address.city;
-        document.getElementById("billing-info").querySelectorAll("input").forEach(input => {
+        document.getElementById("billing-form").querySelectorAll("input").forEach(input => {
             document.getElementById(input.id).disabled = true;
         });
     }
@@ -789,12 +795,39 @@ class Order {
 
     //Payment:hbao
     static togglePaymentOrder (selectElement) {
-        const paymentByCardDiv = document.getElementById("paymentByCard");
+        const paymentByCreditCard = document.getElementById("paymentByCard");
+        const paymentByQRCode=document.getElementById("paymentByQR");
         
-        if (selectElement.value === "transferPayment") {
-            paymentByCardDiv.style.display = "block"; // Hiển thị các input
-        } else {
-            paymentByCardDiv.style.display = "none"; // Ẩn các input
+        if (selectElement.value === "creditCard") {
+            paymentByCreditCard.style.display = "block"; 
+            paymentByQRCode.style.display="none";
+        } 
+        else if(selectElement.value === "QRCode"){
+            paymentByCreditCard.style.display="none";
+            paymentByQRCode.style.display="block";
+        }
+        else{
+            paymentByCreditCard.style.display="none";
+            paymentByQRCode.style.display="none";
         }
     }
+    // static toggleAddressOrder(e) {
+    //     if (e.value === 'userAddress') {
+    //         console.log("Render billing form")
+    //         Order.renderBillingForm();
+    //     }
+    //     if (e.value === 'newAddress') {
+    //         println("dia chi moi")
+    //         Order.clearFormBillInfo(billingInfo)
+    //     }
+    // }
 }
+// function  handlePayNow() {
+//     console.log("Handling pay now...")
+//     if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
+//         Order.addToOrder('Pending')
+//         Cart.renderCartSummary();
+//     } else {
+//         alert('Failed to create order');
+//     }
+// }

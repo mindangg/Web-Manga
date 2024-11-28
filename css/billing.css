@@ -205,3 +205,12 @@
 .payment-info__summary .order-price {
     color: #4CAF50;
 }
+
+#paymentByQR{
+    overflow: hidden;
+    display: none;
+}
+#Payment-form{
+    width: 600px;
+    padding-left: 20px;
+}
