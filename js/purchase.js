@@ -1,105 +1,5 @@
 let cartTable = JSON.parse(localStorage.getItem('cart')) || []
-let orderTable = JSON.parse(localStorage.getItem('order')) || [
-    {
-        orderId: "orderTesting_1",
-        userId: "user_1",
-        orderDate: "16/11/2024",
-        orderStatus: "Cancelled",
-        orderItems: [
-            {
-                productId: "manga_1",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-                totalPrice: 18.0,
-            },
-            {
-                productId: "manga_2",
-                series: "Item 2",
-                quantity: 3,
-                price: 10.0,
-                totalPrice: 300.0,
-            },
-        ],
-        orderPrice: 600.0,
-        userFullName: "John Doe",
-        userPhoneNumber: "0123456789",
-        orderAddress: {
-            houseNumber: "123",
-            street: "Main Street",
-            ward: "X.Binh Hung",
-            district: "H.Bình Chanh",
-            city: "TP.HCM",
-        },
-        paymentDetails: {
-            method: "Payment by cash.",
-            bank: '',
-            cardNumber: '',
-            cardName: ''
-        },
-    },
-    {
-        orderId: "orderTesting_2",
-        userId: "user_1",
-        orderDate: "16/12/2024",
-        orderStatus: "Cancelled",
-        orderItems: [
-            {
-                productId: "manga_1",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_2",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-            {
-                productId: "manga_3",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_4",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-            {
-                productId: "manga_5",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_6",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-        ],
-        orderPrice: 600.0,
-        userFullName: "John Doe",
-        userPhoneNumber: "0123456789",
-        orderAddress: {
-            houseNumber: "123",
-            street: "123",
-            ward: "Tan Dinh",
-            district: "1",
-            city: "TPHCM",
-        },
-        paymentMethod: "transferPayment",
-        paymentDetails: {
-            method: "Payment by transfer.",
-            bank: "Agribank",
-            cardNumber: "12345",
-            cardName: "Huybao"
-        },
-    },
-]
+let orderTable = JSON.parse(localStorage.getItem('order')) || []
 
 // Payment information field
 const productContainer = document.querySelector(".product__container")
@@ -123,8 +23,10 @@ const billingCity = document.getElementById("billing-info__city")
 const billingPayment = document.getElementById("selectPaymentOrder")
 
 // Search order table in admin page
-const orderSearchDate = document.getElementById("order-table__search-input--date");
+const orderSearchDateStart = document.getElementById("order-table__search-input--dateStart");
+const orderSearchDateEnd = document.getElementById("order-table__search-input--dateEnd");
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
+const orderSearchSelection = document.getElementById('order__filter-status--select')
 
 // function displayPaymentChoice(){
 //     if(document.getElementById("paymentMethod").value == "none"){
@@ -306,7 +208,7 @@ class Cart {
     }
 }
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress, paymentDetails) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
@@ -320,7 +222,7 @@ class Order {
         this.paymentDetails = paymentDetails
     }
     // Insert new order  
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress,paymentDetails ) {
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress ,paymentDetails) {
         const newOrder = new Order(
             orderId,
             userId,
@@ -647,7 +549,7 @@ class Order {
                 <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
             </div>
         `
-        if(billingPayment.value==="creditCard"){
+        if(order.paymentDetails.method==="Credit Card"){
             orderDetail.innerHTML+=`
                     <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
                     <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
@@ -865,6 +767,10 @@ class Order {
         if (selectElement.value === "creditCard") {
             paymentByCreditCard.style.display = "block";
             paymentByQRCode.style.display="none";
+            let inputs = paymentByCreditCard.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.disabled = false
+            })
         }
         else if(selectElement.value === "QRCode"){
             paymentByCreditCard.style.display="none";

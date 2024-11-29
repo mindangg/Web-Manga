@@ -13,14 +13,14 @@
     max-height: 590px;
     overflow-y: auto;
     max-width: 50%;
-    margin: 100px auto;
+    margin: auto;
     position: relative;
     padding: 20px;
     background-color: #fff;
 }
 
 .order-detail__button {
-    top: 144px;
+    top: 0;
     position: sticky;
     float: right;
     background-color: #c82333;
