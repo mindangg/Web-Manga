@@ -117,7 +117,7 @@ class Cart {
                         alt="Product Image">
                     <div class="product-info">
                         <p class="product-title">${item.series}</p>
-                        <p class="product-price">$${item.price}</p>
+                        <p class="product-price">$${(item.price).toFixed(2)}</p>
                     </div>
                 </td>
                 <td>
@@ -148,7 +148,7 @@ class Cart {
                     <div class="payment-info__item-details">
                         <p>${item.series}</p>
                     </div>
-                    <div class="payment-info__item-price">$${item.price * item.quantity}</div>
+                    <div class="payment-info__item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
             `
         })
@@ -318,7 +318,7 @@ class Order {
                 category: item.category,
                 author: item.author,
                 quantity: item.quantity,
-                price: item.price,
+                price: (item.price).toFixed(2),
                 totalPrice: (item.price * item.quantity).toFixed(2)
             })),
             (cartTable.reduce((total, item) => total + item.price * item.quantity, 0)).toFixed(2),
@@ -461,7 +461,7 @@ class Order {
                         ${o.orderAddress.houseNumber} ${o.orderAddress.street}, ${o.orderAddress.ward}, ${o.orderAddress.district}, ${o.orderAddress.city} 
                     </td>
                     <td style="text-align: center;">
-                        ${o.orderPrice}
+                        $${o.orderPrice}
                     </td>
                     <td style="text-align: center;">
                         <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${(o.orderStatus === "Completed" || o.orderStatus === "Cancelled")? "disabled" : ""}>

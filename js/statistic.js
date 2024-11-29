@@ -197,7 +197,7 @@ const renderStatisticUserArray = (list) => {
             ${obj.user.address.houseNumber} ${obj.user.address.street}, ${obj.user.address.ward}, ${obj.user.address.district}, ${obj.user.address.city}
         </td>
         <td class="user table__cell user-table__cell total">
-            $${obj.value}
+            $${(obj.value).toFixed(2)}
         </td>
         <td class="user table__cell user-table__cell detail">
             <p id="${obj.user.userId}_orders" onclick="showOrders(this.id)">Click to show orders</p>
