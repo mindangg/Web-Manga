@@ -615,13 +615,15 @@ class Order {
             <div class="order-detail__payment-info">
                 <h2>Payment Details</h2>
                 <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
-                ${order.paymentMethod === "transferPayment" ? `
-                    <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
-                    <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
-                    <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
-                ` : ""}
             </div>
         `
+        if(billingPayment.value==="creditCard"){
+            orderDetail.innerHTML+=`
+                    <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
+                    <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
+                    <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
+                `
+        }
     }
     //
     //
