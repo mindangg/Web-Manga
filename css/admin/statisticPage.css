@@ -96,3 +96,47 @@
 .product.product-table__cell {
     text-align: center;
 }
+
+#statistic__orders-page {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-content: center;
+}
+
+#statistic__orders--container {
+    max-height: 590px;
+    overflow-y: auto;
+    max-width: 70%;
+    margin: auto;
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#statistic__orders--container table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#statistic__orders--container h2{
+    text-align: center;
+}
+
+#statistic__orders--container.order-detail__button {
+    top: 0;
+}
+
+#statistic__orders-table__head {
+    width: 100%;
+}
+
+
+
+

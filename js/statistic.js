@@ -3,7 +3,10 @@ const tableBody = statisticPage.querySelector('.statistic.table__body')
 const tableHeader = statisticPage.querySelector('.table__head')
 const tableBodyContent = statisticPage.querySelector('.table__body-content')
 const tableFooter = statisticPage.querySelector('.table__footer')
-
+const ordersPage = document.getElementById('statistic__orders-page');
+const turnOffBtn = ordersPage.querySelector('.order-detail__button');
+const ordersTableHead = document.getElementById('statistic__orders-table__head')
+const ordersTableBody = document.getElementById('statistic__orders-table__body-content')
 
 let statisticUserPageIndex = 1
 let statisticProductPageIndex = 1
@@ -43,6 +46,8 @@ const handleStatisticSelection = () => {
 
 //FOR USER SELECTION
 
+let copyUserValueArray = [];
+
 const handleStatisticUser = (dateStart, dateEnd) => {
 
     let users = JSON.parse(localStorage.getItem('users'));
@@ -53,27 +58,30 @@ const handleStatisticUser = (dateStart, dateEnd) => {
         return order.orderStatus !== 'Cancelled' && date >= dateStart && date < dateEnd
     })
 
-    let valueArray = [];
+    let userValueArray = [];
     for (let i = 1; i < users.length; i++){
         let user = users[i]
         let index = parseInt(user.userId.split('_')[1])
         let obj = {
             user: user,
+            orders: [],
             value: 0.0
         }
-        valueArray.push(obj)
+        userValueArray.push(obj)
         for (let j = 0; j < validOrders.length; j++){
             let order = validOrders[j]
             if(user.userId === order.userId){
-                valueArray[index - 1].value += parseFloat(order.orderPrice)
+                userValueArray[index - 1].orders.push(order)
+                userValueArray[index - 1].value += parseFloat(order.orderPrice)
             }
         }
     }
-    valueArray.sort((a, b) => {
+    userValueArray.sort((a, b) => {
         return b.value - a.value
     })
-    console.log(valueArray)
-    renderStatisticUser(valueArray)
+    copyUserValueArray = userValueArray;
+    console.log(copyUserValueArray)
+    renderStatisticUser(userValueArray)
 }
 
 const renderStatisticUser = (array) => {
@@ -84,19 +92,18 @@ const renderStatisticUser = (array) => {
     if (totalPage >= 1) {
         tableFooter.innerHTML = `
             <button class="button button__user__prev-pagi" 
-                id="button__user__prev-pagi"> << 
+                id="button__statistic-user__prev-pagi"> << 
             </button>
-            <input type="text" class="input input__pagi" id="input-user__pagi" style="width: 3%; border: none" disabled> / ${totalPage}
+            <input type="text" class="input input__pagi" id="input-statistic__pagi" style="width: 3%; border: none" disabled> / ${totalPage}
             <button class="button button__user__next-pagi" 
-                id="button__user__next-pagi" style="margin-left: 10px"> >> 
+                id="button__statistic-user__next-pagi" style="margin-left: 10px"> >> 
             </button>
         `
-        const inputPagi = document.getElementById("input-user__pagi");
+        const inputPagi = document.getElementById("input-statistic__pagi");
         inputPagi.value = statisticUserPageIndex;
 
-        document.getElementById("button__user__prev-pagi")
+        document.getElementById("button__statistic-user__prev-pagi")
             .addEventListener("click", () => {
-                console.log("Go to previous page");
                 if (statisticUserPageIndex > 1) {
                     statisticUserPageIndex--;
                     inputPagi.value = statisticUserPageIndex;
@@ -106,9 +113,8 @@ const renderStatisticUser = (array) => {
                 }
             });
 
-        document.getElementById("button__user__next-pagi")
+        document.getElementById("button__statistic-user__next-pagi")
             .addEventListener("click", () => {
-                console.log("Go to next page");
                 if (statisticUserPageIndex < totalPage) {
                     statisticUserPageIndex++;
                     inputPagi.value = statisticUserPageIndex;
@@ -191,10 +197,10 @@ const renderStatisticUserArray = (list) => {
             ${obj.user.address.houseNumber} ${obj.user.address.street}, ${obj.user.address.ward}, ${obj.user.address.district}, ${obj.user.address.city}
         </td>
         <td class="user table__cell user-table__cell total">
-            ${obj.value}
+            $${obj.value}
         </td>
         <td class="user table__cell user-table__cell detail">
-            <p>Click to show orders</p>
+            <p id="${obj.user.userId}_orders" onclick="showOrders(this.id)">Click to show orders</p>
         </td>
         `
         tableBodyContent.append(row);
@@ -202,6 +208,8 @@ const renderStatisticUserArray = (list) => {
 }
 
 //FOR PRODUCT SELECTION
+
+let copyProductValueArray = [];
 
 const handleStatisticProduct = (dateStart, dateEnd) => {
     let products = JSON.parse(localStorage.getItem('productTable'));
@@ -212,7 +220,7 @@ const handleStatisticProduct = (dateStart, dateEnd) => {
         return order.orderStatus !== 'Cancelled' && date >= dateStart && date < dateEnd
     })
 
-    let valueArray = []
+    let productValueArray = []
     for (let i = 0; i < products.length; i++){
         let product = products[i];
         let index = parseInt(product.productId.split('_')[1])
@@ -222,26 +230,27 @@ const handleStatisticProduct = (dateStart, dateEnd) => {
             totalSold: 0,
             totalValue: 0.0
         }
-        valueArray.push(obj)
+        productValueArray.push(obj)
         for (let j = 0; j < validOrders.length; j++){
             let order = orders[j]
             for (let k = 0; k < order.orderItems.length; k++){
                 let item = order.orderItems[k];
                 if (item.productId === product.productId){
-                    valueArray[index].orders.push(order)
-                    valueArray[index].totalSold += parseInt(item.quantity)
-                    valueArray[index].totalValue += parseFloat(item.totalPrice)
+                    productValueArray[index].orders.push(order)
+                    productValueArray[index].totalSold += parseInt(item.quantity)
+                    productValueArray[index].totalValue += parseFloat(item.totalPrice)
                 }
             }
         }
-        valueArray[index].totalValue = parseFloat(valueArray[index].totalValue.toFixed(2));
+        productValueArray[index].totalValue = parseFloat(productValueArray[index].totalValue.toFixed(2));
     }
 
-    valueArray.sort((a, b) => {
+    productValueArray.sort((a, b) => {
         return b.totalSold - a.totalSold
     })
-    console.log(valueArray)
-    renderStatisticProduct(valueArray);
+    copyProductValueArray = productValueArray
+    console.log(copyProductValueArray)
+    renderStatisticProduct(productValueArray);
 }
 
 
@@ -253,19 +262,18 @@ const renderStatisticProduct = (array) => {
     if (totalPage >= 1) {
         tableFooter.innerHTML = `
             <button class="button button__user__prev-pagi" 
-                id="button__user__prev-pagi"> << 
+                id="button__statistic-product__prev-pagi"> << 
             </button>
-            <input type="text" class="input input__pagi" id="input-user__pagi" style="width: 3%; border: none" disabled> / ${totalPage}
+            <input type="text" class="input input__pagi" id="input-statistic__pagi" style="width: 3%; border: none" disabled> / ${totalPage}
             <button class="button button__user__next-pagi" 
-                id="button__user__next-pagi" style="margin-left: 10px"> >> 
+                id="button__statistic-product__next-pagi" style="margin-left: 10px"> >> 
             </button>
         `
-        const inputPagi = document.getElementById("input-user__pagi");
+        const inputPagi = document.getElementById("input-statistic__pagi");
         inputPagi.value = statisticProductPageIndex;
 
-        document.getElementById("button__user__prev-pagi")
+        document.getElementById("button__statistic-product__prev-pagi")
             .addEventListener("click", () => {
-                console.log("Go to previous page");
                 if (statisticProductPageIndex > 1) {
                     statisticProductPageIndex--;
                     inputPagi.value = statisticProductPageIndex;
@@ -275,9 +283,8 @@ const renderStatisticProduct = (array) => {
                 }
             });
 
-        document.getElementById("button__user__next-pagi")
+        document.getElementById("button__statistic-product__next-pagi")
             .addEventListener("click", () => {
-                console.log("Go to next page");
                 if (statisticProductPageIndex < totalPage) {
                     statisticProductPageIndex++;
                     inputPagi.value = statisticProductPageIndex;
@@ -354,12 +361,98 @@ const renderStatisticProductArray = (list) => {
                 ${obj.totalSold}
             </td>
             <td class="product table__cell product-table__cell totalValue">
-                ${obj.totalValue}
+                $${obj.totalValue}
             </td>
             <td class="product table__cell product-table__cell detail">
-                <p>Click to show orders</p>
+                <p id="${obj.product.productId}_orders" onclick="showOrders(this.id)">Click to show orders</p>
             </td>
         `;
         tableBodyContent.append(row);
     });
 }
+
+const showOrders = (id) => {
+    ordersTableHead.innerHTML = ``
+    ordersTableHead.innerHTML += `
+        <tr class="order table__row">
+            <th class="order table__cell order-table__cell orderId">
+                OrderID
+            </th>
+            <th class="order table__cell order-table__cell userId">
+                UserID
+            </th>
+            <th class="order table__cell order-table__cell dateCreate">
+                Date create
+            </th>
+            <th class="order table__cell order-table__cell address">
+                Address
+            </th>
+            <th class="order table__cell order-table__cell price">
+                Order price
+            </th>
+            <th class="order table__cell order-table__cell status">
+                Status
+            </th>
+            <th class="order table__cell order-table__cell itemList">
+                List items
+            </th>
+        </tr>
+    `
+    let parts = id.split('_')
+    let orders
+    switch (parts[0]) {
+        case 'user':
+            orders = copyUserValueArray.find(obj => obj.user.userId === `${parts[0]}_${parts[1]}`).orders;
+            break;
+        case 'manga':
+            orders = copyProductValueArray.find(obj => obj.product.productId === `${parts[0]}_${parts[1]}`).orders;
+            break;
+    }
+    console.log(orders)
+    ordersPage.style.display = 'block'
+    turnOffBtn.addEventListener('click', () => {
+        ordersPage.style.display = 'none'
+    })
+
+    renderOrders(orders)
+}
+
+const renderOrders = (orders) => {
+    ordersTableBody.innerHTML = ``
+
+    orders.forEach(o => {
+        ordersTableBody.innerHTML += `
+        <tr style="max-width: 1px; overflow-x: auto;">
+            <td style="text-align: center;">
+                ${o.orderId}
+            </td>
+            <td style="text-align: center;">
+                ${o.userId}
+            </td>
+            <td style="text-align: center;">
+                ${o.orderDate}
+            </td>
+            <td style="text-align: center;">
+                ${o.orderAddress.houseNumber} ${o.orderAddress.street}, ${o.orderAddress.ward}, ${o.orderAddress.district}, ${o.orderAddress.city} 
+            </td>
+            <td style="text-align: center;">
+                $${o.orderPrice}
+            </td>
+            <td style="text-align: center;">
+                <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${(o.orderStatus === "Completed" || o.orderStatus === "Cancelled") ? "disabled" : ""}>
+                    <option value="Cancelled" ${o.orderStatus === "Cancelled" ? "selected" : ""}>Cancelled</option>
+                    <option value="Pending" ${o.orderStatus === "Pending" ? "selected" : ""}>Pending</option>
+                    <option value="Confirmed" ${o.orderStatus === "Confirmed" ? "selected" : ""}>Confirmed</option>
+                    <option value="Completed" ${o.orderStatus === "Completed" ? "selected" : ""}>Completed</option>
+                </select>
+            </td>
+            <td style="text-align: center;">
+                <div id="${o.orderId}" style="cursor: pointer" onclick="Order.displayOrderDetail(this)">Click to view order detail</div>
+            </td>
+        </tr>
+    `
+    })
+
+}
+
+handleStatisticSelection()

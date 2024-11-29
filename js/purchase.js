@@ -110,8 +110,10 @@ const billingCity = document.getElementById("billing-info__city")
 const billingPayment = document.getElementById("selectPaymentOrder")
 
 // Search order table in admin page
-const orderSearchDate = document.getElementById("order-table__search-input--date");
+const orderSearchDateStart = document.getElementById("order-table__search-input--dateStart");
+const orderSearchDateEnd = document.getElementById("order-table__search-input--dateEnd");
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
+const orderSearchSelection = document.getElementById('order__filter-status--select')
 
 // function displayPaymentChoice(){
 //     if(document.getElementById("paymentMethod").value == "none"){
@@ -180,7 +182,7 @@ class Cart {
         }
 
         // Push product to cart table
-        cartTable.push({ ...cartItem, quantity: quantity })
+        cartTable.push({...cartItem, quantity: quantity})
         println(cartTable)
 
         // Set cart table to local storage
@@ -189,6 +191,7 @@ class Cart {
         showNotification("Added to cart successfully")
         //alert("Thêm vào giỏ hàng thành công");
     }
+
     // ==================================================================================
     // RENDER CART PREVIEW
     // ==================================================================================
@@ -265,7 +268,8 @@ class Cart {
             });
         });
     }
-    // ===================================== 
+
+    // =====================================
     // REMOVE FROM CART~
     // =====================================
     static removeFromCart(e) {
@@ -291,6 +295,7 @@ class Cart {
         `
     }
 }
+
 class Order {
     constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress) {
         this.orderId = orderId
@@ -303,7 +308,8 @@ class Order {
         this.userPhoneNumber = userPhoneNumber
         this.orderAddress = orderAddress
     }
-    // Insert new order  
+
+    // Insert new order
     static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress) {
         const newOrder = new Order(
             orderId,
@@ -319,7 +325,8 @@ class Order {
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
     }
-    // 
+
+    //
     // Generate ID for new order
     //
     static generateId = (data) => {
@@ -330,11 +337,12 @@ class Order {
             return parseInt(index) + 1;
         }
     };
+
     // handle logic of payment
 
     static handlePayNow() {
         console.log("Handling pay now...")
-        if(billingPayment.value==="cashPayment" || billingPayment.value==="QRCode"){
+        if (billingPayment.value === "cashPayment" || billingPayment.value === "QRCode") {
             if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
                 Order.addToOrder('Pending')
                 Cart.renderCartSummary();
@@ -342,8 +350,8 @@ class Order {
                 alert('Failed to create order');
             }
         }
-        if(billingPayment.value==="creditCard"){
-            if (Validation.checkBlankField(billingInfo) === false && Validation.checkBlankField(document.getElementById("Payment-form"))=== false) {
+        if (billingPayment.value === "creditCard") {
+            if (Validation.checkBlankField(billingInfo) === false && Validation.checkBlankField(document.getElementById("Payment-form")) === false) {
                 Order.addToOrder('Pending')
                 Cart.renderCartSummary();
             } else {
@@ -351,7 +359,8 @@ class Order {
             }
         }
     }
-    // 
+
+    //
     // ADD TO ORDER
     // 
     static addToOrder(status = "Pending") {
@@ -424,6 +433,7 @@ class Order {
         Cart.renderCartPreview(cartTable);
         Order.renderOrderView();
     }
+
     static updateStockForOrder(order, action) {
         let productTable = JSON.parse(localStorage.getItem('productTable'))
         console.log("Updating stock for order...")
@@ -446,6 +456,7 @@ class Order {
             fetchPropertyProduct(URLOfWebpage);
         }
     }
+
     //
     static displayOrderDetail(e) {
         const orderDetail = document.querySelector('.order-detail__page');
@@ -462,7 +473,8 @@ class Order {
             Order.renderOrderDetail(e.id);
         }
     }
-    // 
+
+    //
     static renderOrderView() {
         // If there is no account login, return
         if (!localStorage.getItem('accountLogin')) {
@@ -481,6 +493,7 @@ class Order {
                         <div class="order__date">Date: ${o.orderDate}</div>
                         <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
                         <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
+                        <button id="${o.orderId}-status" class="order__cancel-btn" onclick="Order.handleCancelOrder(this)">Cancel this order</button>
                     </div>
                     <div style="margin-left: 100px;">
                         <div class="order__items__details" style="display: none">
@@ -492,9 +505,36 @@ class Order {
                     </div>
                 </div>
             `
+            if (o.orderStatus === 'Cancelled') {
+                const btn = document.getElementById(`${o.orderId}-status`)
+                btn.disabled = true;
+                btn.style.background = 'red'
+                btn.style.opacity = '0.5'
+            }
         })
     }
-    // 
+
+    static handleCancelOrder(order) {
+        console.log(order)
+        const confirmCancel = confirm("Do you really want to cancel this order?");
+        if (!confirmCancel) {
+            return
+        }
+        let orders = JSON.parse(localStorage.getItem('order'))
+        let orderId = order.id.split('-')[0]
+        let thisOrder = orders.find(o => o.orderId === orderId)
+
+        Order.updateStockForOrder(thisOrder, "increase");
+        thisOrder.orderStatus = "Cancelled";
+        localStorage.setItem("order", JSON.stringify(orders))
+        console.log(thisOrder)
+
+        alert("Order has been cancelled successfully");
+        Order.renderOrderView()
+        location.reload()
+    }
+
+    //
     static renderOrderAdmin(renderOrder) {
         orderTableContainer.innerHTML = ""
         renderOrder.forEach(o => {
@@ -513,10 +553,10 @@ class Order {
                         ${o.orderAddress.houseNumber} ${o.orderAddress.street}, ${o.orderAddress.ward}, ${o.orderAddress.district}, ${o.orderAddress.city} 
                     </td>
                     <td style="text-align: center;">
-                        ${o.orderPrice}
+                        $${o.orderPrice}
                     </td>
                     <td style="text-align: center;">
-                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${(o.orderStatus === "Completed" || o.orderStatus === "Cancelled")? "disabled" : ""}>
+                        <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${(o.orderStatus === "Completed" || o.orderStatus === "Cancelled") ? "disabled" : ""}>
                             <option value="Cancelled" ${o.orderStatus === "Cancelled" ? "selected" : ""}>Cancelled</option>
                             <option value="Pending" ${o.orderStatus === "Pending" ? "selected" : ""}>Pending</option>
                             <option value="Confirmed" ${o.orderStatus === "Confirmed" ? "selected" : ""}>Confirmed</option>
@@ -530,6 +570,7 @@ class Order {
             `
         })
     }
+
     // Render order detail
     static renderOrderDetail(id) {
         const orderDetail = document.querySelector(".order-detail");
@@ -596,47 +637,68 @@ class Order {
                 <p><strong>Email:</strong> ${user.email} </p>
                 <p><strong>Phone:</strong> ${user.phoneNumber} </p>
             </div>
-            <div class="order-detail__payment-info">
-                <h2>Payment Details</h2>
-                <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
-                ${order.paymentMethod === "transferPayment" ? `
-                    <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
-                    <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
-                    <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
-                ` : ""}
-            </div>
+           
         `
     }
+
     //
     //
     //
     static search() {
-        orderSearchDate.addEventListener("input", () => {
-            Order.applyFilters();
-        });
-
-        orderSearchDistrict.addEventListener("keyup", () => {
-            Order.applyFilters();
-        });
+        this.applyFilters()
     }
-    // 
+
+    //
     // 
     // 
     static applyFilters() {
         let filteredOrder = JSON.parse(localStorage.getItem("order"));
+        let dateStart = orderSearchDateStart.value
+        let dateEnd = orderSearchDateEnd.value
+        let selection = orderSearchSelection.value
 
-        if (orderSearchDate.value !== "") {
-            filteredOrder = filteredOrder.filter(o => o.orderDate === formatDate(orderSearchDate.value));
+        if (dateStart > dateEnd) {
+            alert('End date must be after start date')
+            orderSearchDateStart.value = '';
+            orderSearchDateEnd.value = '';
+            return
         }
+
+        dateStart = (dateStart === '') ? new Date(0) : new Date(dateStart)
+        dateEnd = (dateEnd === '') ? new Date() : new Date(dateEnd)
+
+        filteredOrder = filteredOrder.filter(o => {
+            let parts = o.orderDate.split('/')
+            let date = new Date(parts[2], parts[1] - 1, parts[0])
+            return date > dateStart && date < dateEnd
+        });
 
         if (orderSearchDistrict.value !== "") {
             const regex = RegExp(orderSearchDistrict.value, "i");
             filteredOrder = filteredOrder.filter(item => regex.test(removeDiaritics(item.orderAddress.district)));
         }
 
+        switch (selection) {
+            case '':
+                break;
+            case 'Cancelled':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Cancelled');
+                break;
+            case 'Pending':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Pending');
+                break;
+            case 'Confirmed':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Confirmed')
+                break;
+            case 'Completed':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Completed')
+                break;
+        }
+
         Order.renderOrderAdmin(filteredOrder);
     }
-    // 
+
+    //
     // 
     // 
     static handleStatusChange(selectElement) {
@@ -650,7 +712,7 @@ class Order {
         }
 
         if (newStatus === "Cancelled" && order.status !== "Cancelled") {
-            const confirmCancel = confirm("Bạn muốn hủy đơn hàng này không ?");
+            const confirmCancel = confirm("Do you really want to cancel this order?");
             if (!confirmCancel) {
                 selectElement.disabled = false;
                 selectElement.value = "Pending";
@@ -664,26 +726,27 @@ class Order {
             localStorage.setItem("order", JSON.stringify(orderTable));
 
             Order.renderOrderAdmin(orderTable);
-            alert("Đơn hàng đã được hủy thành công");
+            alert("Order has been cancelled successfully");
         }
         if (newStatus === "Completed" && order.orderStatus !== "Completed") {
             order.orderStatus = "Completed";
             localStorage.setItem("order", JSON.stringify(orderTable));
             selectElement.disabled = true;
             Order.renderOrderAdmin(orderTable);
-            alert("Đơn hàng đã được giao");
+            alert("Order has been delivered");
         }
         if (newStatus === "Confirmed" && order.orderStatus !== "Confirmed") {
             order.orderStatus = "Confirmed";
             localStorage.setItem("order", JSON.stringify(orderTable));
 
             Order.renderOrderAdmin(orderTable);
-            alert("Đơn hàng đã được xử lý");
+            alert("Order has been processed");
             selectElement.disabled = false;
         }
         localStorage.setItem("order", JSON.stringify(orderTable));
     }
-    //  
+
+    //
     static getStatus(status) {
         if (status === "Pending") {
             return "status--pending"
@@ -698,20 +761,22 @@ class Order {
             return "status--cancelled"
         }
     }
+
     static setStatus(status) {
         if (status === "Pending") {
-            return "Đang xử lý đơn hàng"
+            return "Processing order"
         }
         if (status === "Confirmed") {
-            return "Đã xử lý đơn hàng"
+            return "Order has been processed"
         }
         if (status === "Completed") {
-            return "Đã giao hàng"
+            return "Delivered"
         }
         if (status === "Cancelled") {
-            return "Hủy đơn hàng"
+            return "Order has been cancelled"
         }
     }
+
     //
     //
     //
@@ -725,18 +790,20 @@ class Order {
             e.textContent = "View Details";
         }
     }
+
     //
     // clear form Bill
     //
-        static clearFormBillInfo(e) {
-            e.querySelectorAll("input").forEach(input => {
-                if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
-                    document.getElementById(input.id).value = "";
-                    document.getElementById(input.id).disabled = false;
-                }
+    static clearFormBillInfo(e) {
+        e.querySelectorAll("input").forEach(input => {
+            if (!input.id.includes("fullName") && !input.id.includes("phoneNumber")) {
+                document.getElementById(input.id).value = "";
                 document.getElementById(input.id).disabled = false;
-            });
-        }
+            }
+            document.getElementById(input.id).disabled = false;
+        });
+    }
+
     static renderBillingForm() {
         const accountLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
         billingFullName.value = accountLoginInfo.fullName;
@@ -750,6 +817,7 @@ class Order {
             document.getElementById(input.id).disabled = true;
         });
     }
+
     //
     // toggle order form input address
     //
@@ -763,6 +831,7 @@ class Order {
             Order.clearFormBillInfo(billingInfo)
         }
     }
+
     //
     //
     //
@@ -773,32 +842,32 @@ class Order {
             Order.applyFilters()
         });
     }
+
     static onload() {
         localStorage.setItem("order", JSON.stringify(orderTable));
     }
 
     //Payment:hbao
-    static togglePaymentOrder (selectElement) {
+    static togglePaymentOrder(selectElement) {
         const paymentByCreditCard = document.getElementById("paymentByCard");
-        const paymentByQRCode=document.getElementById("paymentByQR");
+        const paymentByQRCode = document.getElementById("paymentByQR");
 
         if (selectElement.value === "creditCard") {
             paymentByCreditCard.style.display = "block";
-            paymentByQRCode.style.display="none";
+            paymentByQRCode.style.display = "none";
             let inputs = paymentByCreditCard.querySelectorAll('input')
             inputs.forEach(input => {
                 input.disabled = false;
             })
-        }
-        else if(selectElement.value === "QRCode"){
-            paymentByCreditCard.style.display="none";
-            paymentByQRCode.style.display="block";
-        }
-        else{
-            paymentByCreditCard.style.display="none";
-            paymentByQRCode.style.display="none";
+        } else if (selectElement.value === "QRCode") {
+            paymentByCreditCard.style.display = "none";
+            paymentByQRCode.style.display = "block";
+        } else {
+            paymentByCreditCard.style.display = "none";
+            paymentByQRCode.style.display = "none";
         }
     }
+
     // static toggleAddressOrder(e) {
     //     if (e.value === 'userAddress') {
     //         console.log("Render billing form")
@@ -810,6 +879,7 @@ class Order {
     //     }
     // }
 }
+
 // function  handlePayNow() {
 //     console.log("Handling pay now...")
 //     if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
@@ -819,3 +889,13 @@ class Order {
 //         alert('Failed to create order');
 //     }
 // }
+
+// <div className="order-detail__payment-info">
+//     <h2>Payment Details</h2>
+//     <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
+//     ${order.paymentMethod === "transferPayment" ? `
+//                     <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
+//                     <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
+//                     <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
+//                 ` : ""}
+// </div>

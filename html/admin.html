@@ -90,15 +90,74 @@
                         <!-- Pagination or additional controls can go here -->
                     </div>
                 </div>
-                <div id="statistic__order-page" style="display: none">
-                    <table class="statistic oder__container" style="width: 100%">
-                        <thead id="statistic-order-table__head" class="statistic order-table__head">
+                <div id="statistic__orders-page">
+                    <div id="statistic__orders--container">
+                        <div>
+                            <button class="order-detail__button" onclick="">X</button>
+                            <h2>ORDERS</h2>
+                        </div>
+                        <table class="statistic orders__table">
+                            <thead id="statistic__orders-table__head" class="statistic orders-table__head">
 
-                        </thead>
-                        <tbody id="statistic-order-table__body-content" class="statistic table__body-content">
+                            </thead>
+                            <tbody id="statistic__orders-table__body-content" class="statistic orders-table__body-content">
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="order-detail__page">
+                        <div class="order-detail">
+                            <div>
+                                <button class="order-detail__button" onclick="Order.displayOrderDetail()">X</button>
+                            </div>
+                            <div class="order-detail__summary">
+                                <h1>Order Details</h1>
+                                <p><strong>Order ID:</strong> #123456</p>
+                                <p><strong>Order Date:</strong> November 16, 2024</p>
+                                <p><strong>Status:</strong>Completed</p>
+                            </div>
+
+                            <div class="order-detail__items">
+                                <h2>List items</h2>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>I've Somehow Gotten Stronger When I Improved My Farm-Related Skills</td>
+                                        <td>1</td>
+                                        <td>$3.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I've Somehow Gotten Stronger When I Improved My Farm-Related Skil</td>
+                                        <td>2</td>
+                                        <td>$5.00</td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="2" style="text-align: left;font-weight: bold; font-size: 1.2em;">
+                                            Total:
+                                        </td>
+                                        <td>$13.00</td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div class="order-detail__customer-info">
+                                <h2>Customer info</h2>
+                                <p><strong>Name:</strong> John Doe</p>
+                                <p><strong>Email:</strong> johndoe@example.com</p>
+                                <p><strong>Phone:</strong> +1234567890</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -438,15 +497,34 @@
                     </header>
 
                     <!-- Menu Body -->
-                    <div class="order table__search">
+                    <div class="order table__search" style="display: flex">
                         <div style="display: flex; flex-direction: row">
-                            <div class="order table__search-label">Search by date:</div>
-                            <input type="date" class="order-table__search-input" id="order-table__search-input--date" />
+                            <div class="order table__search-label">From:</div>
+                            <input type="date" class="order-table__search-input" id="order-table__search-input--dateStart" />
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="order table__search-label">To:</div>
+                            <input type="date" class="order-table__search-input" id="order-table__search-input--dateEnd" />
                         </div>
                         <div style="display: flex; flex-direction: row">
                             <div class="order table__search-label">Search by district:</div>
                             <input type="text" class="order-table__search-input"
                                 id="order-table__search-input--district" />
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="order table__search-label">Order Status:</div>
+                            <select id="order__filter-status--select">
+                                <option value="">All</option>
+                                <option value="Cancelled">Cancelled</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; flex-direction: row; margin-left: 50px">
+                            <button onclick="Order.search()" id="order__apply-btn" style="padding: 5px; border: none; cursor: pointer; border-radius: 5px; background-color: #007bff; color: white; width: 80px; height: 32px;">
+                                Apply
+                            </button>
                         </div>
                     </div>
 
