@@ -314,6 +314,7 @@ function viewBill() {
 // trang đăng ký
 function viewLogin() {
     const signupPage = document.querySelector('.login__page')
+    clearField(signupPage)
     renderView(signupPage)
     window.scrollTo(0, -30)
 }

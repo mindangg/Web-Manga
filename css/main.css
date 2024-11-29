@@ -934,6 +934,7 @@ body{
 }
 
 #login__btn{
+    margin-top: 12px;
     width: 100%;
     height: 65px;
     background-color: var(--green);

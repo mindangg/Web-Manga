@@ -347,11 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById("login__signup--nav").addEventListener("click", function () {
     setURLForPage('signup')
     renderView(signUpPage);
+    clearField(signUpPage)
 })
 
 document.getElementById("signup__login--nav").addEventListener("click", function () {
     setURLForPage('login')
     renderView(loginPage);
+    clearField(loginPage)
 })
 
 // search, shopping cart, filter popup

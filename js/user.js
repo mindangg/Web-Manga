@@ -605,9 +605,16 @@ function showNotification(message) {
 
 function clearField(field) {
     const inputs = field.querySelectorAll("input");
+    const labels = field.querySelectorAll('label');
     inputs.forEach(input => {
         input.value = '';
+        input.style.border = '2px solid #363636'
+        input.style.outline = 'none'
     });
+
+    labels.forEach(label => {
+        label.innerText = ''
+    })
 }
 document.addEventListener('DOMContentLoaded', () => {
     User.renderAccountLogin();
