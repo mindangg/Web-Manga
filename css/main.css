@@ -871,7 +871,7 @@ body{
     text-align: center;
 }
 
-.product__info button {
+.product__info button:nth-child(12){
     background-color: var(--green);
     border: none;
     color: black;
@@ -882,7 +882,7 @@ body{
     margin-bottom: 27px;
 }
 
-.product__info button:hover {
+.product__info button:nth-child(12):hover{
     background-color: var(--green-l);
 }
 
@@ -941,7 +941,6 @@ body{
     font-weight: bold;
     border: none;
     outline: none;
-    margin-top: 15px;
 }
 
 #login__btn:hover {

@@ -115,7 +115,7 @@ function renderUser(users) {
                 </button>
                 <input type="text" class="input input__pagi" id="input-user__pagi" style="width: 3%; border: none" disabled> / ${userTotalPage}
                 <button class="button button__user__next-pagi" 
-                    id="button__user__next-pagi" style="margin-left: 10px"> >> 
+                    id="button__user__next-pagi"> >> 
                 </button>
         `;
         const inputPagi = document.getElementById("input-user__pagi");

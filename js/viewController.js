@@ -157,6 +157,70 @@ const renderProduct = (productTable) => {
 }
 
 // ==================================================================================
+// RENDER PRODUCT DETAIL
+// ==================================================================================
+// xem chi tiết sản phẩm ở end-user
+// ==================================================================================
+// show product detail
+
+//DUPLICATE(main_phusomnia)
+
+// function showProductInfo(e) {
+//     const productInfo = document.querySelector('.product__page')
+//     productInfo.style.display = 'inline'
+//     document.querySelector(".product").style.animationName = "topDown"
+//     const product = JSON.parse(localStorage.getItem("productTable"))
+//     const findProductById = product.find(p => p.productId == e.id)
+//
+//     if (!findProductById) {
+//         alert("Product not found")
+//         return
+//     }
+//
+//     let p = findProductById
+//     productInfo.innerHTML = `
+//         <div class="product">
+//                     <a id="product__close" onclick="closeProduct()"><i class="fa-solid fa-xmark" style="color:white;"></i></a>
+//                     <div class="product__img">
+//                         <img id="product__img1" src="${p.cover1}">
+//                         <img id="product__img2" src="${p.cover2}">
+//
+//                         <a id="product__view1" onclick="changeProductView(this)"><img src="${p.cover1}"></a>
+//                         <a id="product__view2" onclick="changeProductView(this)"><img src="${p.cover2}"></a>
+//                     </div>
+//
+//                     <div class="product__info">
+//                         <h1>${p.name}</h1>
+//                         <div class="product__info--rating">
+//                             <i class="fa-solid fa-star"></i>
+//                             <i class="fa-solid fa-star"></i>
+//                             <i class="fa-solid fa-star"></i>
+//                             <i class="fa-solid fa-star"></i>
+//                             <i class="fa-solid fa-star"></i>
+//                         </div>
+//                         <p>Author:</p>
+//                         <h2>${p.author}</h2>
+//                         <p>${p.category}</p>
+//                         <p>Quantity: </p>
+//
+//                         <button id="product__quantitydown">-</button><input type="text" id="product__quantity" value="1"><button id="product__quantityup">+</button><br>
+//                         <button id="product__add">Add to cart</button>
+//
+//                         <p>Availability: ${p.stock}</p><br>
+//                         <h4>Description</h4>
+//                         <p>${p.description}</p><br>
+//                     </div>
+//                 </div>
+//     `
+// }
+// // close product detail
+// function closeProduct() {
+//     document.querySelector(".product").style.animationName = "bottomUp"
+//     setTimeout(function () {
+//         document.querySelector(".product__page").style.display = "none"
+//     }, 365)
+// }
+// ==================================================================================
 // TOGGLE USER INFO 
 // ==================================================================================
 // @viewController

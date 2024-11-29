@@ -72,7 +72,6 @@
 #user-table__footer {
     margin-top: 15px;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .user.table__row {
@@ -302,7 +301,7 @@
         margin-top: 10px;
         height: 20px;
         width: 55px;
-        font-size: 12px;
+        font-size: 12;
     }
     
     #user__search--container select {

@@ -195,6 +195,23 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
     },
     {
         userId: "user_11",
+        username: "hetytuong",
+        password: "Hetytuong",
+        email: "phusomia@gmail.com",
+        phoneNumber: "0288381434",
+        createDate: '13/11/2024',
+        fullName: "Anh Phu",
+        address: {
+            houseNumber: '',
+            street: '',
+            ward: '',
+            district: '',
+            city: ''
+        },
+        status: true,
+    },
+    {
+        userId: "user_11",
         username: "bael1002",
         password: "69Bao69",
         email: "3123410016@gmail.com",
@@ -241,23 +258,6 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
             ward: '4',
             district: '5',
             city: 'TP.HCM'
-        },
-        status: true,
-    },
-    {
-        userId: "user_14",
-        username: "hetytuong",
-        password: "Hetytuong",
-        email: "phusomia@gmail.com",
-        phoneNumber: "0288381434",
-        createDate: '13/11/2024',
-        fullName: "Anh Phu",
-        address: {
-            houseNumber: '',
-            street: '',
-            ward: '',
-            district: '',
-            city: ''
         },
         status: true,
     },
