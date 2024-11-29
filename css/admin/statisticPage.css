@@ -1,0 +1,142 @@
+.statistic.table__header {
+    margin-top: 55px;
+}
+
+.statistic.table__title {
+    font-size: 24px;
+}
+
+.statistic.search-label {
+    color: black;
+    background-color: #007bff;
+    padding: 5px 10px 5px 10px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 40px;
+    text-align: center;
+    align-content: center;
+}
+
+#statistic__search--container {
+    display: flex;
+    justify-content: left;
+}
+
+.search-component {
+    display: flex;
+    margin-right: 70px;
+}
+
+.search-component input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 31px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.statistic.selection {
+    border-radius: 5px;
+    height: 31px;
+    padding: 5px 10px 5px 10px;
+}
+
+.statistic.table__body {
+    height: 500px;
+}
+
+#statistic-table__footer {
+    margin-top: 15px;
+    text-align: center;
+    padding: 0 0 30px 0;
+}
+
+#statistic__apply-btn {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    width: 80px;
+    height: 32px;
+}
+
+.user.table__cell.user-table__cell.total {
+    width: 3%;
+}
+
+.user.table__cell.user-table__cell.detail {
+    width: 5%;
+}
+
+.user.table__cell.user-table__cell.detail p {
+    cursor: pointer;
+    color: #008d3f;
+}
+
+.product.table__cell.product-table__cell.totalSold {
+    width: 3%;
+}
+
+.product.table__cell.product-table__cell.totalValue {
+    width: 5%;
+}
+
+.product.table__cell.product-table__cell.detail {
+    width: 7%;
+}
+
+.product.table__cell.product-table__cell.detail p{
+    cursor: pointer;
+    color: #008d3f;
+}
+
+.product.product-table__cell {
+    text-align: center;
+}
+
+#statistic__orders-page {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-content: center;
+}
+
+#statistic__orders--container {
+    max-height: 590px;
+    overflow-y: auto;
+    max-width: 70%;
+    margin: auto;
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#statistic__orders--container table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#statistic__orders--container h2{
+    text-align: center;
+}
+
+#statistic__orders--container.order-detail__button {
+    top: 0;
+}
+
+#statistic__orders-table__head {
+    width: 100%;
+}
+
+
+
+

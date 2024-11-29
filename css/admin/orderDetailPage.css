@@ -13,13 +13,13 @@
     max-height: 590px;
     overflow-y: auto;
     max-width: 50%;
-    margin: 0px auto;
+    margin: 100px auto;
     position: relative;
     padding: 20px;
     background-color: #fff;
 }
 
-.order-detail button {
+.order-detail__button {
     top: 144px;
     position: sticky;
     float: right;
