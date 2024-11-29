@@ -43,12 +43,13 @@
 }
 
 .statistic.table__body {
-    height: 450px;
+    height: 500px;
 }
 
 #statistic-table__footer {
     margin-top: 15px;
     text-align: center;
+    padding: 0 0 30px 0;
 }
 
 #statistic__apply-btn {
@@ -60,4 +61,38 @@
     color: white;
     width: 80px;
     height: 32px;
+}
+
+.user.table__cell.user-table__cell.total {
+    width: 3%;
+}
+
+.user.table__cell.user-table__cell.detail {
+    width: 5%;
+}
+
+.user.table__cell.user-table__cell.detail p {
+    cursor: pointer;
+    color: #008d3f;
+}
+
+.product.table__cell.product-table__cell.totalSold {
+    width: 3%;
+}
+
+.product.table__cell.product-table__cell.totalValue {
+    width: 5%;
+}
+
+.product.table__cell.product-table__cell.detail {
+    width: 7%;
+}
+
+.product.table__cell.product-table__cell.detail p{
+    cursor: pointer;
+    color: #008d3f;
+}
+
+.product.product-table__cell {
+    text-align: center;
 }

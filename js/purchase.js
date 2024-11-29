@@ -233,7 +233,7 @@ class Cart {
                     <div class="payment-info__item-details">
                         <p>${item.series}</p>
                     </div>
-                    <div class="payment-info__item-price">$${item.price * item.quantity}</div>
+                    <div class="payment-info__item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
             `
         })
@@ -425,6 +425,7 @@ class Order {
         Order.renderOrderView();
     }
     static updateStockForOrder(order, action) {
+        let productTable = JSON.parse(localStorage.getItem('productTable'))
         console.log("Updating stock for order...")
         console.log("Order:", order);
         order.orderItems.forEach(item => {
@@ -737,14 +738,14 @@ class Order {
             });
         }
     static renderBillingForm() {
-        const accoutLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
-        billingFullName.value = accoutLoginInfo.fullName;
-        billingPhoneNumber.value = accoutLoginInfo.phoneNumber;
-        billingHouseNumber.value = accoutLoginInfo.address.houseNumber;
-        billingStreet.value = accoutLoginInfo.address.street;
-        billingWard.value = accoutLoginInfo.address.ward;
-        billingDistrict.value = accoutLoginInfo.address.district;
-        billingCity.value = accoutLoginInfo.address.city;
+        const accountLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
+        billingFullName.value = accountLoginInfo.fullName;
+        billingPhoneNumber.value = accountLoginInfo.phoneNumber;
+        billingHouseNumber.value = accountLoginInfo.address.houseNumber;
+        billingStreet.value = accountLoginInfo.address.street;
+        billingWard.value = accountLoginInfo.address.ward;
+        billingDistrict.value = accountLoginInfo.address.district;
+        billingCity.value = accountLoginInfo.address.city;
         document.getElementById("billing-info").querySelectorAll("input").forEach(input => {
             document.getElementById(input.id).disabled = true;
         });
@@ -784,6 +785,10 @@ class Order {
         if (selectElement.value === "creditCard") {
             paymentByCreditCard.style.display = "block";
             paymentByQRCode.style.display="none";
+            let inputs = paymentByCreditCard.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.disabled = false;
+            })
         }
         else if(selectElement.value === "QRCode"){
             paymentByCreditCard.style.display="none";
