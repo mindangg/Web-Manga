@@ -229,7 +229,6 @@ function disableUser(checkbox) {
     const row = document.getElementById(`${userId}`);
     let users = JSON.parse(localStorage.getItem('users'));
     let user = users.find(u => u.userId === userId)
-    console.log(user)
 
     if (checkbox.checked === true) {
         row.classList.remove('disable');

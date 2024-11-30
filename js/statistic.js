@@ -173,7 +173,7 @@ const renderStatisticUserArray = (list) => {
     array.map(obj => {
         let row = document.createElement('tr');
         row.className = 'user table__row'
-        row.id = `${obj.user.userId}`
+        row.id = `${obj.user.userId}-statistic`
         row.innerHTML += `
         <td class="user table__cell user-table__cell userId">
             ${obj.user.userId}
@@ -340,7 +340,7 @@ const renderStatisticProductArray = (list) => {
     array.map(obj => {
         let row = document.createElement("tr");
         row.className = 'product table__row'
-        row.id = `${obj.product.productId}`
+        row.id = `${obj.product.productId}-statistic`
         row.innerHTML += `
             <td class="product table__cell product-table__cell--id">
                 ${obj.product.productId}
