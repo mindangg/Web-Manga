@@ -1121,8 +1121,8 @@ class Product {
 
                 <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 3%;"> / ${productTotalPages}
                 
-                <button class="button button__product__next-pagi" 
-                id="button__next-pagi"> >> </button>
+                <button class="button button__product__next-pagi" style="margin-left: 15px"
+                id="button__product__next-pagi"> >> </button>
             `;
             const inputPagi = document.getElementById("input-product__pagi");
             inputPagi.value = productCurrentPage;
@@ -1140,7 +1140,7 @@ class Product {
                 });
 
             document
-                .getElementById("button__next-pagi")
+                .getElementById("button__product__next-pagi")
                 .addEventListener("click", () => {
                     console.log("Go to next page");
                     if (productCurrentPage < productTotalPages) {

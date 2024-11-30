@@ -114,7 +114,7 @@ function renderUser(users) {
                     id="button__user__prev-pagi"> << 
                 </button>
                 <input type="text" class="input input__pagi" id="input-user__pagi" style="width: 3%; border: none" disabled> / ${userTotalPage}
-                <button class="button button__user__next-pagi" 
+                <button class="button button__user__next-pagi" style="margin-left: 15px"
                     id="button__user__next-pagi"> >> 
                 </button>
         `;
@@ -225,10 +225,11 @@ function editUser(button) {
 function disableUser(checkbox) {
     let userId = checkbox.id.split('-')[0];
 
-    const editbtn = document.getElementById(userId + "-editbtn");
-    const row = document.getElementById(userId);
+    const editbtn = document.getElementById(`${userId}-editbtn`);
+    const row = document.getElementById(`${userId}`);
     let users = JSON.parse(localStorage.getItem('users'));
     let user = users.find(u => u.userId === userId)
+    console.log(user)
 
     if (checkbox.checked === true) {
         row.classList.remove('disable');

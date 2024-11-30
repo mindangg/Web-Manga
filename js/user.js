@@ -1,8 +1,8 @@
 //Get current date
-let day = new Date();
-let dd = String(day.getDate()).padStart(2, '0');
-let mm = String(day.getMonth() + 1).padStart(2, '0');
-let yyyy = day.getFullYear();
+let date = new Date();
+let dd = String(date.getDate()).padStart(2, '0');
+let mm = String(date.getMonth() + 1).padStart(2, '0');
+let yyyy = date.getFullYear();
 let curDay = dd + "/" + mm + "/" + yyyy;
 
 let userList = JSON.parse(localStorage.getItem('users')) || [
@@ -55,7 +55,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
             district: '',
             city: ''
         },
-        status: false,
+        status: true,
     },
     {
         userId: "user_3",
