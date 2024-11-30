@@ -191,17 +191,6 @@ function editUser(button) {
             error.style.display = 'none';
         }
 
-        if (users.find(user => user.username === username.value)){
-            username.style.border = '2px solid rgba(255, 51, 0, 0.76)';
-            error.innerHTML = "Username has already existed";
-            error.style.display = 'block';
-            return false;
-        } else{
-            username.style.border = '';
-            error.innerHTML = "";
-            error.style.display = 'none';
-        }
-
         user.fullName = fullName.value;
         user.username = username.value;
         user.password = password.value;
@@ -372,18 +361,6 @@ function addUser(){
             return false;
         } else {
             password.style.border = '';
-            username.style.border = '';
-            error.innerHTML = "";
-            error.style.display = 'none';
-        }
-
-
-        if (users.find(user => user.username === username.value)){
-            username.style.border = '2px solid rgba(255, 51, 0, 0.76)';
-            error.innerHTML = "Username has already existed";
-            error.style.display = 'block';
-            return false;
-        } else{
             username.style.border = '';
             error.innerHTML = "";
             error.style.display = 'none';

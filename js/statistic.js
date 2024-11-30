@@ -223,6 +223,8 @@ const handleStatisticProduct = (dateStart, dateEnd) => {
         return order.orderStatus !== 'Cancelled' && date >= dateStart && date <= dateEnd
     })
 
+    console.log(validOrders)
+
     let productValueArray = []
     for (let i = 0; i < products.length; i++){
         let product = products[i];
@@ -235,7 +237,7 @@ const handleStatisticProduct = (dateStart, dateEnd) => {
         }
         productValueArray.push(obj)
         for (let j = 0; j < validOrders.length; j++){
-            let order = orders[j]
+            let order = validOrders[j]
             for (let k = 0; k < order.orderItems.length; k++){
                 let item = order.orderItems[k];
                 if (item.productId === product.productId){
@@ -358,7 +360,7 @@ const renderStatisticProductArray = (list) => {
                 ${obj.product.stock}
             </td>
             <td  class="product table__cell product-table__cell price">
-                ${obj.product.price}
+                $${obj.product.price}
             </td>
             <td class="product table__cell product-table__cell totalSold">
                 ${obj.totalSold}
