@@ -10,6 +10,7 @@ class SpecialHeader extends HTMLElement {
             <!-- links -->
             <ul class="navbar__links">
                 <li class="navbar__link--home"><a href="index.html" class="navbar__link">Home</a></li>
+                <li class="navbar__link--product"><a class="navbar__link" onclick="viewAllProduct()">Prdoduct</a></li>
                 <li class="navbar__link--series">
                     <a class="navbar__link">Series</a>
                     <div class="navbar__series">
@@ -137,6 +138,9 @@ class SpecialHeader extends HTMLElement {
                     <ul class="navbar__responsive__links">
                         <li class="navbar__responsive--home">
                             <a href="index.html" class="navbar__responsive__link">Home</a>
+                        </li>
+                        <li class="navbar__responsive--product">
+                            <a onclick="viewAllProduct()" class="navbar__responsive__link">Product</a>
                         </li>
                         <li class="navbar__responsive--series">
                             <a class="navbar__responsive__link">Series</a>
