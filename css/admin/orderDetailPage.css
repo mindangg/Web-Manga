@@ -89,4 +89,6 @@
         margin-top: 10px;
     }
   }
-
+#card__Detail{
+  display: block;
+}
