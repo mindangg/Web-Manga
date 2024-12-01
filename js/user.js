@@ -551,6 +551,12 @@ class User {
     // EDIT USER-INFO
     // ==================================================================================
     static editUserInfo() {
+        const userEditPhoneNumber = document.getElementById('user-info__phoneNumber')
+        if (!Validation.isBlank(userEditPhoneNumber.value)){
+            this.validatePhoneNumber(userEditPhoneNumber)
+            if(!Validation.phoneIsValid(userEditPhoneNumber))
+                return
+        }
         let users = JSON.parse(localStorage.getItem('users'));
         if (!Validation.checkBlankField(userInfo)) {
             const currentEditUserIndex = users.findIndex(user => user.userId === JSON.parse(localStorage.getItem('accountLogin')).userId)
