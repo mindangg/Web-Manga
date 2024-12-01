@@ -1,3 +1,10 @@
+:root{
+
+    --green: #08dc64;
+    --green-l: #08bc5c;
+
+}
+
 /* Billing Information Form Styles */
 .billing-info {
     padding: 20px;
@@ -98,7 +105,7 @@
     text-align: center;
     width: 100%;
     padding: 15px;
-    background-color: #00d146;
+    background-color: var(--green);
     border: none;
     color: white;
     font-size: 1.2em;
@@ -108,7 +115,7 @@
 }
 
 .pay-now-button:hover {
-    background-color: #00b63a;
+    background-color: var(--green-l);
 }
 
 .pay-now-button:disabled {
@@ -156,7 +163,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #4CAF50;
+    background-color: var(--green);
     color: #fff;
     display: flex;
     align-items: center;
@@ -203,7 +210,7 @@
 }
 
 .payment-info__summary .order-price {
-    color: #4CAF50;
+    color: var(--green);
 }
 
 #paymentByQR{

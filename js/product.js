@@ -1001,18 +1001,16 @@ class Product {
     // ======================================================================== 
     // khi an vao nut add thi se insert san pham
     static add() {
-        // if (!Product.checkIsImg()) {
-        //     return
-        // }
-        // if (Product.checkIsBlank() ||
-        //     !Product.checkIsStock() ||
-        //     !Product.checkIsPrice()) {
-        //     return
-        // } else {
-        //     handleAdd()
-        // }
-
-        handleAdd();
+        if (!Product.checkIsImg()) {
+            return
+        }
+        if (Product.checkIsBlank() ||
+            !Product.checkIsStock() ||
+            !Product.checkIsPrice()) {
+            return
+        } else {
+            handleAdd()
+        }
 
         function handleAdd() {
             console.log("Adding product...");
@@ -1027,7 +1025,7 @@ class Product {
                 productInputSeries.value,
                 productInputCategory.value,
                 productInputAuthor.value,
-                productInputStock.value,
+                parseInt(productInputStock.value),
                 parseFloat(productInputPrice.value),
                 productInputDescription.value
             )
