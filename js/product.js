@@ -1119,7 +1119,7 @@ class Product {
                 <button class="button button__product__prev-pagi" 
                 id="button__product__prev-pagi"> << </button>
 
-                <input type="text" class="input input__pagi" id="input-product__pagi" style="width: 3%;"> / ${productTotalPages}
+                <input type="text" class="input input__pagi" id="input-product__pagi" > / ${productTotalPages}
                 
                 <button class="button button__product__next-pagi" style="margin-left: 15px"
                 id="button__product__next-pagi"> >> </button>

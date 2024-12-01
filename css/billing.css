@@ -214,3 +214,77 @@
     width: 600px;
     padding-left: 20px;
 }
+
+/* Reponsive */
+@media (min-width:800px) and (max-width:1130px){
+    .billing-form {
+        width: 500px;
+    }
+    .payment-info {
+        width: 500px;
+    }
+    #Payment-form{
+        width: 500px;
+    }
+    .billing-info h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    
+  }
+  @media (min-width:600px) and (max-width:800px){
+    .billing-form {
+        width: 400px;
+    }
+    .payment-info {
+        width: 400px;
+    }
+    #Payment-form{
+        width: 400px;
+    }
+    .billing-info h2 {
+        font-size: 1.2em;
+        margin-top: 5px;
+    }
+    .billing-info label {
+        font-size: 0.9em;
+    }
+    
+    .billing-info input,
+    .billing-info textarea,
+    .billing-info select {
+        font-size: 0.8em;
+    }
+    .payment-info__summary .total {
+        font-size: 1rem;
+    }
+    
+  }
+  
+@media (max-width:600px){
+    .billing-form {
+        width: 250px;
+    }
+    .payment-info {
+        width: 250px;
+    }
+    #Payment-form{
+        width: 250px;
+    }
+    .billing-info h2 {
+        font-size: 1em;
+        margin-top: 10px;
+    }
+    .billing-info label {
+        font-size: 0.7em;
+    }
+    
+    .billing-info input,
+    .billing-info textarea,
+    .billing-info select {
+        font-size: 0.6em;
+    }
+    .payment-info__summary .total {
+        font-size: 0.8rem;
+    }
+  }

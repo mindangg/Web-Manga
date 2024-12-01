@@ -73,6 +73,10 @@
 
 .user.table__cell.user-table__cell.detail p {
     cursor: pointer;
+    color: black;
+}
+.user.table__cell.user-table__cell.detail p:hover {
+    cursor: pointer;
     color: #008d3f;
 }
 
@@ -135,6 +139,41 @@
 
 #statistic__orders-table__head {
     width: 100%;
+}
+@media (min-width:750px) and (max-width:1130px){
+    .statistic.table__header {
+        margin-top: 170px;
+    }
+    .statistic.search-label {
+        margin-top: 5px;
+    }
+    .search-component input {
+        margin-top: 5px;
+    }
+    .statistic.selection {
+        margin-top: 5px;
+    }
+    #statistic__apply-btn {
+        margin-top: 5px;
+    }
+}
+  
+@media (max-width:750px){
+    .statistic.table__header {
+        margin-top: 170px;
+    }
+    .statistic.search-label {
+        margin-top: 5px;
+    }
+    .search-component input {
+        margin-top: 5px;
+    }
+    .statistic.selection {
+        margin-top: 5px;
+    }
+    #statistic__apply-btn {
+        margin-top: 5px;
+    }
 }
 
 
