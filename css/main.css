@@ -612,11 +612,11 @@ body{
     }
 
     .best__slider__button{
-        left: 11%;
+        left: 8%;
     }
 
-    .best__slider__button button{
-        margin-right: 300px;
+    .best__slider__button button:nth-child(1){
+        margin-right: 250px;
     }
 
     .best__slider__dots{
@@ -624,11 +624,11 @@ body{
     }
 
     .book__slider__button{
-        left: 11%;
+        left: 8%;
     }
 
-    .book__slider__button button{
-        margin-right: 300px;
+    .book__slider__button button:nth-child(1){
+        margin-right: 250px;
     }
 
     .book__slider__dots{
