@@ -142,6 +142,7 @@ body {
         height: 100px;
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
         overflow-x:unset;
     }
     .sidenav div {
@@ -150,6 +151,18 @@ body {
     }
     .page{
         margin-left: 5px;
+    }
+    #navToggle{
+        display: none;
+    }
+    .topnav{
+        position: relative;
+    }
+    .topnav .setting__btn button {
+        position: absolute;
+        right: 5px;
+        top:5px;
+        font-size: 20px;
     }
     
 }
@@ -158,6 +171,7 @@ body {
         height: 100px;
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
         overflow-x:unset;
     }
     .sidenav div {
@@ -166,5 +180,17 @@ body {
     }
     .page{
         margin-left: 5px;
+    }
+    #navToggle{
+        display: none;
+    }
+    .topnav{
+        position: relative;
+    }
+    .topnav .setting__btn button {
+        position: absolute;
+        right: 5px;
+        top:5px;
+        font-size: 15px;
     }
 }
