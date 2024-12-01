@@ -297,7 +297,7 @@ class Order {
             const paymentBank = document.getElementById('selectBankOrder').value;
             const cardNumber = document.getElementById('billing-info__cardnumber').value;
             const cardName = document.getElementById('billing-info__nameoncard').value;
-
+            console.log(paymentBank)
             paymentDetails = {
                 method: "Payment By Transfer.",
                 bank: paymentBank,
@@ -479,7 +479,6 @@ class Order {
     // Render order detail
     static renderOrderDetail(id) {
         const orderDetail = document.querySelector(".order-detail");
-        const cardDetail = document.getElementById("card__Detail")
         const order = JSON.parse(localStorage.getItem("order")).find(o => o.orderId === id);
         const user = JSON.parse(localStorage.getItem("users")).find(u => u.userId === order.userId);
 
@@ -554,9 +553,12 @@ class Order {
             </div>            
             
         `
-        // if (cardDetail && order.paymentDetails.method==="Payment By Transfer.") {
-        //     cardDetail.style.display = "block";
-        // }
+        const cardDetail = document.getElementById("card__Detail")
+        if (order.paymentDetails.method==="Payment By Transfer.") {
+            cardDetail.style.display = "block";
+        } else {
+            cardDetail.style.display = "none";
+        }
     }
     //
     //
