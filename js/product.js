@@ -46,7 +46,7 @@ const sortIdProduct = document.querySelector(".product-table__cell--id");
 let productTable = JSON.parse(localStorage.getItem('productTable')) || [
     {
         productId: "manga_0",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 1",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-1-primary.jpg",
@@ -59,7 +59,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_1",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 5",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-5-primary.jpg",
@@ -72,7 +72,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_2",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 6",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-6-primary.jpg",
@@ -85,7 +85,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_3",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 7",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-7-primary.jpg",
@@ -98,7 +98,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_4",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 8",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-8-primary.jpg",
@@ -111,7 +111,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_5",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 10",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-10-primary.jpg",
@@ -124,7 +124,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_6",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days  - Volume 12",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-12-primary.jpeg",
@@ -138,7 +138,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_7",
-        series: "Sakamoto Days",
+        series: "Sakamoto Days - Volume 15",
         author: "Yuto Suzuki",
         category: "Action",
         cover1: "../img/books/sakamoto days/sakamoto-days-volume-15-primary.jpg",
@@ -151,7 +151,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_8",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 1",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-1-primary.jpg",
@@ -165,7 +165,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_9",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 4",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-4-primary.jpg",
@@ -178,7 +178,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_10",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 11",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-11-primary.jpg",
@@ -191,7 +191,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_11",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 14",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-14-primary.jpg",
@@ -204,7 +204,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_12",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 15",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-15-primary.jpg",
@@ -217,7 +217,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_13",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 17",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-17-primary.jpg",
@@ -230,7 +230,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_14",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 22",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-22-primary.jpeg",
@@ -243,7 +243,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_15",
-        series: "Jujutsu Kaisen",
+        series: "Jujutsu Kaisen - Volume 23",
         author: "Gege Akutami",
         category: "Dark Fantasy",
         cover1: "../img/books/jujutsu kaisen/jujutsu-kaisen-volume-23-primary.jpeg",
@@ -256,7 +256,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_16",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 1",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-1-primary.jpg",
@@ -269,7 +269,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_17",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 2",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-2-primary.jpg",
@@ -282,7 +282,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_18",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 3",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-3-primary.jpg",
@@ -295,7 +295,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_19",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 4",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-4-primary.jpg",
@@ -308,7 +308,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_20",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 5",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-5-primary.jpg",
@@ -321,7 +321,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_21",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 6",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-6-primary.jpg",
@@ -334,7 +334,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_22",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 7",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-7-primary.jpg",
@@ -347,7 +347,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_23",
-        series: "Spy X Family",
+        series: "Spy X Family - Volume 10",
         author: "Tatsuya Endo",
         category: "Family",
         cover1: "../img/books/spy x family/spy-x-family-volume-10-primary.jpg",
@@ -360,7 +360,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_24",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 1",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-1-primary.jpg",
@@ -373,7 +373,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_25",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 2",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-2-primary.jpg",
@@ -386,7 +386,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_26",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 3",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-3-primary.jpg",
@@ -399,7 +399,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_27",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 6",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-6-primary.jpg",
@@ -412,7 +412,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_28",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 7",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-7-primary.jpg",
@@ -425,7 +425,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_29",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 9",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-9-primary.jpg",
@@ -438,7 +438,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_30",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 10",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-10-primary.jpg",
@@ -450,7 +450,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
     },
     {
         productId: "manga_31",
-        series: "My Dress Up Darling",
+        series: "My Dress Up Darling - Volume 12",
         author: "Shinichi Fukuda",
         category: "Rom Com",
         cover1: "../img/books/my dress up darling/my-dress-up-darling-volume-12-primary.jpg",
@@ -463,7 +463,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_32",
-        series: "Black Clover",
+        series: "Black Clover - Volume 7",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-7-primary.jpg",
@@ -476,7 +476,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_33",
-        series: "Black Clover",
+        series: "Black Clover - Volume 15",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-15-primary.jpg",
@@ -489,7 +489,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_34",
-        series: "Black Clover",
+        series: "Black Clover - Volume 21",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-21-primary.jpg",
@@ -502,7 +502,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_35",
-        series: "Black Clover",
+        series: "Black Clover - Volume 23",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-23-primary.jpg",
@@ -515,7 +515,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_36",
-        series: "Black Clover",
+        series: "Black Clover - Volume 24",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-24-primary.jpg",
@@ -528,7 +528,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_37",
-        series: "Black Clover",
+        series: "Black Clover - Volume 25",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-25-primary.jpg",
@@ -541,7 +541,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_38",
-        series: "Black Clover",
+        series: "Black Clover - Volume 32",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-32-primary.jpg",
@@ -554,7 +554,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_39",
-        series: "Black Clover",
+        series: "Black Clover - Volume 33",
         author: "Yuki Tabata",
         category: "Fantasy",
         cover1: "../img/books/black clover/black-clover-volume-33-primary.jpg",
@@ -567,7 +567,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_40",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 1",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-1-primary.jpg",
@@ -580,7 +580,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_41",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 2",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-2-primary.jpg",
@@ -593,7 +593,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_42",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 3",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-3-primary.jpg",
@@ -606,7 +606,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_43",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 5",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-5-primary.jpg",
@@ -619,7 +619,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_44",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 7",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-7-primary.jpg",
@@ -632,7 +632,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_45",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 9",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-9-primary.jpg",
@@ -645,7 +645,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_46",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 11",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-11-primary.jpg",
@@ -658,7 +658,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_47",
-        series: "Tokyo Ghoul",
+        series: "Tokyo Ghoul - Volume 14",
         author: "Sui Ishida",
         category: "Seinen",
         cover1: "../img/books/tokyo ghoul/tokyo-ghoul-volume-14-primary.jpg",
@@ -671,7 +671,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_48",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 1",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-1-primary.jpg",
@@ -684,7 +684,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_49",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 5",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-5-primary.jpg",
@@ -697,7 +697,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_50",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 9",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-9-primary.jpg",
@@ -710,7 +710,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_51",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 18",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-18-primary.jpg",
@@ -723,7 +723,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_52",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 25",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-25-primary.jpg",
@@ -736,7 +736,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_53",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 26",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-26-primary.jpg",
@@ -749,7 +749,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_54",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 27",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-27-primary.jpg",
@@ -762,7 +762,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_55",
-        series: "One Punch Man",
+        series: "One Punch Man - Volume 28",
         author: "Yusuke Murata",
         category: "Shounen",
         cover1: "../img/books/one punch man/one-punch-man-volume-28-primary.jpg",
@@ -775,7 +775,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_56",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 1",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-1-primary.jpg",
@@ -788,7 +788,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_57",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 3",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-3-primary.jpg",
@@ -801,7 +801,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_58",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 9",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-9-primary.jpg",
@@ -814,7 +814,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_59",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 14",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-14-primary.jpg",
@@ -827,7 +827,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_60",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 15",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-15-primary.jpg",
@@ -840,7 +840,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_61",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 16",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-16-primary.jpeg",
@@ -853,7 +853,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_62",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 17",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-17-primary.jpeg",
@@ -866,7 +866,7 @@ let productTable = JSON.parse(localStorage.getItem('productTable')) || [
 
     {
         productId: "manga_63",
-        series: "Mashle Magic And Muscles",
+        series: "Mashle Magic And Muscles - Volume 18",
         author: "Hajime Komoto",
         category: "Comedy",
         cover1: "../img/books/mashle/mashle-magic-and-muscles-volume-18-primary.jpg",

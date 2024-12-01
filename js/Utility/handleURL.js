@@ -70,7 +70,7 @@ function fetchPropertyProduct(url) {
         // filter product with series
         if (seriesSearch !== null) {
             seriesOfProduct = JSON.parse(localStorage.getItem('productTable')).filter(p =>
-                removeSpecialChar(p.series) === removeSpecialChar(seriesSearch)
+               removeSpecialChar(p.series).includes(removeSpecialChar(seriesSearch))
             )
         }
 

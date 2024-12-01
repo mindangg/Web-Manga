@@ -32,6 +32,7 @@
 }
 
 .navbar__logo img{
+    cursor: pointer;
     width: 85px;
     height: 70px;
     object-fit: cover;
@@ -909,7 +910,6 @@ hr{
     }
 
     .navbar__bar div div {
-        position: absolute;
         top: 22px;
         left: 59px;
     }
