@@ -263,9 +263,14 @@ class Order {
             }
         }
         if(billingPayment.value==="creditCard"){
-            if (Validation.checkBlankField(billingInfo) === false && Validation.checkBlankField(document.getElementById("Payment-form"))=== false) {
-                Order.addToOrder('Pending')
-                Cart.renderCartSummary();
+            if (Validation.checkBlankField(billingInfo) === false && 
+                Validation.checkBlankField(document.getElementById("Payment-form"))=== false) {
+                if(!Validation.checkCardNumber("billing-info__cardnumber")){
+                    Order.addToOrder('Pending')
+                    Cart.renderCartSummary();
+                } 
+                else {
+                    showNotification('Failed to create order');}
             } else {
                 showNotification('Failed to create order');
             }

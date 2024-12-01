@@ -80,4 +80,21 @@ class Validation {
     static IsNumber(value) {
         return !isNaN(value)
     }
+
+
+    static checkCardNumber(id) {
+        const cardNum=document.getElementById(id)
+        let check = false;
+        if (!this.IsNumber(cardNum.value)) {
+            cardNum.style.border = '1px solid rgba(255, 51, 0, 0.76)';
+            cardNum.labels[0].innerText = 'This must be entered in number';
+            cardNum.labels[0].style.display = 'block';
+            check = true;
+        } else {
+            cardNum.style.border = '2px solid #363636';
+            cardNum.labels[0].innerText = '';
+            cardNum.labels[0].style.display = 'none';
+        }
+        return check;
+    }
 }
