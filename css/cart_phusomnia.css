@@ -113,3 +113,11 @@ input[type="number"] {
 .checkout-button:hover {
     background-color: #00b63a;
 }
+
+@media screen and (max-width: 700px){
+    .checkout-button {
+        padding: 10px;
+        margin-top: 15px;
+        font-size: 0.6em;
+    }  
+}

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==================================================================================
 function searchProduct() {
     handleURLsearch()
-    closeSearch();
+    closeSearch()
 }
 // ==================================================================================
 // HANDLE URL SEARCH
@@ -51,10 +51,12 @@ function handleSearchProduct() {
     const allProduct = searchProductURL.searchParams.get('search')
 
     console.log(searchProductURL, filterSeries, filterCategory, filterPriceMin, filterPriceMax, allProduct)
-    const searchBox = document.querySelector('.search__popup');
-    const selectFilter = searchBox.querySelector('select')
-    selectFilter.value = ''
-    clearField(searchBox);
+    // const searchBox = document.querySelector('.search__popup');
+    // const selectFilter = searchBox.querySelector('select')
+    // selectFilter.value = ''
+    // clearField(searchBox);
+    document.getElementById("search__input").value = ''
+    document.getElementById("filter__category").value = ''
     const productList = document.querySelector('.all-product__page')
     let searchBoxProduct = JSON.parse(localStorage.getItem("productTable"));
     // if
