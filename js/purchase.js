@@ -1,105 +1,5 @@
 let cartTable = JSON.parse(localStorage.getItem('cart')) || []
-let orderTable = JSON.parse(localStorage.getItem('order')) || [
-    {
-        orderId: "orderTesting_1",
-        userId: "user_1",
-        orderDate: "16/11/2024",
-        orderStatus: "Cancelled",
-        orderItems: [
-            {
-                productId: "manga_1",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-                totalPrice: 18.0,
-            },
-            {
-                productId: "manga_2",
-                series: "Item 2",
-                quantity: 3,
-                price: 10.0,
-                totalPrice: 300.0,
-            },
-        ],
-        orderPrice: 600.0,
-        userFullName: "John Doe",
-        userPhoneNumber: "0123456789",
-        orderAddress: {
-            houseNumber: "123",
-            street: "Main Street",
-            ward: "X.Binh Hung",
-            district: "H.Bình Chanh",
-            city: "TP.HCM",
-        },
-        paymentDetails: {
-            method: "Payment by cash.",
-            bank: '',
-            cardNumber: '',
-            cardName: ''
-        },
-    },
-    {
-        orderId: "orderTesting_2",
-        userId: "user_1",
-        orderDate: "16/12/2024",
-        orderStatus: "Cancelled",
-        orderItems: [
-            {
-                productId: "manga_1",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_2",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-            {
-                productId: "manga_3",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_4",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-            {
-                productId: "manga_5",
-                series: "Item 1",
-                quantity: 2,
-                price: 9.0,
-            },
-            {
-                productId: "manga_6",
-                series: "Item 2",
-                quantity: 1,
-                price: 300.0,
-            },
-        ],
-        orderPrice: 600.0,
-        userFullName: "John Doe",
-        userPhoneNumber: "0123456789",
-        orderAddress: {
-            houseNumber: "123",
-            street: "123",
-            ward: "Tan Dinh",
-            district: "1",
-            city: "TPHCM",
-        },
-        paymentMethod: "transferPayment",
-        paymentDetails: {
-            method: "Payment by transfer.",
-            bank: "Agribank",
-            cardNumber: "12345",
-            cardName: "Huybao"
-        },
-    },
-]
+let orderTable = JSON.parse(localStorage.getItem('order')) || []
 
 // Payment information field
 const productContainer = document.querySelector(".product__container")
@@ -123,8 +23,10 @@ const billingCity = document.getElementById("billing-info__city")
 const billingPayment = document.getElementById("selectPaymentOrder")
 
 // Search order table in admin page
-const orderSearchDate = document.getElementById("order-table__search-input--date");
+const orderSearchDateStart = document.getElementById("order-table__search-input--dateStart");
+const orderSearchDateEnd = document.getElementById("order-table__search-input--dateEnd");
 const orderSearchDistrict = document.getElementById("order-table__search-input--district");
+const orderSearchSelection = document.getElementById('order__filter-status--select')
 
 // function displayPaymentChoice(){
 //     if(document.getElementById("paymentMethod").value == "none"){
@@ -215,7 +117,7 @@ class Cart {
                         alt="Product Image">
                     <div class="product-info">
                         <p class="product-title">${item.series}</p>
-                        <p class="product-price">$${item.price}</p>
+                        <p class="product-price">$${(item.price).toFixed(2)}</p>
                     </div>
                 </td>
                 <td>
@@ -246,7 +148,7 @@ class Cart {
                     <div class="payment-info__item-details">
                         <p>${item.series}</p>
                     </div>
-                    <div class="payment-info__item-price">$${item.price * item.quantity}</div>
+                    <div class="payment-info__item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
             `
         })
@@ -278,7 +180,8 @@ class Cart {
             });
         });
     }
-    // ===================================== 
+
+    // =====================================
     // REMOVE FROM CART~
     // =====================================
     static removeFromCart(e) {
@@ -305,7 +208,7 @@ class Cart {
     }
 }
 class Order {
-    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress,paymentDetails) {
+    constructor(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress, paymentDetails) {
         this.orderId = orderId
         this.userId = userId
         this.orderDate = orderDate
@@ -315,11 +218,11 @@ class Order {
         this.userFullName = userFullName
         this.userPhoneNumber = userPhoneNumber
         this.orderAddress = orderAddress
-        //hbao them 
+        //hbao them
         this.paymentDetails = paymentDetails
     }
     // Insert new order  
-    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress,paymentDetails ) {
+    static insert(orderId, userId, orderDate, orderStatus, orderItems, orderPrice, userFullName, userPhoneNumber, orderAddress ,paymentDetails) {
         const newOrder = new Order(
             orderId,
             userId,
@@ -331,7 +234,7 @@ class Order {
             userPhoneNumber,
             orderAddress,
             //hbao them
-            paymentDetails  
+            paymentDetails
         )
         Order.updateStockForOrder(newOrder, 'decrease');
         orderTable.push(newOrder);
@@ -374,7 +277,7 @@ class Order {
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
         console.log(orderTable)
-        let paymentDetails = { 
+        let paymentDetails = {
             method: "Cash On Delivery",
             bank: '',
             cardNumber: '',
@@ -392,7 +295,7 @@ class Order {
                 cardNumber: cardNumber,
                 cardName: cardName
             };
-        } 
+        }
 
         if (billingPayment.value === "QRCode") {
             paymentDetails = {
@@ -401,9 +304,9 @@ class Order {
                 cardNumber: "",
                 cardName: ""
             };
-        } 
-        
-      
+        }
+
+
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
             JSON.parse(localStorage.getItem('accountLogin')).userId,
@@ -415,7 +318,7 @@ class Order {
                 category: item.category,
                 author: item.author,
                 quantity: item.quantity,
-                price: item.price,
+                price: (item.price).toFixed(2),
                 totalPrice: (item.price * item.quantity).toFixed(2)
             })),
             (cartTable.reduce((total, item) => total + item.price * item.quantity, 0)).toFixed(2),
@@ -427,8 +330,8 @@ class Order {
                 ward: billingWard.value,
                 district: billingDistrict.value,
                 city: billingCity.value,
-            },   
-            paymentDetails 
+            },
+            paymentDetails
         );
         localStorage.setItem("order", JSON.stringify(orderTable))
 
@@ -442,6 +345,7 @@ class Order {
         Order.renderOrderView();
     }
     static updateStockForOrder(order, action) {
+        let productTable = JSON.parse(localStorage.getItem('productTable'))
         console.log("Updating stock for order...")
         console.log("Order:", order);
         order.orderItems.forEach(item => {
@@ -497,6 +401,7 @@ class Order {
                         <div class="order__date">Date: ${o.orderDate}</div>
                         <div class="order__status ${Order.getStatus(o.orderStatus)}">Status: ${Order.setStatus(o.orderStatus)}</div>
                         <span class="show__details" onclick="Order.toggleDetails(this)">View Details</span>
+                        <button id="${o.orderId}-status" class="order__cancel-btn" onclick="Order.handleCancelOrder(this)">Cancel this order</button>
                     </div>
                     <div style="margin-left: 100px;">
                         <div class="order__items__details" style="display: none">
@@ -508,9 +413,36 @@ class Order {
                     </div>
                 </div>
             `
+            if (o.orderStatus === 'Cancelled') {
+                const btn = document.getElementById(`${o.orderId}-status`)
+                btn.disabled = true;
+                btn.style.background = 'red'
+                btn.style.opacity = '0.5'
+            }
         })
     }
-    // 
+
+    static handleCancelOrder(order) {
+        console.log(order)
+        const confirmCancel = confirm("Do you really want to cancel this order?");
+        if (!confirmCancel) {
+            return
+        }
+        let orders = JSON.parse(localStorage.getItem('order'))
+        let orderId = order.id.split('-')[0]
+        let thisOrder = orders.find(o => o.orderId === orderId)
+
+        Order.updateStockForOrder(thisOrder, "increase");
+        thisOrder.orderStatus = "Cancelled";
+        localStorage.setItem("order", JSON.stringify(orders))
+        console.log(thisOrder)
+
+        alert("Order has been cancelled successfully");
+        Order.renderOrderView()
+        location.reload()
+    }
+
+    //
     static renderOrderAdmin(renderOrder) {
         orderTableContainer.innerHTML = ""
         renderOrder.forEach(o => {
@@ -529,7 +461,7 @@ class Order {
                         ${o.orderAddress.houseNumber} ${o.orderAddress.street}, ${o.orderAddress.ward}, ${o.orderAddress.district}, ${o.orderAddress.city} 
                     </td>
                     <td style="text-align: center;">
-                        ${o.orderPrice}
+                        $${o.orderPrice}
                     </td>
                     <td style="text-align: center;">
                         <select class="order-status" data-order-id="${o.orderId}" onchange="Order.handleStatusChange(this)" ${(o.orderStatus === "Completed" || o.orderStatus === "Cancelled")? "disabled" : ""}>
@@ -617,7 +549,7 @@ class Order {
                 <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
             </div>
         `
-        if(billingPayment.value==="creditCard"){
+        if(order.paymentDetails.method==="Credit Card"){
             orderDetail.innerHTML+=`
                     <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
                     <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
@@ -629,32 +561,60 @@ class Order {
     //
     //
     static search() {
-        orderSearchDate.addEventListener("input", () => {
-            Order.applyFilters();
-        });
-
-        orderSearchDistrict.addEventListener("keyup", () => {
-            Order.applyFilters();
-        });
+        this.applyFilters()
     }
-    // 
+
+    //
     // 
     // 
     static applyFilters() {
         let filteredOrder = JSON.parse(localStorage.getItem("order"));
+        let dateStart = orderSearchDateStart.value
+        let dateEnd = orderSearchDateEnd.value
+        let selection = orderSearchSelection.value
 
-        if (orderSearchDate.value !== "") {
-            filteredOrder = filteredOrder.filter(o => o.orderDate === formatDate(orderSearchDate.value));
+        if (dateStart > dateEnd) {
+            alert('End date must be after start date')
+            orderSearchDateStart.value = '';
+            orderSearchDateEnd.value = '';
+            return
         }
+
+        dateStart = (dateStart === '') ? new Date(0) : new Date(dateStart)
+        dateEnd = (dateEnd === '') ? new Date() : new Date(dateEnd)
+
+        filteredOrder = filteredOrder.filter(o => {
+            let parts = o.orderDate.split('/')
+            let date = new Date(parts[2], parts[1] - 1, parts[0])
+            return date > dateStart && date < dateEnd
+        });
 
         if (orderSearchDistrict.value !== "") {
             const regex = RegExp(orderSearchDistrict.value, "i");
             filteredOrder = filteredOrder.filter(item => regex.test(removeDiaritics(item.orderAddress.district)));
         }
 
+        switch (selection) {
+            case '':
+                break;
+            case 'Cancelled':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Cancelled');
+                break;
+            case 'Pending':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Pending');
+                break;
+            case 'Confirmed':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Confirmed')
+                break;
+            case 'Completed':
+                filteredOrder = filteredOrder.filter(o => o.orderStatus === 'Completed')
+                break;
+        }
+
         Order.renderOrderAdmin(filteredOrder);
     }
-    // 
+
+    //
     // 
     // 
     static handleStatusChange(selectElement) {
@@ -668,7 +628,7 @@ class Order {
         }
 
         if (newStatus === "Cancelled" && order.status !== "Cancelled") {
-            const confirmCancel = confirm("Bạn muốn hủy đơn hàng này không ?");
+            const confirmCancel = confirm("Do you really want to cancel this order?");
             if (!confirmCancel) {
                 selectElement.disabled = false;
                 selectElement.value = "Pending";
@@ -682,26 +642,27 @@ class Order {
             localStorage.setItem("order", JSON.stringify(orderTable));
 
             Order.renderOrderAdmin(orderTable);
-            alert("Đơn hàng đã được hủy thành công");
+            alert("Order has been cancelled successfully");
         }
         if (newStatus === "Completed" && order.orderStatus !== "Completed") {
             order.orderStatus = "Completed";
             localStorage.setItem("order", JSON.stringify(orderTable));
             selectElement.disabled = true;
             Order.renderOrderAdmin(orderTable);
-            alert("Đơn hàng đã được giao");
+            alert("Order has been delivered");
         }
         if (newStatus === "Confirmed" && order.orderStatus !== "Confirmed") {
             order.orderStatus = "Confirmed";
             localStorage.setItem("order", JSON.stringify(orderTable));
 
             Order.renderOrderAdmin(orderTable);
-            alert("Đơn hàng đã được xử lý");
+            alert("Order has been processed");
             selectElement.disabled = false;
         }
         localStorage.setItem("order", JSON.stringify(orderTable));
     }
-    //  
+
+    //
     static getStatus(status) {
         if (status === "Pending") {
             return "status--pending"
@@ -716,20 +677,22 @@ class Order {
             return "status--cancelled"
         }
     }
+
     static setStatus(status) {
         if (status === "Pending") {
-            return "Đang xử lý đơn hàng"
+            return "Processing order"
         }
         if (status === "Confirmed") {
-            return "Đã xử lý đơn hàng"
+            return "Order has been processed"
         }
         if (status === "Completed") {
-            return "Đã giao hàng"
+            return "Delivered"
         }
         if (status === "Cancelled") {
-            return "Hủy đơn hàng"
+            return "Order has been cancelled"
         }
     }
+
     //
     //
     //
@@ -743,6 +706,7 @@ class Order {
             e.textContent = "View Details";
         }
     }
+
     //
     // clear form Bill
     //
@@ -756,15 +720,15 @@ class Order {
             });
         }
     static renderBillingForm() {
-        const accoutLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
-        billingFullName.value = accoutLoginInfo.fullName;
-        billingPhoneNumber.value = accoutLoginInfo.phoneNumber;
-        billingHouseNumber.value = accoutLoginInfo.address.houseNumber;
-        billingStreet.value = accoutLoginInfo.address.street;
-        billingWard.value = accoutLoginInfo.address.ward;
-        billingDistrict.value = accoutLoginInfo.address.district;
-        billingCity.value = accoutLoginInfo.address.city;
-        document.getElementById("billing-form").querySelectorAll("input").forEach(input => {
+        const accountLoginInfo = JSON.parse(localStorage.getItem('accountLogin'));
+        billingFullName.value = accountLoginInfo.fullName;
+        billingPhoneNumber.value = accountLoginInfo.phoneNumber;
+        billingHouseNumber.value = accountLoginInfo.address.houseNumber;
+        billingStreet.value = accountLoginInfo.address.street;
+        billingWard.value = accountLoginInfo.address.ward;
+        billingDistrict.value = accountLoginInfo.address.district;
+        billingCity.value = accountLoginInfo.address.city;
+        document.getElementById("billing-info").querySelectorAll("input").forEach(input => {
             document.getElementById(input.id).disabled = true;
         });
     }
@@ -799,11 +763,15 @@ class Order {
     static togglePaymentOrder (selectElement) {
         const paymentByCreditCard = document.getElementById("paymentByCard");
         const paymentByQRCode=document.getElementById("paymentByQR");
-        
+
         if (selectElement.value === "creditCard") {
-            paymentByCreditCard.style.display = "block"; 
+            paymentByCreditCard.style.display = "block";
             paymentByQRCode.style.display="none";
-        } 
+            let inputs = paymentByCreditCard.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.disabled = false
+            })
+        }
         else if(selectElement.value === "QRCode"){
             paymentByCreditCard.style.display="none";
             paymentByQRCode.style.display="block";

@@ -1084,7 +1084,7 @@ class Product {
                         ${p.stock}
                     </td>
                     <td style="text-align: center;">
-                        ${p.price}
+                        $${p.price}
                     </td>
                     <th style="text-align: center;">
                         <button class="product-table__button product-table__button--edit"

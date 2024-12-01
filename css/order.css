@@ -24,6 +24,24 @@
   color: #ddd;
 }
 
+.order__cancel-btn {
+  display: block;
+  height: 35px;
+  width: 130px;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #008d3f;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.order__cancel-btn:hover {
+  background-color: #00b63a;
+}
+
 .order__items__details ul {
   list-style: none;
   padding: 0;

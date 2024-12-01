@@ -211,7 +211,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         status: true,
     },
     {
-        userId: "user_11",
+        userId: "user_12",
         username: "bael1002",
         password: "69Bao69",
         email: "3123410016@gmail.com",
@@ -228,7 +228,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         status: true,
     },
     {
-        userId: "user_12",
+        userId: "user_13",
         username: "bael666",
         password: "leaB1002",
         email: "3123410016@gmail.com",
@@ -245,7 +245,7 @@ let userList = JSON.parse(localStorage.getItem('users')) || [
         status: true,
     },
     {
-        userId: "user_13",
+        userId: "user_14",
         username: "1",
         password: "1",
         email: "3123410016@gmail.com",
@@ -605,9 +605,16 @@ function showNotification(message) {
 
 function clearField(field) {
     const inputs = field.querySelectorAll("input");
+    const labels = field.querySelectorAll('label');
     inputs.forEach(input => {
         input.value = '';
+        input.style.border = '2px solid #363636'
+        input.style.outline = 'none'
     });
+
+    labels.forEach(label => {
+        label.innerText = ''
+    })
 }
 document.addEventListener('DOMContentLoaded', () => {
     User.renderAccountLogin();
