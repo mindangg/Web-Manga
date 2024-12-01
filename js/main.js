@@ -187,7 +187,7 @@ function showProductInfo(e) {
                     </div>
 
             <div class="product__info">
-                <h1>${p.series}</h1>
+                <h1>${p.name}</h1>
                 <div class="product__info--rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>

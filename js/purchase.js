@@ -568,6 +568,10 @@ class Order {
         let dateStart = orderSearchDateStart.value
         let dateEnd = orderSearchDateEnd.value
         let selection = orderSearchSelection.value
+        let dateStartParts = dateStart.split('-')
+
+        dateStart = (dateStart === '')? new Date(0) : new Date(parseInt(dateStartParts[0]), parseInt(dateStartParts[1]) - 1, parseInt(dateStartParts[2]))
+        dateEnd = (dateEnd === '')? new Date() : new Date(dateEnd)
 
         if (dateStart > dateEnd) {
             alert('End date must be after start date')
@@ -576,13 +580,10 @@ class Order {
             return
         }
 
-        dateStart = (dateStart === '') ? new Date(0) : new Date(dateStart)
-        dateEnd = (dateEnd === '') ? new Date() : new Date(dateEnd)
-
         filteredOrder = filteredOrder.filter(o => {
             let parts = o.orderDate.split('/')
             let date = new Date(parts[2], parts[1] - 1, parts[0])
-            return date > dateStart && date < dateEnd
+            return date >= dateStart && date <= dateEnd
         });
 
         if (orderSearchDistrict.value !== "") {

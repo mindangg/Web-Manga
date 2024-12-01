@@ -273,8 +273,10 @@ function viewHome() {
     const mainPage = document.querySelector('.main__page')
     renderView(mainPage)
     //
-    // const bookSlider = document.querySelector('.book__slider')
-    // bookSlider.style.display = 'inherit'
+    const bookSlider = document.querySelector('.book__slider')
+    bookSlider.style.display = 'inherit'
+    const banner = document.querySelector('.banner')
+    banner.style.display = 'inherit'
     //
     window.scrollTo(530, 530);
 }

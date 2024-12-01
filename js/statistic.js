@@ -20,14 +20,17 @@ const handleStatisticSelection = () => {
     let dateStart = dateStartInput.value
     let dateEnd = dateEndInput.value
     let type = selectInput.value
+    let dateStartParts = dateStart.split('-')
+
+    dateStart = (dateStart === '')? new Date(0) : new Date(parseInt(dateStartParts[0]), parseInt(dateStartParts[1]) - 1, parseInt(dateStartParts[2]))
+    dateEnd = (dateEnd === '')? new Date() : new Date(dateEnd)
+
     if (dateStart > dateEnd) {
         alert('End date must be after start date')
         dateStartInput.value = '';
         dateEndInput.value = '';
         return
     }
-    dateStart = (dateStart === '')? new Date(0) : new Date(dateStart)
-    dateEnd = (dateEnd === '')? new Date() : new Date(dateEnd)
 
     switch (type){
         case 'user':
@@ -55,7 +58,7 @@ const handleStatisticUser = (dateStart, dateEnd) => {
     let validOrders = orders.filter(order => {
         let parts = order.orderDate.split('/')
         let date = new Date(parts[2], parts[1] - 1, parts[0])
-        return order.orderStatus !== 'Cancelled' && date >= dateStart && date < dateEnd
+        return order.orderStatus !== 'Cancelled' && date >= dateStart && date <= dateEnd
     })
 
     let userValueArray = [];
@@ -96,7 +99,7 @@ const renderStatisticUser = (array) => {
             </button>
             <input type="text" class="input input__pagi" id="input-statistic__pagi" style="width: 3%; border: none" disabled> / ${totalPage}
             <button class="button button__user__next-pagi" 
-                id="button__statistic-user__next-pagi" style="margin-left: 10px"> >> 
+                id="button__statistic-user__next-pagi" style="margin-left: 15px"> >> 
             </button>
         `
         const inputPagi = document.getElementById("input-statistic__pagi");
@@ -170,7 +173,7 @@ const renderStatisticUserArray = (list) => {
     array.map(obj => {
         let row = document.createElement('tr');
         row.className = 'user table__row'
-        row.id = `${obj.user.userId}`
+        row.id = `${obj.user.userId}-statistic`
         row.innerHTML += `
         <td class="user table__cell user-table__cell userId">
             ${obj.user.userId}
@@ -217,7 +220,7 @@ const handleStatisticProduct = (dateStart, dateEnd) => {
     let validOrders = orders.filter(order => {
         let parts = order.orderDate.split('/')
         let date = new Date(parts[2], parts[1] - 1, parts[0])
-        return order.orderStatus !== 'Cancelled' && date >= dateStart && date < dateEnd
+        return order.orderStatus !== 'Cancelled' && date >= dateStart && date <= dateEnd
     })
 
     let productValueArray = []
@@ -337,7 +340,7 @@ const renderStatisticProductArray = (list) => {
     array.map(obj => {
         let row = document.createElement("tr");
         row.className = 'product table__row'
-        row.id = `${obj.product.productId}`
+        row.id = `${obj.product.productId}-statistic`
         row.innerHTML += `
             <td class="product table__cell product-table__cell--id">
                 ${obj.product.productId}
