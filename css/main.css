@@ -62,7 +62,7 @@ body{
     left: 0;
     height: 100%;
     display: flex;
-    width: max-content;
+    width: 100%;
     transition: 1s;
 }
 
@@ -1324,7 +1324,7 @@ body{
     animation: drop-in 1s, drop-out 1s 2.5s;
 }
 
-@media screen  and (min-width: 1200px) and (max-width: 1400px){
+/* @media screen  and (min-width: 1200px) and (max-width: 1400px){
     .slider{
         position: relative;
         top: 123px;
@@ -1394,7 +1394,7 @@ body{
         background-color: #fff;
         width: 29px;
     }
-}
+} */
 
 @media screen  and (min-width: 901px) and (max-width: 1200px){
     .product{
@@ -1457,16 +1457,16 @@ body{
         width: 200px;
 
     }
-    .slider__list img{
+    /* .slider__list img{
         width: 100%;
-    }
+    } */
 }
 
-@media (max-width:1000px){
+/* @media (max-width:1000px){
     .slider__list img{
         width: 100%;
     }
-}
+} */
 
 
 
