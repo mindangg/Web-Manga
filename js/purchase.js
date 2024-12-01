@@ -254,12 +254,12 @@ class Order {
 
     static handlePayNow() {
         console.log("Handling pay now...")
-        if(billingPayment.value==="cashPayment" || billingPayment.value==="QRCode"){
+        if(billingPayment.value==="cashPayment" ){
             if (Validation.checkBlankField(document.getElementById("billing-form")) === false) {
                 Order.addToOrder('Pending')
                 Cart.renderCartSummary();
             } else {
-                alert('Failed to create order');
+                showNotification('Failed to create order !!!');
             }
         }
         if(billingPayment.value==="creditCard"){
@@ -267,7 +267,7 @@ class Order {
                 Order.addToOrder('Pending')
                 Cart.renderCartSummary();
             } else {
-                alert('Failed to create order');
+                showNotification('Failed to create order');
             }
         }
     }
@@ -276,12 +276,16 @@ class Order {
     // 
     static addToOrder(status = "Pending") {
         console.log("Adding to order...")
+        if (cartTable.length === 0) {
+            showNotification("Your cart is empty. ")
+            return;
+        }
         console.log(orderTable)
         let paymentDetails = {
             method: "Cash On Delivery",
-            bank: '',
-            cardNumber: '',
-            cardName: ''
+            bank: 'None',
+            cardNumber: 'None',
+            cardName: 'None'
         };
 
         if (billingPayment.value === "creditCard") {
@@ -290,23 +294,12 @@ class Order {
             const cardName = document.getElementById('billing-info__nameoncard').value;
 
             paymentDetails = {
-                method: "Credit Card",
+                method: "Payment By Transfer.",
                 bank: paymentBank,
                 cardNumber: cardNumber,
                 cardName: cardName
             };
         }
-
-        if (billingPayment.value === "QRCode") {
-            paymentDetails = {
-                method: "QR Code",
-                bank: "",
-                cardNumber: "",
-                cardName: ""
-            };
-        }
-
-
         Order.insert(
             `order_${Order.generateId(orderTable)}`,
             JSON.parse(localStorage.getItem('accountLogin')).userId,
@@ -481,6 +474,7 @@ class Order {
     // Render order detail
     static renderOrderDetail(id) {
         const orderDetail = document.querySelector(".order-detail");
+        const cardDetail = document.getElementById("card__Detail")
         const order = JSON.parse(localStorage.getItem("order")).find(o => o.orderId === id);
         const user = JSON.parse(localStorage.getItem("users")).find(u => u.userId === order.userId);
 
@@ -548,14 +542,16 @@ class Order {
                 <h2>Payment Details</h2>
                 <p><strong>Payment Method:</strong> ${order.paymentDetails.method}</p>
             </div>
+            <div id="card__Detail">
+                <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
+                <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
+                <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>   
+            </div>            
+            
         `
-        if(order.paymentDetails.method==="Credit Card"){
-            orderDetail.innerHTML+=`
-                    <p><strong>Bank:</strong> ${order.paymentDetails.bank}</p>
-                    <p><strong>Name On Card:</strong> ${order.paymentDetails.cardName}</p>
-                    <p><strong>Card Number:</strong> ${order.paymentDetails.cardNumber}</p>
-                `
-        }
+        // if (cardDetail && order.paymentDetails.method==="Payment By Transfer.") {
+        //     cardDetail.style.display = "block";
+        // }
     }
     //
     //
@@ -761,24 +757,16 @@ class Order {
 
     //Payment:hbao
     static togglePaymentOrder (selectElement) {
-        const paymentByCreditCard = document.getElementById("paymentByCard");
-        const paymentByQRCode=document.getElementById("paymentByQR");
-
+        const paymentByCard = document.getElementById("paymentByCard");
         if (selectElement.value === "creditCard") {
-            paymentByCreditCard.style.display = "block";
-            paymentByQRCode.style.display="none";
-            let inputs = paymentByCreditCard.querySelectorAll('input')
+            paymentByCard.style.display = "block";
+            let inputs = paymentByCard.querySelectorAll('input')
             inputs.forEach(input => {
                 input.disabled = false
             })
         }
-        else if(selectElement.value === "QRCode"){
-            paymentByCreditCard.style.display="none";
-            paymentByQRCode.style.display="block";
-        }
         else{
-            paymentByCreditCard.style.display="none";
-            paymentByQRCode.style.display="none";
+            paymentByCard.style.display="none";
         }
     }
     // static toggleAddressOrder(e) {

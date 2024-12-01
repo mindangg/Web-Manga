@@ -271,10 +271,10 @@
                         <h2>Payment</h2>
                         <select id="selectPaymentOrder" onchange="Order.togglePaymentOrder(this)">
                             <option value="cashPayment" selected>Cash On Delivery</option>
-                            <option value="creditCard">Credit card</option>
-                            <option value="QRCode">QR Code</option>
+                            <option value="creditCard">Payment By Transfer</option>
                         </select>
                         <div id="paymentByCard" style="display: none;">
+                            <img src="../img/QR.jpg" style=" width: 200px;">
                             <select id="selectBankOrder">
                                 <option value="Agribank" selected>Agribank</option>
                                 <option value="ACB">ACB</option>
@@ -298,9 +298,9 @@
                                 <label class="error" for="billing-info__nameoncard"></label>
                             </div>
                         </div>
-                        <div id="paymentByQR">
+                        <!-- <div id="paymentByQR">
                             <img src="../img/QR.jpg" style=" width: 200px;">
-                        </div>
+                        </div> -->
                 
     
                     <!-- <label for="paymentMethod">Payment Method</label>
