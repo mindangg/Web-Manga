@@ -113,7 +113,7 @@ function renderUser(users) {
                 <button class="button button__user__prev-pagi" 
                     id="button__user__prev-pagi"> << 
                 </button>
-                <input type="text" class="input input__pagi" id="input-user__pagi" style="width: 3%; border: none" disabled> / ${userTotalPage}
+                <input type="text" class="input input__pagi" id="input-user__pagi"  disabled> / ${userTotalPage}
                 <button class="button button__user__next-pagi" style="margin-left: 15px"
                     id="button__user__next-pagi"> >> 
                 </button>

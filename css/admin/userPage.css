@@ -60,8 +60,8 @@
 }
 
 #input-user__pagi {
-    height: 25px;
-    width: 23px;
+    width: 3%;
+    border: none;
 }
 
 #user-page {
@@ -72,6 +72,7 @@
 #user-table__footer {
     margin-top: 15px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .user.table__row {
@@ -289,10 +290,11 @@
 @media (min-width:750px) and (max-width:1130px){
     .table__header
     {
-      display: none;
+      margin-top: 120px;
+      border-radius: 20px;
     }
     #user__search--container{
-      margin-top: 100px ;
+      margin-top: 10px ;
       display: flex;
       flex-wrap: wrap;
     
@@ -324,14 +326,19 @@
         width: unset;
         height: unset;
     }
+    #user-table__footer {
+        margin-top: 200px;
+    }
+    
   }
 @media (max-width:750px){
     .table__header
     {
-      display: none;
+      margin-top: 120px;
+      border-radius: 20px;
     }
     #user__search--container{
-      margin-top: 100px ;
+      margin-top: 10px ;
       display: flex;
       flex-wrap: wrap;
     }
@@ -361,6 +368,12 @@
         font-size: 10px;
         width: unset;
         height: unset;
+    }
+    #user-table__footer {
+        margin-top: 100px;
+    }
+    #input-user__pagi {
+        width: 6%;
     }
     
 }
