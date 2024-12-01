@@ -76,4 +76,8 @@ class Validation {
         let users = JSON.parse(localStorage.getItem("users"));
         return users.some(user => user.username === username.value);
     }
+
+    static IsNumber(value) {
+        return !isNaN(value)
+    }
 }
