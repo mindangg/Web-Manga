@@ -281,6 +281,11 @@ class Order {
             return;
         }
         console.log(orderTable)
+        if (!Validation.isBlank(billingPhoneNumber.value)){
+            User.validatePhoneNumber(billingPhoneNumber)
+            if(!Validation.phoneIsValid(billingPhoneNumber))
+                return
+        }
         let paymentDetails = {
             method: "Cash On Delivery",
             bank: 'None',
