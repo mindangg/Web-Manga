@@ -1407,6 +1407,9 @@ body{
         display: flex;
         animation: topDown 0.55s ease;
     }
+    .slider__list img{
+        width: 1000px;
+    }
 }
 
 @media screen  and (min-width: 700px) and (max-width: 900px){
@@ -1417,6 +1420,9 @@ body{
     }
     .product h1{
         font-size: 1em;
+    }
+    .slider__list img{
+        width: 900px;
     }
 }
 
@@ -1457,9 +1463,10 @@ body{
         width: 200px;
 
     }
-    /* .slider__list img{
-        width: 100%;
-    } */
+    .slider__list img{
+        width: 700px;
+        height: 100%;
+    }
 }
 
 /* @media (max-width:1000px){
